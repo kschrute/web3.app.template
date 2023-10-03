@@ -1,0 +1,37 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "prepare": "run-s 'prepare.*'",
+    "prepare.husky": "husky install || true",
+    "pre-commit": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "npm-run-all2": "^6.0.6"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "@walletconnect+keyvaluestorage@*": {
+        "peerDependencies": {
+          "lokijs": "*"
+        }
+      },
+      "node-fetch@*": {
+        "peerDependencies": {
+          "encoding": "*"
+        }
+      },
+      "pino@*": {
+        "peerDependencies": {
+          "pino-pretty": "*"
+        }
+      }
+    }
+  }
+}

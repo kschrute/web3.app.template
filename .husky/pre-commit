@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+#pnpm run --filter contracts pre-commit
+pnpm run --filter web pre-commit

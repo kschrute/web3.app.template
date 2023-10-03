@@ -1,0 +1,7 @@
+# local env files
+.env
+
+# forge
+artifacts
+out
+cache
