@@ -16,7 +16,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <WagmiConfig config={config}>
           <RainbowKitProvider
             chains={chains}
-            modalSize="compact" theme={{ lightMode: lightTheme(), darkMode: darkTheme() }} showRecentTransactions>
+            modalSize="compact"
+            theme={{ lightMode: lightTheme(), darkMode: darkTheme() }}
+            showRecentTransactions
+          >
             {mounted && children}
           </RainbowKitProvider>
         </WagmiConfig>
