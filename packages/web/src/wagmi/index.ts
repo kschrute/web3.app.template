@@ -1,4 +1,4 @@
-import { connectorsForWallets, getDefaultWallets } from '@rainbow-me/rainbowkit'
+import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { configureChains, createConfig } from 'wagmi'
 import { goerli, hardhat, localhost, mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
@@ -9,6 +9,8 @@ import {
   metaMaskWallet, rainbowWallet, trustWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets'
+
+export * from './generated'
 
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string
 

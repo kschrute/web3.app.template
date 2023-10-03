@@ -4,7 +4,7 @@ import { foundry, react } from '@wagmi/cli/plugins'
 import * as chains from 'wagmi/chains'
 
 export default defineConfig({
-  out: 'src/generated.ts',
+  out: 'src/wagmi/generated.ts',
   plugins: [
     foundry({
       deployments: {

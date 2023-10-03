@@ -1,7 +1,7 @@
 'use client'
 
 import { useAccount, useWaitForTransaction } from 'wagmi'
-import { useCounterIncrement, useCounterNumber, useCounterSetNumber } from '../generated'
+import { useCounterIncrement, useCounterNumber, useCounterSetNumber } from '../wagmi'
 import { stringify } from '../utils/stringify'
 import { BaseError } from 'viem'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'

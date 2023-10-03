@@ -8,12 +8,14 @@ module.exports = {
     jest: true,
   },
   extends: [
+    'next/core-web-vitals',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'airbnb-base',
     'airbnb/rules/react',
     'plugin:react/recommended',
   ],
+  ignorePatterns: ['src/wagmi/generated.ts'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',

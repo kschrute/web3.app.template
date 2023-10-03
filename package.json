@@ -7,6 +7,8 @@
   "scripts": {
     "prepare": "run-s 'prepare.*'",
     "prepare.husky": "husky install || true",
+    "prepare.contracts": "pnpm --filter contracts run prepare",
+    "prepare.web": "pnpm --filter web run prepare",
     "pre-commit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

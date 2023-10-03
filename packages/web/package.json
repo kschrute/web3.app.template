@@ -10,10 +10,13 @@
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
     "wagmi": "wagmi generate",
+    "prepare": "run-s 'prepare.*'",
+    "prepare.wagmi": "wagmi generate",
     "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@app/contracts": "workspace:^",
+    "@wagmi/cli": "^1.0.0",
     "@chakra-ui/next-js": "^2.1.5",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
@@ -24,14 +27,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "viem": "^1.14.0",
-    "wagmi": "^1.4.2"
+    "wagmi": "^1.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.7.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@wagmi/cli": "^1.0.0",
     "encoding": "^0.1.13",
     "eslint": "^8.50.0",
     "eslint-config-airbnb": "^19.0.4",
