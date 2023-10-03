@@ -4,7 +4,7 @@
 - [x] Set up view for contracts
 - [x] Export contracts.ts from the `contracts` package
 - [x] Set up @wagmi/cli to generate ABIs and hooks
-- [ ] Generate ABIs using @wagmi/cli in the contracts package?
+- [X] Generate ABIs using @wagmi/cli in the contracts package?
 - [ ] Port web3 examples (contract interactions and subscriptions)
 - [ ] Port Graphql package
 - [ ] Port Cron package
