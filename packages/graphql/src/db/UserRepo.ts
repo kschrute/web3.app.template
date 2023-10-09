@@ -1,6 +1,6 @@
-import { db } from '.'
-import { getAddress } from 'ethers/lib/utils'
 import { randomUUID } from 'crypto'
+import { getAddress } from 'viem'
+import { db } from '.'
 import { User, Prisma } from '../../prisma/client'
 
 const entity = 'user'

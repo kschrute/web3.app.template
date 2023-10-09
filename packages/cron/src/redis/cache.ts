@@ -31,11 +31,9 @@ export const get = async (key: string, decode = true) => {
   return res && decode ? JSON.parse(res) : res
 }
 
-export const set = async (key: string, value: any, encode = true, expSeconds?: number) => {
-  return await client().set(key, encode ? JSON.stringify(value) : value, {
-    EX: expSeconds,
-  })
-}
+export const set = async (key: string, value: any, encode = true, expSeconds?: number) => await client().set(key, encode ? JSON.stringify(value) : value, {
+  EX: expSeconds,
+})
 
 export const getCachedValue = async (key: string, resolver: () => Promise<any>, encode = true, expSeconds?: number) => {
   try {

@@ -13,13 +13,15 @@
     "deploy.local.Subscription": "source .env && forge create contracts/Subscription.sol:Subscription --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy.local.WNat": "source .env && forge create contracts/WNat.sol:WNat --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy": "source .env && forge create contracts/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY --etherscan-api-key $ETHERSCAN_API_KEY --verify",
-    "build": "tsc --project tsconfig.dist.json",
     "prepare": "run-s 'prepare.*'",
     "prepare.abi.counter": "forge build --silent && jq '.abi' ./artifacts/Counter.sol/Counter.json > src/abi/Counter.json",
     "prepare.abi.faucet": "forge build --silent && jq '.abi' ./artifacts/Faucet.sol/Faucet.json > src/abi/Faucet.json",
     "prepare.abi.subscription": "forge build --silent && jq '.abi' ./artifacts/Subscription.sol/Subscription.json > src/abi/Subscription.json",
     "prepare.build": "pnpm build",
     "prepare.wagmi": "wagmi generate",
+    "build": "tsc --project tsconfig.dist.json",
+    "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
+    "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
     "wagmi": "wagmi generate",
     "test": "forge test",
     "pre-commit": "lint-staged"
@@ -27,11 +29,14 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.0",
     "@wagmi/cli": "^1.0.0",
-    "viem": "^1.14.0",
+    "viem": "^1.16.1",
     "wagmi": "^1.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.7.2",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
     "lint-staged": "^14.0.1",
     "tsx": "^3.13.0",
     "typescript": "^5.0.4"

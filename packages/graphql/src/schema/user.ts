@@ -1,11 +1,12 @@
 import { builder } from '../builder'
 import { db, UserRepo } from '../db'
 import { ProjectCreateInput } from './project'
-import { getAddress, verifyMessage } from 'ethers/lib/utils'
+// import { verifyMessage } from 'ethers/lib/utils'
 import config from '../../config'
 import { sign } from 'jsonwebtoken'
 import { queryFromInfo } from '@pothos/plugin-prisma'
 import { User } from '../../prisma/client'
+import { getAddress, verifyMessage } from 'viem'
 
 const User = builder.prismaObject('User', {
   fields: (t) => ({
@@ -152,9 +153,14 @@ builder.mutationFields((t) => ({
       }
 
       try {
-        const signer = verifyMessage(user.challenge, signature)
+        // const signer = verifyMessage(user.challenge, signature)
+        const isValid = verifyMessage({
+          address: getAddress(user.address),
+          message: user.challenge,
+          signature: signature as `0x${string}`,
+        })
 
-        if (user.address.toUpperCase() !== signer.toUpperCase()) {
+        if (!isValid) {
           throw new Error('invalid signature')
         }
 

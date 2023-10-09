@@ -1,12 +1,12 @@
 import { EventRepo } from '@app/graphql'
+import { getAddress, parseAbiItem, stringify } from 'viem'
+import { AbiEvent } from 'abitype'
+import { JobOptions } from 'bull'
 import { queues } from './queues'
 import { getNetworkConfig } from '../utils/getNetworkConfig'
 import { Job } from './Job'
 import { SchedulePullEthereumEvents } from './SchedulePullEthereumEvents'
-import { getAddress, parseAbiItem, stringify } from 'viem'
 import { publicClient } from '../clients'
-import { AbiEvent } from 'abitype'
-import { JobOptions } from 'bull'
 
 export interface JobData {
   contractAddress: string
@@ -33,8 +33,7 @@ export class PullEthereumEvents extends Job<JobData> {
   }
 
   public async handle() {
-    const { contractAddress, abi, initialStartFromBlock, startFromBlockNumber, blocksPerFetch = defaultBlocksPerFetch, markAsProcessed } =
-      this.data
+    const { contractAddress, abi, initialStartFromBlock, startFromBlockNumber, blocksPerFetch = defaultBlocksPerFetch, markAsProcessed } = this.data
 
     try {
       getAddress(contractAddress)
@@ -55,11 +54,9 @@ export class PullEthereumEvents extends Job<JobData> {
 
     const currentBlock = await publicClient.getBlockNumber()
 
-    const startFromBlock = startFromBlockNumber
-      ? startFromBlockNumber
-      : latestEvent?.blockNumber
+    const startFromBlock = startFromBlockNumber || (latestEvent?.blockNumber
       ? latestEvent.blockNumber
-      : initialStartFromBlock ?? getNetworkConfig().startBlock
+      : initialStartFromBlock ?? getNetworkConfig().startBlock)
 
     const toBlock = blocksPerFetch ? startFromBlock + blocksPerFetch - BigInt(1) : currentBlock
 
@@ -72,22 +69,21 @@ export class PullEthereumEvents extends Job<JobData> {
         address: contractAddress as `0x${string}`,
         event: abiEvent,
         fromBlock: startFromBlock,
-        toBlock: toBlock
+        toBlock,
       })
 
       console.log(`✅ Loaded ${events.length} ${eventName} events. Saving (markAsProcessed: ${markAsProcessed})...`)
 
-      let prevEvent = undefined
+      let prevEvent
       for (const e of events) {
         // prevEvent = await handleEvent<typeof e>(e, prevEvent, markAsProcessed)
-        const { blockHash, transactionHash, logIndex } = e
+        const { address, blockNumber, blockHash, transactionHash, logIndex, args } = e
         const existingEvent = await EventRepo.findUnique(blockHash!, transactionHash!, logIndex!)
 
         if (existingEvent) {
           prevEvent = existingEvent
         } else {
           // prevEvent = await createEventRecord(e, prevEvent, markAsProcessed)
-          const { address, args, blockNumber, blockHash, transactionHash, logIndex } = e
           prevEvent = await EventRepo.create({
             address,
             blockNumber: blockNumber!,

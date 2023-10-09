@@ -1,15 +1,15 @@
-import { queues } from './queues'
 import { contracts } from '@app/contracts'
 import { EventRepo } from '@app/graphql'
+import { JobOptions } from 'bull'
+import { queues } from './queues'
 import { getChainId } from '../utils/getChainId'
 import { Job } from './Job'
-import { JobOptions } from 'bull'
 
 const exceptions = ['DoNotProcessMe']
 
 const chainId = getChainId()
 
-export class ProcessAllEvents extends Job<{}> {
+export class ProcessAllEvents extends Job<object> {
   public queue = queues.events
 
   public options: JobOptions = {
@@ -46,5 +46,4 @@ export class ProcessAllEvents extends Job<{}> {
   }
 }
 
-const getDeploymentName = (address: string) =>
-  Object.values(contracts).find(c => c.addresses[chainId].toUpperCase() === address.toUpperCase())?.name
+const getDeploymentName = (address: string) => Object.values(contracts).find((c) => c.addresses[chainId].toUpperCase() === address.toUpperCase())?.name

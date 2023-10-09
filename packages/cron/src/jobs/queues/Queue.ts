@@ -53,8 +53,8 @@ export abstract class Queue {
       throw new Error(`Queue ${this.name} is not running`)
     }
 
-    const name = job.constructor.name
-    const data = job.data
+    const { name } = job.constructor
+    const { data } = job
 
     await this.queue.add(name, data, { ...this.options, ...jobOptions })
   }

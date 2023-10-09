@@ -1,5 +1,5 @@
-import { defaultOptions, Queue } from './Queue'
 import { JobOptions } from 'bull'
+import { defaultOptions, Queue } from './Queue'
 
 export class SchedulerQueue extends Queue {
   public name = 'scheduler'

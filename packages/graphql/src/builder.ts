@@ -1,7 +1,7 @@
 import SchemaBuilder from '@pothos/core'
 import PrismaPlugin from '@pothos/plugin-prisma'
-import { db } from './db'
 import { DateTimeResolver } from 'graphql-scalars'
+import { db } from './db'
 import { GraphQLContext } from './context'
 import type PrismaTypes from '../prisma/generated'
 

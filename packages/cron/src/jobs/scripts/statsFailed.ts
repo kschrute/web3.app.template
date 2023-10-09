@@ -7,10 +7,10 @@ const queues = ['default', 'events', 'scheduler']
 async function main() {
   for (const queueName of queues) {
     const queue = new Queue(queueName, redis)
-    console.log(`----------------------------------------------------------------------------------`)
+    console.log('----------------------------------------------------------------------------------')
     console.log(`-- ${queueName}`)
     console.log(await queue.getJobCounts())
-    console.log(`----------------------------------------------------------------------------------`)
+    console.log('----------------------------------------------------------------------------------')
     const failed = await queue.getFailed()
     for (const job of failed) {
       console.log(

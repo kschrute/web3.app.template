@@ -1,6 +1,6 @@
-require('dotenv').config()
-
 import { foundry, hardhat, localhost, mainnet } from 'viem/chains'
+
+require('dotenv').config()
 
 const localNetwork = {
   chain: foundry,

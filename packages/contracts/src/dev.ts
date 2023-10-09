@@ -1,6 +1,6 @@
+import { hardhat } from 'viem/chains'
 import { publicClient, walletClient } from './clients'
 import { contracts } from './contracts'
-import { hardhat } from 'viem/chains'
 import { counterABI } from './wagmi'
 
 async function main() {

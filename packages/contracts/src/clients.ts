@@ -1,6 +1,6 @@
 import { createPublicClient, http, createWalletClient } from 'viem'
 import { mnemonicToAccount } from 'viem/accounts'
-import { mainnet, hardhat } from 'viem/chains'
+import { hardhat } from 'viem/chains'
 
 const chain = hardhat
 // const chain = mainnet

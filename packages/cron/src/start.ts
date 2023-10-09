@@ -1,7 +1,7 @@
-require('dotenv').config()
-
 import { cache } from './redis'
 import { cleanAll, pauseAll, processAll, resumeAll, scheduleJobs, startAll } from './jobs/queues/scripts'
+
+require('dotenv').config()
 
 async function main() {
   if (process.env.NODE_ENV === 'development') {

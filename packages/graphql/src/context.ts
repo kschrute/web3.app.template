@@ -1,6 +1,6 @@
+import { YogaInitialContext } from 'graphql-yoga'
 import { PrismaClient, User } from '../prisma/client'
 import { authenticateUser } from './middleware/authenticateUser'
-import { YogaInitialContext } from 'graphql-yoga'
 
 const prisma = new PrismaClient()
 

@@ -1,9 +1,9 @@
+import { JobOptions } from 'bull'
 import { queues } from './queues'
 import { Job } from './Job'
 import { ProcessAllEvents } from './ProcessAllEvents'
-import { JobOptions } from 'bull'
 
-export class ScheduleProcessAllEthereumEvents extends Job<{}> {
+export class ScheduleProcessAllEthereumEvents extends Job<object> {
   public queue = queues.events
 
   public options: JobOptions = {

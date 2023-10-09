@@ -2,7 +2,6 @@ import { foundry } from 'viem/chains'
 // import * as CounterAbi from './abi/Counter.json'
 // import * as FaucetAbi from './abi/Faucet.json'
 // import * as SubscriptionAbi from './abi/Subscription.json'
-import { Abi } from 'viem'
 import { deployments } from './deployments'
 
 export type Contract = {

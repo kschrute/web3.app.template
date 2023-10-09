@@ -10,4 +10,5 @@
 - [x] Port Cron package
 - [x] Get rid of Ethers?
 - [ ] Set up eslint for every package
+- [ ] Reorder scripts in package.json files
 - [ ] https://www.apollographql.com/blog/apollo-client/next-js/how-to-use-apollo-client-with-next-js-13/

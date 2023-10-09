@@ -1,7 +1,7 @@
-import { queues } from '../../queues'
 import { db, EventRepo, UserRepo } from '@app/graphql'
-import { Job } from '../../Job'
 import { decodeEventLog, Log, parseAbi } from 'viem'
+import { queues } from '../../queues'
+import { Job } from '../../Job'
 
 interface JobData {
   eventId: string

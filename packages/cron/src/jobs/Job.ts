@@ -6,7 +6,9 @@ export abstract class Job<JobData> {
 
   private cron: string | null = null
 
-  constructor(public data: JobData = {} as JobData) {}
+  constructor(public data: JobData = {} as JobData) {
+    this.data = data
+  }
 
   public options: JobOptions = {}
 
