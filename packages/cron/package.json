@@ -28,7 +28,6 @@
     "@app/graphql": "workspace:^",
     "bull": "^4.11.3",
     "dotenv": "^16.3.1",
-    "ethers": "^5.7.2",
     "ioredis": "^5.3.2",
     "redis": "^4.6.10",
     "viem": "^1.16.0"
