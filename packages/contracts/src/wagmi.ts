@@ -705,6 +705,11 @@ export const erc20PermitABI = [
 // Faucet
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
+ */
 export const faucetABI = [
   {
     type: 'event',
@@ -764,6 +769,24 @@ export const faucetABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
+ */
+export const faucetAddress = {
+  1: '0xbA3981771AB991960028B2F83ae83664Fd003F61',
+  5: '0xbA3981771AB991960028B2F83ae83664Fd003F61',
+  31337: '0xbA3981771AB991960028B2F83ae83664Fd003F61',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
+ */
+export const faucetConfig = { address: faucetAddress, abi: faucetABI } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IERC1155Errors
@@ -1528,6 +1551,11 @@ export const stringsABI = [
 // Subscription
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
+ */
 export const subscriptionABI = [
   { stateMutability: 'payable', type: 'constructor', inputs: [] },
   {
@@ -1571,6 +1599,27 @@ export const subscriptionABI = [
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
 ] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
+ */
+export const subscriptionAddress = {
+  1: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
+  5: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
+  31337: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
+ */
+export const subscriptionConfig = {
+  address: subscriptionAddress,
+  abi: subscriptionABI,
+} as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Wnat

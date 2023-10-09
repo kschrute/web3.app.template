@@ -1,8 +1,9 @@
-import { hardhat } from 'viem/chains'
+import { foundry } from 'viem/chains'
 // import * as CounterAbi from './abi/Counter.json'
 // import * as FaucetAbi from './abi/Faucet.json'
 // import * as SubscriptionAbi from './abi/Subscription.json'
 import { Abi } from 'viem'
+import { deployments } from './deployments'
 
 export type Contract = {
   // abi: Abi
@@ -21,21 +22,21 @@ export const contracts: Contracts = {
     // abi: CounterAbi as Abi,
     name: 'Counter',
     addresses: {
-      [hardhat.id]: '0x9cBbA6CDA09C7dadA8343C4076c21eE06CCa4836',
+      [foundry.id]: deployments.Counter[foundry.id],
     },
   },
   Faucet: {
     // abi: FaucetAbi as Abi,
-    name: 'Counter',
+    name: 'Faucet',
     addresses: {
-      [hardhat.id]: '0x9cBbA6CDA09C7dadA8343C4076c21eE06CCa4836',
+      [foundry.id]: deployments.Faucet[foundry.id],
     },
   },
   Subscription: {
     // abi: SubscriptionAbi as Abi,
-    name: 'Counter',
+    name: 'Subscription',
     addresses: {
-      [hardhat.id]: '0x9cBbA6CDA09C7dadA8343C4076c21eE06CCa4836',
+      [foundry.id]: deployments.Subscription[foundry.id],
     },
   },
 }

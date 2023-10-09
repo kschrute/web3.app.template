@@ -1,4 +1,4 @@
-import { hardhat, localhost, mainnet } from 'viem/chains'
+import { foundry, hardhat, localhost, mainnet } from 'viem/chains'
 
 const localNetwork = {
   accounts: { mnemonic: process.env.MNEMONIC || '' },
@@ -14,6 +14,7 @@ export default {
   networks: {
     [localhost.id]: localNetwork,
     [hardhat.id]: localNetwork,
+    [foundry.id]: localNetwork,
     [mainnet.id]: {
       accounts: { mnemonic: process.env.MNEMONIC || '' },
       startBlock: 16722396,

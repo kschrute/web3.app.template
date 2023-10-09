@@ -724,6 +724,11 @@ export const erc20PermitABI = [
 // Faucet
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
+ */
 export const faucetABI = [
   {
     type: 'event',
@@ -783,6 +788,24 @@ export const faucetABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
+ */
+export const faucetAddress = {
+  1: '0xbA3981771AB991960028B2F83ae83664Fd003F61',
+  5: '0xbA3981771AB991960028B2F83ae83664Fd003F61',
+  31337: '0xbA3981771AB991960028B2F83ae83664Fd003F61',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
+ */
+export const faucetConfig = { address: faucetAddress, abi: faucetABI } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IERC1155Errors
@@ -1547,6 +1570,11 @@ export const stringsABI = [
 // Subscription
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
+ */
 export const subscriptionABI = [
   { stateMutability: 'payable', type: 'constructor', inputs: [] },
   {
@@ -1590,6 +1618,27 @@ export const subscriptionABI = [
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
 ] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
+ */
+export const subscriptionAddress = {
+  1: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
+  5: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
+  31337: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
+ */
+export const subscriptionConfig = {
+  address: subscriptionAddress,
+  abi: subscriptionABI,
+} as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Wnat
@@ -3530,6 +3579,10 @@ export function useErc20PermitTransferEvent(
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetRead<
   TFunctionName extends string,
@@ -3537,18 +3590,25 @@ export function useFaucetRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof faucetABI, TFunctionName, TSelectData>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
-  return useContractRead({ abi: faucetABI, ...config } as UseContractReadConfig<
-    typeof faucetABI,
-    TFunctionName,
-    TSelectData
-  >)
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
+    ...config,
+  } as UseContractReadConfig<typeof faucetABI, TFunctionName, TSelectData>)
 }
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"AMOUNT"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetAmount<
   TFunctionName extends 'AMOUNT',
@@ -3556,11 +3616,15 @@ export function useFaucetAmount<
 >(
   config: Omit<
     UseContractReadConfig<typeof faucetABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     functionName: 'AMOUNT',
     ...config,
   } as UseContractReadConfig<typeof faucetABI, TFunctionName, TSelectData>)
@@ -3568,6 +3632,10 @@ export function useFaucetAmount<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"accountClaimed"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetAccountClaimed<
   TFunctionName extends 'accountClaimed',
@@ -3575,11 +3643,15 @@ export function useFaucetAccountClaimed<
 >(
   config: Omit<
     UseContractReadConfig<typeof faucetABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     functionName: 'accountClaimed',
     ...config,
   } as UseContractReadConfig<typeof faucetABI, TFunctionName, TSelectData>)
@@ -3587,44 +3659,68 @@ export function useFaucetAccountClaimed<
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetWrite<
   TFunctionName extends string,
   TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof faucetAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof faucetABI, string>['request']['abi'],
         TFunctionName,
         TMode
-      >
+      > & { address?: Address; chainId?: TChainId }
     : UseContractWriteConfig<typeof faucetABI, TFunctionName, TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof faucetABI, TFunctionName, TMode>({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     ...config,
   } as any)
 }
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"claim"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
-export function useFaucetClaim<TMode extends WriteContractMode = undefined>(
+export function useFaucetClaim<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof faucetAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof faucetABI, 'claim'>['request']['abi'],
         'claim',
         TMode
-      > & { functionName?: 'claim' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'claim' }
     : UseContractWriteConfig<typeof faucetABI, 'claim', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'claim'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof faucetABI, 'claim', TMode>({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     functionName: 'claim',
     ...config,
   } as any)
@@ -3632,8 +3728,15 @@ export function useFaucetClaim<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"destroy"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
-export function useFaucetDestroy<TMode extends WriteContractMode = undefined>(
+export function useFaucetDestroy<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof faucetAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
@@ -3642,14 +3745,20 @@ export function useFaucetDestroy<TMode extends WriteContractMode = undefined>(
         >['request']['abi'],
         'destroy',
         TMode
-      > & { functionName?: 'destroy' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'destroy' }
     : UseContractWriteConfig<typeof faucetABI, 'destroy', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'destroy'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof faucetABI, 'destroy', TMode>({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     functionName: 'destroy',
     ...config,
   } as any)
@@ -3657,30 +3766,46 @@ export function useFaucetDestroy<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function usePrepareFaucetWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof faucetABI, TFunctionName>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     ...config,
   } as UsePrepareContractWriteConfig<typeof faucetABI, TFunctionName>)
 }
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"claim"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function usePrepareFaucetClaim(
   config: Omit<
     UsePrepareContractWriteConfig<typeof faucetABI, 'claim'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     functionName: 'claim',
     ...config,
   } as UsePrepareContractWriteConfig<typeof faucetABI, 'claim'>)
@@ -3688,15 +3813,23 @@ export function usePrepareFaucetClaim(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"destroy"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function usePrepareFaucetDestroy(
   config: Omit<
     UsePrepareContractWriteConfig<typeof faucetABI, 'destroy'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     functionName: 'destroy',
     ...config,
   } as UsePrepareContractWriteConfig<typeof faucetABI, 'destroy'>)
@@ -3704,30 +3837,46 @@ export function usePrepareFaucetDestroy(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof faucetABI, TEventName>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     ...config,
   } as UseContractEventConfig<typeof faucetABI, TEventName>)
 }
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link faucetABI}__ and `eventName` set to `"Deposit"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetDepositEvent(
   config: Omit<
     UseContractEventConfig<typeof faucetABI, 'Deposit'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     eventName: 'Deposit',
     ...config,
   } as UseContractEventConfig<typeof faucetABI, 'Deposit'>)
@@ -3735,15 +3884,23 @@ export function useFaucetDepositEvent(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link faucetABI}__ and `eventName` set to `"Withdrawal"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xbA3981771AB991960028B2F83ae83664Fd003F61)
+ * -
  */
 export function useFaucetWithdrawalEvent(
   config: Omit<
     UseContractEventConfig<typeof faucetABI, 'Withdrawal'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof faucetAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: faucetABI,
+    address: faucetAddress[chainId as keyof typeof faucetAddress],
     eventName: 'Withdrawal',
     ...config,
   } as UseContractEventConfig<typeof faucetABI, 'Withdrawal'>)
@@ -5285,6 +5442,10 @@ export function useNoncesNonces<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionRead<
   TFunctionName extends string,
@@ -5292,11 +5453,15 @@ export function useSubscriptionRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof subscriptionABI, TFunctionName, TSelectData>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     ...config,
   } as UseContractReadConfig<
     typeof subscriptionABI,
@@ -5307,6 +5472,10 @@ export function useSubscriptionRead<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"owner"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionOwner<
   TFunctionName extends 'owner',
@@ -5314,11 +5483,15 @@ export function useSubscriptionOwner<
 >(
   config: Omit<
     UseContractReadConfig<typeof subscriptionABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     functionName: 'owner',
     ...config,
   } as UseContractReadConfig<
@@ -5330,6 +5503,10 @@ export function useSubscriptionOwner<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"userSubscribedAt"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionUserSubscribedAt<
   TFunctionName extends 'userSubscribedAt',
@@ -5337,11 +5514,15 @@ export function useSubscriptionUserSubscribedAt<
 >(
   config: Omit<
     UseContractReadConfig<typeof subscriptionABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     functionName: 'userSubscribedAt',
     ...config,
   } as UseContractReadConfig<
@@ -5353,10 +5534,15 @@ export function useSubscriptionUserSubscribedAt<
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionWrite<
   TFunctionName extends string,
   TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof subscriptionAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
@@ -5366,22 +5552,33 @@ export function useSubscriptionWrite<
         >['request']['abi'],
         TFunctionName,
         TMode
-      >
+      > & { address?: Address; chainId?: TChainId }
     : UseContractWriteConfig<typeof subscriptionABI, TFunctionName, TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof subscriptionABI, TFunctionName, TMode>({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     ...config,
   } as any)
 }
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"subscribe"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionSubscribe<
   TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof subscriptionAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
@@ -5391,14 +5588,20 @@ export function useSubscriptionSubscribe<
         >['request']['abi'],
         'subscribe',
         TMode
-      > & { functionName?: 'subscribe' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'subscribe' }
     : UseContractWriteConfig<typeof subscriptionABI, 'subscribe', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'subscribe'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof subscriptionABI, 'subscribe', TMode>({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     functionName: 'subscribe',
     ...config,
   } as any)
@@ -5406,30 +5609,46 @@ export function useSubscriptionSubscribe<
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function usePrepareSubscriptionWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof subscriptionABI, TFunctionName>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     ...config,
   } as UsePrepareContractWriteConfig<typeof subscriptionABI, TFunctionName>)
 }
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"subscribe"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function usePrepareSubscriptionSubscribe(
   config: Omit<
     UsePrepareContractWriteConfig<typeof subscriptionABI, 'subscribe'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     functionName: 'subscribe',
     ...config,
   } as UsePrepareContractWriteConfig<typeof subscriptionABI, 'subscribe'>)
@@ -5437,30 +5656,46 @@ export function usePrepareSubscriptionSubscribe(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof subscriptionABI, TEventName>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     ...config,
   } as UseContractEventConfig<typeof subscriptionABI, TEventName>)
 }
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link subscriptionABI}__ and `eventName` set to `"Subscribed"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xF39FEF928BECF01F045FD609eb44C838ea37325b)
+ * -
  */
 export function useSubscriptionSubscribedEvent(
   config: Omit<
     UseContractEventConfig<typeof subscriptionABI, 'Subscribed'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof subscriptionAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: subscriptionABI,
+    address: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
     eventName: 'Subscribed',
     ...config,
   } as UseContractEventConfig<typeof subscriptionABI, 'Subscribed'>)

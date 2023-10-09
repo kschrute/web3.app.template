@@ -1,8 +1,7 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
-import * as React from 'react'
-import * as ApolloReactComponents from '@apollo/client/react/components'
-
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+import * as React from 'react';
+import * as ApolloReactComponents from '@apollo/client/react/components';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -11,7 +10,7 @@ export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Mayb
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-const defaultOptions = {} as const
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -32,17 +31,21 @@ export type Mutation = {
   toggleActiveProject: Project;
 };
 
+
 export type MutationDeleteProjectArgs = {
   id: Scalars['Int']['input'];
 };
+
 
 export type MutationIncrementProjectRequestCountArgs = {
   id: Scalars['Int']['input'];
 };
 
+
 export type MutationSigninArgs = {
   data: UserSignInInput;
 };
+
 
 export type MutationToggleActiveProjectArgs = {
   id: Scalars['Int']['input'];
@@ -76,13 +79,16 @@ export type Query = {
   users: Array<User>;
 };
 
+
 export type QueryAuthArgs = {
   data: UserAuthInput;
 };
 
+
 export type QueryProjectByIdArgs = {
   id: Scalars['Int']['input'];
 };
+
 
 export type QueryUserArgs = {
   address: Scalars['String']['input'];
@@ -104,6 +110,7 @@ export type Subscription = {
   random: Value;
   requests: Requests;
 };
+
 
 export type SubscriptionCountdownArgs = {
   from: Scalars['Int']['input'];
@@ -148,9 +155,11 @@ export type Value = {
 
 export type BroadcastMutationVariables = Exact<{ [key: string]: never; }>;
 
+
 export type BroadcastMutation = { __typename?: 'Mutation', broadcast: { __typename?: 'Value', value: number } };
 
 export type RequestMutationVariables = Exact<{ [key: string]: never; }>;
+
 
 export type RequestMutation = { __typename?: 'Mutation', request: { __typename?: 'Requests', count: number } };
 
@@ -158,15 +167,18 @@ export type SignInMutationVariables = Exact<{
   data: UserSignInInput;
 }>;
 
+
 export type SignInMutation = { __typename?: 'Mutation', signin: { __typename?: 'UserSignIn', authenticated: boolean, token?: string | null, user?: { __typename?: 'User', address: string, challenge: string } | null } };
 
 export type AuthQueryVariables = Exact<{
   data: UserAuthInput;
 }>;
 
+
 export type AuthQuery = { __typename?: 'Query', auth: { __typename?: 'UserAuth', authenticated: boolean, challenge?: string | null } };
 
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
 
 export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', address: string, isAuthenticated: boolean, createdAt: Date | string } };
 
@@ -174,19 +186,24 @@ export type UserQueryVariables = Exact<{
   address: Scalars['String']['input'];
 }>;
 
+
 export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'User', challenge: string, isAuthenticated: boolean } | null };
 
 export type CountdownSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
 
 export type CountdownSubscription = { __typename?: 'Subscription', countdown: { __typename?: 'Value', value: number } };
 
 export type RandomSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
+
 export type RandomSubscription = { __typename?: 'Subscription', random: { __typename?: 'Value', value: number } };
 
 export type RequestsSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
+
 export type RequestsSubscription = { __typename?: 'Subscription', requests: { __typename?: 'Requests', count: number } };
+
 
 export const BroadcastDocument = gql`
     mutation Broadcast {
@@ -194,13 +211,14 @@ export const BroadcastDocument = gql`
     value
   }
 }
-    `
+    `;
 export type BroadcastMutationFn = Apollo.MutationFunction<BroadcastMutation, BroadcastMutationVariables>;
 export type BroadcastComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<BroadcastMutation, BroadcastMutationVariables>, 'mutation'>;
 
-export const BroadcastComponent = (props: BroadcastComponentProps) => (
-  <ApolloReactComponents.Mutation<BroadcastMutation, BroadcastMutationVariables> mutation={BroadcastDocument} {...props} />
-)
+    export const BroadcastComponent = (props: BroadcastComponentProps) => (
+      <ApolloReactComponents.Mutation<BroadcastMutation, BroadcastMutationVariables> mutation={BroadcastDocument} {...props} />
+    );
+    
 
 /**
  * __useBroadcastMutation__
@@ -219,9 +237,9 @@ export const BroadcastComponent = (props: BroadcastComponentProps) => (
  * });
  */
 export function useBroadcastMutation(baseOptions?: Apollo.MutationHookOptions<BroadcastMutation, BroadcastMutationVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BroadcastMutation, BroadcastMutationVariables>(BroadcastDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<BroadcastMutation, BroadcastMutationVariables>(BroadcastDocument, options);
+      }
 export type BroadcastMutationHookResult = ReturnType<typeof useBroadcastMutation>;
 export type BroadcastMutationResult = Apollo.MutationResult<BroadcastMutation>;
 export type BroadcastMutationOptions = Apollo.BaseMutationOptions<BroadcastMutation, BroadcastMutationVariables>;
@@ -231,13 +249,14 @@ export const RequestDocument = gql`
     count
   }
 }
-    `
+    `;
 export type RequestMutationFn = Apollo.MutationFunction<RequestMutation, RequestMutationVariables>;
 export type RequestComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<RequestMutation, RequestMutationVariables>, 'mutation'>;
 
-export const RequestComponent = (props: RequestComponentProps) => (
-  <ApolloReactComponents.Mutation<RequestMutation, RequestMutationVariables> mutation={RequestDocument} {...props} />
-)
+    export const RequestComponent = (props: RequestComponentProps) => (
+      <ApolloReactComponents.Mutation<RequestMutation, RequestMutationVariables> mutation={RequestDocument} {...props} />
+    );
+    
 
 /**
  * __useRequestMutation__
@@ -256,9 +275,9 @@ export const RequestComponent = (props: RequestComponentProps) => (
  * });
  */
 export function useRequestMutation(baseOptions?: Apollo.MutationHookOptions<RequestMutation, RequestMutationVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<RequestMutation, RequestMutationVariables>(RequestDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RequestMutation, RequestMutationVariables>(RequestDocument, options);
+      }
 export type RequestMutationHookResult = ReturnType<typeof useRequestMutation>;
 export type RequestMutationResult = Apollo.MutationResult<RequestMutation>;
 export type RequestMutationOptions = Apollo.BaseMutationOptions<RequestMutation, RequestMutationVariables>;
@@ -273,13 +292,14 @@ export const SignInDocument = gql`
     }
   }
 }
-    `
+    `;
 export type SignInMutationFn = Apollo.MutationFunction<SignInMutation, SignInMutationVariables>;
 export type SignInComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SignInMutation, SignInMutationVariables>, 'mutation'>;
 
-export const SignInComponent = (props: SignInComponentProps) => (
-  <ApolloReactComponents.Mutation<SignInMutation, SignInMutationVariables> mutation={SignInDocument} {...props} />
-)
+    export const SignInComponent = (props: SignInComponentProps) => (
+      <ApolloReactComponents.Mutation<SignInMutation, SignInMutationVariables> mutation={SignInDocument} {...props} />
+    );
+    
 
 /**
  * __useSignInMutation__
@@ -299,9 +319,9 @@ export const SignInComponent = (props: SignInComponentProps) => (
  * });
  */
 export function useSignInMutation(baseOptions?: Apollo.MutationHookOptions<SignInMutation, SignInMutationVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<SignInMutation, SignInMutationVariables>(SignInDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SignInMutation, SignInMutationVariables>(SignInDocument, options);
+      }
 export type SignInMutationHookResult = ReturnType<typeof useSignInMutation>;
 export type SignInMutationResult = Apollo.MutationResult<SignInMutation>;
 export type SignInMutationOptions = Apollo.BaseMutationOptions<SignInMutation, SignInMutationVariables>;
@@ -312,12 +332,13 @@ export const AuthDocument = gql`
     challenge
   }
 }
-    `
+    `;
 export type AuthComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AuthQuery, AuthQueryVariables>, 'query'> & ({ variables: AuthQueryVariables; skip?: boolean; } | { skip: boolean; });
 
-export const AuthComponent = (props: AuthComponentProps) => (
-  <ApolloReactComponents.Query<AuthQuery, AuthQueryVariables> query={AuthDocument} {...props} />
-)
+    export const AuthComponent = (props: AuthComponentProps) => (
+      <ApolloReactComponents.Query<AuthQuery, AuthQueryVariables> query={AuthDocument} {...props} />
+    );
+    
 
 /**
  * __useAuthQuery__
@@ -336,13 +357,13 @@ export const AuthComponent = (props: AuthComponentProps) => (
  * });
  */
 export function useAuthQuery(baseOptions: Apollo.QueryHookOptions<AuthQuery, AuthQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options);
+      }
 export function useAuthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AuthQuery, AuthQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options)
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options);
+        }
 export type AuthQueryHookResult = ReturnType<typeof useAuthQuery>;
 export type AuthLazyQueryHookResult = ReturnType<typeof useAuthLazyQuery>;
 export type AuthQueryResult = Apollo.QueryResult<AuthQuery, AuthQueryVariables>;
@@ -354,12 +375,13 @@ export const MeDocument = gql`
     createdAt
   }
 }
-    `
+    `;
 export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>;
 
-export const MeComponent = (props: MeComponentProps) => (
-  <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
-)
+    export const MeComponent = (props: MeComponentProps) => (
+      <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+    );
+    
 
 /**
  * __useMeQuery__
@@ -377,13 +399,13 @@ export const MeComponent = (props: MeComponentProps) => (
  * });
  */
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+      }
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+        }
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
@@ -394,12 +416,13 @@ export const UserDocument = gql`
     isAuthenticated
   }
 }
-    `
+    `;
 export type UserComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<UserQuery, UserQueryVariables>, 'query'> & ({ variables: UserQueryVariables; skip?: boolean; } | { skip: boolean; });
 
-export const UserComponent = (props: UserComponentProps) => (
-  <ApolloReactComponents.Query<UserQuery, UserQueryVariables> query={UserDocument} {...props} />
-)
+    export const UserComponent = (props: UserComponentProps) => (
+      <ApolloReactComponents.Query<UserQuery, UserQueryVariables> query={UserDocument} {...props} />
+    );
+    
 
 /**
  * __useUserQuery__
@@ -418,13 +441,13 @@ export const UserComponent = (props: UserComponentProps) => (
  * });
  */
 export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options);
+      }
 export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, options)
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, options);
+        }
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
@@ -434,12 +457,13 @@ export const CountdownDocument = gql`
     value
   }
 }
-    `
+    `;
 export type CountdownComponentProps = Omit<ApolloReactComponents.SubscriptionComponentOptions<CountdownSubscription, CountdownSubscriptionVariables>, 'subscription'>;
 
-export const CountdownComponent = (props: CountdownComponentProps) => (
-  <ApolloReactComponents.Subscription<CountdownSubscription, CountdownSubscriptionVariables> subscription={CountdownDocument} {...props} />
-)
+    export const CountdownComponent = (props: CountdownComponentProps) => (
+      <ApolloReactComponents.Subscription<CountdownSubscription, CountdownSubscriptionVariables> subscription={CountdownDocument} {...props} />
+    );
+    
 
 /**
  * __useCountdownSubscription__
@@ -457,9 +481,9 @@ export const CountdownComponent = (props: CountdownComponentProps) => (
  * });
  */
 export function useCountdownSubscription(baseOptions?: Apollo.SubscriptionHookOptions<CountdownSubscription, CountdownSubscriptionVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSubscription<CountdownSubscription, CountdownSubscriptionVariables>(CountdownDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<CountdownSubscription, CountdownSubscriptionVariables>(CountdownDocument, options);
+      }
 export type CountdownSubscriptionHookResult = ReturnType<typeof useCountdownSubscription>;
 export type CountdownSubscriptionResult = Apollo.SubscriptionResult<CountdownSubscription>;
 export const RandomDocument = gql`
@@ -468,12 +492,13 @@ export const RandomDocument = gql`
     value
   }
 }
-    `
+    `;
 export type RandomComponentProps = Omit<ApolloReactComponents.SubscriptionComponentOptions<RandomSubscription, RandomSubscriptionVariables>, 'subscription'>;
 
-export const RandomComponent = (props: RandomComponentProps) => (
-  <ApolloReactComponents.Subscription<RandomSubscription, RandomSubscriptionVariables> subscription={RandomDocument} {...props} />
-)
+    export const RandomComponent = (props: RandomComponentProps) => (
+      <ApolloReactComponents.Subscription<RandomSubscription, RandomSubscriptionVariables> subscription={RandomDocument} {...props} />
+    );
+    
 
 /**
  * __useRandomSubscription__
@@ -491,9 +516,9 @@ export const RandomComponent = (props: RandomComponentProps) => (
  * });
  */
 export function useRandomSubscription(baseOptions?: Apollo.SubscriptionHookOptions<RandomSubscription, RandomSubscriptionVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSubscription<RandomSubscription, RandomSubscriptionVariables>(RandomDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<RandomSubscription, RandomSubscriptionVariables>(RandomDocument, options);
+      }
 export type RandomSubscriptionHookResult = ReturnType<typeof useRandomSubscription>;
 export type RandomSubscriptionResult = Apollo.SubscriptionResult<RandomSubscription>;
 export const RequestsDocument = gql`
@@ -502,12 +527,13 @@ export const RequestsDocument = gql`
     count
   }
 }
-    `
+    `;
 export type RequestsComponentProps = Omit<ApolloReactComponents.SubscriptionComponentOptions<RequestsSubscription, RequestsSubscriptionVariables>, 'subscription'>;
 
-export const RequestsComponent = (props: RequestsComponentProps) => (
-  <ApolloReactComponents.Subscription<RequestsSubscription, RequestsSubscriptionVariables> subscription={RequestsDocument} {...props} />
-)
+    export const RequestsComponent = (props: RequestsComponentProps) => (
+      <ApolloReactComponents.Subscription<RequestsSubscription, RequestsSubscriptionVariables> subscription={RequestsDocument} {...props} />
+    );
+    
 
 /**
  * __useRequestsSubscription__
@@ -525,8 +551,8 @@ export const RequestsComponent = (props: RequestsComponentProps) => (
  * });
  */
 export function useRequestsSubscription(baseOptions?: Apollo.SubscriptionHookOptions<RequestsSubscription, RequestsSubscriptionVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSubscription<RequestsSubscription, RequestsSubscriptionVariables>(RequestsDocument, options)
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<RequestsSubscription, RequestsSubscriptionVariables>(RequestsDocument, options);
+      }
 export type RequestsSubscriptionHookResult = ReturnType<typeof useRequestsSubscription>;
 export type RequestsSubscriptionResult = Apollo.SubscriptionResult<RequestsSubscription>;
