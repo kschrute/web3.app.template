@@ -10,3 +10,4 @@
 - [ ] Port Cron package
 - [ ] Get rid of Ethers?
 - [ ] Set up eslint for every package
+- [ ] https://www.apollographql.com/blog/apollo-client/next-js/how-to-use-apollo-client-with-next-js-13/

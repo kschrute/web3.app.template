@@ -3,6 +3,7 @@ import { getNetworkConfig } from './getNetworkConfig'
 
 export const getProvider = (getStatic = false) => {
   const networkConfig = getNetworkConfig()
+  console.log('networkConfig', networkConfig)
   if (!networkConfig) {
     throw Error('Network config not found')
   }

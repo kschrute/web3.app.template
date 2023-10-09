@@ -10,6 +10,7 @@ export class SchedulePullAllEthereumEvents extends Job<{}> {
 
   public async handle() {
     const chainId = getChainId()
+    console.log('chainId', chainId)
 
     await new PullEthereumEvents({
       contractAddress: contracts.Subscription.addresses[chainId],

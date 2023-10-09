@@ -138,6 +138,7 @@ exports.Prisma.EventScalarFieldEnum = {
   blockHash: 'blockHash',
   transactionHash: 'transactionHash',
   name: 'name',
+  signature: 'signature',
   address: 'address',
   args: 'args',
   event: 'event',

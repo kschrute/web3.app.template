@@ -50,6 +50,7 @@ model Event {
   blockHash       String
   transactionHash String
   name            String
+  signature       String
   address         String
   args            Json
   event           Json

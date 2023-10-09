@@ -19,6 +19,8 @@ export interface JobData {
   markAsProcessed?: boolean
 }
 
+const defaultBlocksPerFetch = 800
+
 export class PullEthereumEvents extends Job<JobData> {
   public queue = queues.events
 
@@ -33,8 +35,11 @@ export class PullEthereumEvents extends Job<JobData> {
   }
 
   public async handle() {
-    const { contractAddress, abi, initialStartFromBlock, startFromBlockNumber, blocksPerFetch, markAsProcessed } =
+    const { contractAddress, abi, initialStartFromBlock, startFromBlockNumber, blocksPerFetch = defaultBlocksPerFetch, markAsProcessed } =
       this.data
+
+    console.log('contractAddress', contractAddress)
+    console.log('abi', abi)
 
     try {
       getAddress(contractAddress)
@@ -65,7 +70,7 @@ export class PullEthereumEvents extends Job<JobData> {
       ? Number(latestEvent.blockNumber)
       : initialStartFromBlock ?? getNetworkConfig().startBlock
 
-    const toBlock = blocksPerFetch ? startFromBlock + blocksPerFetch : 'latest'
+    const toBlock = blocksPerFetch ? startFromBlock + blocksPerFetch - 1 : 'latest'
 
     console.log(
       `⏱  Pulling ${eventName} events for ${contractAddress} starting with block ${startFromBlock} up to block ${toBlock} at ${blocksPerFetch} per fetch (markAsProcessed: ${markAsProcessed})`,
@@ -91,14 +96,15 @@ export class PullEthereumEvents extends Job<JobData> {
           contractAddress,
           abi,
           markAsProcessed,
-          blocksPerFetch: blocksPerFetch ? Math.ceil(blocksPerFetch * 1.1) : 7000,
+          // blocksPerFetch: blocksPerFetch ? Math.ceil(blocksPerFetch * 1.1) : blocksPerFetch,
           startFromBlockNumber: toBlock + 1,
         }).schedule()
       }
     } catch (e: any) {
+      console.error(e.message)
       // 'query returned more than 10000 results' error
       if (e.message.includes('error={"code":-32005}')) {
-        const newBlocksPerFetch = blocksPerFetch ? Math.floor(blocksPerFetch * 0.8) : 7000
+        const newBlocksPerFetch = blocksPerFetch ? Math.floor(blocksPerFetch * 0.8) : blocksPerFetch
         console.log(e.message)
         console.log(
           `🛑 Rescheduling ${eventName} events for ${contractAddress} starting with block ${startFromBlock} at ${newBlocksPerFetch} per fetch`,

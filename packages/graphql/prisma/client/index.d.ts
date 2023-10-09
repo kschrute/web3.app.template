@@ -3141,6 +3141,7 @@ export namespace Prisma {
     blockHash: string | null
     transactionHash: string | null
     name: string | null
+    signature: string | null
     address: string | null
     isProcessed: boolean | null
     createdAt: Date | null
@@ -3154,6 +3155,7 @@ export namespace Prisma {
     blockHash: string | null
     transactionHash: string | null
     name: string | null
+    signature: string | null
     address: string | null
     isProcessed: boolean | null
     createdAt: Date | null
@@ -3167,6 +3169,7 @@ export namespace Prisma {
     blockHash: number
     transactionHash: number
     name: number
+    signature: number
     address: number
     args: number
     event: number
@@ -3194,6 +3197,7 @@ export namespace Prisma {
     blockHash?: true
     transactionHash?: true
     name?: true
+    signature?: true
     address?: true
     isProcessed?: true
     createdAt?: true
@@ -3207,6 +3211,7 @@ export namespace Prisma {
     blockHash?: true
     transactionHash?: true
     name?: true
+    signature?: true
     address?: true
     isProcessed?: true
     createdAt?: true
@@ -3220,6 +3225,7 @@ export namespace Prisma {
     blockHash?: true
     transactionHash?: true
     name?: true
+    signature?: true
     address?: true
     args?: true
     event?: true
@@ -3322,6 +3328,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonValue
     event: JsonValue
@@ -3356,6 +3363,7 @@ export namespace Prisma {
     blockHash?: boolean
     transactionHash?: boolean
     name?: boolean
+    signature?: boolean
     address?: boolean
     args?: boolean
     event?: boolean
@@ -3374,6 +3382,7 @@ export namespace Prisma {
     blockHash?: boolean
     transactionHash?: boolean
     name?: boolean
+    signature?: boolean
     address?: boolean
     args?: boolean
     event?: boolean
@@ -3402,6 +3411,7 @@ export namespace Prisma {
       blockHash: string
       transactionHash: string
       name: string
+      signature: string
       address: string
       args: Prisma.JsonValue
       event: Prisma.JsonValue
@@ -3811,6 +3821,7 @@ export namespace Prisma {
     readonly blockHash: FieldRef<"Event", 'String'>
     readonly transactionHash: FieldRef<"Event", 'String'>
     readonly name: FieldRef<"Event", 'String'>
+    readonly signature: FieldRef<"Event", 'String'>
     readonly address: FieldRef<"Event", 'String'>
     readonly args: FieldRef<"Event", 'Json'>
     readonly event: FieldRef<"Event", 'Json'>
@@ -4231,6 +4242,7 @@ export namespace Prisma {
     blockHash: 'blockHash',
     transactionHash: 'transactionHash',
     name: 'name',
+    signature: 'signature',
     address: 'address',
     args: 'args',
     event: 'event',
@@ -4483,6 +4495,7 @@ export namespace Prisma {
     blockHash?: StringFilter<"Event"> | string
     transactionHash?: StringFilter<"Event"> | string
     name?: StringFilter<"Event"> | string
+    signature?: StringFilter<"Event"> | string
     address?: StringFilter<"Event"> | string
     args?: JsonFilter<"Event">
     event?: JsonFilter<"Event">
@@ -4500,6 +4513,7 @@ export namespace Prisma {
     blockHash?: SortOrder
     transactionHash?: SortOrder
     name?: SortOrder
+    signature?: SortOrder
     address?: SortOrder
     args?: SortOrder
     event?: SortOrder
@@ -4521,6 +4535,7 @@ export namespace Prisma {
     blockHash?: StringFilter<"Event"> | string
     transactionHash?: StringFilter<"Event"> | string
     name?: StringFilter<"Event"> | string
+    signature?: StringFilter<"Event"> | string
     address?: StringFilter<"Event"> | string
     args?: JsonFilter<"Event">
     event?: JsonFilter<"Event">
@@ -4538,6 +4553,7 @@ export namespace Prisma {
     blockHash?: SortOrder
     transactionHash?: SortOrder
     name?: SortOrder
+    signature?: SortOrder
     address?: SortOrder
     args?: SortOrder
     event?: SortOrder
@@ -4561,6 +4577,7 @@ export namespace Prisma {
     blockHash?: StringWithAggregatesFilter<"Event"> | string
     transactionHash?: StringWithAggregatesFilter<"Event"> | string
     name?: StringWithAggregatesFilter<"Event"> | string
+    signature?: StringWithAggregatesFilter<"Event"> | string
     address?: StringWithAggregatesFilter<"Event"> | string
     args?: JsonWithAggregatesFilter<"Event">
     event?: JsonWithAggregatesFilter<"Event">
@@ -4736,6 +4753,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -4753,6 +4771,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -4768,6 +4787,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -4785,6 +4805,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -4801,6 +4822,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -4815,6 +4837,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -4830,6 +4853,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -5147,6 +5171,7 @@ export namespace Prisma {
     blockHash?: SortOrder
     transactionHash?: SortOrder
     name?: SortOrder
+    signature?: SortOrder
     address?: SortOrder
     args?: SortOrder
     event?: SortOrder
@@ -5167,6 +5192,7 @@ export namespace Prisma {
     blockHash?: SortOrder
     transactionHash?: SortOrder
     name?: SortOrder
+    signature?: SortOrder
     address?: SortOrder
     isProcessed?: SortOrder
     createdAt?: SortOrder
@@ -5180,6 +5206,7 @@ export namespace Prisma {
     blockHash?: SortOrder
     transactionHash?: SortOrder
     name?: SortOrder
+    signature?: SortOrder
     address?: SortOrder
     isProcessed?: SortOrder
     createdAt?: SortOrder
@@ -5686,6 +5713,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -5702,6 +5730,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -5721,6 +5750,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -5736,6 +5766,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -5772,6 +5803,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -5788,6 +5820,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -5822,6 +5855,7 @@ export namespace Prisma {
     blockHash?: StringFilter<"Event"> | string
     transactionHash?: StringFilter<"Event"> | string
     name?: StringFilter<"Event"> | string
+    signature?: StringFilter<"Event"> | string
     address?: StringFilter<"Event"> | string
     args?: JsonFilter<"Event">
     event?: JsonFilter<"Event">
@@ -5871,6 +5905,7 @@ export namespace Prisma {
     blockHash: string
     transactionHash: string
     name: string
+    signature: string
     address: string
     args: JsonNullValueInput | InputJsonValue
     event: JsonNullValueInput | InputJsonValue
@@ -5885,6 +5920,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -5900,6 +5936,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue
@@ -5915,6 +5952,7 @@ export namespace Prisma {
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    signature?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     args?: JsonNullValueInput | InputJsonValue
     event?: JsonNullValueInput | InputJsonValue

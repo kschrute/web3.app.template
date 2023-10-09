@@ -15,13 +15,15 @@
     "pre-commit": "lint-staged"
   },
   "dependencies": {
-    "@graphql-typed-document-node/core": "^3.2.0",
     "@apollo/client": "^3.8.5",
     "@app/contracts": "workspace:^",
+    "@app/graphql": "workspace:^",
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/next-js": "^2.1.5",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@rainbow-me/rainbowkit": "^1.0.11",
     "@wagmi/cli": "^1.0.0",
     "framer-motion": "^10.16.4",
@@ -51,6 +53,7 @@
     "lint-staged": "^14.0.1",
     "lokijs": "^1.5.12",
     "pino-pretty": "^10.2.0",
+    "raw-loader": "^4.0.2",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {

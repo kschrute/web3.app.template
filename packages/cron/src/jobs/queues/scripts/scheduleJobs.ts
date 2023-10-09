@@ -20,6 +20,6 @@ export const REPEAT = {
 }
 
 export const scheduleJobs = async () => {
-  await new SchedulePullAllEthereumEvents().repeat(REPEAT.EVERY_30_SECONDS).schedule()
+  await new SchedulePullAllEthereumEvents().repeat(REPEAT.EVERY_10_SECONDS).schedule()
   await new CleanQueuesJob().repeat(REPEAT.EVERY_HOUR).schedule()
 }

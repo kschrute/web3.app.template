@@ -12,8 +12,9 @@ export const createEventRecord = (e: Event, prevEvent?: EventRepo.Entity, isProc
     logIndex,
     isProcessed,
     args: args!,
-    name: e.event || '',
-    event: e as {},
+    name: e.event ?? '',
+    signature: e.eventSignature ?? '',
+    event: JSON.parse(JSON.stringify(e)),
     prevEvent: prevEvent && { connect: { id: prevEvent.id } },
   })
 }
