@@ -33,7 +33,7 @@ importers:
         version: 1.14.0(typescript@5.2.2)
       wagmi:
         specifier: ^1.4.3
-        version: 1.4.3(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
+        version: 1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
     devDependencies:
       '@types/node':
         specifier: ^20.7.2
@@ -330,56 +330,12 @@ importers:
         specifier: ^5.0.4
         version: 5.2.2
 
-  packages/web2:
-    dependencies:
-      '@wagmi/cli':
-        specifier: ^1.0.0
-        version: 1.5.2(encoding@0.1.13)(typescript@5.2.2)(wagmi@1.4.2)
-      next:
-        specifier: ^13.4.0
-        version: 13.5.3(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-      viem:
-        specifier: ~0.3.36
-        version: 0.3.50(typescript@5.2.2)
-      wagmi:
-        specifier: ^1.0.6
-        version: 1.4.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50)
-    devDependencies:
-      '@types/node':
-        specifier: ^17.0.31
-        version: 17.0.45
-      '@types/react':
-        specifier: ^18.0.9
-        version: 18.2.23
-      '@types/react-dom':
-        specifier: ^18.0.3
-        version: 18.2.8
-      eslint:
-        specifier: ^8.15.0
-        version: 8.50.0
-      eslint-config-next:
-        specifier: ^12.1.6
-        version: 12.3.4(eslint@8.50.0)(typescript@5.2.2)
-      typescript:
-        specifier: ^5.0.4
-        version: 5.2.2
-
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /@adraffy/ens-normalize@1.9.0:
-    resolution: {integrity: sha512-iowxq3U30sghZotgl4s/oJRci6WPBfNO5YYgk2cIOMCHr3LeGPcsZjCEr+33Q4N+oV3OABDAtA+pyvWjbvBifQ==}
-    dev: false
 
   /@adraffy/ens-normalize@1.9.4:
     resolution: {integrity: sha512-UK0bHA7hh9cR39V+4gl2/NnBBjoXIxkuWAPCaY4X7fbH4L/azIi7ilWOCjMUYfpJgraLUAqkRi2BqrjME8Rynw==}
@@ -4006,12 +3962,6 @@ packages:
     resolution: {integrity: sha512-X4te86vsbjsB7iO4usY9jLPtZ827Mbx+WcwNBGUOIuswuTAKQtzsuoxc/6KLxCMvogKG795MhrR1LDhYgDvasg==}
     dev: false
 
-  /@next/eslint-plugin-next@12.3.4:
-    resolution: {integrity: sha512-BFwj8ykJY+zc1/jWANsDprDIu2MgwPOIKxNVnrKvPs+f5TPegrVnem8uScND+1veT4B7F6VeqgaNLFW1Hzl9Og==}
-    dependencies:
-      glob: 7.1.7
-    dev: true
-
   /@next/eslint-plugin-next@13.5.3:
     resolution: {integrity: sha512-lbZOoEjzSuTtpk9UgV9rOmxYw+PsSfNR+00mZcInqooiDMZ1u+RqT1YQYLsEZPW1kumZoQe5+exkCBtZ2xn0uw==}
     dependencies:
@@ -4099,20 +4049,10 @@ packages:
     dev: false
     optional: true
 
-  /@noble/curves@1.0.0:
-    resolution: {integrity: sha512-2upgEu0iLiDVDZkNLeFV2+ht0BAVgQnEmCk6JsOch9Rp8xfkMCbvbAZlA2pBHQc73dbl+vFOXfqkf4uemdn0bw==}
-    dependencies:
-      '@noble/hashes': 1.3.0
-    dev: false
-
   /@noble/curves@1.2.0:
     resolution: {integrity: sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==}
     dependencies:
       '@noble/hashes': 1.3.2
-    dev: false
-
-  /@noble/hashes@1.3.0:
-    resolution: {integrity: sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==}
     dev: false
 
   /@noble/hashes@1.3.2:
@@ -4375,25 +4315,10 @@ packages:
     resolution: {integrity: sha512-/+SgoRjLq7Xlf0CWuLHq2LUZeL/w65kfzAPG5NH9pcmBhs+nunQTn4gvdwgMTIXnt9b2C/1SeL2XiysZEyIC9Q==}
     dev: false
 
-  /@scure/bip32@1.3.0:
-    resolution: {integrity: sha512-bcKpo1oj54hGholplGLpqPHRbIsnbixFtc06nwuNM5/dwSXOq/AAYoIBRsBmnZJSdfeNW5rnff7NTAz3ZCqR9Q==}
-    dependencies:
-      '@noble/curves': 1.0.0
-      '@noble/hashes': 1.3.2
-      '@scure/base': 1.1.3
-    dev: false
-
   /@scure/bip32@1.3.2:
     resolution: {integrity: sha512-N1ZhksgwD3OBlwTv3R6KFEcPojl/W4ElJOeCZdi+vuI5QmTFwLq3OFf2zd2ROpKvxFdgZ6hUpb0dx9bVNEwYCA==}
     dependencies:
       '@noble/curves': 1.2.0
-      '@noble/hashes': 1.3.2
-      '@scure/base': 1.1.3
-    dev: false
-
-  /@scure/bip39@1.2.0:
-    resolution: {integrity: sha512-SX/uKq52cuxm4YFXWFaVByaSHJh2w3BnokVSeUJVCv6K7WulT9u2BuNRBhuFl8vAuYnzx9bEu9WgpcNYTrYieg==}
-    dependencies:
       '@noble/hashes': 1.3.2
       '@scure/base': 1.1.3
     dev: false
@@ -4680,10 +4605,6 @@ packages:
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: false
-
-  /@types/node@17.0.45:
-    resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
-    dev: true
 
   /@types/node@18.18.4:
     resolution: {integrity: sha512-t3rNFBgJRugIhackit2mVcLfF6IRc0JE4oeizPQL8Zrm8n2WY/0wOdpOPhdtG0V9Q2TlW/axbF1MJ6z+Yj/kKQ==}
@@ -5026,63 +4947,6 @@ packages:
       '@vanilla-extract/css': 1.9.1
     dev: false
 
-  /@wagmi/chains@1.0.0(typescript@5.2.2):
-    resolution: {integrity: sha512-eNbqRWyHbivcMNq5tbXJks4NaOzVLHnNQauHPeE/EDT9AlpqzcrMc+v2T1/2Iw8zN4zgqB86NCsxeJHJs7+xng==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 5.2.2
-    dev: false
-
-  /@wagmi/cli@1.5.2(encoding@0.1.13)(typescript@5.2.2)(wagmi@1.4.2):
-    resolution: {integrity: sha512-UfLMYhW6mQBCjR8A5s01Chf9GpHzdpcuuBuzJ36QGXcMSJAxylz5ImVZWfCRV0ct1UruydjKVSW1QSI6azNxRQ==}
-    engines: {node: '>=14'}
-    hasBin: true
-    peerDependencies:
-      '@wagmi/core': '>=1.0.0'
-      typescript: '>=5.0.4'
-      wagmi: '>=1.0.0'
-    peerDependenciesMeta:
-      '@wagmi/core':
-        optional: true
-      typescript:
-        optional: true
-      wagmi:
-        optional: true
-    dependencies:
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      abort-controller: 3.0.0
-      bundle-require: 3.1.2(esbuild@0.16.17)
-      cac: 6.7.14
-      change-case: 4.1.2
-      chokidar: 3.5.3
-      dedent: 0.7.0
-      detect-package-manager: 2.0.1
-      dotenv: 16.3.1
-      dotenv-expand: 10.0.0
-      esbuild: 0.16.17
-      execa: 6.1.0
-      find-up: 6.3.0
-      fs-extra: 10.1.0
-      globby: 13.2.2
-      node-fetch: 3.3.2(encoding@0.1.13)
-      ora: 6.3.1
-      pathe: 1.1.1
-      picocolors: 1.0.0
-      prettier: 2.8.8
-      typescript: 5.2.2
-      viem: 1.16.0(typescript@5.2.2)(zod@3.22.2)
-      wagmi: 1.4.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50)
-      zod: 3.22.2
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - utf-8-validate
-    dev: false
-
   /@wagmi/cli@1.5.2(encoding@0.1.13)(typescript@5.2.2)(wagmi@1.4.3):
     resolution: {integrity: sha512-UfLMYhW6mQBCjR8A5s01Chf9GpHzdpcuuBuzJ36QGXcMSJAxylz5ImVZWfCRV0ct1UruydjKVSW1QSI6azNxRQ==}
     engines: {node: '>=14'}
@@ -5121,7 +4985,7 @@ packages:
       prettier: 2.8.8
       typescript: 5.2.2
       viem: 1.16.0(typescript@5.2.2)(zod@3.22.2)
-      wagmi: 1.4.3(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
+      wagmi: 1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
       zod: 3.22.2
     transitivePeerDependencies:
       - bufferutil
@@ -5163,103 +5027,6 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/connectors@3.1.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50):
-    resolution: {integrity: sha512-IlLKErqCzQRBUcCvXGPowcczbWcvJtEG006gPsAoePNJEXCHEWoKASghgu+L/bqD7006Z6mW6zlTNjcSQJvFAg==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      viem: '>=0.3.35'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@coinbase/wallet-sdk': 3.7.2(encoding@0.1.13)
-      '@ledgerhq/connect-kit-loader': 1.1.2
-      '@safe-global/safe-apps-provider': 0.17.1(typescript@5.2.2)
-      '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.2.2)
-      '@walletconnect/ethereum-provider': 2.10.1(@walletconnect/modal@2.6.2)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)
-      '@walletconnect/legacy-provider': 2.0.0(encoding@0.1.13)
-      '@walletconnect/modal': 2.6.2(@types/react@18.2.23)(react@18.2.0)
-      '@walletconnect/utils': 2.10.1(lokijs@1.5.12)(pino-pretty@10.2.0)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      eventemitter3: 4.0.7
-      typescript: 5.2.2
-      viem: 0.3.50(typescript@5.2.2)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - lokijs
-      - pino-pretty
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
-
-  /@wagmi/connectors@3.1.2(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0):
-    resolution: {integrity: sha512-IlLKErqCzQRBUcCvXGPowcczbWcvJtEG006gPsAoePNJEXCHEWoKASghgu+L/bqD7006Z6mW6zlTNjcSQJvFAg==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      viem: '>=0.3.35'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@coinbase/wallet-sdk': 3.7.2(encoding@0.1.13)
-      '@ledgerhq/connect-kit-loader': 1.1.2
-      '@safe-global/safe-apps-provider': 0.17.1(typescript@5.2.2)
-      '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.2.2)
-      '@walletconnect/ethereum-provider': 2.10.1(@walletconnect/modal@2.6.2)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)
-      '@walletconnect/legacy-provider': 2.0.0(encoding@0.1.13)
-      '@walletconnect/modal': 2.6.2(@types/react@18.2.23)(react@18.2.0)
-      '@walletconnect/utils': 2.10.1(lokijs@1.5.12)(pino-pretty@10.2.0)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      eventemitter3: 4.0.7
-      typescript: 5.2.2
-      viem: 1.14.0(typescript@5.2.2)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - lokijs
-      - pino-pretty
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
-
-  /@wagmi/core@1.4.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50):
-    resolution: {integrity: sha512-szgNs2DCbBXKsq3wdm/YD8FWkg7lfmTRAv25b2nJYJUTQN59pVXznlWfq8VCJLamhKOYjeYHlTQxXkAeUAJdhw==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      viem: '>=0.3.35'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@wagmi/connectors': 3.1.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      eventemitter3: 4.0.7
-      typescript: 5.2.2
-      viem: 0.3.50(typescript@5.2.2)
-      zustand: 4.4.1(@types/react@18.2.23)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - immer
-      - lokijs
-      - pino-pretty
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
-
   /@wagmi/core@1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0):
     resolution: {integrity: sha512-CIV9jwv5ue+WpqmA3FvwGa+23cppe7oIaz6TRnlGm0Hm0wDImSaQSWqcsFyOPvleD29oOIJ8e3KnHINEvI64AA==}
     peerDependencies:
@@ -5270,35 +5037,6 @@ packages:
         optional: true
     dependencies:
       '@wagmi/connectors': 3.1.2(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      eventemitter3: 4.0.7
-      typescript: 5.2.2
-      viem: 1.14.0(typescript@5.2.2)
-      zustand: 4.4.1(@types/react@18.2.23)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - immer
-      - lokijs
-      - pino-pretty
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
-
-  /@wagmi/core@1.4.3(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0):
-    resolution: {integrity: sha512-CIV9jwv5ue+WpqmA3FvwGa+23cppe7oIaz6TRnlGm0Hm0wDImSaQSWqcsFyOPvleD29oOIJ8e3KnHINEvI64AA==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      viem: '>=0.3.35'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@wagmi/connectors': 3.1.2(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
       abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
       eventemitter3: 4.0.7
       typescript: 5.2.2
@@ -7275,31 +7013,6 @@ packages:
       object.entries: 1.1.7
     dev: true
 
-  /eslint-config-next@12.3.4(eslint@8.50.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-WuT3gvgi7Bwz00AOmKGhOeqnyA5P29Cdyr0iVjLyfDbk+FANQKcOjFUTZIdyYfe5Tq1x4TGcmoe4CwctGvFjHQ==}
-    peerDependencies:
-      eslint: ^7.23.0 || ^8.0.0
-      typescript: '>=3.3.1'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@next/eslint-plugin-next': 12.3.4
-      '@rushstack/eslint-patch': 1.5.0
-      '@typescript-eslint/parser': 5.62.0(eslint@8.50.0)(typescript@5.2.2)
-      eslint: 8.50.0
-      eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.28.1)(eslint@8.50.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@2.7.1)(eslint@8.50.0)
-      eslint-plugin-jsx-a11y: 6.7.1(eslint@8.50.0)
-      eslint-plugin-react: 7.33.2(eslint@8.50.0)
-      eslint-plugin-react-hooks: 4.6.0(eslint@8.50.0)
-      typescript: 5.2.2
-    transitivePeerDependencies:
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: true
-
   /eslint-config-next@13.5.3(eslint@8.50.0)(typescript@5.2.2):
     resolution: {integrity: sha512-VN2qbCpq2DMWgs7SVF8KTmc8bVaWz3s4nmcFqRLs7PNBt5AXejOhJuZ4zg2sCEHOvz5RvqdwLeI++NSCV6qHVg==}
     peerDependencies:
@@ -7340,24 +7053,6 @@ packages:
       debug: 3.2.7(supports-color@5.5.0)
       is-core-module: 2.13.0
       resolve: 1.22.6
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /eslint-import-resolver-typescript@2.7.1(eslint-plugin-import@2.28.1)(eslint@8.50.0):
-    resolution: {integrity: sha512-00UbgGwV8bSgUv34igBDbTOtKhqoRMy9bFjNehT40bXg6585PNIct8HhXZ0SybqB9rWtXj9crcku8ndDn/gIqQ==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      eslint: '*'
-      eslint-plugin-import: '*'
-    dependencies:
-      debug: 4.3.4
-      eslint: 8.50.0
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@2.7.1)(eslint@8.50.0)
-      glob: 7.2.3
-      is-glob: 4.0.3
-      resolve: 1.22.6
-      tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7441,41 +7136,6 @@ packages:
       eslint: 8.50.0
       eslint-import-resolver-node: 0.3.9
     transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /eslint-plugin-import@2.28.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@2.7.1)(eslint@8.50.0):
-    resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 5.62.0(eslint@8.50.0)(typescript@5.2.2)
-      array-includes: 3.1.7
-      array.prototype.findlastindex: 1.2.3
-      array.prototype.flat: 1.3.2
-      array.prototype.flatmap: 1.3.2
-      debug: 3.2.7(supports-color@5.5.0)
-      doctrine: 2.1.0
-      eslint: 8.50.0
-      eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.50.0)
-      has: 1.0.3
-      is-core-module: 2.13.0
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.fromentries: 2.0.7
-      object.groupby: 1.0.1
-      object.values: 1.1.7
-      semver: 6.3.1
-      tsconfig-paths: 3.14.2
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
       - supports-color
     dev: true
 
@@ -8868,14 +8528,6 @@ packages:
       ws: '*'
     dependencies:
       ws: 7.5.9
-    dev: false
-
-  /isomorphic-ws@5.0.0(ws@8.12.0):
-    resolution: {integrity: sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw==}
-    peerDependencies:
-      ws: '*'
-    dependencies:
-      ws: 8.12.0
     dev: false
 
   /isomorphic-ws@5.0.0(ws@8.13.0):
@@ -11496,25 +11148,6 @@ packages:
     resolution: {integrity: sha512-Z6Uz+TYwEqE7ZN50gwn+1LCVo9ZVrpxRPOhOLnncYkY1ZzOYtrX8Fwf/rFktZ8R5mJms6EZf5TqNOMeZmnPq9Q==}
     engines: {node: '>=12'}
 
-  /viem@0.3.50(typescript@5.2.2):
-    resolution: {integrity: sha512-s+LxCYZTR9F/qPk1/n1YDVAX9vSeVz7GraqBZWGrDuenCJxo9ArCoIceJ6ksI0WwSeNzcZ0VVbD/kWRzTxkipw==}
-    dependencies:
-      '@adraffy/ens-normalize': 1.9.0
-      '@noble/curves': 1.0.0
-      '@noble/hashes': 1.3.0
-      '@scure/bip32': 1.3.0
-      '@scure/bip39': 1.2.0
-      '@wagmi/chains': 1.0.0(typescript@5.2.2)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      isomorphic-ws: 5.0.0(ws@8.12.0)
-      ws: 8.12.0
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
-    dev: false
-
   /viem@1.14.0(typescript@5.2.2):
     resolution: {integrity: sha512-4d+4/H3lnbkSAbrpQ15i1nBA7hne06joLFy3L3m0ZpMc+g+Zr3D4nuSTyeiqbHAYs9m2P9Kjap0HlyGkehasgg==}
     peerDependencies:
@@ -11562,40 +11195,6 @@ packages:
       - zod
     dev: false
 
-  /wagmi@1.4.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50):
-    resolution: {integrity: sha512-Cxu0LatB44stqHoqdc6dgsTb9woYH1bEquJFq9PbTkePmnRCvceAD4aFUREUTaBWzIBcouhFlanWweDzEnb3mg==}
-    peerDependencies:
-      react: '>=17.0.0'
-      typescript: '>=5.0.4'
-      viem: '>=0.3.35'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@tanstack/query-sync-storage-persister': 4.35.3
-      '@tanstack/react-query': 4.35.3(react-dom@18.2.0)(react@18.2.0)
-      '@tanstack/react-query-persist-client': 4.35.5(@tanstack/react-query@4.35.3)
-      '@wagmi/core': 1.4.2(@types/react@18.2.23)(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@0.3.50)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      react: 18.2.0
-      typescript: 5.2.2
-      use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 0.3.50(typescript@5.2.2)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - immer
-      - lokijs
-      - pino-pretty
-      - react-dom
-      - react-native
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
-
   /wagmi@1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0):
     resolution: {integrity: sha512-3LjbqqVRe6WW/WD07QCd5Itmo4nUfLsXuoc8F7nw9NslNUg8SFEb+g/jZ4665V0xh5ZRqPBJ7XOXASpdM2Y/5Q==}
     peerDependencies:
@@ -11610,40 +11209,6 @@ packages:
       '@tanstack/react-query': 4.35.3(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.35.5(@tanstack/react-query@4.35.3)
       '@wagmi/core': 1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
-      abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
-      react: 18.2.0
-      typescript: 5.2.2
-      use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 1.14.0(typescript@5.2.2)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - immer
-      - lokijs
-      - pino-pretty
-      - react-dom
-      - react-native
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
-
-  /wagmi@1.4.3(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0):
-    resolution: {integrity: sha512-3LjbqqVRe6WW/WD07QCd5Itmo4nUfLsXuoc8F7nw9NslNUg8SFEb+g/jZ4665V0xh5ZRqPBJ7XOXASpdM2Y/5Q==}
-    peerDependencies:
-      react: '>=17.0.0'
-      typescript: '>=5.0.4'
-      viem: '>=0.3.35'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@tanstack/query-sync-storage-persister': 4.35.3
-      '@tanstack/react-query': 4.35.3(react-dom@18.2.0)(react@18.2.0)
-      '@tanstack/react-query-persist-client': 4.35.5(@tanstack/react-query@4.35.3)
-      '@wagmi/core': 1.4.3(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
       abitype: 0.8.7(typescript@5.2.2)(zod@3.22.2)
       react: 18.2.0
       typescript: 5.2.2
@@ -11849,19 +11414,6 @@ packages:
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: false
-
-  /ws@8.12.0:
-    resolution: {integrity: sha512-kU62emKIdKVeEIOIKVegvqpXMSTAMLJozpHZaJNDYqBjzlSYXQGviYwN1osDLJ9av68qHd4a2oSjd7yD4pacig==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
     peerDependenciesMeta:
       bufferutil:
         optional: true
