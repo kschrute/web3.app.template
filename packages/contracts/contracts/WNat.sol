@@ -8,7 +8,7 @@ import "../lib/openzeppelin/contracts/5.0.0/token/ERC20/extensions/ERC20Permit.s
 //import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 //import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract Wnat is ERC20, ERC20Burnable, ERC20Permit {
+contract WNat is ERC20, ERC20Burnable, ERC20Permit {
     event  Deposit(address indexed dst, uint wad);
     event  Withdrawal(address indexed src, uint wad);
 

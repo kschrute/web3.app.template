@@ -11,6 +11,7 @@
     "deploy.local.Counter": "source .env && forge create contracts/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy.local.Faucet": "source .env && forge create contracts/Faucet.sol:Faucet --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy.local.Subscription": "source .env && forge create contracts/Subscription.sol:Subscription --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
+    "deploy.local.WNat": "source .env && forge create contracts/WNat.sol:WNat --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy": "source .env && forge create contracts/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY --etherscan-api-key $ETHERSCAN_API_KEY --verify",
     "build": "tsc --project tsconfig.dist.json",
     "prepare": "run-s 'prepare.*'",
@@ -20,7 +21,8 @@
     "prepare.build": "pnpm build",
     "prepare.wagmi": "wagmi generate",
     "wagmi": "wagmi generate",
-    "test": "forge test"
+    "test": "forge test",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.0",
