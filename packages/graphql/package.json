@@ -5,8 +5,13 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --config nodemon.json",
+    "dev.delete": "tsx --no-notify --respawn src/server",
     "predev": "pnpm run codegen",
-    "dev.delete": "ts-node-dev --no-notify --respawn --transpile-only src/server",
+    "build": "run-s 'build.*'",
+    "build.prisma": "prisma generate",
+    "build.typescript": "rm -rf ./dist && tsc --project tsconfig.json",
+    "build.copy.client": "cp -R ./prisma/client ./dist/prisma",
+    "build.schema": "tsx src/schema/index.ts",
     "prepare": "run-s 'prepare.*'",
     "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
     "prepare.prisma": "prisma generate",
@@ -19,11 +24,6 @@
     "compile": "tsc",
     "start": "node dist/server",
     "clean": "rm -rf dist",
-    "build": "run-s 'build.*'",
-    "build.prisma": "prisma generate",
-    "build.typescript": "rm -rf ./dist && tsc --project tsconfig.json",
-    "build.copy.client": "cp -R ./prisma/client ./dist/prisma",
-    "build.schema": "ts-node src/schema/index.ts",
     "generate": "pnpm run prisma.generate",
     "prisma.format": "prisma format",
     "prisma.generate": "prisma generate",
@@ -35,7 +35,7 @@
     "pre-commit": "lint-staged"
   },
   "prisma": {
-    "seed": "ts-node --transpile-only prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@app/cron": "workspace:^",
