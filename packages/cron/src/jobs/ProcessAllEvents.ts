@@ -1,7 +1,7 @@
 import { queues } from './queues'
 import { contracts } from '@app/contracts'
 import { EventRepo } from '@app/graphql'
-import { getChainId } from '../lib/getChainId'
+import { getChainId } from '../utils/getChainId'
 import { Job } from './Job'
 import { JobOptions } from 'bull'
 

@@ -3,8 +3,9 @@ require('dotenv').config()
 import { foundry, hardhat, localhost, mainnet } from 'viem/chains'
 
 const localNetwork = {
+  chain: foundry,
   accounts: { mnemonic: process.env.MNEMONIC || '' },
-  startBlock: 18315559,
+  startBlock: BigInt(18315559),
   rpcUrl: 'http://127.0.0.1:8545',
   wsUrl: 'ws://127.0.0.1:8545',
 }
@@ -18,8 +19,9 @@ export default {
     [hardhat.id]: localNetwork,
     [foundry.id]: localNetwork,
     [mainnet.id]: {
+      chain: mainnet,
       accounts: { mnemonic: process.env.MNEMONIC || '' },
-      startBlock: 16722396,
+      startBlock: BigInt(16722396),
       rpcUrl: process.env.RPC_ENDPOINT as string,
       wsUrl: process.env.WS_ENDPOINT as string,
     },

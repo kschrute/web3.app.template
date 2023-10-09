@@ -1,7 +1,6 @@
 export * from './events'
 export * from './CleanQueuesJob'
 export * from './ProcessAllEvents'
-export * from './ProcessSubscribedJob'
 export * from './PullEthereumEvents'
 export * from './ScheduleProcessAllEthereumEvents'
 export * from './SchedulePullAllEthereumEvents'

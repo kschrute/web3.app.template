@@ -1,9 +1,7 @@
-import { Contract, Event } from 'ethers'
 import { queues } from '../../queues'
-import { EventRepo, UserRepo, db } from '@app/graphql'
-import { subscriptionABI } from '@app/contracts'
-import { getChainId } from '../../../lib/getChainId'
+import { db, EventRepo, UserRepo } from '@app/graphql'
 import { Job } from '../../Job'
+import { decodeEventLog, Log, parseAbi } from 'viem'
 
 interface JobData {
   eventId: string
@@ -25,15 +23,18 @@ export class SubscriptionSubscribedEventJob extends Job<JobData> {
 }
 
 const process = async (event: EventRepo.Entity) => {
-  const chainId = getChainId()
+  const e = event.event as Log
 
-  const { event: e, name } = event
-  const { data, topics } = e as unknown as Event
+  const abi = parseAbi([event.signature])
 
-  const contractInterface = Contract.getInterface(subscriptionABI)
-  const fragment = contractInterface.getEvent(name)
-  const args = contractInterface.decodeEventLog(fragment, data, topics)
-  const [user, when] = args || []
+  const decoded = decodeEventLog({
+    abi,
+    data: e.data,
+    topics: e.topics,
+  })
+
+  // const { user } = e.args
+  const { args: { user } } = decoded
 
   await db.$transaction([
     UserRepo.update({ address: user }, { isSubscribed: true }),

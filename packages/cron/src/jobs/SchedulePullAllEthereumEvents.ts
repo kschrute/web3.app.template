@@ -1,6 +1,6 @@
 import { queues } from './queues'
 import { contracts } from '@app/contracts'
-import { getChainId } from '../lib/getChainId'
+import { getChainId } from '../utils/getChainId'
 import { Job } from './Job'
 import { PullEthereumEvents } from './PullEthereumEvents'
 import { ScheduleProcessAllEthereumEvents } from './ScheduleProcessAllEthereumEvents'
@@ -10,7 +10,6 @@ export class SchedulePullAllEthereumEvents extends Job<{}> {
 
   public async handle() {
     const chainId = getChainId()
-    console.log('chainId', chainId)
 
     await new PullEthereumEvents({
       contractAddress: contracts.Subscription.addresses[chainId],

@@ -45,7 +45,7 @@ model Event {
   id              String   @id @default(uuid())
   prevEvent       Event?   @relation("EventToEvent", fields: [prevEventId], references: [id])
   prevEventId     String?
-  blockNumber     Int
+  blockNumber     BigInt   @db.BigInt
   logIndex        Int
   blockHash       String
   transactionHash String

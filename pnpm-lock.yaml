@@ -78,6 +78,9 @@ importers:
       '@types/node':
         specifier: ^18.18.0
         version: 18.18.4
+      abitype:
+        specifier: ^0.9.10
+        version: 0.9.10(typescript@5.2.2)
       lint-staged:
         specifier: ^14.0.1
         version: 14.0.1
@@ -5121,7 +5124,7 @@ packages:
       prettier: 2.8.8
       typescript: 5.2.2
       viem: 1.16.0(typescript@5.2.2)(zod@3.22.2)
-      wagmi: 1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
+      wagmi: 1.4.3(encoding@0.1.13)(pino-pretty@10.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.14.0)
       zod: 3.22.2
     transitivePeerDependencies:
       - bufferutil
@@ -5929,6 +5932,20 @@ packages:
       typescript: 5.2.2
       zod: 3.22.2
     dev: false
+
+  /abitype@0.9.10(typescript@5.2.2):
+    resolution: {integrity: sha512-FIS7U4n7qwAT58KibwYig5iFG4K61rbhAqaQh/UWj8v1Y8mjX3F8TC9gd8cz9yT1TYel9f8nS5NO5kZp2RW0jQ==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+      zod: ^3 >=3.22.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      typescript: 5.2.2
+    dev: true
 
   /abitype@0.9.8(typescript@5.2.2)(zod@3.22.2):
     resolution: {integrity: sha512-puLifILdm+8sjyss4S+fsUN09obiT1g2YW6CtcQF+QDzxR0euzgEB29MZujC6zMk2a6SVmtttq1fc6+YFA7WYQ==}

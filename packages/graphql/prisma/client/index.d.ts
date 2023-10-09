@@ -3129,14 +3129,14 @@ export namespace Prisma {
   }
 
   export type EventSumAggregateOutputType = {
-    blockNumber: number | null
+    blockNumber: bigint | null
     logIndex: number | null
   }
 
   export type EventMinAggregateOutputType = {
     id: string | null
     prevEventId: string | null
-    blockNumber: number | null
+    blockNumber: bigint | null
     logIndex: number | null
     blockHash: string | null
     transactionHash: string | null
@@ -3150,7 +3150,7 @@ export namespace Prisma {
   export type EventMaxAggregateOutputType = {
     id: string | null
     prevEventId: string | null
-    blockNumber: number | null
+    blockNumber: bigint | null
     logIndex: number | null
     blockHash: string | null
     transactionHash: string | null
@@ -3323,7 +3323,7 @@ export namespace Prisma {
   export type EventGroupByOutputType = {
     id: string
     prevEventId: string | null
-    blockNumber: number
+    blockNumber: bigint
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -3406,7 +3406,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       prevEventId: string | null
-      blockNumber: number
+      blockNumber: bigint
       logIndex: number
       blockHash: string
       transactionHash: string
@@ -3816,7 +3816,7 @@ export namespace Prisma {
   interface EventFieldRefs {
     readonly id: FieldRef<"Event", 'String'>
     readonly prevEventId: FieldRef<"Event", 'String'>
-    readonly blockNumber: FieldRef<"Event", 'Int'>
+    readonly blockNumber: FieldRef<"Event", 'BigInt'>
     readonly logIndex: FieldRef<"Event", 'Int'>
     readonly blockHash: FieldRef<"Event", 'String'>
     readonly transactionHash: FieldRef<"Event", 'String'>
@@ -4319,6 +4319,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -4490,7 +4497,7 @@ export namespace Prisma {
     NOT?: EventWhereInput | EventWhereInput[]
     id?: StringFilter<"Event"> | string
     prevEventId?: StringNullableFilter<"Event"> | string | null
-    blockNumber?: IntFilter<"Event"> | number
+    blockNumber?: BigIntFilter<"Event"> | bigint | number
     logIndex?: IntFilter<"Event"> | number
     blockHash?: StringFilter<"Event"> | string
     transactionHash?: StringFilter<"Event"> | string
@@ -4530,7 +4537,7 @@ export namespace Prisma {
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
     prevEventId?: StringNullableFilter<"Event"> | string | null
-    blockNumber?: IntFilter<"Event"> | number
+    blockNumber?: BigIntFilter<"Event"> | bigint | number
     logIndex?: IntFilter<"Event"> | number
     blockHash?: StringFilter<"Event"> | string
     transactionHash?: StringFilter<"Event"> | string
@@ -4572,7 +4579,7 @@ export namespace Prisma {
     NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Event"> | string
     prevEventId?: StringNullableWithAggregatesFilter<"Event"> | string | null
-    blockNumber?: IntWithAggregatesFilter<"Event"> | number
+    blockNumber?: BigIntWithAggregatesFilter<"Event"> | bigint | number
     logIndex?: IntWithAggregatesFilter<"Event"> | number
     blockHash?: StringWithAggregatesFilter<"Event"> | string
     transactionHash?: StringWithAggregatesFilter<"Event"> | string
@@ -4748,7 +4755,7 @@ export namespace Prisma {
 
   export type EventCreateInput = {
     id?: string
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -4766,7 +4773,7 @@ export namespace Prisma {
   export type EventUncheckedCreateInput = {
     id?: string
     prevEventId?: string | null
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -4782,7 +4789,7 @@ export namespace Prisma {
 
   export type EventUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -4800,7 +4807,7 @@ export namespace Prisma {
   export type EventUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     prevEventId?: NullableStringFieldUpdateOperationsInput | string | null
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -4817,7 +4824,7 @@ export namespace Prisma {
   export type EventCreateManyInput = {
     id?: string
     prevEventId?: string | null
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -4832,7 +4839,7 @@ export namespace Prisma {
 
   export type EventUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -4848,7 +4855,7 @@ export namespace Prisma {
   export type EventUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     prevEventId?: NullableStringFieldUpdateOperationsInput | string | null
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -5119,6 +5126,17 @@ export namespace Prisma {
     id?: SortOrder
     requestCount?: SortOrder
   }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
   export type JsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -5215,6 +5233,22 @@ export namespace Prisma {
   export type EventSumOrderByAggregateInput = {
     blockNumber?: SortOrder
     logIndex?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -5346,6 +5380,14 @@ export namespace Prisma {
     connectOrCreate?: EventCreateOrConnectWithoutPrevEventInput | EventCreateOrConnectWithoutPrevEventInput[]
     createMany?: EventCreateManyPrevEventInputEnvelope
     connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
   }
 
   export type EventUpdateOneWithoutEventsNestedInput = {
@@ -5559,6 +5601,33 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
+
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
   export type NestedJsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -5708,7 +5777,7 @@ export namespace Prisma {
 
   export type EventCreateWithoutEventsInput = {
     id?: string
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -5725,7 +5794,7 @@ export namespace Prisma {
   export type EventUncheckedCreateWithoutEventsInput = {
     id?: string
     prevEventId?: string | null
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -5745,7 +5814,7 @@ export namespace Prisma {
 
   export type EventCreateWithoutPrevEventInput = {
     id?: string
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -5761,7 +5830,7 @@ export namespace Prisma {
 
   export type EventUncheckedCreateWithoutPrevEventInput = {
     id?: string
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -5798,7 +5867,7 @@ export namespace Prisma {
 
   export type EventUpdateWithoutEventsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -5815,7 +5884,7 @@ export namespace Prisma {
   export type EventUncheckedUpdateWithoutEventsInput = {
     id?: StringFieldUpdateOperationsInput | string
     prevEventId?: NullableStringFieldUpdateOperationsInput | string | null
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -5850,7 +5919,7 @@ export namespace Prisma {
     NOT?: EventScalarWhereInput | EventScalarWhereInput[]
     id?: StringFilter<"Event"> | string
     prevEventId?: StringNullableFilter<"Event"> | string | null
-    blockNumber?: IntFilter<"Event"> | number
+    blockNumber?: BigIntFilter<"Event"> | bigint | number
     logIndex?: IntFilter<"Event"> | number
     blockHash?: StringFilter<"Event"> | string
     transactionHash?: StringFilter<"Event"> | string
@@ -5900,7 +5969,7 @@ export namespace Prisma {
 
   export type EventCreateManyPrevEventInput = {
     id?: string
-    blockNumber: number
+    blockNumber: bigint | number
     logIndex: number
     blockHash: string
     transactionHash: string
@@ -5915,7 +5984,7 @@ export namespace Prisma {
 
   export type EventUpdateWithoutPrevEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -5931,7 +6000,7 @@ export namespace Prisma {
 
   export type EventUncheckedUpdateWithoutPrevEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
@@ -5947,7 +6016,7 @@ export namespace Prisma {
 
   export type EventUncheckedUpdateManyWithoutPrevEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    blockNumber?: IntFieldUpdateOperationsInput | number
+    blockNumber?: BigIntFieldUpdateOperationsInput | bigint | number
     logIndex?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
     transactionHash?: StringFieldUpdateOperationsInput | string
