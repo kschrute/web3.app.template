@@ -22,11 +22,18 @@ export function Token() {
 
       {data && (
         <div>
-          {data.totalSupply?.formatted} {data.symbol}
+          {data.totalSupply?.formatted}
+          {' '}
+          {data.symbol}
         </div>
       )}
       {isLoading && <div>Fetching token...</div>}
-      {isError && <div>Error: {error?.message}</div>}
+      {isError && (
+      <div>
+        Error:
+        {error?.message}
+      </div>
+      )}
     </>
   )
 }

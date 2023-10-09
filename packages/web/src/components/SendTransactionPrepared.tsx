@@ -22,8 +22,7 @@ export function SendTransactionPrepared() {
     value: debouncedValue ? parseEther(value as `${number}`) : undefined,
     enabled: Boolean(debouncedTo && debouncedValue),
   })
-  const { data, error, isLoading, isError, sendTransaction } =
-    useSendTransaction(config)
+  const { data, error, isLoading, isError, sendTransaction } = useSendTransaction(config)
   const {
     data: receipt,
     isLoading: isPending,
@@ -58,13 +57,23 @@ export function SendTransactionPrepared() {
       {isPending && <div>Transaction pending...</div>}
       {isSuccess && (
         <>
-          <div>Transaction Hash: {data?.hash}</div>
           <div>
-            Transaction Receipt: <pre>{stringify(receipt, null, 2)}</pre>
+            Transaction Hash:
+            {data?.hash}
+          </div>
+          <div>
+            Transaction Receipt:
+            {' '}
+            <pre>{stringify(receipt, null, 2)}</pre>
           </div>
         </>
       )}
-      {isError && <div>Error: {error?.message}</div>}
+      {isError && (
+      <div>
+        Error:
+        {error?.message}
+      </div>
+      )}
     </>
   )
 }

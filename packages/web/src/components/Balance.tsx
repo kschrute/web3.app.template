@@ -43,7 +43,8 @@ export function FindBalance() {
 
   return (
     <div>
-      Find balance:{' '}
+      Find balance:
+      {' '}
       <input
         onChange={(e) => setValue(e.target.value)}
         placeholder="wallet address"

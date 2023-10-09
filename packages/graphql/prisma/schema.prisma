@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./client"
+}
+
+generator pothos {
+  provider     = "prisma-pothos-types"
+  clientOutput = "./client"
+  output       = "./generated.d.ts"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  address         String    @id
+  nonce           String
+  challenge       String    @db.Text
+  signature       String?
+  requestCount    Int       @default(0)
+  isAuthenticated Boolean   @default(false)
+  isSubscribed    Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  authenticatedAt DateTime?
+
+  projects Project[]
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  requestCount Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user        User?   @relation(fields: [userAddress], references: [address], onDelete: Cascade)
+  userAddress String?
+}
+
+model Event {
+  id              String   @id @default(uuid())
+  prevEvent       Event?   @relation("EventToEvent", fields: [prevEventId], references: [id])
+  prevEventId     String?
+  blockNumber     Int
+  logIndex        Int
+  blockHash       String
+  transactionHash String
+  name            String
+  address         String
+  args            Json
+  event           Json
+  isProcessed     Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  events Event[] @relation("EventToEvent")
+
+  @@unique([blockHash, transactionHash, logIndex])
+  @@index([blockNumber, logIndex])
+  @@index(blockNumber)
+  @@index(logIndex)
+  @@index(blockHash)
+  @@index(transactionHash)
+  @@index(name)
+  @@index(address)
+  @@index(isProcessed)
+  @@index([address, transactionHash])
+  @@index([name, address, isProcessed, blockNumber, logIndex])
+  @@index([name, address, isProcessed])
+  @@index([name, address, transactionHash])
+  @@index([name, isProcessed, blockNumber, logIndex])
+  @@index([name, isProcessed, createdAt])
+  @@index([name, isProcessed])
+}

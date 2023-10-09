@@ -1,0 +1,5 @@
+subscription Countdown {
+  countdown(from: 10) {
+    value
+  }
+}

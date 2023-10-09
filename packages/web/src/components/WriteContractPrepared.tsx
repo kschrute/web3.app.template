@@ -51,9 +51,14 @@ export function WriteContractPrepared() {
       {isPending && <div>Transaction pending...</div>}
       {isSuccess && (
         <>
-          <div>Transaction Hash: {data?.hash}</div>
           <div>
-            Transaction Receipt: <pre>{stringify(receipt, null, 2)}</pre>
+            Transaction Hash:
+            {data?.hash}
+          </div>
+          <div>
+            Transaction Receipt:
+            {' '}
+            <pre>{stringify(receipt, null, 2)}</pre>
           </div>
         </>
       )}

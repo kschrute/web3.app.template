@@ -45,8 +45,8 @@ export function SignTypedData() {
 
   const [recoveredAddress, setRecoveredAddress] = useState<Address>()
   useEffect(() => {
-    if (!data) return
-    ;(async () => {
+    if (!data) return;
+    (async () => {
       setRecoveredAddress(
         await recoverTypedDataAddress({
           domain,
@@ -67,11 +67,22 @@ export function SignTypedData() {
 
       {data && (
         <div>
-          <div>Signature: {data}</div>
-          <div>Recovered address {recoveredAddress}</div>
+          <div>
+            Signature:
+            {data}
+          </div>
+          <div>
+            Recovered address
+            {recoveredAddress}
+          </div>
         </div>
       )}
-      {error && <div>Error: {error?.message}</div>}
+      {error && (
+      <div>
+        Error:
+        {error?.message}
+      </div>
+      )}
     </>
   )
 }

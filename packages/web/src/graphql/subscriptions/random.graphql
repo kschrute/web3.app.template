@@ -1,0 +1,5 @@
+subscription Random {
+  random {
+    value
+  }
+}

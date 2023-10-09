@@ -28,8 +28,8 @@ export function ReadContracts() {
     <div>
       <div>Data:</div>
       {isLoading && <div>loading...</div>}
-      {isSuccess &&
-        data?.map((data) => <pre key={stringify(data)}>{stringify(data)}</pre>)}
+      {isSuccess
+        && data?.map((d) => <pre key={stringify(d)}>{stringify(d)}</pre>)}
     </div>
   )
 }

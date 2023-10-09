@@ -26,7 +26,9 @@ function TotalSupply() {
 
   return (
     <div>
-      Total Supply: {data?.toString()}
+      Total Supply:
+      {' '}
+      {data?.toString()}
       <button
         disabled={isRefetching}
         onClick={() => refetch()}
@@ -53,7 +55,9 @@ function BalanceOf() {
 
   return (
     <div>
-      Token balance: {isSuccess && data?.toString()}
+      Token balance:
+      {' '}
+      {isSuccess && data?.toString()}
       <input
         onChange={(e) => setValue(e.target.value)}
         placeholder="wallet address"

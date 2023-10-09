@@ -1,0 +1,6 @@
+query Auth($data: UserAuthInput!) {
+  auth(data: $data) {
+    authenticated
+    challenge
+  }
+}

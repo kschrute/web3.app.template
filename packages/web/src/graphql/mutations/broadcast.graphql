@@ -1,0 +1,5 @@
+mutation Broadcast {
+  broadcast {
+    value
+  }
+}

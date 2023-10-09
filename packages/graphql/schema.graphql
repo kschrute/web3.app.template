@@ -1,0 +1,87 @@
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type Mutation {
+  broadcast: Value!
+  deleteProject(id: Int!): Project!
+  incrementProjectRequestCount(id: Int!): Project!
+  request: Requests!
+  signin(data: UserSignInInput!): UserSignIn!
+  toggleActiveProject(id: Int!): Project!
+}
+
+type Project {
+  createdAt: DateTime!
+  id: Int!
+  isActive: Boolean!
+  requestCount: Int!
+  title: String!
+  updatedAt: DateTime!
+  user: User!
+}
+
+input ProjectCreateInput {
+  title: String!
+}
+
+input ProjectOrderByUpdatedAtInput {
+  updatedAt: SortOrder!
+}
+
+type Query {
+  auth(data: UserAuthInput!): UserAuth!
+  me: User!
+  projectById(id: Int!): Project
+  user(address: String!): User
+  users: [User!]!
+}
+
+type Requests {
+  count: Int!
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+type Subscription {
+  countdown(from: Int!): Value!
+  random: Value!
+  requests: Requests!
+}
+
+type User {
+  address: String!
+  challenge: String!
+  createdAt: DateTime!
+  isAuthenticated: Boolean!
+  projects: [Project!]!
+}
+
+type UserAuth {
+  authenticated: Boolean!
+  challenge: String
+}
+
+input UserAuthInput {
+  address: String!
+}
+
+type UserSignIn {
+  authenticated: Boolean!
+  token: String
+  user: User
+}
+
+input UserSignInInput {
+  address: String!
+  projects: [ProjectCreateInput!]
+  signature: String!
+}
+
+type Value {
+  value: Int!
+}

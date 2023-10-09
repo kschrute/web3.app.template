@@ -1,0 +1,10 @@
+build
+dist
+.npm
+node_modules
+deployments
+typechain-types
+types/ethers
+types/ethers-contracts
+types/truffle-contracts
+types/web3-v1-contracts

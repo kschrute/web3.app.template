@@ -15,13 +15,13 @@ export function SignMessage() {
   } = useSignMessage()
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       if (variables?.message && signature) {
-        const recoveredAddress = await recoverMessageAddress({
+        const address = await recoverMessageAddress({
           message: variables?.message,
           signature,
         })
-        setRecoveredAddress(recoveredAddress)
+        setRecoveredAddress(address)
       }
     })()
   }, [signature, variables?.message])
@@ -45,11 +45,22 @@ export function SignMessage() {
 
       {signature && (
         <div>
-          <div>Signature: {signature}</div>
-          <div>Recovered address: {recoveredAddress}</div>
+          <div>
+            Signature:
+            {signature}
+          </div>
+          <div>
+            Recovered address:
+            {recoveredAddress}
+          </div>
         </div>
       )}
-      {error && <div>Error: {error?.message}</div>}
+      {error && (
+      <div>
+        Error:
+        {error?.message}
+      </div>
+      )}
     </>
   )
 }

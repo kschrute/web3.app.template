@@ -15,7 +15,7 @@ module.exports = {
     'airbnb/rules/react',
     'plugin:react/recommended',
   ],
-  ignorePatterns: ['src/wagmi/generated.ts'],
+  ignorePatterns: ['src/wagmi/generated.ts', 'types/graphql-operations.ts', 'src/graphql/client.tsx'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',

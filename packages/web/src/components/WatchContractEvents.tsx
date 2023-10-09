@@ -25,7 +25,11 @@ export function WatchContractEvents() {
   return (
     <div>
       <details>
-        <summary>{usdcLogs.length} USDC `Transfer`s logged</summary>
+        <summary>
+          {usdcLogs.length}
+          {' '}
+          USDC `Transfer`s logged
+        </summary>
         {usdcLogs
           .reverse()
           .map((log) => stringify(log))
@@ -33,7 +37,11 @@ export function WatchContractEvents() {
       </details>
 
       <details>
-        <summary>{wagmiLogs.length} wagmi `Transfer`s logged</summary>
+        <summary>
+          {wagmiLogs.length}
+          {' '}
+          wagmi `Transfer`s logged
+        </summary>
         {wagmiLogs
           .reverse()
           .map((log) => stringify(log))

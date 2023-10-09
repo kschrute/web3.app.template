@@ -1,0 +1,6 @@
+query User($address: String!) {
+  user(address: $address) {
+    challenge
+    isAuthenticated
+  }
+}

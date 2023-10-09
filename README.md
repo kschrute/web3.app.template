@@ -9,3 +9,4 @@
 - [ ] Port Graphql package
 - [ ] Port Cron package
 - [ ] Get rid of Ethers?
+- [ ] Set up eslint for every package

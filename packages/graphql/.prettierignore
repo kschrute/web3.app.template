@@ -1,0 +1,13 @@
+# Do not lint generated files.
+dist
+types
+schema.graphql
+prisma/client/**
+prisma/types/**
+prisma/generated.d.ts
+
+# Don't ever lint node_modules and NPM stuff
+.npm
+node_modules
+
+# Ignore automatically generated files

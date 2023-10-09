@@ -7,13 +7,17 @@ import { useWatchPendingTransactions } from 'wagmi'
 export function WatchPendingTransactions() {
   const [hashes, setHashes] = useState<Hex[]>([])
   useWatchPendingTransactions({
-    listener: (hashes) => setHashes((x) => [...x, ...hashes]),
+    listener: (hashes_) => setHashes((x) => [...x, ...hashes_]),
   })
 
   return (
     <div>
       <details>
-        <summary>{hashes.length} hashes logged</summary>
+        <summary>
+          {hashes.length}
+          {' '}
+          hashes logged
+        </summary>
         {hashes.reverse().join('\n')}
       </details>
     </div>
