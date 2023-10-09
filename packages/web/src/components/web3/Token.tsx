@@ -17,6 +17,7 @@ export function Token() {
           placeholder="token address"
           value={address}
         />
+        {/* eslint-disable-next-line react/button-has-type */}
         <button onClick={() => refetch()}>fetch</button>
       </div>
 

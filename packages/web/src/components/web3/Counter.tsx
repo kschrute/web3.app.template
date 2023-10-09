@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { useAccount, useWaitForTransaction } from 'wagmi'
+import { useWaitForTransaction } from 'wagmi'
 import { BaseError } from 'viem'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
-import { useCounterIncrement, useCounterNumber, useCounterSetNumber } from '../wagmi'
-import { stringify } from '../utils/stringify'
+import { useCounterIncrement, useCounterNumber, useCounterSetNumber } from '../../wagmi'
+import { stringify } from '../../utils/stringify'
 
 export function Counter() {
   return (
@@ -20,11 +20,12 @@ export function CounterNumber() {
   const { data, refetch } = useCounterNumber({
     watch: true,
   })
-  const { address } = useAccount()
+  // const { address } = useAccount()
 
   return (
     <div>
       {data?.toString()}
+      {/* eslint-disable-next-line react/button-has-type */}
       <button onClick={() => refetch()}>refetch</button>
     </div>
   )
@@ -67,9 +68,11 @@ export function CounterIncrease() {
         }}
       >
         <input name="number" placeholder="number" />
+        {/* eslint-disable-next-line react/button-has-type */}
         <button disabled={isLoading} type="submit">
           Set
         </button>
+        {/* eslint-disable-next-line react/button-has-type */}
         <button disabled={isLoading} onClick={onIncrease}>
           Increase
         </button>

@@ -2,7 +2,7 @@
 
 import { paginatedIndexesConfig, useContractInfiniteReads } from 'wagmi'
 import { wagmiContractConfig } from './contracts'
-import { stringify } from '../utils/stringify'
+import { stringify } from '../../utils/stringify'
 
 export function ReadContractsInfinite() {
   const { data, isLoading, isSuccess, fetchNextPage } = useContractInfiniteReads({
@@ -31,6 +31,7 @@ export function ReadContractsInfinite() {
               ))}
             </div>
           ))}
+          {/* eslint-disable-next-line react/button-has-type */}
           <button onClick={() => fetchNextPage()}>Fetch more</button>
         </>
       )}

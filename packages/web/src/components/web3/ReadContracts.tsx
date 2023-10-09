@@ -3,7 +3,7 @@
 import { useContractReads } from 'wagmi'
 
 import { wagmiContractConfig } from './contracts'
-import { stringify } from '../utils/stringify'
+import { stringify } from '../../utils/stringify'
 
 export function ReadContracts() {
   const { data, isSuccess, isLoading } = useContractReads({

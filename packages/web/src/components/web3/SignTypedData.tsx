@@ -61,6 +61,7 @@ export function SignTypedData() {
 
   return (
     <>
+      {/* eslint-disable-next-line react/button-has-type */}
       <button disabled={isLoading} onClick={() => signTypedData()}>
         {isLoading ? 'Check Wallet' : 'Sign Message'}
       </button>

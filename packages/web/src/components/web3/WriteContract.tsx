@@ -1,12 +1,16 @@
 'use client'
 
-import { parseEther } from 'viem'
-import { useSendTransaction, useWaitForTransaction } from 'wagmi'
+import { BaseError } from 'viem'
+import { useContractWrite, useWaitForTransaction } from 'wagmi'
 
-import { stringify } from '../utils/stringify'
+import { wagmiContractConfig } from './contracts'
+import { stringify } from '../../utils/stringify'
 
-export function SendTransaction() {
-  const { data, error, isLoading, isError, sendTransaction } = useSendTransaction()
+export function WriteContract() {
+  const { write, data, error, isLoading, isError } = useContractWrite({
+    ...wagmiContractConfig,
+    functionName: 'mint',
+  })
   const {
     data: receipt,
     isLoading: isPending,
@@ -15,21 +19,21 @@ export function SendTransaction() {
 
   return (
     <>
+      <h3>Mint a wagmi</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault()
           const formData = new FormData(e.target as HTMLFormElement)
-          const address = formData.get('address') as string
-          const value = formData.get('value') as `${number}`
-          sendTransaction({
-            to: address,
-            value: parseEther(value),
+          const tokenId = formData.get('tokenId') as string
+          write({
+            args: [BigInt(tokenId)],
           })
         }}
       >
-        <input name="address" placeholder="address" />
-        <input name="value" placeholder="value (ether)" />
-        <button type="submit">Send</button>
+        <input name="tokenId" placeholder="token id" />
+        <button disabled={isLoading} type="submit">
+          Mint
+        </button>
       </form>
 
       {isLoading && <div>Check wallet...</div>}
@@ -47,12 +51,7 @@ export function SendTransaction() {
           </div>
         </>
       )}
-      {isError && (
-      <div>
-        Error:
-        {error?.message}
-      </div>
-      )}
+      {isError && <div>{(error as BaseError)?.shortMessage}</div>}
     </>
   )
 }

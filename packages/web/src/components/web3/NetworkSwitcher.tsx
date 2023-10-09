@@ -20,6 +20,7 @@ export function NetworkSwitcher() {
           Switch to:
           {' '}
           {chains.map((x) => (x.id === chain?.id ? null : (
+            // eslint-disable-next-line react/button-has-type
             <button key={x.id} onClick={() => switchNetwork(x.id)}>
               {x.name}
               {isLoading && x.id === pendingChainId && ' (switching)'}

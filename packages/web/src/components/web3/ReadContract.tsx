@@ -29,6 +29,7 @@ function TotalSupply() {
       Total Supply:
       {' '}
       {data?.toString()}
+      {/* eslint-disable-next-line react/button-has-type */}
       <button
         disabled={isRefetching}
         onClick={() => refetch()}
@@ -64,6 +65,7 @@ function BalanceOf() {
         style={{ marginLeft: 4 }}
         value={value}
       />
+      {/* eslint-disable-next-line react/button-has-type */}
       <button onClick={() => setAddress(value as Address)}>
         {isLoading ? 'fetching...' : 'fetch'}
       </button>

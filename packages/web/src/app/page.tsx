@@ -1,7 +1,7 @@
-import { ConnectButton } from '../components/ConnectButton'
-import { Connected } from '../components/Connected'
-import { NetworkSwitcher } from '../components/NetworkSwitcher'
-import { Counter } from '../components/Counter'
+import { ConnectButton } from '../components/web3/ConnectButton'
+import { Connected } from '../components/web3/Connected'
+import { NetworkSwitcher } from '../components/web3/NetworkSwitcher'
+import { Counter } from '../components/web3/Counter'
 
 export function Page() {
   return (

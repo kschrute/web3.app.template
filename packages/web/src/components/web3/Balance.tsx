@@ -28,6 +28,7 @@ export function AccountBalance() {
   return (
     <div>
       {data?.formatted}
+      {/* eslint-disable-next-line react/button-has-type */}
       <button onClick={() => refetch()}>refetch</button>
     </div>
   )
@@ -50,6 +51,7 @@ export function FindBalance() {
         placeholder="wallet address"
         value={value}
       />
+      {/* eslint-disable-next-line react/button-has-type */}
       <button
         onClick={() => (value === address ? refetch() : setAddress(value))}
       >
