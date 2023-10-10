@@ -19,6 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "concurrently": "^8.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "npm-run-all2": "^6.0.6"

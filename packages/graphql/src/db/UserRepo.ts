@@ -1,5 +1,5 @@
-import { randomUUID } from 'crypto'
 import { getAddress } from 'viem'
+import { createId } from '@paralleldrive/cuid2'
 import { db } from '.'
 import { User, Prisma } from '../../prisma/client'
 
@@ -45,7 +45,7 @@ export const findUniqueOrCreate = async (address: string, query = {}) => {
     return user
   }
 
-  const nonce = randomUUID()
+  const nonce = createId()
   const challenge = `Welcome!\n\nClick Sign to agree to the Terms of Service: https://example.com/terms-of-service.html\n\nWallet:\n${address}\n\nNonce:\n${nonce}`
   return db.user.create({
     ...query,

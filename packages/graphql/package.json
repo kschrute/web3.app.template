@@ -42,12 +42,12 @@
   "dependencies": {
     "@app/cron": "workspace:^",
     "@graphql-yoga/redis-event-target": "^2.0.0",
+    "@paralleldrive/cuid2": "^2.2.2",
     "@pothos/core": "^3.38.0",
     "@pothos/plugin-prisma": "^3.60.0",
     "@pothos/plugin-scope-auth": "^3.20.0",
     "@prisma/client": "^5.3.1",
     "bcryptjs": "^2.4.3",
-    "crypto": "^1.0.1",
     "graphql": "^16.8.1",
     "graphql-scalars": "^1.22.2",
     "graphql-ws": "^5.14.0",
