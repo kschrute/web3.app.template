@@ -8,7 +8,7 @@ import NextLink from 'next/link'
 import { useState } from 'react'
 import { MenuToggle } from './MenuToggle'
 
-export const Header = (props: FlexProps) => {
+export default function Header(props: FlexProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => setIsOpen(!isOpen)

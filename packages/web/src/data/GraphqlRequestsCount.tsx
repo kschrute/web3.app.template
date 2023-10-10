@@ -5,7 +5,7 @@ import { Button, Spinner } from '@chakra-ui/react'
 import { useRequestMutation, useRequestsSubscription } from '../graphql/client'
 import AppAlert from '../components/common/AppAlert'
 
-export const GraphqlRequestsCount = () => {
+export default function GraphqlRequestsCount() {
   const [request] = useRequestMutation()
   const { loading, error, data } = useRequestsSubscription()
 

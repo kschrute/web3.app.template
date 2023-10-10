@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Box, Container } from '@chakra-ui/react'
-import { Header } from './Header'
-import { LoginModal } from './modals/LoginModal'
+import Header from './Header'
+import LoginModal from './modals/LoginModal'
 
 type Props = {
   children?: ReactNode

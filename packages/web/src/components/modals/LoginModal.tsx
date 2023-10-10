@@ -19,7 +19,7 @@ import AppExternalLink from '../common/AppExternalLink'
 import { useAuthLazyQuery, useSignInMutation } from '../../graphql/client'
 import { useAccount, useDisconnect, useSignMessage } from 'wagmi'
 
-export const LoginModal = () => {
+export default function LoginModal() {
   const defaultButtonRef = useRef<any>()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()

@@ -8,7 +8,7 @@ import AppAlert from '../components/common/AppAlert'
 import { useAccount, useWaitForTransaction } from 'wagmi'
 import { useSubscriptionSubscribe, useSubscriptionUserSubscribedAt } from '../wagmi'
 
-export const SubscriptionContract = () => {
+export default function SubscriptionContract() {
   const addRecentTransaction = useAddRecentTransaction()
   const { address, isConnecting, isConnected, isDisconnected } = useAccount()
   const { data: userSubscribedAt, refetch } = useSubscriptionUserSubscribedAt({

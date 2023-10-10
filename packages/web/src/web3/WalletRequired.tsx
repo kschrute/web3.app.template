@@ -7,7 +7,7 @@ type Props = {
   children?: ReactNode
 } & BoxProps
 
-export const WalletRequired = ({ children, ...rest }: Props) => {
+export default function WalletRequired({ children, ...rest }: Props) {
   const { isConnected, isConnecting, isDisconnected } = useAccount()
 
   if (!isConnected || isDisconnected || isConnecting) {

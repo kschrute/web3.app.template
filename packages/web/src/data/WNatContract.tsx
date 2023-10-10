@@ -7,7 +7,7 @@ import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
 import { useAccount, useWaitForTransaction } from 'wagmi'
 import { useFaucetAccountClaimed, useFaucetClaim } from '../wagmi'
 
-export default function FaucetContract () {
+export default function WNatContract() {
   const addRecentTransaction = useAddRecentTransaction()
   const { address, isConnecting, isConnected, isDisconnected } = useAccount()
   const { data: isClaimed, refetch } = useFaucetAccountClaimed({

@@ -5,7 +5,7 @@ import { useMeQuery } from '../graphql/client'
 import { Debug } from '../components/Debug'
 import AppAlert from '../components/common/AppAlert'
 
-export const GraphqlQuery = () => {
+export default function GraphqlQuery() {
   const { loading, error, data } = useMeQuery({
     pollInterval: 1000,
   })

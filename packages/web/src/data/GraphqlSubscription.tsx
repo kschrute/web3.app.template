@@ -5,7 +5,7 @@ import { Button, Spinner } from '@chakra-ui/react'
 import { useBroadcastMutation, useRandomSubscription } from '../graphql/client'
 import AppAlert from '../components/common/AppAlert'
 
-export const GraphqlSubscription = () => {
+export default function GraphqlSubscription() {
   const [broadcast] = useBroadcastMutation()
   const { loading, error, data } = useRandomSubscription()
 
