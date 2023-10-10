@@ -19,6 +19,7 @@
     "prepare.abi.counter": "forge build --silent && jq '.abi' ./artifacts/Counter.sol/Counter.json > src/abi/Counter.json",
     "prepare.abi.faucet": "forge build --silent && jq '.abi' ./artifacts/Faucet.sol/Faucet.json > src/abi/Faucet.json",
     "prepare.abi.subscription": "forge build --silent && jq '.abi' ./artifacts/Subscription.sol/Subscription.json > src/abi/Subscription.json",
+    "prepare.abi.wnat": "forge build --silent && jq '.abi' ./artifacts/WNat.sol/WNat.json > src/abi/WNat.json",
     "prepare.build": "pnpm build",
     "prepare.wagmi": "wagmi generate",
     "build": "tsc --project tsconfig.dist.json",
