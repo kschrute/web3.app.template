@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "license": "ISC",
   "scripts": {
-    "dev": "pnpm anvil",
+    "dev": "pnpm run anvil",
     "dev.script": "tsx src/dev.ts",
     "anvil": "source .env && anvil --fork-url $ANVIL_FORK_URL --chain-id $ANVIL_CHAIN_ID -m \"$ANVIL_MNEMONIC\"",
     "deploy.local": "run-s 'deploy.local.*'",
