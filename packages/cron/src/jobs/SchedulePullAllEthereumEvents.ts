@@ -1,4 +1,4 @@
-import { contracts } from '@app/contracts'
+import { subscriptionAddress } from '@app/contracts'
 import { queues } from './queues'
 import { getChainId } from '../utils/getChainId'
 import { Job } from './Job'
@@ -12,7 +12,7 @@ export class SchedulePullAllEthereumEvents extends Job<object> {
     const chainId = getChainId()
 
     await new PullEthereumEvents({
-      contractAddress: contracts.Subscription.addresses[chainId],
+      contractAddress: subscriptionAddress[chainId as keyof typeof subscriptionAddress],
       abi: 'event Subscribed(address user, uint when)',
     }).schedule()
 

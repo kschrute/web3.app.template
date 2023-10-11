@@ -5,7 +5,7 @@ require('dotenv').config()
 const localNetwork = {
   chain: foundry,
   accounts: { mnemonic: process.env.MNEMONIC || '' },
-  startBlock: BigInt(18315559),
+  startBlock: BigInt(0),
   rpcUrl: 'http://127.0.0.1:8545',
   wsUrl: 'ws://127.0.0.1:8545',
 }

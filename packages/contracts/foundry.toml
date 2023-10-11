@@ -1,5 +1,6 @@
 [profile.default]
-solc = "0.8.20"
+#solc = "0.8.20"
+auto_detect_solc = true
 src = "contracts"
 out = "artifacts"
 #src = "src"

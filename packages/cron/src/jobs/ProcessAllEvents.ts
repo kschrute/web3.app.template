@@ -1,9 +1,10 @@
-import { contracts } from '@app/contracts'
+import { config } from '@app/contracts'
 import { EventRepo } from '@app/graphql'
-import { JobOptions } from 'bull'
+import { getAddress } from 'viem'
 import { queues } from './queues'
 import { getChainId } from '../utils/getChainId'
 import { Job } from './Job'
+import { JobOptions } from 'bull'
 
 const exceptions = ['DoNotProcessMe']
 
@@ -32,6 +33,11 @@ export class ProcessAllEvents extends Job<object> {
       console.log(`Scheduling ${event.address} ${event.name} event`)
 
       const deploymentName = getDeploymentName(event.address)
+
+      if (!deploymentName) {
+        throw Error(`Deployment not found for ${event.address}`)
+      }
+
       const jobName = `${deploymentName}${event.name}EventJob`
       const filePath = `./events/${deploymentName}/${jobName}.ts`
 
@@ -46,4 +52,7 @@ export class ProcessAllEvents extends Job<object> {
   }
 }
 
-const getDeploymentName = (address: string) => Object.values(contracts).find((c) => c.addresses[chainId].toUpperCase() === address.toUpperCase())?.name
+const getDeploymentName = (address_: string) => {
+  const address = getAddress(address_)
+  return Object.entries(config.deployments).find(([_, addresses]) => getAddress(addresses[chainId]) === address)?.[0]
+}

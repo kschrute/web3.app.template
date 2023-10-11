@@ -5,7 +5,7 @@ import { Box, Button, Flex, Input, InputGroup, Text, BoxProps } from '@chakra-ui
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
 import { useAccount, useWaitForTransaction } from 'wagmi'
 import { formatEther, parseEther } from 'viem'
-import { useWnatBalanceOf, useWnatDeposit, useWnatWithdraw } from '../wagmi'
+import { useWNatBalanceOf, useWNatDeposit, useWNatWithdraw } from '../wagmi'
 import AppAlert from '../components/common/AppAlert'
 import { useDebounce } from '../hooks/useDebounce'
 import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
@@ -26,7 +26,7 @@ export default function WNatContract() {
 
 function Balance() {
   const { address } = useAccount()
-  const { data: balance } = useWnatBalanceOf({
+  const { data: balance } = useWNatBalanceOf({
     args: [address!],
     watch: true,
   })
@@ -48,7 +48,7 @@ function Deposit({ ...props }: BoxProps) {
   const debouncedAmount = useDebounce(amount, 500)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  const { writeAsync, data, error, isLoading, isError } = useWnatDeposit({
+  const { writeAsync, data, error, isLoading, isError } = useWNatDeposit({
     value: parseEther(debouncedAmount),
   })
   const { data: receipt, isLoading: isPending, isSuccess } = useWaitForTransaction({ hash: data?.hash })
@@ -86,7 +86,7 @@ function Withdraw({ ...props }: BoxProps) {
   const showErrorMessage = useShowErrorMessage()
   const showSuccessMessage = useShowSuccessMessage()
   const { address } = useAccount()
-  const { data: balance } = useWnatBalanceOf({
+  const { data: balance } = useWNatBalanceOf({
     args: [address!],
     watch: true,
   })
@@ -95,7 +95,7 @@ function Withdraw({ ...props }: BoxProps) {
   const debouncedAmount = useDebounce(amount, 500)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  const { writeAsync, data, error, isLoading, isError } = useWnatWithdraw({
+  const { writeAsync, data, error, isLoading, isError } = useWNatWithdraw({
     args: [parseEther(debouncedAmount)],
   })
   const { data: receipt, isLoading: isPending, isSuccess } = useWaitForTransaction({ hash: data?.hash })
