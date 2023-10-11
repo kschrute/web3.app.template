@@ -1,3 +1,17 @@
+import {
+  getContract,
+  GetContractArgs,
+  readContract,
+  ReadContractConfig,
+  writeContract,
+  WriteContractMode,
+  WriteContractArgs,
+  WriteContractPreparedArgs,
+  WriteContractUnpreparedArgs,
+  prepareWriteContract,
+  PrepareWriteContractConfig,
+} from 'wagmi/actions'
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Counter
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +84,291 @@ export const counterConfig = {
   address: counterAddress,
   abi: counterABI,
 } as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ERC20
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const erc20ABI = [
+  {
+    type: 'event',
+    inputs: [
+      { name: 'owner', type: 'address', indexed: true },
+      { name: 'spender', type: 'address', indexed: true },
+      { name: 'value', type: 'uint256', indexed: false },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    inputs: [
+      { name: 'from', type: 'address', indexed: true },
+      { name: 'to', type: 'address', indexed: true },
+      { name: 'value', type: 'uint256', indexed: false },
+    ],
+    name: 'Transfer',
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'spender', type: 'address' },
+    ],
+    name: 'allowance',
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'spender', type: 'address' },
+      { name: 'amount', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [{ type: 'bool' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: 'account', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'decimals',
+    outputs: [{ type: 'uint8' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ type: 'string' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ type: 'string' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'recipient', type: 'address' },
+      { name: 'amount', type: 'uint256' },
+    ],
+    name: 'transfer',
+    outputs: [{ type: 'bool' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'sender', type: 'address' },
+      { name: 'recipient', type: 'address' },
+      { name: 'amount', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [{ type: 'bool' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'spender', type: 'address' },
+      { name: 'addedValue', type: 'uint256' },
+    ],
+    name: 'increaseAllowance',
+    outputs: [{ type: 'bool' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'spender', type: 'address' },
+      { name: 'subtractedValue', type: 'uint256' },
+    ],
+    name: 'decreaseAllowance',
+    outputs: [{ type: 'bool' }],
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ERC721
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const erc721ABI = [
+  {
+    type: 'event',
+    inputs: [
+      { name: 'owner', type: 'address', indexed: true },
+      { name: 'spender', type: 'address', indexed: true },
+      { name: 'tokenId', type: 'uint256', indexed: true },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    inputs: [
+      { name: 'owner', type: 'address', indexed: true },
+      { name: 'operator', type: 'address', indexed: true },
+      { name: 'approved', type: 'bool', indexed: false },
+    ],
+    name: 'ApprovalForAll',
+  },
+  {
+    type: 'event',
+    inputs: [
+      { name: 'from', type: 'address', indexed: true },
+      { name: 'to', type: 'address', indexed: true },
+      { name: 'tokenId', type: 'uint256', indexed: true },
+    ],
+    name: 'Transfer',
+  },
+  {
+    stateMutability: 'payable',
+    type: 'function',
+    inputs: [
+      { name: 'spender', type: 'address' },
+      { name: 'tokenId', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: 'account', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: 'tokenId', type: 'uint256' }],
+    name: 'getApproved',
+    outputs: [{ type: 'address' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'operator', type: 'address' },
+    ],
+    name: 'isApprovedForAll',
+    outputs: [{ type: 'bool' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ type: 'string' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: 'tokenId', type: 'uint256' }],
+    name: 'ownerOf',
+    outputs: [{ name: 'owner', type: 'address' }],
+  },
+  {
+    stateMutability: 'payable',
+    type: 'function',
+    inputs: [
+      { name: 'from', type: 'address' },
+      { name: 'to', type: 'address' },
+      { name: 'tokenId', type: 'uint256' },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'from', type: 'address' },
+      { name: 'to', type: 'address' },
+      { name: 'id', type: 'uint256' },
+      { name: 'data', type: 'bytes' },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'operator', type: 'address' },
+      { name: 'approved', type: 'bool' },
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ type: 'string' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: 'index', type: 'uint256' }],
+    name: 'tokenByIndex',
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'index', type: 'uint256' },
+    ],
+    name: 'tokenByIndex',
+    outputs: [{ name: 'tokenId', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [{ name: 'tokenId', type: 'uint256' }],
+    name: 'tokenURI',
+    outputs: [{ type: 'string' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    stateMutability: 'payable',
+    type: 'function',
+    inputs: [
+      { name: 'sender', type: 'address' },
+      { name: 'recipient', type: 'address' },
+      { name: 'tokenId', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [],
+  },
+] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Faucet
@@ -588,3 +887,554 @@ export const wNatAddress = {
  * -
  */
 export const wNatConfig = { address: wNatAddress, abi: wNatABI } as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Core
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link counterABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * -
+ */
+export function getCounter(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof counterAddress
+  },
+) {
+  return getContract({
+    abi: counterABI,
+    address: counterAddress[config.chainId as keyof typeof counterAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link counterABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * -
+ */
+export function readCounter<
+  TAbi extends readonly unknown[] = typeof counterABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof counterAddress
+  },
+) {
+  return readContract({
+    abi: counterABI,
+    address: counterAddress[config.chainId as keyof typeof counterAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link counterABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * -
+ */
+export function writeCounter<
+  TFunctionName extends string,
+  TMode extends WriteContractMode,
+  TChainId extends number = keyof typeof counterAddress,
+>(
+  config:
+    | (Omit<
+        WriteContractPreparedArgs<typeof counterABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared'
+          ? TChainId
+          : keyof typeof counterAddress
+      })
+    | (Omit<
+        WriteContractUnpreparedArgs<typeof counterABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared'
+          ? TChainId
+          : keyof typeof counterAddress
+      }),
+) {
+  return writeContract({
+    abi: counterABI,
+    address: counterAddress[config.chainId as keyof typeof counterAddress],
+    ...config,
+  } as unknown as WriteContractArgs<typeof counterABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link counterABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * -
+ */
+export function prepareWriteCounter<
+  TAbi extends readonly unknown[] = typeof counterABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<
+    PrepareWriteContractConfig<TAbi, TFunctionName>,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof counterAddress },
+) {
+  return prepareWriteContract({
+    abi: counterABI,
+    address: counterAddress[config.chainId as keyof typeof counterAddress],
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link erc20ABI}__.
+ */
+export function getErc20(config: Omit<GetContractArgs, 'abi'>) {
+  return getContract({ abi: erc20ABI, ...config })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link erc20ABI}__.
+ */
+export function readErc20<
+  TAbi extends readonly unknown[] = typeof erc20ABI,
+  TFunctionName extends string = string,
+>(config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi'>) {
+  return readContract({
+    abi: erc20ABI,
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link erc20ABI}__.
+ */
+export function writeErc20<TFunctionName extends string>(
+  config:
+    | Omit<WriteContractPreparedArgs<typeof erc20ABI, TFunctionName>, 'abi'>
+    | Omit<WriteContractUnpreparedArgs<typeof erc20ABI, TFunctionName>, 'abi'>,
+) {
+  return writeContract({
+    abi: erc20ABI,
+    ...config,
+  } as unknown as WriteContractArgs<typeof erc20ABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link erc20ABI}__.
+ */
+export function prepareWriteErc20<
+  TAbi extends readonly unknown[] = typeof erc20ABI,
+  TFunctionName extends string = string,
+>(config: Omit<PrepareWriteContractConfig<TAbi, TFunctionName>, 'abi'>) {
+  return prepareWriteContract({
+    abi: erc20ABI,
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link erc721ABI}__.
+ */
+export function getErc721(config: Omit<GetContractArgs, 'abi'>) {
+  return getContract({ abi: erc721ABI, ...config })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link erc721ABI}__.
+ */
+export function readErc721<
+  TAbi extends readonly unknown[] = typeof erc721ABI,
+  TFunctionName extends string = string,
+>(config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi'>) {
+  return readContract({
+    abi: erc721ABI,
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link erc721ABI}__.
+ */
+export function writeErc721<TFunctionName extends string>(
+  config:
+    | Omit<WriteContractPreparedArgs<typeof erc721ABI, TFunctionName>, 'abi'>
+    | Omit<WriteContractUnpreparedArgs<typeof erc721ABI, TFunctionName>, 'abi'>,
+) {
+  return writeContract({
+    abi: erc721ABI,
+    ...config,
+  } as unknown as WriteContractArgs<typeof erc721ABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link erc721ABI}__.
+ */
+export function prepareWriteErc721<
+  TAbi extends readonly unknown[] = typeof erc721ABI,
+  TFunctionName extends string = string,
+>(config: Omit<PrepareWriteContractConfig<TAbi, TFunctionName>, 'abi'>) {
+  return prepareWriteContract({
+    abi: erc721ABI,
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * -
+ */
+export function getFaucet(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof faucetAddress
+  },
+) {
+  return getContract({
+    abi: faucetABI,
+    address: faucetAddress[config.chainId as keyof typeof faucetAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * -
+ */
+export function readFaucet<
+  TAbi extends readonly unknown[] = typeof faucetABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof faucetAddress
+  },
+) {
+  return readContract({
+    abi: faucetABI,
+    address: faucetAddress[config.chainId as keyof typeof faucetAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * -
+ */
+export function writeFaucet<
+  TFunctionName extends string,
+  TMode extends WriteContractMode,
+  TChainId extends number = keyof typeof faucetAddress,
+>(
+  config:
+    | (Omit<
+        WriteContractPreparedArgs<typeof faucetABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared'
+          ? TChainId
+          : keyof typeof faucetAddress
+      })
+    | (Omit<
+        WriteContractUnpreparedArgs<typeof faucetABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared'
+          ? TChainId
+          : keyof typeof faucetAddress
+      }),
+) {
+  return writeContract({
+    abi: faucetABI,
+    address: faucetAddress[config.chainId as keyof typeof faucetAddress],
+    ...config,
+  } as unknown as WriteContractArgs<typeof faucetABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link faucetABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * -
+ */
+export function prepareWriteFaucet<
+  TAbi extends readonly unknown[] = typeof faucetABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<
+    PrepareWriteContractConfig<TAbi, TFunctionName>,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof faucetAddress },
+) {
+  return prepareWriteContract({
+    abi: faucetABI,
+    address: faucetAddress[config.chainId as keyof typeof faucetAddress],
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link mortalABI}__.
+ */
+export function getMortal(config: Omit<GetContractArgs, 'abi'>) {
+  return getContract({ abi: mortalABI, ...config })
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link mortalABI}__.
+ */
+export function writeMortal<TFunctionName extends string>(
+  config:
+    | Omit<WriteContractPreparedArgs<typeof mortalABI, TFunctionName>, 'abi'>
+    | Omit<WriteContractUnpreparedArgs<typeof mortalABI, TFunctionName>, 'abi'>,
+) {
+  return writeContract({
+    abi: mortalABI,
+    ...config,
+  } as unknown as WriteContractArgs<typeof mortalABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link mortalABI}__.
+ */
+export function prepareWriteMortal<
+  TAbi extends readonly unknown[] = typeof mortalABI,
+  TFunctionName extends string = string,
+>(config: Omit<PrepareWriteContractConfig<TAbi, TFunctionName>, 'abi'>) {
+  return prepareWriteContract({
+    abi: mortalABI,
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link ownedABI}__.
+ */
+export function getOwned(config: Omit<GetContractArgs, 'abi'>) {
+  return getContract({ abi: ownedABI, ...config })
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * -
+ */
+export function getSubscription(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof subscriptionAddress
+  },
+) {
+  return getContract({
+    abi: subscriptionABI,
+    address:
+      subscriptionAddress[config.chainId as keyof typeof subscriptionAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * -
+ */
+export function readSubscription<
+  TAbi extends readonly unknown[] = typeof subscriptionABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof subscriptionAddress
+  },
+) {
+  return readContract({
+    abi: subscriptionABI,
+    address:
+      subscriptionAddress[config.chainId as keyof typeof subscriptionAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * -
+ */
+export function writeSubscription<
+  TFunctionName extends string,
+  TMode extends WriteContractMode,
+  TChainId extends number = keyof typeof subscriptionAddress,
+>(
+  config:
+    | (Omit<
+        WriteContractPreparedArgs<typeof subscriptionABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared'
+          ? TChainId
+          : keyof typeof subscriptionAddress
+      })
+    | (Omit<
+        WriteContractUnpreparedArgs<typeof subscriptionABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared'
+          ? TChainId
+          : keyof typeof subscriptionAddress
+      }),
+) {
+  return writeContract({
+    abi: subscriptionABI,
+    address:
+      subscriptionAddress[config.chainId as keyof typeof subscriptionAddress],
+    ...config,
+  } as unknown as WriteContractArgs<typeof subscriptionABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link subscriptionABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * -
+ */
+export function prepareWriteSubscription<
+  TAbi extends readonly unknown[] = typeof subscriptionABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<
+    PrepareWriteContractConfig<TAbi, TFunctionName>,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof subscriptionAddress },
+) {
+  return prepareWriteContract({
+    abi: subscriptionABI,
+    address:
+      subscriptionAddress[config.chainId as keyof typeof subscriptionAddress],
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link getContract}__ with `abi` set to __{@link wNatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * -
+ */
+export function getWNat(
+  config: Omit<GetContractArgs, 'abi' | 'address'> & {
+    chainId?: keyof typeof wNatAddress
+  },
+) {
+  return getContract({
+    abi: wNatABI,
+    address: wNatAddress[config.chainId as keyof typeof wNatAddress],
+    ...config,
+  })
+}
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link wNatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * -
+ */
+export function readWNat<
+  TAbi extends readonly unknown[] = typeof wNatABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<ReadContractConfig<TAbi, TFunctionName>, 'abi' | 'address'> & {
+    chainId?: keyof typeof wNatAddress
+  },
+) {
+  return readContract({
+    abi: wNatABI,
+    address: wNatAddress[config.chainId as keyof typeof wNatAddress],
+    ...config,
+  } as unknown as ReadContractConfig<TAbi, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link wNatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * -
+ */
+export function writeWNat<
+  TFunctionName extends string,
+  TMode extends WriteContractMode,
+  TChainId extends number = keyof typeof wNatAddress,
+>(
+  config:
+    | (Omit<
+        WriteContractPreparedArgs<typeof wNatABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared' ? TChainId : keyof typeof wNatAddress
+      })
+    | (Omit<
+        WriteContractUnpreparedArgs<typeof wNatABI, TFunctionName>,
+        'abi' | 'address'
+      > & {
+        mode: TMode
+        chainId?: TMode extends 'prepared' ? TChainId : keyof typeof wNatAddress
+      }),
+) {
+  return writeContract({
+    abi: wNatABI,
+    address: wNatAddress[config.chainId as keyof typeof wNatAddress],
+    ...config,
+  } as unknown as WriteContractArgs<typeof wNatABI, TFunctionName>)
+}
+
+/**
+ * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link wNatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * -
+ */
+export function prepareWriteWNat<
+  TAbi extends readonly unknown[] = typeof wNatABI,
+  TFunctionName extends string = string,
+>(
+  config: Omit<
+    PrepareWriteContractConfig<TAbi, TFunctionName>,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof wNatAddress },
+) {
+  return prepareWriteContract({
+    abi: wNatABI,
+    address: wNatAddress[config.chainId as keyof typeof wNatAddress],
+    ...config,
+  } as unknown as PrepareWriteContractConfig<TAbi, TFunctionName>)
+}

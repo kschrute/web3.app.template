@@ -25,6 +25,9 @@ importers:
 
   packages/contracts:
     dependencies:
+      '@app/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@openzeppelin/contracts':
         specifier: ^5.0.0
         version: 5.0.0
@@ -68,6 +71,9 @@ importers:
       '@app/graphql':
         specifier: workspace:^
         version: link:../graphql
+      '@app/shared':
+        specifier: workspace:^
+        version: link:../shared
       abitype:
         specifier: ^0.9.10
         version: 0.9.10(typescript@5.2.2)
@@ -242,17 +248,51 @@ importers:
         specifier: ^5.0.4
         version: 5.2.2
 
+  packages/shared:
+    dependencies:
+      '@wagmi/cli':
+        specifier: ^1.0.0
+        version: 1.5.2(encoding@0.1.13)(typescript@5.2.2)(wagmi@1.4.3)
+      viem:
+        specifier: ^1.16.1
+        version: 1.16.1(typescript@5.2.2)(zod@3.22.2)
+      wagmi:
+        specifier: ^1.4.3
+        version: 1.4.3(@types/react@18.2.23)(encoding@0.1.13)(lokijs@1.5.12)(pino-pretty@10.2.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.16.1)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.7.2
+        version: 20.7.2
+      eslint:
+        specifier: ^8.50.0
+        version: 8.50.0
+      eslint-config-airbnb:
+        specifier: ^19.0.4
+        version: 19.0.4(eslint-plugin-import@2.28.1)(eslint-plugin-jsx-a11y@6.7.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.2)(eslint@8.50.0)
+      eslint-config-airbnb-base:
+        specifier: ^15.0.0
+        version: 15.0.0(eslint-plugin-import@2.28.1)(eslint@8.50.0)
+      lint-staged:
+        specifier: ^14.0.1
+        version: 14.0.1
+      tsx:
+        specifier: ^3.13.0
+        version: 3.13.0
+      typescript:
+        specifier: ^5.0.4
+        version: 5.2.2
+
   packages/web:
     dependencies:
       '@apollo/client':
         specifier: ^3.8.5
         version: 3.8.5(graphql-ws@5.14.1)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
-      '@app/contracts':
-        specifier: workspace:^
-        version: link:../contracts
       '@app/graphql':
         specifier: workspace:^
         version: link:../graphql
+      '@app/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@chakra-ui/icons':
         specifier: ^2.1.1
         version: 2.1.1(@chakra-ui/system@2.6.1)(react@18.2.0)
@@ -4260,7 +4300,7 @@ packages:
   /@types/cross-spawn@6.0.3:
     resolution: {integrity: sha512-BDAkU7WHHRHnvBf5z89lcvACsvkz/n7Tv+HyD/uW76O29HoH1Tk/W6iQrepaZVbisvlEek4ygwT8IW7ow9XLAA==}
     dependencies:
-      '@types/node': 18.18.4
+      '@types/node': 20.7.2
     dev: false
 
   /@types/debug@4.1.9:
@@ -4329,6 +4369,7 @@ packages:
 
   /@types/node@18.18.4:
     resolution: {integrity: sha512-t3rNFBgJRugIhackit2mVcLfF6IRc0JE4oeizPQL8Zrm8n2WY/0wOdpOPhdtG0V9Q2TlW/axbF1MJ6z+Yj/kKQ==}
+    dev: true
 
   /@types/node@20.7.2:
     resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}

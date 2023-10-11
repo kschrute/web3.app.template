@@ -31,6 +31,7 @@
     "pre-commit": "lint-staged"
   },
   "dependencies": {
+    "@app/shared": "workspace:^",
     "@openzeppelin/contracts": "^5.0.0",
     "@wagmi/cli": "^1.0.0",
     "viem": "^1.16.1",

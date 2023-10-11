@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.5",
-    "@app/contracts": "workspace:^",
+    "@app/shared": "workspace:^",
     "@app/graphql": "workspace:^",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/next-js": "^2.1.5",

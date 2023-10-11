@@ -26,6 +26,7 @@
     "pre-commit": "lint-staged"
   },
   "dependencies": {
+    "@app/shared": "workspace:^",
     "@app/contracts": "workspace:^",
     "@app/graphql": "workspace:^",
     "abitype": "^0.9.10",

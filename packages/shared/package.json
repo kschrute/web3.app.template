@@ -1,0 +1,31 @@
+{
+  "name": "@app/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "license": "ISC",
+  "scripts": {
+    "prepare": "run-s 'prepare.*'",
+    "prepare.build": "pnpm build",
+    "build": "tsc --project tsconfig.dist.json",
+    "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
+    "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "wagmi": "wagmi generate",
+    "test": "forge test",
+    "pre-commit": "lint-staged"
+  },
+  "dependencies": {
+    "@wagmi/cli": "^1.0.0",
+    "viem": "^1.16.1",
+    "wagmi": "^1.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.7.2",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "lint-staged": "^14.0.1",
+    "tsx": "^3.13.0",
+    "typescript": "^5.0.4"
+  }
+}

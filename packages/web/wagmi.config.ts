@@ -1,14 +1,17 @@
 import { defineConfig } from '@wagmi/cli'
-import { foundry, react } from '@wagmi/cli/plugins'
-import { config } from '@app/contracts'
+import { erc, foundry, react } from '@wagmi/cli/plugins'
+import { contracts } from '@app/shared'
 
 export default defineConfig({
   out: 'src/wagmi/generated.ts',
   plugins: [
     foundry({
       project: '../contracts',
-      include: config.include,
-      deployments: config.deployments,
+      include: contracts.include,
+      deployments: contracts.deployments,
+    }),
+    erc({
+      20: true,
     }),
     react(),
   ],

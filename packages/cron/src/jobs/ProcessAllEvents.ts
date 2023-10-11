@@ -1,4 +1,4 @@
-import { config } from '@app/contracts'
+import { contracts } from '@app/shared'
 import { EventRepo } from '@app/graphql'
 import { getAddress } from 'viem'
 import { queues } from './queues'
@@ -54,5 +54,5 @@ export class ProcessAllEvents extends Job<object> {
 
 const getDeploymentName = (address_: string) => {
   const address = getAddress(address_)
-  return Object.entries(config.deployments).find(([_, addresses]) => getAddress(addresses[chainId]) === address)?.[0]
+  return Object.entries(contracts.deployments).find(([_, addresses]) => getAddress(addresses[chainId]) === address)?.[0]
 }

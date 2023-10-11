@@ -13,6 +13,7 @@
     "contracts": "pnpm --filter contracts",
     "cron": "pnpm --filter cron",
     "graphql": "pnpm --filter graphql",
+    "shared": "pnpm --filter shared",
     "web": "pnpm --filter web",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

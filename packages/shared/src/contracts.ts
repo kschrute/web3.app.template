@@ -8,12 +8,12 @@ type Deployments = {
   }
 }
 
-type Config = {
+type ContractsConfig = {
   include: string[],
   deployments: Deployments,
 }
 
-export const config: Config = {
+export const contracts: ContractsConfig = {
   include: [
     'Counter.sol/*.json',
     'Faucet.sol/*.json',
