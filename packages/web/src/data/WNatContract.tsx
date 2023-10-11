@@ -6,9 +6,9 @@ import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
 import { useAccount, useWaitForTransaction } from 'wagmi'
 import { formatEther, parseEther } from 'viem'
 import { useWNatBalanceOf, useWNatDeposit, useWNatWithdraw } from '../wagmi'
-import AppAlert from '../components/common/AppAlert'
-import { useDebounce } from '../hooks/useDebounce'
 import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
+import useDebounce from '../hooks/useDebounce'
+import AppAlert from '../components/common/AppAlert'
 
 export default function WNatContract() {
   return (
@@ -59,7 +59,7 @@ function Deposit({ ...props }: BoxProps) {
 
   React.useEffect(() => {
     isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
-  }, [isSuccess, showSuccessMessage])
+  }, [isSuccess, showSuccessMessage, receipt?.transactionHash])
 
   const onClick = useCallback(async () => {
     const tx = await writeAsync?.()
@@ -110,7 +110,7 @@ function Withdraw({ ...props }: BoxProps) {
 
   React.useEffect(() => {
     isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
-  }, [isSuccess, showSuccessMessage])
+  }, [isSuccess, showSuccessMessage, receipt?.transactionHash])
 
   const onClick = useCallback(async () => {
     const tx = await writeAsync?.()

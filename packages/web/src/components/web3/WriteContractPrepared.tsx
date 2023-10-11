@@ -9,7 +9,7 @@ import {
 } from 'wagmi'
 
 import { wagmiContractConfig } from './contracts'
-import { useDebounce } from '../../hooks/useDebounce'
+import useDebounce from '../../hooks/useDebounce'
 import { stringify } from '../../utils/stringify'
 
 export function WriteContractPrepared() {
