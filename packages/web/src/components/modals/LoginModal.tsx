@@ -97,10 +97,10 @@ export default function LoginModal() {
             ref={defaultButtonRef}
             colorScheme="blue"
             ml={5}
-            isDisabled={isLoading}
+            isLoading={isLoading}
             onClick={onLogin}
           >
-            {isLoading && <Spinner size="sm" mr={2} />} Accept and sign
+            Accept and sign
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

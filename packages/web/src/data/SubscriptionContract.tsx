@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback } from 'react'
-import { Button, Skeleton, Spinner } from '@chakra-ui/react'
+import { Button, Skeleton } from '@chakra-ui/react'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
 import { bcTimestampToDate } from '../utils/bcTimestampToDate'
 import AppAlert from '../components/common/AppAlert'
@@ -44,8 +44,8 @@ export default function SubscriptionContract() {
           : `You are not subscribed yet. Click Subscribe button to subscribe.`
       }
       button={
-        <Button colorScheme="blue" isDisabled={isLoading} onClick={onCLick}>
-          {isLoading && <Spinner size="md" mr={2} />} Subscribe
+        <Button colorScheme="blue" isLoading={isLoading} onClick={onCLick}>
+          Subscribe
         </Button>
       }
     />

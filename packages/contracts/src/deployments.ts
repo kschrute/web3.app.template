@@ -1,6 +1,6 @@
 import { foundry, goerli, mainnet } from 'viem/chains'
 
-type Contracts = 'Counter' | 'Faucet' | 'Subscription' | 'WNat'
+type Contracts = 'Counter' | 'Faucet' | 'Subscription' | 'Wnat'
 
 type Deployments = {
   [key in Contracts]: {
@@ -24,7 +24,7 @@ export const deployments: Deployments = {
     [goerli.id]: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
     [foundry.id]: '0xF39FEF928BECF01F045FD609eb44C838ea37325b',
   },
-  WNat: {
+  Wnat: {
     [mainnet.id]: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
     [goerli.id]: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
     [foundry.id]: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',

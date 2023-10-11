@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Button, Spinner } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { useWaitForTransaction } from 'wagmi'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
-import { useCounterIncrement, useCounterNumber, useCounterSetNumber } from '../wagmi'
+import { useCounterIncrement, useCounterNumber } from '../wagmi'
 import AppAlert from '../components/common/AppAlert'
 
 export default function CounterContract() {
@@ -34,8 +34,8 @@ export default function CounterContract() {
       status={isError ? 'error' : isSuccess ? 'success' : isLoading || isPending ? 'warning' : 'info'}
       description={isError ? error?.message : `Current counter value: ${data?.toString()}`}
     >
-      <Button colorScheme="blue" isDisabled={isLoading} onClick={onIncrease}>
-        {isLoading && <Spinner size="md" mr={2} />} Increment
+      <Button colorScheme="blue" isLoading={isLoading} onClick={onIncrease}>
+        Increment
       </Button>
     </AppAlert>
   )

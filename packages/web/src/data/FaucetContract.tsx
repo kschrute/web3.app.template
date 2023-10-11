@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback } from 'react'
-import { Button, Skeleton, Spinner } from '@chakra-ui/react'
+import { Button, Skeleton } from '@chakra-ui/react'
 import AppAlert from '../components/common/AppAlert'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
 import { useAccount, useWaitForTransaction } from 'wagmi'
@@ -41,8 +41,8 @@ export default function FaucetContract () {
           : `Click claim to claim your faucet tokens.`
       }
       button={
-        <Button colorScheme="blue" isDisabled={isLoading || !!isClaimed} onClick={onCLick}>
-          {isLoading && <Spinner size="md" mr={2} />} Claim
+        <Button colorScheme="blue" isLoading={isLoading} isDisabled={!!isClaimed} onClick={onCLick}>
+          Claim
         </Button>
       }
     />

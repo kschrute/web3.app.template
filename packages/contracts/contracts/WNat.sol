@@ -9,8 +9,8 @@ import "../lib/openzeppelin/contracts/5.0.0/token/ERC20/extensions/ERC20Permit.s
 //import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
 contract WNat is ERC20, ERC20Burnable, ERC20Permit {
-    event  Deposit(address indexed dst, uint wad);
-    event  Withdrawal(address indexed src, uint wad);
+    event Deposit(address indexed dst, uint wad);
+    event Withdrawal(address indexed src, uint wad);
 
     constructor() ERC20("Wrapped NAT", "NAT") ERC20Permit("Wrapped NAT") {}
 

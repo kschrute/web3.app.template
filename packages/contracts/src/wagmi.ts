@@ -1625,6 +1625,11 @@ export const subscriptionConfig = {
 // Wnat
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
+ */
 export const wnatABI = [
   { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
   { type: 'error', inputs: [], name: 'ECDSAInvalidSignature' },
@@ -1932,3 +1937,21 @@ export const wnatABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
+ */
+export const wnatAddress = {
+  1: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
+  5: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
+  31337: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
+ */
+export const wnatConfig = { address: wnatAddress, abi: wnatABI } as const

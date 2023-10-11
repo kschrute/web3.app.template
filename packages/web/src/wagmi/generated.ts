@@ -1644,6 +1644,11 @@ export const subscriptionConfig = {
 // Wnat
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
+ */
 export const wnatABI = [
   { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
   { type: 'error', inputs: [], name: 'ECDSAInvalidSignature' },
@@ -1951,6 +1956,24 @@ export const wnatABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
+ */
+export const wnatAddress = {
+  1: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
+  5: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
+  31337: '0x4635a010Be2707a3FB9c3467Fc615202468BC51E',
+} as const
+
+/**
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
+ */
+export const wnatConfig = { address: wnatAddress, abi: wnatABI } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // React
@@ -5703,6 +5726,10 @@ export function useSubscriptionSubscribedEvent(
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatRead<
   TFunctionName extends string,
@@ -5710,18 +5737,25 @@ export function useWnatRead<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
-  return useContractRead({ abi: wnatABI, ...config } as UseContractReadConfig<
-    typeof wnatABI,
-    TFunctionName,
-    TSelectData
-  >)
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
+    ...config,
+  } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
 }
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"DOMAIN_SEPARATOR"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatDomainSeparator<
   TFunctionName extends 'DOMAIN_SEPARATOR',
@@ -5729,11 +5763,15 @@ export function useWnatDomainSeparator<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'DOMAIN_SEPARATOR',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5741,6 +5779,10 @@ export function useWnatDomainSeparator<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"allowance"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatAllowance<
   TFunctionName extends 'allowance',
@@ -5748,11 +5790,15 @@ export function useWnatAllowance<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'allowance',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5760,6 +5806,10 @@ export function useWnatAllowance<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"balanceOf"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatBalanceOf<
   TFunctionName extends 'balanceOf',
@@ -5767,11 +5817,15 @@ export function useWnatBalanceOf<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'balanceOf',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5779,6 +5833,10 @@ export function useWnatBalanceOf<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"decimals"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatDecimals<
   TFunctionName extends 'decimals',
@@ -5786,11 +5844,15 @@ export function useWnatDecimals<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'decimals',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5798,6 +5860,10 @@ export function useWnatDecimals<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"eip712Domain"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatEip712Domain<
   TFunctionName extends 'eip712Domain',
@@ -5805,11 +5871,15 @@ export function useWnatEip712Domain<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'eip712Domain',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5817,6 +5887,10 @@ export function useWnatEip712Domain<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"name"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatName<
   TFunctionName extends 'name',
@@ -5824,11 +5898,15 @@ export function useWnatName<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'name',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5836,6 +5914,10 @@ export function useWnatName<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"nonces"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatNonces<
   TFunctionName extends 'nonces',
@@ -5843,11 +5925,15 @@ export function useWnatNonces<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'nonces',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5855,6 +5941,10 @@ export function useWnatNonces<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"symbol"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatSymbol<
   TFunctionName extends 'symbol',
@@ -5862,11 +5952,15 @@ export function useWnatSymbol<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'symbol',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5874,6 +5968,10 @@ export function useWnatSymbol<
 
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"totalSupply"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatTotalSupply<
   TFunctionName extends 'totalSupply',
@@ -5881,11 +5979,15 @@ export function useWnatTotalSupply<
 >(
   config: Omit<
     UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'totalSupply',
     ...config,
   } as UseContractReadConfig<typeof wnatABI, TFunctionName, TSelectData>)
@@ -5893,44 +5995,68 @@ export function useWnatTotalSupply<
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatWrite<
   TFunctionName extends string,
   TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof wnatABI, string>['request']['abi'],
         TFunctionName,
         TMode
-      >
+      > & { address?: Address; chainId?: TChainId }
     : UseContractWriteConfig<typeof wnatABI, TFunctionName, TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, TFunctionName, TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     ...config,
   } as any)
 }
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"approve"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatApprove<TMode extends WriteContractMode = undefined>(
+export function useWnatApprove<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof wnatABI, 'approve'>['request']['abi'],
         'approve',
         TMode
-      > & { functionName?: 'approve' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'approve' }
     : UseContractWriteConfig<typeof wnatABI, 'approve', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'approve'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'approve', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'approve',
     ...config,
   } as any)
@@ -5938,21 +6064,34 @@ export function useWnatApprove<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"burn"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatBurn<TMode extends WriteContractMode = undefined>(
+export function useWnatBurn<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof wnatABI, 'burn'>['request']['abi'],
         'burn',
         TMode
-      > & { functionName?: 'burn' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'burn' }
     : UseContractWriteConfig<typeof wnatABI, 'burn', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'burn'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'burn', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'burn',
     ...config,
   } as any)
@@ -5960,8 +6099,15 @@ export function useWnatBurn<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"burnFrom"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatBurnFrom<TMode extends WriteContractMode = undefined>(
+export function useWnatBurnFrom<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
@@ -5970,14 +6116,20 @@ export function useWnatBurnFrom<TMode extends WriteContractMode = undefined>(
         >['request']['abi'],
         'burnFrom',
         TMode
-      > & { functionName?: 'burnFrom' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'burnFrom' }
     : UseContractWriteConfig<typeof wnatABI, 'burnFrom', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'burnFrom'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'burnFrom', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'burnFrom',
     ...config,
   } as any)
@@ -5985,21 +6137,34 @@ export function useWnatBurnFrom<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"deposit"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatDeposit<TMode extends WriteContractMode = undefined>(
+export function useWnatDeposit<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof wnatABI, 'deposit'>['request']['abi'],
         'deposit',
         TMode
-      > & { functionName?: 'deposit' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'deposit' }
     : UseContractWriteConfig<typeof wnatABI, 'deposit', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'deposit'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'deposit', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'deposit',
     ...config,
   } as any)
@@ -6007,8 +6172,15 @@ export function useWnatDeposit<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"depositTo"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatDepositTo<TMode extends WriteContractMode = undefined>(
+export function useWnatDepositTo<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
@@ -6017,14 +6189,20 @@ export function useWnatDepositTo<TMode extends WriteContractMode = undefined>(
         >['request']['abi'],
         'depositTo',
         TMode
-      > & { functionName?: 'depositTo' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'depositTo' }
     : UseContractWriteConfig<typeof wnatABI, 'depositTo', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'depositTo'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'depositTo', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'depositTo',
     ...config,
   } as any)
@@ -6032,21 +6210,34 @@ export function useWnatDepositTo<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"permit"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatPermit<TMode extends WriteContractMode = undefined>(
+export function useWnatPermit<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<typeof wnatABI, 'permit'>['request']['abi'],
         'permit',
         TMode
-      > & { functionName?: 'permit' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'permit' }
     : UseContractWriteConfig<typeof wnatABI, 'permit', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'permit'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'permit', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'permit',
     ...config,
   } as any)
@@ -6054,8 +6245,15 @@ export function useWnatPermit<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"transfer"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatTransfer<TMode extends WriteContractMode = undefined>(
+export function useWnatTransfer<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
@@ -6064,14 +6262,20 @@ export function useWnatTransfer<TMode extends WriteContractMode = undefined>(
         >['request']['abi'],
         'transfer',
         TMode
-      > & { functionName?: 'transfer' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'transfer' }
     : UseContractWriteConfig<typeof wnatABI, 'transfer', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'transfer'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'transfer', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'transfer',
     ...config,
   } as any)
@@ -6079,9 +6283,14 @@ export function useWnatTransfer<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"transferFrom"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatTransferFrom<
   TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
@@ -6091,14 +6300,24 @@ export function useWnatTransferFrom<
         >['request']['abi'],
         'transferFrom',
         TMode
-      > & { functionName?: 'transferFrom' }
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'transferFrom'
+      }
     : UseContractWriteConfig<typeof wnatABI, 'transferFrom', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'transferFrom'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'transferFrom', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'transferFrom',
     ...config,
   } as any)
@@ -6106,8 +6325,15 @@ export function useWnatTransferFrom<
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"withdraw"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
-export function useWnatWithdraw<TMode extends WriteContractMode = undefined>(
+export function useWnatWithdraw<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
+>(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
@@ -6116,14 +6342,20 @@ export function useWnatWithdraw<TMode extends WriteContractMode = undefined>(
         >['request']['abi'],
         'withdraw',
         TMode
-      > & { functionName?: 'withdraw' }
+      > & { address?: Address; chainId?: TChainId; functionName?: 'withdraw' }
     : UseContractWriteConfig<typeof wnatABI, 'withdraw', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'withdraw'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'withdraw', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'withdraw',
     ...config,
   } as any)
@@ -6131,9 +6363,14 @@ export function useWnatWithdraw<TMode extends WriteContractMode = undefined>(
 
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"withdrawFrom"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatWithdrawFrom<
   TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof wnatAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
@@ -6143,14 +6380,24 @@ export function useWnatWithdrawFrom<
         >['request']['abi'],
         'withdrawFrom',
         TMode
-      > & { functionName?: 'withdrawFrom' }
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'withdrawFrom'
+      }
     : UseContractWriteConfig<typeof wnatABI, 'withdrawFrom', TMode> & {
         abi?: never
+        address?: never
+        chainId?: TChainId
         functionName?: 'withdrawFrom'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof wnatABI, 'withdrawFrom', TMode>({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'withdrawFrom',
     ...config,
   } as any)
@@ -6158,30 +6405,46 @@ export function useWnatWithdrawFrom<
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatWrite<TFunctionName extends string>(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, TFunctionName>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, TFunctionName>)
 }
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"approve"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatApprove(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'approve'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'approve',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'approve'>)
@@ -6189,15 +6452,23 @@ export function usePrepareWnatApprove(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"burn"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatBurn(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'burn'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'burn',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'burn'>)
@@ -6205,15 +6476,23 @@ export function usePrepareWnatBurn(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"burnFrom"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatBurnFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'burnFrom'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'burnFrom',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'burnFrom'>)
@@ -6221,15 +6500,23 @@ export function usePrepareWnatBurnFrom(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"deposit"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatDeposit(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'deposit'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'deposit',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'deposit'>)
@@ -6237,15 +6524,23 @@ export function usePrepareWnatDeposit(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"depositTo"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatDepositTo(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'depositTo'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'depositTo',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'depositTo'>)
@@ -6253,15 +6548,23 @@ export function usePrepareWnatDepositTo(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"permit"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatPermit(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'permit'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'permit',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'permit'>)
@@ -6269,15 +6572,23 @@ export function usePrepareWnatPermit(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"transfer"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatTransfer(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'transfer'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'transfer',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'transfer'>)
@@ -6285,15 +6596,23 @@ export function usePrepareWnatTransfer(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"transferFrom"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatTransferFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'transferFrom'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'transferFrom',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'transferFrom'>)
@@ -6301,15 +6620,23 @@ export function usePrepareWnatTransferFrom(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"withdraw"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatWithdraw(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'withdraw'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'withdraw',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'withdraw'>)
@@ -6317,15 +6644,23 @@ export function usePrepareWnatWithdraw(
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wnatABI}__ and `functionName` set to `"withdrawFrom"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function usePrepareWnatWithdrawFrom(
   config: Omit<
     UsePrepareContractWriteConfig<typeof wnatABI, 'withdrawFrom'>,
-    'abi' | 'functionName'
-  > = {} as any,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     functionName: 'withdrawFrom',
     ...config,
   } as UsePrepareContractWriteConfig<typeof wnatABI, 'withdrawFrom'>)
@@ -6333,30 +6668,46 @@ export function usePrepareWnatWithdrawFrom(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wnatABI}__.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatEvent<TEventName extends string>(
   config: Omit<
     UseContractEventConfig<typeof wnatABI, TEventName>,
-    'abi'
-  > = {} as any,
+    'abi' | 'address'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
-  return useContractEvent({ abi: wnatABI, ...config } as UseContractEventConfig<
-    typeof wnatABI,
-    TEventName
-  >)
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractEvent({
+    abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
+    ...config,
+  } as UseContractEventConfig<typeof wnatABI, TEventName>)
 }
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wnatABI}__ and `eventName` set to `"Approval"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatApprovalEvent(
   config: Omit<
     UseContractEventConfig<typeof wnatABI, 'Approval'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     eventName: 'Approval',
     ...config,
   } as UseContractEventConfig<typeof wnatABI, 'Approval'>)
@@ -6364,15 +6715,23 @@ export function useWnatApprovalEvent(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wnatABI}__ and `eventName` set to `"Deposit"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatDepositEvent(
   config: Omit<
     UseContractEventConfig<typeof wnatABI, 'Deposit'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     eventName: 'Deposit',
     ...config,
   } as UseContractEventConfig<typeof wnatABI, 'Deposit'>)
@@ -6380,15 +6739,23 @@ export function useWnatDepositEvent(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wnatABI}__ and `eventName` set to `"EIP712DomainChanged"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatEip712DomainChangedEvent(
   config: Omit<
     UseContractEventConfig<typeof wnatABI, 'EIP712DomainChanged'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     eventName: 'EIP712DomainChanged',
     ...config,
   } as UseContractEventConfig<typeof wnatABI, 'EIP712DomainChanged'>)
@@ -6396,15 +6763,23 @@ export function useWnatEip712DomainChangedEvent(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wnatABI}__ and `eventName` set to `"Transfer"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatTransferEvent(
   config: Omit<
     UseContractEventConfig<typeof wnatABI, 'Transfer'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     eventName: 'Transfer',
     ...config,
   } as UseContractEventConfig<typeof wnatABI, 'Transfer'>)
@@ -6412,15 +6787,23 @@ export function useWnatTransferEvent(
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wnatABI}__ and `eventName` set to `"Withdrawal"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x4635a010Be2707a3FB9c3467Fc615202468BC51E)
+ * -
  */
 export function useWnatWithdrawalEvent(
   config: Omit<
     UseContractEventConfig<typeof wnatABI, 'Withdrawal'>,
-    'abi' | 'eventName'
-  > = {} as any,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof wnatAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: wnatABI,
+    address: wnatAddress[chainId as keyof typeof wnatAddress],
     eventName: 'Withdrawal',
     ...config,
   } as UseContractEventConfig<typeof wnatABI, 'Withdrawal'>)
