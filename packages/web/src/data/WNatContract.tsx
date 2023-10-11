@@ -2,11 +2,11 @@
 
 import React, { useCallback } from 'react'
 import { Box, Button, Flex, Input, InputGroup, Text, BoxProps } from '@chakra-ui/react'
-import AppAlert from '../components/common/AppAlert'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
 import { useAccount, useWaitForTransaction } from 'wagmi'
-import { useWnatBalanceOf, useWnatDeposit, useWnatWithdraw } from '../wagmi'
 import { formatEther, parseEther } from 'viem'
+import { useWnatBalanceOf, useWnatDeposit, useWnatWithdraw } from '../wagmi'
+import AppAlert from '../components/common/AppAlert'
 import { useDebounce } from '../hooks/useDebounce'
 import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
 
@@ -26,14 +26,16 @@ export default function WNatContract() {
 
 function Balance() {
   const { address } = useAccount()
-  const { data: balance, } = useWnatBalanceOf({
+  const { data: balance } = useWnatBalanceOf({
     args: [address!],
     watch: true,
   })
 
   return (
     <Text mb={5}>
-      Your WNat balance: {balance !== undefined && formatEther(balance)}
+      Your WNat balance:
+      {' '}
+      {balance !== undefined && formatEther(balance)}
     </Text>
   )
 }
@@ -56,13 +58,13 @@ function Deposit({ ...props }: BoxProps) {
   }, [isError, error, showErrorMessage])
 
   React.useEffect(() => {
-    isSuccess && showSuccessMessage('Transaction successfully mined')
+    isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
   }, [isSuccess, showSuccessMessage])
 
   const onClick = useCallback(async () => {
     const tx = await writeAsync?.()
-    tx &&
-    addRecentTransaction({
+    tx
+    && addRecentTransaction({
       hash: tx.hash,
       description: `Wrap ${amount} ETH`,
     })
@@ -84,7 +86,7 @@ function Withdraw({ ...props }: BoxProps) {
   const showErrorMessage = useShowErrorMessage()
   const showSuccessMessage = useShowSuccessMessage()
   const { address } = useAccount()
-  const { data: balance, } = useWnatBalanceOf({
+  const { data: balance } = useWnatBalanceOf({
     args: [address!],
     watch: true,
   })
@@ -93,27 +95,27 @@ function Withdraw({ ...props }: BoxProps) {
   const debouncedAmount = useDebounce(amount, 500)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  React.useEffect(() => {
-    balance !== undefined && setAmount(formatEther(balance))
-  }, [balance])
-
   const { writeAsync, data, error, isLoading, isError } = useWnatWithdraw({
     args: [parseEther(debouncedAmount)],
   })
   const { data: receipt, isLoading: isPending, isSuccess } = useWaitForTransaction({ hash: data?.hash })
 
   React.useEffect(() => {
+    balance !== undefined && setAmount(formatEther(balance))
+  }, [balance])
+
+  React.useEffect(() => {
     isError && error && showErrorMessage(error.message)
   }, [isError, error, showErrorMessage])
 
   React.useEffect(() => {
-    isSuccess && showSuccessMessage('Transaction successfully mined')
+    isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
   }, [isSuccess, showSuccessMessage])
 
   const onClick = useCallback(async () => {
     const tx = await writeAsync?.()
-    tx &&
-    addRecentTransaction({
+    tx
+    && addRecentTransaction({
       hash: tx.hash,
       description: `Unwrap ${amount} WNAT`,
     })
