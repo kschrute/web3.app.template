@@ -1,12 +1,11 @@
 import { builder } from '../builder'
 import { db, UserRepo } from '../db'
 import { ProjectCreateInput } from './project'
-// import { verifyMessage } from 'ethers/lib/utils'
 import config from '../../config'
 import { sign } from 'jsonwebtoken'
 import { queryFromInfo } from '@pothos/plugin-prisma'
-import { User } from '../../prisma/client'
 import { getAddress, verifyMessage } from 'viem'
+import { User } from '../../prisma/client'
 
 const User = builder.prismaObject('User', {
   fields: (t) => ({
@@ -153,7 +152,6 @@ builder.mutationFields((t) => ({
       }
 
       try {
-        // const signer = verifyMessage(user.challenge, signature)
         const isValid = verifyMessage({
           address: getAddress(user.address),
           message: user.challenge,

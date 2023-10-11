@@ -1,7 +1,5 @@
 import { foundry } from 'viem/chains'
 // import * as CounterAbi from './abi/Counter.json'
-// import * as FaucetAbi from './abi/Faucet.json'
-// import * as SubscriptionAbi from './abi/Subscription.json'
 import { deployments } from './deployments'
 
 export type Contract = {
@@ -25,17 +23,21 @@ export const contracts: Contracts = {
     },
   },
   Faucet: {
-    // abi: FaucetAbi as Abi,
     name: 'Faucet',
     addresses: {
       [foundry.id]: deployments.Faucet[foundry.id],
     },
   },
   Subscription: {
-    // abi: SubscriptionAbi as Abi,
     name: 'Subscription',
     addresses: {
       [foundry.id]: deployments.Subscription[foundry.id],
+    },
+  },
+  Wnat: {
+    name: 'Wnat',
+    addresses: {
+      [foundry.id]: deployments.Wnat[foundry.id],
     },
   },
 }
