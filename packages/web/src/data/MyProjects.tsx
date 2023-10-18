@@ -1,16 +1,18 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useProjectsQuery } from '../graphql/client'
 import ProjectsList from '../components/projects/ProjectsList'
-import { Heading, Text } from '@chakra-ui/react'
-import { useHasReachedBottom } from '../hooks/useHasReachedBottom'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import { HasMoreItems } from '../components/loading/HasMoreItems'
 import { LoadingMoreItems } from '../components/loading/LoadingMoreItems'
+import useScrolledToEnd from '../hooks/useScrolledToEnd'
+import useThrottle from '../hooks/useThrottle'
 
 const variables = {
   take: 10,
 }
 
 export default function MyProjects() {
+  const isAtEnd = useScrolledToEnd()
   const [loadingMore, setLoadingMore] = useState(false)
   const { data, loading, startPolling, stopPolling, fetchMore, refetch } = useProjectsQuery({ variables })
 
@@ -19,7 +21,7 @@ export default function MyProjects() {
   const hasNextPage = useMemo(() => data?.projects.pageInfo?.hasNextPage, [data])
   const endCursor = useMemo(() => data?.projects.pageInfo?.endCursor, [data])
 
-  const onLoadMore = useCallback(async () => {
+  const onLoadMore = useThrottle(async () => {
     if (!pageInfo || !hasNextPage || loadingMore) return
 
     setLoadingMore(true)
@@ -30,18 +32,20 @@ export default function MyProjects() {
       },
     })
     setLoadingMore(false)
-  }, [setLoadingMore, fetchMore, hasNextPage, loadingMore, endCursor])
+  }, 500, [setLoadingMore, fetchMore, hasNextPage, loadingMore, endCursor])
 
-  useHasReachedBottom(!!projects, onLoadMore)
+  useEffect(() => {
+    isAtEnd && onLoadMore()
+  }, [isAtEnd])
 
   return (
-    <>
+    <Box>
       <Heading>My Projects</Heading>
       {loading && <Text>Loading...</Text>}
       {projects && !projects.length && <Text>No Projects</Text>}
       {projects && projects.length > 0 && <ProjectsList projects={projects} />}
       {hasNextPage && !loadingMore && <HasMoreItems />}
       {loadingMore && <LoadingMoreItems />}
-    </>
+    </Box>
   )
 }

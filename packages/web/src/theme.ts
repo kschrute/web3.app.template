@@ -5,6 +5,7 @@ export const theme = extendTheme({
   config: {
     initialColorMode: 'dark',
   },
+/*
   styles: {
     global: (props: StyleFunctionProps) => ({
       body: {
@@ -13,6 +14,7 @@ export const theme = extendTheme({
       },
     }),
   },
+*/
   fonts: {
     heading: `Montserrat, "Maven Pro", ${defaultTheme.fonts.heading}`,
     body: `Montserrat, "Maven Pro", ${defaultTheme.fonts.body}`,

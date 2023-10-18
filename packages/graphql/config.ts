@@ -1,6 +1,17 @@
 const config = {
   environment: process.env.NODE_ENV || 'development',
   appSecret: process.env.APP_SECRET as string,
+
+  ...(process.env.NODE_ENV && process.env.NODE_ENV === 'development'
+    ? {
+      dev: {
+        db: {
+          averageLatencyMsecs: 1_000,
+          failPercent: 0,
+        },
+      },
+    }
+    : {}),
 }
 
 export default config

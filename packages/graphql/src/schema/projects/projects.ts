@@ -1,4 +1,5 @@
 import { builder } from '../../builder'
+import { devDelay } from '../../utils'
 
 builder.queryField('projects', (t) =>
   t.prismaConnection({
@@ -14,13 +15,16 @@ builder.queryField('projects', (t) =>
         userAddress: context.currentUser!.address
       }
     }),
-    resolve: (query, parent, args, context, info) => context.prisma.project.findMany({
-      ...query,
-      where: {
-        userAddress: context.currentUser!.address
-      },
-      orderBy: { id: 'desc' },
-    }),
+    resolve: async (query, parent, args, context, info) => {
+      await devDelay()
+      return context.prisma.project.findMany({
+        ...query,
+        where: {
+          userAddress: context.currentUser!.address
+        },
+        orderBy: { id: 'desc' },
+      })
+    },
   }),
 )
 

@@ -7,6 +7,7 @@ import { queryFromInfo } from '@pothos/plugin-prisma'
 import { getAddress, verifyMessage } from 'viem'
 import { UserObject } from './models'
 import { User } from '../../prisma/client'
+import { devDelay } from '../utils'
 
 const UserAuth = builder
   .objectRef<{
@@ -58,6 +59,8 @@ builder.queryFields((t) => ({
       }),
     },
     resolve: async (parent, { data }, context) => {
+      await devDelay()
+
       const { address } = data
       const { currentUser } = context
 
@@ -77,6 +80,8 @@ builder.queryFields((t) => ({
   me: t.prismaField({
     type: 'User',
     resolve: async (query, root, args, context, info) => {
+      await devDelay()
+
       if (context.currentUser === null) {
         throw new Error('Unauthenticated!')
       }
@@ -97,6 +102,8 @@ builder.queryFields((t) => ({
       address: t.arg.string({ required: true }),
     },
     resolve: async (query, root, args, context, info) => {
+      await devDelay()
+
       const { currentUser } = context
       const { address } = args
       if (currentUser && currentUser.address === getAddress(address)) {
