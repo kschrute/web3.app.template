@@ -1,5 +1,6 @@
 import { builder } from '../builder'
-import './project'
+import './models'
+import './projects'
 import './requests'
 import './subscription'
 import './user'

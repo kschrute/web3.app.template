@@ -12,7 +12,7 @@ export interface JobData {
   contractAddress: string
   abi: string
   initialStartFromBlock?: bigint
-  startFromBlockNumber?: bigint
+  startFromBlockNumber?: bigint | string
   blocksPerFetch?: bigint
   markAsProcessed?: boolean
 }
@@ -54,9 +54,11 @@ export class PullEthereumEvents extends Job<JobData> {
 
     const currentBlock = await publicClient.getBlockNumber()
 
-    const startFromBlock = startFromBlockNumber || (latestEvent?.blockNumber
-      ? latestEvent.blockNumber
-      : initialStartFromBlock ?? getNetworkConfig().startBlock)
+    const startFromBlock = startFromBlockNumber !== undefined
+      ? BigInt(startFromBlockNumber)
+      : (latestEvent?.blockNumber
+        ? latestEvent.blockNumber
+        : initialStartFromBlock ?? getNetworkConfig().startBlock)
 
     const toBlock = blocksPerFetch ? startFromBlock + blocksPerFetch - BigInt(1) : currentBlock
 

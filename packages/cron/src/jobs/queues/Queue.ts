@@ -2,6 +2,7 @@ import Bull, { JobOptions } from 'bull'
 import * as jobs from '../index'
 import { Job } from '../Job'
 import config from '../../../config'
+import { stringify } from 'viem'
 
 export const defaultOptions: JobOptions = {
   timeout: 60 * 1000,
@@ -30,7 +31,7 @@ export abstract class Queue {
       port: config.redis.queue.port,
     }
 
-    console.log(`Using ${JSON.stringify(redisSettings)} config`)
+    console.log(`Using ${stringify(redisSettings)} config`)
 
     this.queue = new Bull(this.name, { redis: redisSettings })
 
@@ -56,7 +57,10 @@ export abstract class Queue {
     const { name } = job.constructor
     const { data } = job
 
-    await this.queue.add(name, data, { ...this.options, ...jobOptions })
+    // use viem's stringify to stringify BigInts
+    const sanitizedData = JSON.parse(stringify(data))
+
+    await this.queue.add(name, sanitizedData, { ...this.options, ...jobOptions })
   }
 
   public async process() {
@@ -66,14 +70,14 @@ export abstract class Queue {
 
     const stats = await this.queue.getJobCounts()
     console.log(`Queue '${this.name}' listening...`)
-    console.log(`Queue '${this.name}' stats: ${JSON.stringify(stats)}`)
+    console.log(`Queue '${this.name}' stats: ${stringify(stats)}`)
 
     this.queue.on('error', (err) => {
       console.log('Logging error:', err)
     })
 
     this.queue.on('failed', (job, err) => {
-      console.log(`✖︎ ${this.name}: ${job.name} job failed (id ${job.id}) ${JSON.stringify(job.data)}`)
+      console.log(`✖︎ ${this.name}: ${job.name} job failed (id ${job.id}) ${stringify(job.data)}`)
       console.log('err', err)
     })
 

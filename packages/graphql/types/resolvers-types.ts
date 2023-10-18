@@ -47,6 +47,14 @@ export type MutationToggleActiveProjectArgs = {
   id: Scalars['Int']['input'];
 };
 
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  endCursor?: Maybe<Scalars['ID']['output']>;
+  hasNextPage: Scalars['Boolean']['output'];
+  hasPreviousPage: Scalars['Boolean']['output'];
+  startCursor?: Maybe<Scalars['ID']['output']>;
+};
+
 export type Project = {
   __typename?: 'Project';
   createdAt: Scalars['DateTime']['output'];
@@ -71,6 +79,7 @@ export type Query = {
   auth: UserAuth;
   me: User;
   projectById?: Maybe<Project>;
+  projects: QueryProjectsConnection;
   user?: Maybe<User>;
   users: Array<User>;
 };
@@ -86,8 +95,29 @@ export type QueryProjectByIdArgs = {
 };
 
 
+export type QueryProjectsArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type QueryUserArgs = {
   address: Scalars['String']['input'];
+};
+
+export type QueryProjectsConnection = {
+  __typename?: 'QueryProjectsConnection';
+  edges: Array<Maybe<QueryProjectsConnectionEdge>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type QueryProjectsConnectionEdge = {
+  __typename?: 'QueryProjectsConnectionEdge';
+  cursor: Scalars['ID']['output'];
+  node: Project;
 };
 
 export type Requests = {
@@ -226,10 +256,13 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<{}>;
+  PageInfo: ResolverTypeWrapper<PageInfo>;
   Project: ResolverTypeWrapper<Project>;
   ProjectCreateInput: ProjectCreateInput;
   ProjectOrderByUpdatedAtInput: ProjectOrderByUpdatedAtInput;
   Query: ResolverTypeWrapper<{}>;
+  QueryProjectsConnection: ResolverTypeWrapper<QueryProjectsConnection>;
+  QueryProjectsConnectionEdge: ResolverTypeWrapper<QueryProjectsConnectionEdge>;
   Requests: ResolverTypeWrapper<Requests>;
   SortOrder: SortOrder;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -250,10 +283,13 @@ export type ResolversParentTypes = {
   ID: Scalars['ID']['output'];
   Int: Scalars['Int']['output'];
   Mutation: {};
+  PageInfo: PageInfo;
   Project: Project;
   ProjectCreateInput: ProjectCreateInput;
   ProjectOrderByUpdatedAtInput: ProjectOrderByUpdatedAtInput;
   Query: {};
+  QueryProjectsConnection: QueryProjectsConnection;
+  QueryProjectsConnectionEdge: QueryProjectsConnectionEdge;
   Requests: Requests;
   String: Scalars['String']['output'];
   Subscription: {};
@@ -278,6 +314,14 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   toggleActiveProject?: Resolver<ResolversTypes['Project'], ParentType, ContextType, RequireFields<MutationToggleActiveProjectArgs, 'id'>>;
 };
 
+export type PageInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['PageInfo'] = ResolversParentTypes['PageInfo']> = {
+  endCursor?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  hasNextPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  hasPreviousPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  startCursor?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type ProjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['Project'] = ResolversParentTypes['Project']> = {
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -293,8 +337,22 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   auth?: Resolver<ResolversTypes['UserAuth'], ParentType, ContextType, RequireFields<QueryAuthArgs, 'data'>>;
   me?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   projectById?: Resolver<Maybe<ResolversTypes['Project']>, ParentType, ContextType, RequireFields<QueryProjectByIdArgs, 'id'>>;
+  projects?: Resolver<ResolversTypes['QueryProjectsConnection'], ParentType, ContextType, Partial<QueryProjectsArgs>>;
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'address'>>;
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
+};
+
+export type QueryProjectsConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['QueryProjectsConnection'] = ResolversParentTypes['QueryProjectsConnection']> = {
+  edges?: Resolver<Array<Maybe<ResolversTypes['QueryProjectsConnectionEdge']>>, ParentType, ContextType>;
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>;
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type QueryProjectsConnectionEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['QueryProjectsConnectionEdge'] = ResolversParentTypes['QueryProjectsConnectionEdge']> = {
+  cursor?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  node?: Resolver<ResolversTypes['Project'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type RequestsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Requests'] = ResolversParentTypes['Requests']> = {
@@ -338,8 +396,11 @@ export type ValueResolvers<ContextType = any, ParentType extends ResolversParent
 export type Resolvers<ContextType = any> = {
   DateTime?: GraphQLScalarType;
   Mutation?: MutationResolvers<ContextType>;
+  PageInfo?: PageInfoResolvers<ContextType>;
   Project?: ProjectResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  QueryProjectsConnection?: QueryProjectsConnectionResolvers<ContextType>;
+  QueryProjectsConnectionEdge?: QueryProjectsConnectionEdgeResolvers<ContextType>;
   Requests?: RequestsResolvers<ContextType>;
   Subscription?: SubscriptionResolvers<ContextType>;
   User?: UserResolvers<ContextType>;

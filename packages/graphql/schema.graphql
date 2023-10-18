@@ -12,6 +12,13 @@ type Mutation {
   toggleActiveProject(id: Int!): Project!
 }
 
+type PageInfo {
+  endCursor: ID
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: ID
+}
+
 type Project {
   createdAt: DateTime!
   id: Int!
@@ -34,8 +41,20 @@ type Query {
   auth(data: UserAuthInput!): UserAuth!
   me: User!
   projectById(id: Int!): Project
+  projects(after: ID, before: ID, first: Int, last: Int): QueryProjectsConnection!
   user(address: String!): User
   users: [User!]!
+}
+
+type QueryProjectsConnection {
+  edges: [QueryProjectsConnectionEdge]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type QueryProjectsConnectionEdge {
+  cursor: ID!
+  node: Project!
 }
 
 type Requests {

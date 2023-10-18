@@ -29,7 +29,7 @@ export default function Header(props: FlexProps) {
           </Link>
         </MenuItems>
 
-        <Flex flex={1} justifyContent="flex-end">
+        <Flex flex={1} align="center" justifyContent="flex-end">
           <Wallet />
           <DarkModeSwitch ml={5} />
         </Flex>

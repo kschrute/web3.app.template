@@ -129,6 +129,9 @@ importers:
       '@app/cron':
         specifier: workspace:^
         version: link:../cron
+      '@faker-js/faker':
+        specifier: ^8.2.0
+        version: 8.2.0
       '@graphql-yoga/redis-event-target':
         specifier: ^2.0.0
         version: 2.0.0(ioredis@5.3.2)
@@ -141,6 +144,9 @@ importers:
       '@pothos/plugin-prisma':
         specifier: ^3.60.0
         version: 3.61.0(@pothos/core@3.38.0)(@prisma/client@5.4.1)(graphql@16.8.1)(typescript@5.2.2)
+      '@pothos/plugin-relay':
+        specifier: ^3.44.0
+        version: 3.44.0(@pothos/core@3.38.0)(graphql@16.8.1)
       '@pothos/plugin-scope-auth':
         specifier: ^3.20.0
         version: 3.20.0(@pothos/core@3.38.0)(graphql@16.8.1)
@@ -302,6 +308,9 @@ importers:
       '@chakra-ui/react':
         specifier: ^2.8.1
         version: 2.8.1(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.23)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)
+      '@chakra-ui/theme-tools':
+        specifier: ^2.1.1
+        version: 2.1.1(@chakra-ui/styled-system@2.9.1)
       '@emotion/react':
         specifier: ^11.11.1
         version: 11.11.1(@types/react@18.2.23)(react@18.2.0)
@@ -335,6 +344,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-icons:
+        specifier: ^4.11.0
+        version: 4.11.0(react@18.2.0)
       viem:
         specifier: ^1.16.1
         version: 1.16.1(typescript@5.2.2)(zod@3.22.2)
@@ -2756,6 +2768,11 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@faker-js/faker@8.2.0:
+    resolution: {integrity: sha512-VacmzZqVxdWdf9y64lDOMZNDMM/FQdtM9IsaOPKOm2suYwEatb8VkdHqOzXcDnZbk7YDE2BmsJmy/2Hmkn563g==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+    dev: false
+
   /@graphql-codegen/add@5.0.0(graphql@16.8.1):
     resolution: {integrity: sha512-ynWDOsK2yxtFHwcJTB9shoSkUd7YXd6ZE57f0nk7W5cu/nAgxZZpEsnTPEpZB/Mjf14YRGe2uJHQ7AfElHjqUQ==}
     peerDependencies:
@@ -3897,6 +3914,16 @@ packages:
       typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@pothos/plugin-relay@3.44.0(@pothos/core@3.38.0)(graphql@16.8.1):
+    resolution: {integrity: sha512-7eOsgKL2qCQ+/hHpye4sNNbR2mYogDXPWpQboqniYvUdOjez3VDYjAuOn8Ntw73kZQF0N1iloZPikhCxvY7xuw==}
+    peerDependencies:
+      '@pothos/core': '*'
+      graphql: '>=15.1.0'
+    dependencies:
+      '@pothos/core': 3.38.0(graphql@16.8.1)
+      graphql: 16.8.1
     dev: false
 
   /@pothos/plugin-scope-auth@3.20.0(@pothos/core@3.38.0)(graphql@16.8.1):
@@ -9673,6 +9700,14 @@ packages:
       react-clientside-effect: 1.2.6(react@18.2.0)
       use-callback-ref: 1.3.0(@types/react@18.2.23)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.23)(react@18.2.0)
+    dev: false
+
+  /react-icons@4.11.0(react@18.2.0):
+    resolution: {integrity: sha512-V+4khzYcE5EBk/BvcuYRq6V/osf11ODUM2J8hg2FDSswRrGvqiYUYPRy4OdrWaQOBj4NcpJfmHZLNaD+VH0TyA==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

@@ -1,14 +1,13 @@
 'use client'
 
 import React, { useCallback } from 'react'
-import { Box, Button, Flex, Input, InputGroup, Text, BoxProps } from '@chakra-ui/react'
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
-import { useAccount, useWaitForTransaction } from 'wagmi'
+import { Box, BoxProps, Button, Flex, Input, InputGroup, Text } from '@chakra-ui/react'
+import { useAccount } from 'wagmi'
 import { formatEther, parseEther } from 'viem'
 import { useWNatBalanceOf, useWNatDeposit, useWNatWithdraw } from '../wagmi'
-import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
 import useDebounce from '../hooks/useDebounce'
 import AppAlert from '../components/common/AppAlert'
+import { useWriteTransaction } from '../hooks/useWriteTransaction'
 
 export default function WNatContract() {
   return (
@@ -41,40 +40,19 @@ function Balance() {
 }
 
 function Deposit({ ...props }: BoxProps) {
-  const showErrorMessage = useShowErrorMessage()
-  const showSuccessMessage = useShowSuccessMessage()
-  const addRecentTransaction = useAddRecentTransaction()
   const [amount, setAmount] = React.useState('1')
   const debouncedAmount = useDebounce(amount, 500)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  const { writeAsync, data, error, isLoading, isError } = useWNatDeposit({
+  const { write, isLoading, isPending } = useWriteTransaction(useWNatDeposit({
     value: parseEther(debouncedAmount),
-  })
-  const { data: receipt, isLoading: isPending, isSuccess } = useWaitForTransaction({ hash: data?.hash })
-
-  React.useEffect(() => {
-    isError && error && showErrorMessage(error.message)
-  }, [isError, error, showErrorMessage])
-
-  React.useEffect(() => {
-    isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
-  }, [isSuccess, showSuccessMessage, receipt?.transactionHash])
-
-  const onClick = useCallback(async () => {
-    const tx = await writeAsync?.()
-    tx
-    && addRecentTransaction({
-      hash: tx.hash,
-      description: `Wrap ${amount} ETH`,
-    })
-  }, [writeAsync, addRecentTransaction, amount])
+  }), { description: `Wrap ${amount} ETH` })
 
   return (
     <Box {...props}>
       <InputGroup>
         <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
-        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
+        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={write}>
           Wrap
         </Button>
       </InputGroup>
@@ -83,49 +61,28 @@ function Deposit({ ...props }: BoxProps) {
 }
 
 function Withdraw({ ...props }: BoxProps) {
-  const showErrorMessage = useShowErrorMessage()
-  const showSuccessMessage = useShowSuccessMessage()
+  const [amount, setAmount] = React.useState('1')
+  const debouncedAmount = useDebounce(amount, 500)
   const { address } = useAccount()
   const { data: balance } = useWNatBalanceOf({
     args: [address!],
     watch: true,
   })
-  const addRecentTransaction = useAddRecentTransaction()
-  const [amount, setAmount] = React.useState('1')
-  const debouncedAmount = useDebounce(amount, 500)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  const { writeAsync, data, error, isLoading, isError } = useWNatWithdraw({
+  const { write, isLoading, isPending } = useWriteTransaction(useWNatWithdraw({
     args: [parseEther(debouncedAmount)],
-  })
-  const { data: receipt, isLoading: isPending, isSuccess } = useWaitForTransaction({ hash: data?.hash })
+  }), { description: `Unwrap ${amount} WNAT` })
 
   React.useEffect(() => {
     balance !== undefined && setAmount(formatEther(balance))
   }, [balance])
 
-  React.useEffect(() => {
-    isError && error && showErrorMessage(error.message)
-  }, [isError, error, showErrorMessage])
-
-  React.useEffect(() => {
-    isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
-  }, [isSuccess, showSuccessMessage, receipt?.transactionHash])
-
-  const onClick = useCallback(async () => {
-    const tx = await writeAsync?.()
-    tx
-    && addRecentTransaction({
-      hash: tx.hash,
-      description: `Unwrap ${amount} WNAT`,
-    })
-  }, [writeAsync, addRecentTransaction, amount])
-
   return (
     <Box {...props}>
       <InputGroup>
         <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
-        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
+        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={write}>
           Unwrap
         </Button>
       </InputGroup>

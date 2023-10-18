@@ -1,15 +1,38 @@
 import { useMemo } from 'react'
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
+import { ApolloClient, DefaultOptions, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
 import { createIsomorphicLink } from './createIsomorphicLink'
 import { ResolverContext } from './types/ResolverContext'
+import config from '../../../config'
+import { relayStylePagination } from '@apollo/client/utilities'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
+const defaultOptions: DefaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'network-only',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'network-only',
+    errorPolicy: 'all',
+  },
+}
+
 function createApolloClient(context?: ResolverContext) {
   return new ApolloClient({
+    defaultOptions,
     ssrMode: typeof window === 'undefined',
     link: createIsomorphicLink(context),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      resultCaching: config.environment !== 'development',
+      typePolicies: {
+        Query: {
+          fields: {
+            projects: relayStylePagination(),
+          },
+        },
+      },
+    }),
   })
 }
 

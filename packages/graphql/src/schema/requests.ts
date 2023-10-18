@@ -21,6 +21,9 @@ builder.objectType(Requests, {
 builder.subscriptionFields((t) => ({
   requests: t.field({
     type: Requests,
+    // authScopes: {
+    //   user: true,
+    // },
     subscribe: (_, args, context) => {
       if (context.currentUser === null) {
         throw new Error('Unauthenticated!')

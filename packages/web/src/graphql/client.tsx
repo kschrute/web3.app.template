@@ -51,6 +51,14 @@ export type MutationToggleActiveProjectArgs = {
   id: Scalars['Int']['input'];
 };
 
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  endCursor?: Maybe<Scalars['ID']['output']>;
+  hasNextPage: Scalars['Boolean']['output'];
+  hasPreviousPage: Scalars['Boolean']['output'];
+  startCursor?: Maybe<Scalars['ID']['output']>;
+};
+
 export type Project = {
   __typename?: 'Project';
   createdAt: Scalars['DateTime']['output'];
@@ -75,6 +83,7 @@ export type Query = {
   auth: UserAuth;
   me: User;
   projectById?: Maybe<Project>;
+  projects: QueryProjectsConnection;
   user?: Maybe<User>;
   users: Array<User>;
 };
@@ -90,8 +99,29 @@ export type QueryProjectByIdArgs = {
 };
 
 
+export type QueryProjectsArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type QueryUserArgs = {
   address: Scalars['String']['input'];
+};
+
+export type QueryProjectsConnection = {
+  __typename?: 'QueryProjectsConnection';
+  edges: Array<Maybe<QueryProjectsConnectionEdge>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type QueryProjectsConnectionEdge = {
+  __typename?: 'QueryProjectsConnectionEdge';
+  cursor: Scalars['ID']['output'];
+  node: Project;
 };
 
 export type Requests = {
@@ -181,6 +211,14 @@ export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', address: string, isAuthenticated: boolean, createdAt: Date | string } };
+
+export type ProjectsQueryVariables = Exact<{
+  take?: InputMaybe<Scalars['Int']['input']>;
+  cursor?: InputMaybe<Scalars['ID']['input']>;
+}>;
+
+
+export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'QueryProjectsConnection', pageInfo: { __typename?: 'PageInfo', startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean }, edges: Array<{ __typename?: 'QueryProjectsConnectionEdge', cursor: string, node: { __typename?: 'Project', id: number, title: string, isActive: boolean, createdAt: Date | string } } | null> } };
 
 export type UserQueryVariables = Exact<{
   address: Scalars['String']['input'];
@@ -409,6 +447,62 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export const ProjectsDocument = gql`
+    query Projects($take: Int, $cursor: ID) {
+  projects(first: $take, after: $cursor) {
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        title
+        isActive
+        createdAt
+      }
+    }
+  }
+}
+    `;
+export type ProjectsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<ProjectsQuery, ProjectsQueryVariables>, 'query'>;
+
+    export const ProjectsComponent = (props: ProjectsComponentProps) => (
+      <ApolloReactComponents.Query<ProjectsQuery, ProjectsQueryVariables> query={ProjectsDocument} {...props} />
+    );
+    
+
+/**
+ * __useProjectsQuery__
+ *
+ * To run a query within a React component, call `useProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectsQuery({
+ *   variables: {
+ *      take: // value for 'take'
+ *      cursor: // value for 'cursor'
+ *   },
+ * });
+ */
+export function useProjectsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options);
+      }
+export function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options);
+        }
+export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
+export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
+export type ProjectsQueryResult = Apollo.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
 export const UserDocument = gql`
     query User($address: String!) {
   user(address: $address) {

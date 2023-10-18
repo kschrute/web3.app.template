@@ -1,21 +1,12 @@
 import { builder } from '../builder'
 import { db, UserRepo } from '../db'
-import { ProjectCreateInput } from './project'
+import { ProjectCreateInput } from './projects'
 import config from '../../config'
 import { sign } from 'jsonwebtoken'
 import { queryFromInfo } from '@pothos/plugin-prisma'
 import { getAddress, verifyMessage } from 'viem'
+import { UserObject } from './models'
 import { User } from '../../prisma/client'
-
-const User = builder.prismaObject('User', {
-  fields: (t) => ({
-    address: t.exposeString('address'),
-    challenge: t.exposeString('challenge'),
-    isAuthenticated: t.exposeBoolean('isAuthenticated'),
-    createdAt: t.expose('createdAt', { type: 'DateTime' }),
-    projects: t.relation('projects'),
-  }),
-})
 
 const UserAuth = builder
   .objectRef<{
@@ -45,7 +36,7 @@ const UserSignIn = builder
     fields: (t) => ({
       authenticated: t.boolean({ resolve: (result) => result.authenticated || false }),
       token: t.string({ nullable: true, resolve: (result) => result.token }),
-      user: t.field({ type: User, nullable: true, resolve: (result) => result.user }),
+      user: t.field({ type: UserObject, nullable: true, resolve: (result) => result.user }),
     }),
   })
 

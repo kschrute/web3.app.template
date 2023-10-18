@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "run-s 'prepare.*'",
     "prepare.build": "pnpm build",
-    "build": "tsc --project tsconfig.dist.json",
+    "build": "rm -rf ./dist && tsc --project tsconfig.dist.json",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
     "wagmi": "wagmi generate",

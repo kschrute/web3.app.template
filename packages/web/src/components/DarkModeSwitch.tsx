@@ -1,12 +1,14 @@
-import { Box, BoxProps, IconButton, useColorMode } from '@chakra-ui/react'
-import { SunIcon, MoonIcon } from '@chakra-ui/icons'
+import { Box, BoxProps, Link, useColorMode } from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 export const DarkModeSwitch = (props: BoxProps) => {
   const { colorMode, toggleColorMode } = useColorMode()
   const isDark = colorMode === 'dark'
   return (
     <Box {...props}>
-      <IconButton icon={isDark ? <SunIcon /> : <MoonIcon />} aria-label="Toggle Theme" variant="ghost" onClick={toggleColorMode} />
+      <Link onClick={toggleColorMode}>
+        {isDark ? <SunIcon /> : <MoonIcon />}
+      </Link>
     </Box>
   )
 }

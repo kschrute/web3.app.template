@@ -11,6 +11,7 @@ import GraphqlSubscription from '../data/GraphqlSubscription'
 import SubscriptionContract from '../data/SubscriptionContract'
 import WNatContract from '../data/WNatContract'
 import WalletRequired from '../web3/WalletRequired'
+import MyProjects from '../data/MyProjects'
 
 export function Page() {
   const { data: blockNumber } = useBlockNumber({ watch: true })
@@ -25,6 +26,7 @@ export function Page() {
         <GraphqlSubscription />
         <GraphqlRequestsCount />
         <GraphqlQuery />
+        <MyProjects />
       </WalletRequired>
     </Layout>
   )

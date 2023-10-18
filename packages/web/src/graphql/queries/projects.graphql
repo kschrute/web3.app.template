@@ -1,0 +1,19 @@
+query Projects($take: Int, $cursor: ID) {
+    projects(first: $take, after: $cursor) {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        edges {
+            cursor
+            node {
+                id
+                title
+                isActive
+                createdAt
+            }
+        }
+    }
+}

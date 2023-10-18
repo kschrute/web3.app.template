@@ -9,6 +9,8 @@
 - [x] Port Graphql package
 - [x] Port Cron package
 - [x] Get rid of Ethers?
+- [ ] Add an ability to generate a bunch of records and have an infinite scroll
+- [ ] Figure out how to wrap any write into a HOC with error handling (see useNodePackClaimCallback)
 - [ ] Set up eslint for every package
 - [ ] Reorder scripts in package.json files
 - [ ] https://www.apollographql.com/blog/apollo-client/next-js/how-to-use-apollo-client-with-next-js-13/
