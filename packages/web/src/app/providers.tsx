@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 import { ApolloProvider } from '@apollo/client'
-import { CacheProvider } from '@chakra-ui/next-js'
+import { IconContext } from 'react-icons'
 import { ChakraProvider } from '@chakra-ui/react'
+import { CacheProvider } from '@chakra-ui/next-js'
 import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { WagmiConfig } from 'wagmi'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
@@ -34,7 +35,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
             showRecentTransactions
           >
             <ApolloProvider client={apolloClient}>
+              <IconContext.Provider
+                value={{
+                  className: 'react-icons',
+                  attr: { focusable: 'false' },
+                }}
+              >
               {mounted && children}
+              </IconContext.Provider>
             </ApolloProvider>
           </RainbowKitProvider>
         </WagmiConfig>
