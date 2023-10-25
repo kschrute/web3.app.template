@@ -17,9 +17,12 @@ const yoga = createYoga({
         maskedErrors: false,
       }
     : {}),
-  graphiql: {
-    subscriptionsProtocol: 'WS',
-  },
+  graphiql:
+    config.environment === 'development'
+      ? {
+        subscriptionsProtocol: 'WS',
+      }
+      : false,
 })
 
 const server = createServer(yoga)
