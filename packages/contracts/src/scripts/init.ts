@@ -1,28 +1,32 @@
-import { hardhat } from 'viem/chains'
+// eslint-disable no-console
+import { getContract } from 'viem'
 import { publicClient, walletClient } from '../clients'
-import { counterABI } from '../wagmi'
-import { contracts } from '@app/shared'
+import { counterABI, counterAddress } from '../wagmi'
+import mine from '../utils/mine'
+
+const chainId = walletClient.chain.id
+
+const counterContract = getContract({
+  address: counterAddress[chainId],
+  abi: counterABI,
+  publicClient,
+  walletClient,
+})
 
 async function main() {
   const blockNumber = await publicClient.getBlockNumber()
   console.log('blockNumber', blockNumber)
 
-  const read = await publicClient.readContract({
-    abi: counterABI,
-    address: contracts.deployments.Counter.addresses[hardhat.id] as unknown as `0x${string}`,
-    functionName: 'number',
-  })
+  const read = await counterContract.read.number()
+
   console.log('read', read)
 
-  const { request } = await publicClient.simulateContract({
-    account: walletClient.account,
-    address: contracts.deployments.Counter.addresses[hardhat.id] as unknown as `0x${string}`,
-    abi: counterABI,
-    functionName: 'increment',
-  })
+  const { request } = await counterContract.simulate.increment()
+
   console.log('request', request)
 
-  const write = await walletClient.writeContract(request)
+  const write = await mine(() => counterContract.write.increment())
+
   console.log('write', write)
 }
 

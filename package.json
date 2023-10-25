@@ -6,6 +6,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "concurrently -k -n eth,cron,gql,web -c magenta.bold,yellow.bold,cyan.bold,green.bold \"pnpm --filter contracts dev\" \"pnpm --filter cron dev\"  \"pnpm --filter graphql dev\"  \"pnpm --filter web dev\"",
+    "build": "pnpm run -r build",
     "prepare": "run-s 'prepare.*'",
     "prepare.husky": "husky install || true",
     "prepare.packages": " pnpm --filter \"*\" run prepare",

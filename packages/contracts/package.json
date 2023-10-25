@@ -16,7 +16,7 @@
     "deploy.local.Subscription": "source .env && forge create contracts/Subscription.sol:Subscription --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy.local.WNat": "source .env && forge create contracts/WNat.sol:WNat --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy": "source .env && forge create contracts/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY --etherscan-api-key $ETHERSCAN_API_KEY --verify",
-    "init.local": "tsx src/scripts/init.ts",
+    "init.local": "FORGE_CHAIN_ID=31337 tsx src/scripts/init.ts",
     "prepare": "run-s 'prepare.*'",
     "prepare.abi.counter": "forge build --silent && jq '.abi' ./artifacts/Counter.sol/Counter.json > src/abi/Counter.json",
     "prepare.abi.faucet": "forge build --silent && jq '.abi' ./artifacts/Faucet.sol/Faucet.json > src/abi/Faucet.json",
@@ -35,6 +35,7 @@
     "@app/shared": "workspace:^",
     "@openzeppelin/contracts": "^5.0.0",
     "@wagmi/cli": "^1.0.0",
+    "dotenv": "^16.3.1",
     "viem": "^1.16.1",
     "wagmi": "^1.4.3"
   },
