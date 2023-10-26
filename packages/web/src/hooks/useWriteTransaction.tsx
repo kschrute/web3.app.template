@@ -43,7 +43,7 @@ export function useWriteTransaction(contractWrite: ReturnType<typeof useContract
       hash: tx.hash,
       description: description ?? tx.hash,
     })
-  }, [writeAsync, description])
+  }, [writeAsync, description, addRecentTransaction])
 
   return { write, data, isLoading, isPending }
 }

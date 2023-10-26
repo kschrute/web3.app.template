@@ -39,7 +39,7 @@ export class ProcessAllEvents extends Job<object> {
       }
 
       const jobName = `${deploymentName}${event.name}EventJob`
-      const filePath = `./events/${deploymentName}/${jobName}.ts`
+      const filePath = `./events/${deploymentName}/${jobName}`
 
       try {
         const instance = require(filePath)[jobName]

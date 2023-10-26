@@ -17,7 +17,7 @@ import { WatchPendingTransactions } from '../../components/web3/WatchPendingTran
 import { WriteContract } from '../../components/web3/WriteContract'
 import { WriteContractPrepared } from '../../components/web3/WriteContractPrepared'
 
-export function Page() {
+export default function Page() {
   return (
     <>
       <h1>wagmi + RainbowKit + Next.js</h1>
@@ -92,5 +92,3 @@ export function Page() {
     </>
   )
 }
-
-export default Page

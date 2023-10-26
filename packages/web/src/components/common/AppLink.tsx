@@ -10,8 +10,8 @@ type Props = {
 export default function AppLink({ children, href, ...rest }: Props) {
   return (
     <NextLink href={href}>
-      <Link as="span" c {...rest}>
-        available now!
+      <Link as="span" {...rest}>
+        {children}
       </Link>
     </NextLink>
   )

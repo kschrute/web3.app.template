@@ -13,7 +13,7 @@ import WNatContract from '../data/WNatContract'
 import WalletRequired from '../web3/WalletRequired'
 import MyProjects from '../data/MyProjects'
 
-export function Page() {
+export default function Page() {
   const { data: blockNumber } = useBlockNumber({ watch: true })
   return (
     <Layout>
@@ -31,5 +31,3 @@ export function Page() {
     </Layout>
   )
 }
-
-export default Page

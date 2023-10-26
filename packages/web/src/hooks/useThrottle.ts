@@ -1,3 +1,4 @@
+// eslint-disable @typescript-eslint/no-explicit-any
 import { useCallback, useRef } from 'react'
 
 export default function useThrottle(callback: (...args: any[]) => void, delay: number, dependencies: any[] = []) {
@@ -13,6 +14,7 @@ export default function useThrottle(callback: (...args: any[]) => void, delay: n
         lastExecutedRef.current = now
       }
     },
-    [callback, delay, dependencies]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [callback, delay, dependencies],
   )
 }

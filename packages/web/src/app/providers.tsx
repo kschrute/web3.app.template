@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { ProviderProps, useMemo } from 'react'
 import { ApolloProvider } from '@apollo/client'
 import { IconContext } from 'react-icons'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -22,6 +23,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const apolloClient = useApollo({})
   const [mounted, setMounted] = React.useState(false)
 
+  const iconContextProps: ProviderProps<IconContext> = useMemo(() => ({
+    value: {
+      className: 'react-icons',
+      attr: { focusable: 'false' },
+    },
+  }), [])
+
   React.useEffect(() => setMounted(true), [])
 
   return (
@@ -35,12 +43,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             showRecentTransactions
           >
             <ApolloProvider client={apolloClient}>
-              <IconContext.Provider
-                value={{
-                  className: 'react-icons',
-                  attr: { focusable: 'false' },
-                }}
-              >
+              <IconContext.Provider {...iconContextProps}>
               {mounted && children}
               </IconContext.Provider>
             </ApolloProvider>

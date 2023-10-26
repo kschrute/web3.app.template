@@ -36,7 +36,7 @@ export default function MyProjects() {
 
   useEffect(() => {
     isAtEnd && onLoadMore()
-  }, [isAtEnd])
+  }, [isAtEnd, onLoadMore])
 
   return (
     <Box>
