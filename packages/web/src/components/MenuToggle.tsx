@@ -7,10 +7,8 @@ type Props = {
   isOpen: boolean
 }
 
-export const MenuToggle = ({ toggle, isOpen }: Props) => {
-  return (
-    <Box display={{ base: 'block', md: 'none' }} cursor="pointer" px={4} ml={-5} onClick={toggle}>
-      {isOpen ? <CloseIcon /> : <HamburgerIcon />}
-    </Box>
-  )
-}
+export const MenuToggle = ({ toggle, isOpen }: Props) => (
+  <Box display={{ base: 'block', md: 'none' }} cursor="pointer" px={4} ml={-5} onClick={toggle}>
+    {isOpen ? <CloseIcon /> : <HamburgerIcon />}
+  </Box>
+)

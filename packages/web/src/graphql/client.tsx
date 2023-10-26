@@ -1,7 +1,8 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-import * as React from 'react';
-import * as ApolloReactComponents from '@apollo/client/react/components';
+import * as Apollo from '@apollo/client'
+import { gql } from '@apollo/client'
+import * as React from 'react'
+import * as ApolloReactComponents from '@apollo/client/react/components'
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -256,7 +257,7 @@ export type BroadcastComponentProps = Omit<ApolloReactComponents.MutationCompone
     export const BroadcastComponent = (props: BroadcastComponentProps) => (
       <ApolloReactComponents.Mutation<BroadcastMutation, BroadcastMutationVariables> mutation={BroadcastDocument} {...props} />
     );
-    
+
 
 /**
  * __useBroadcastMutation__
@@ -294,7 +295,7 @@ export type RequestComponentProps = Omit<ApolloReactComponents.MutationComponent
     export const RequestComponent = (props: RequestComponentProps) => (
       <ApolloReactComponents.Mutation<RequestMutation, RequestMutationVariables> mutation={RequestDocument} {...props} />
     );
-    
+
 
 /**
  * __useRequestMutation__
@@ -337,7 +338,7 @@ export type SignInComponentProps = Omit<ApolloReactComponents.MutationComponentO
     export const SignInComponent = (props: SignInComponentProps) => (
       <ApolloReactComponents.Mutation<SignInMutation, SignInMutationVariables> mutation={SignInDocument} {...props} />
     );
-    
+
 
 /**
  * __useSignInMutation__
@@ -376,7 +377,7 @@ export type AuthComponentProps = Omit<ApolloReactComponents.QueryComponentOption
     export const AuthComponent = (props: AuthComponentProps) => (
       <ApolloReactComponents.Query<AuthQuery, AuthQueryVariables> query={AuthDocument} {...props} />
     );
-    
+
 
 /**
  * __useAuthQuery__
@@ -419,7 +420,7 @@ export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<
     export const MeComponent = (props: MeComponentProps) => (
       <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
     );
-    
+
 
 /**
  * __useMeQuery__
@@ -473,7 +474,7 @@ export type ProjectsComponentProps = Omit<ApolloReactComponents.QueryComponentOp
     export const ProjectsComponent = (props: ProjectsComponentProps) => (
       <ApolloReactComponents.Query<ProjectsQuery, ProjectsQueryVariables> query={ProjectsDocument} {...props} />
     );
-    
+
 
 /**
  * __useProjectsQuery__
@@ -516,7 +517,7 @@ export type UserComponentProps = Omit<ApolloReactComponents.QueryComponentOption
     export const UserComponent = (props: UserComponentProps) => (
       <ApolloReactComponents.Query<UserQuery, UserQueryVariables> query={UserDocument} {...props} />
     );
-    
+
 
 /**
  * __useUserQuery__
@@ -557,7 +558,7 @@ export type CountdownComponentProps = Omit<ApolloReactComponents.SubscriptionCom
     export const CountdownComponent = (props: CountdownComponentProps) => (
       <ApolloReactComponents.Subscription<CountdownSubscription, CountdownSubscriptionVariables> subscription={CountdownDocument} {...props} />
     );
-    
+
 
 /**
  * __useCountdownSubscription__
@@ -592,7 +593,7 @@ export type RandomComponentProps = Omit<ApolloReactComponents.SubscriptionCompon
     export const RandomComponent = (props: RandomComponentProps) => (
       <ApolloReactComponents.Subscription<RandomSubscription, RandomSubscriptionVariables> subscription={RandomDocument} {...props} />
     );
-    
+
 
 /**
  * __useRandomSubscription__
@@ -627,7 +628,7 @@ export type RequestsComponentProps = Omit<ApolloReactComponents.SubscriptionComp
     export const RequestsComponent = (props: RequestsComponentProps) => (
       <ApolloReactComponents.Subscription<RequestsSubscription, RequestsSubscriptionVariables> subscription={RequestsDocument} {...props} />
     );
-    
+
 
 /**
  * __useRequestsSubscription__

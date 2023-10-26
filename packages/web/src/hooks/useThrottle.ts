@@ -1,4 +1,4 @@
-// eslint-disable @typescript-eslint/no-explicit-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useRef } from 'react'
 
 export default function useThrottle(callback: (...args: any[]) => void, delay: number, dependencies: any[] = []) {

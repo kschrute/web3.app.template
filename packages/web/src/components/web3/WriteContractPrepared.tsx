@@ -2,11 +2,7 @@
 
 import { useState } from 'react'
 import { BaseError } from 'viem'
-import {
-  useContractWrite,
-  usePrepareContractWrite,
-  useWaitForTransaction,
-} from 'wagmi'
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
 
 import { wagmiContractConfig } from './contracts'
 import useDebounce from '../../hooks/useDebounce'

@@ -9,8 +9,8 @@ type Props = {
 export default function ProjectsList({ projects }: Props) {
   return (
     <>
-      {projects.map((edge, index) => (
-        edge && <ProjectsItem key={edge.cursor} project={edge.node} />
+      {projects.map((edge) => (
+        edge && <ProjectsItem key={edge.node.id} project={edge.node} />
       ))}
     </>
   )

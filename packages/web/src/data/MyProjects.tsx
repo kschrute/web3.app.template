@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import { useProjectsQuery } from '../graphql/client'
 import ProjectsList from '../components/projects/ProjectsList'
-import { Box, Heading, Text } from '@chakra-ui/react'
 import { HasMoreItems } from '../components/loading/HasMoreItems'
 import { LoadingMoreItems } from '../components/loading/LoadingMoreItems'
 import useScrolledToEnd from '../hooks/useScrolledToEnd'
@@ -14,7 +14,7 @@ const variables = {
 export default function MyProjects() {
   const isAtEnd = useScrolledToEnd()
   const [loadingMore, setLoadingMore] = useState(false)
-  const { data, loading, startPolling, stopPolling, fetchMore, refetch } = useProjectsQuery({ variables })
+  const { data, loading, fetchMore } = useProjectsQuery({ variables })
 
   const projects = useMemo(() => data?.projects?.edges, [data])
   const pageInfo = useMemo(() => data?.projects.pageInfo, [data])

@@ -20,12 +20,17 @@ export default function GraphqlRequestsCount() {
   return (
     <AppAlert
       status="info"
-      description={<>Your requests count: {loading ? <Spinner size="sm" mr={2} /> : count}</>}
-      button={
+      description={(
+        <>
+          Your requests count:
+          {loading ? <Spinner size="sm" mr={2} /> : count}
+        </>
+)}
+      button={(
         <Button colorScheme="blue" onClick={onClick}>
           Request
         </Button>
-      }
+      )}
     />
   )
 }

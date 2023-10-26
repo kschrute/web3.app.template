@@ -19,13 +19,13 @@ export function useWriteTransaction(contractWrite: ReturnType<typeof useContract
     data,
     error,
     isLoading,
-    isError
+    isError,
   } = contractWrite
 
   const {
     data: receipt,
     isLoading: isPending,
-    isSuccess
+    isSuccess,
   } = useWaitForTransaction({ hash: data?.hash })
 
   React.useEffect(() => {
@@ -33,7 +33,7 @@ export function useWriteTransaction(contractWrite: ReturnType<typeof useContract
   }, [isError, error, showErrorMessage])
 
   React.useEffect(() => {
-    isSuccess && showSuccessMessage('Transaction successfully mined', receipt?.transactionHash)
+    isSuccess && showSuccessMessage('Transaction successfully confirmed', receipt?.transactionHash)
   }, [isSuccess, showSuccessMessage, receipt?.transactionHash])
 
   const write = useCallback(async () => {
@@ -45,5 +45,5 @@ export function useWriteTransaction(contractWrite: ReturnType<typeof useContract
     })
   }, [writeAsync, description, addRecentTransaction])
 
-  return { write, data, isLoading, isPending }
+  return { write, data, isLoading, isPending, isSuccess, isError, error }
 }

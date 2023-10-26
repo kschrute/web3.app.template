@@ -8,9 +8,11 @@ export const Wallet = () => {
 
   useAccount({
     onConnect({ address, connector, isReconnected }) {
+      // eslint-disable-next-line no-console
       console.log('Connected', { address, connector, isReconnected })
     },
     onDisconnect() {
+      // eslint-disable-next-line no-console
       console.log('Disconnected')
       client.resetStore()
     },

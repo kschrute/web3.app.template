@@ -9,17 +9,17 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  Spinner,
   Text,
   VStack,
 } from '@chakra-ui/react'
 import { verifyMessage } from 'viem'
+import { useAccount, useDisconnect, useSignMessage } from 'wagmi'
 import AppAlert from '../common/AppAlert'
 import AppExternalLink from '../common/AppExternalLink'
 import { useAuthLazyQuery, useSignInMutation } from '../../graphql/client'
-import { useAccount, useDisconnect, useSignMessage } from 'wagmi'
 
 export default function LoginModal() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const defaultButtonRef = useRef<any>()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
@@ -29,7 +29,7 @@ export default function LoginModal() {
 
   const { signMessage } = useSignMessage({
     async onSuccess(signature, variables) {
-      const isValid = await verifyMessage({
+      await verifyMessage({
         address: address!,
         message: variables.message,
         signature,
@@ -83,7 +83,8 @@ export default function LoginModal() {
 
           <VStack alignItems="flex-start" fontSize="sm" spacing={3}>
             <Text>
-              By continuing to use this website, you acknowledge you have read and agreed to the{' '}
+              By continuing to use this website, you acknowledge you have read and agreed to the
+              {' '}
               <AppExternalLink href="https://strongblock.com/terms-of-service.html">Terms of Service</AppExternalLink>
             </Text>
           </VStack>

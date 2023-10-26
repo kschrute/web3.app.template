@@ -18,7 +18,10 @@ export default function Page() {
   return (
     <Layout>
       <WalletRequired>
-        <Text>Current Block: {blockNumber?.toString()}</Text>
+        <Text>
+          Current Block:
+          {blockNumber?.toString()}
+        </Text>
         <WNatContract />
         <FaucetContract />
         <SubscriptionContract />

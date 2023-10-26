@@ -8,7 +8,7 @@ export default function useScrolledToEnd() {
       const target = document.body
       const html = document.documentElement
       const scrollPosition = window.scrollY
-      const clientHeight = html.clientHeight
+      const { clientHeight } = html
       const documentHeight = target.scrollHeight
       const isAtBottom = scrollPosition + clientHeight >= documentHeight - 100
 

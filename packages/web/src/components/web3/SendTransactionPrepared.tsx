@@ -2,11 +2,7 @@
 
 import { useState } from 'react'
 import { parseEther, stringify } from 'viem'
-import {
-  usePrepareSendTransaction,
-  useSendTransaction,
-  useWaitForTransaction,
-} from 'wagmi'
+import { usePrepareSendTransaction, useSendTransaction, useWaitForTransaction } from 'wagmi'
 
 import useDebounce from '../../hooks/useDebounce'
 

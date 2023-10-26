@@ -1,18 +1,17 @@
 import { useCallback } from 'react'
-import { useToast, AlertStatus } from '@chakra-ui/react'
+import { AlertStatus, useToast } from '@chakra-ui/react'
 
 export const useShowMessage = (status: AlertStatus = 'success') => {
   const toast = useToast()
 
   return useCallback(
-    (title: string, description: string | undefined = undefined) =>
-      toast({
-        title,
-        description,
-        status,
-        duration: 5_000,
-        isClosable: true,
-      }),
+    (title: string, description: string | undefined = undefined) => toast({
+      title,
+      description,
+      status,
+      duration: 5_000,
+      isClosable: true,
+    }),
     [toast, status],
   )
 }

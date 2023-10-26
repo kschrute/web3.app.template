@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react'
-import { Alert, AlertDescription, AlertIcon, AlertProps, AlertTitle, AlertStatus, Box } from '@chakra-ui/react'
+import React, { JSX, ReactNode } from 'react'
+import { Alert, AlertDescription, AlertIcon, AlertProps, AlertStatus, AlertTitle, Box } from '@chakra-ui/react'
 
 type Props = {
   title?: string

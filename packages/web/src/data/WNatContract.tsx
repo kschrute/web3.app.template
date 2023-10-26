@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Box, BoxProps, Button, Flex, Input, InputGroup, Text } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
 import { formatEther, parseEther } from 'viem'

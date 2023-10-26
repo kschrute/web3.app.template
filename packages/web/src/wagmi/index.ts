@@ -1,12 +1,14 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { configureChains, createConfig } from 'wagmi'
-import { goerli, hardhat, foundry, localhost, mainnet } from 'wagmi/chains'
+import { foundry, goerli, hardhat, localhost, mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import {
   coinbaseWallet,
   injectedWallet,
   ledgerWallet,
-  metaMaskWallet, rainbowWallet, trustWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  trustWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets'
 

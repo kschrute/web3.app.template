@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function useDebouncedEffect(effect: () => void, deps: any[], delay: number) {
   useEffect(() => {
     const handler = setTimeout(() => effect(), delay)

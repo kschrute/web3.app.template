@@ -44,7 +44,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           >
             <ApolloProvider client={apolloClient}>
               <IconContext.Provider {...iconContextProps}>
-              {mounted && children}
+                {mounted && children}
               </IconContext.Provider>
             </ApolloProvider>
           </RainbowKitProvider>

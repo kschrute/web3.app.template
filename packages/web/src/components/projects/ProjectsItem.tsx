@@ -1,6 +1,6 @@
 import React from 'react'
-import { ProjectGQL } from '../../types/graphql'
 import { Box, Text } from '@chakra-ui/react'
+import { ProjectGQL } from '../../types/graphql'
 
 type Props = {
   project: ProjectGQL
@@ -9,7 +9,13 @@ type Props = {
 export default function ProjectsItem({ project }: Props) {
   return (
     <Box p={5}>
-      <Text>{project.id} — {project.title}</Text>
+      <Text>
+        {project.id}
+        {' '}
+        —
+        {' '}
+        {project.title}
+      </Text>
     </Box>
   )
 }
