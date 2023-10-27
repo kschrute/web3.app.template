@@ -4,7 +4,7 @@ import { hardhat, mainnet } from 'viem/chains'
 
 require('dotenv').config()
 
-const chainId = process.env.FORGE_CHAIN_ID ? Number(process.env.FORGE_CHAIN_ID) : hardhat.id
+const chainId = process.env.CHAIN_ID ? Number(process.env.CHAIN_ID) : hardhat.id
 
 const getChain = (id: number) => {
   if (id === hardhat.id) return hardhat
@@ -14,11 +14,8 @@ const getChain = (id: number) => {
 }
 
 const chain = getChain(chainId)
-
-// const url = 'http://127.0.0.1:8545'
-// const transport = http(url)
 const transport = http()
-const mnemonic = process.env.ANVIL_MNEMONIC as string
+const mnemonic = process.env.MNEMONIC as string
 const account = mnemonicToAccount(mnemonic)
 
 export const publicClient = createPublicClient({

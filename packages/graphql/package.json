@@ -25,7 +25,7 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen.watch": "graphql-codegen --watch './src/**/*.ts'",
     "compile": "tsc",
-    "start": "node dist/server",
+    "start": "node dist/src/server.js",
     "clean": "rm -rf dist",
     "generate": "pnpm run prisma.generate",
     "prisma.format": "prisma format",
