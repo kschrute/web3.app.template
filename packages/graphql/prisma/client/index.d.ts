@@ -237,8 +237,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.4.1
-   * Query Engine version: 2f302df92bd8945e20ad4595a73def5b96afa54f
+   * Prisma Client JS version: 5.5.2
+   * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
    */
   export type PrismaVersion = {
     client: string
@@ -1372,7 +1372,7 @@ export namespace Prisma {
   type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
 
   type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFindManyArgs, 'select' | 'include'> & {
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: UserCountAggregateInputType | true
     }
 
@@ -2374,7 +2374,7 @@ export namespace Prisma {
   type ProjectGetPayload<S extends boolean | null | undefined | ProjectDefaultArgs> = $Result.GetResult<Prisma.$ProjectPayload, S>
 
   type ProjectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ProjectFindManyArgs, 'select' | 'include'> & {
+    Omit<ProjectFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: ProjectCountAggregateInputType | true
     }
 
@@ -3425,7 +3425,7 @@ export namespace Prisma {
   type EventGetPayload<S extends boolean | null | undefined | EventDefaultArgs> = $Result.GetResult<Prisma.$EventPayload, S>
 
   type EventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<EventFindManyArgs, 'select' | 'include'> & {
+    Omit<EventFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: EventCountAggregateInputType | true
     }
 

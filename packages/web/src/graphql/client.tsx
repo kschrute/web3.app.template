@@ -1,8 +1,7 @@
-import * as Apollo from '@apollo/client'
-import { gql } from '@apollo/client'
-import * as React from 'react'
-import * as ApolloReactComponents from '@apollo/client/react/components'
-
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+import * as React from 'react';
+import * as ApolloReactComponents from '@apollo/client/react/components';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -257,7 +256,7 @@ export type BroadcastComponentProps = Omit<ApolloReactComponents.MutationCompone
     export const BroadcastComponent = (props: BroadcastComponentProps) => (
       <ApolloReactComponents.Mutation<BroadcastMutation, BroadcastMutationVariables> mutation={BroadcastDocument} {...props} />
     );
-
+    
 
 /**
  * __useBroadcastMutation__
@@ -295,7 +294,7 @@ export type RequestComponentProps = Omit<ApolloReactComponents.MutationComponent
     export const RequestComponent = (props: RequestComponentProps) => (
       <ApolloReactComponents.Mutation<RequestMutation, RequestMutationVariables> mutation={RequestDocument} {...props} />
     );
-
+    
 
 /**
  * __useRequestMutation__
@@ -338,7 +337,7 @@ export type SignInComponentProps = Omit<ApolloReactComponents.MutationComponentO
     export const SignInComponent = (props: SignInComponentProps) => (
       <ApolloReactComponents.Mutation<SignInMutation, SignInMutationVariables> mutation={SignInDocument} {...props} />
     );
-
+    
 
 /**
  * __useSignInMutation__
@@ -377,7 +376,7 @@ export type AuthComponentProps = Omit<ApolloReactComponents.QueryComponentOption
     export const AuthComponent = (props: AuthComponentProps) => (
       <ApolloReactComponents.Query<AuthQuery, AuthQueryVariables> query={AuthDocument} {...props} />
     );
-
+    
 
 /**
  * __useAuthQuery__
@@ -403,8 +402,13 @@ export function useAuthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AuthQ
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options);
         }
+export function useAuthSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AuthQuery, AuthQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options);
+        }
 export type AuthQueryHookResult = ReturnType<typeof useAuthQuery>;
 export type AuthLazyQueryHookResult = ReturnType<typeof useAuthLazyQuery>;
+export type AuthSuspenseQueryHookResult = ReturnType<typeof useAuthSuspenseQuery>;
 export type AuthQueryResult = Apollo.QueryResult<AuthQuery, AuthQueryVariables>;
 export const MeDocument = gql`
     query Me {
@@ -420,7 +424,7 @@ export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<
     export const MeComponent = (props: MeComponentProps) => (
       <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
     );
-
+    
 
 /**
  * __useMeQuery__
@@ -445,8 +449,13 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
         }
+export function useMeSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MeQuery, MeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+        }
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeSuspenseQueryHookResult = ReturnType<typeof useMeSuspenseQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const ProjectsDocument = gql`
     query Projects($take: Int, $cursor: ID) {
@@ -474,7 +483,7 @@ export type ProjectsComponentProps = Omit<ApolloReactComponents.QueryComponentOp
     export const ProjectsComponent = (props: ProjectsComponentProps) => (
       <ApolloReactComponents.Query<ProjectsQuery, ProjectsQueryVariables> query={ProjectsDocument} {...props} />
     );
-
+    
 
 /**
  * __useProjectsQuery__
@@ -501,8 +510,13 @@ export function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<P
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options);
         }
+export function useProjectsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, options);
+        }
 export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
+export type ProjectsSuspenseQueryHookResult = ReturnType<typeof useProjectsSuspenseQuery>;
 export type ProjectsQueryResult = Apollo.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
 export const UserDocument = gql`
     query User($address: String!) {
@@ -517,7 +531,7 @@ export type UserComponentProps = Omit<ApolloReactComponents.QueryComponentOption
     export const UserComponent = (props: UserComponentProps) => (
       <ApolloReactComponents.Query<UserQuery, UserQueryVariables> query={UserDocument} {...props} />
     );
-
+    
 
 /**
  * __useUserQuery__
@@ -543,8 +557,13 @@ export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQ
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, options);
         }
+export function useUserSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<UserQuery, UserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<UserQuery, UserQueryVariables>(UserDocument, options);
+        }
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
+export type UserSuspenseQueryHookResult = ReturnType<typeof useUserSuspenseQuery>;
 export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
 export const CountdownDocument = gql`
     subscription Countdown {
@@ -558,7 +577,7 @@ export type CountdownComponentProps = Omit<ApolloReactComponents.SubscriptionCom
     export const CountdownComponent = (props: CountdownComponentProps) => (
       <ApolloReactComponents.Subscription<CountdownSubscription, CountdownSubscriptionVariables> subscription={CountdownDocument} {...props} />
     );
-
+    
 
 /**
  * __useCountdownSubscription__
@@ -593,7 +612,7 @@ export type RandomComponentProps = Omit<ApolloReactComponents.SubscriptionCompon
     export const RandomComponent = (props: RandomComponentProps) => (
       <ApolloReactComponents.Subscription<RandomSubscription, RandomSubscriptionVariables> subscription={RandomDocument} {...props} />
     );
-
+    
 
 /**
  * __useRandomSubscription__
@@ -628,7 +647,7 @@ export type RequestsComponentProps = Omit<ApolloReactComponents.SubscriptionComp
     export const RequestsComponent = (props: RequestsComponentProps) => (
       <ApolloReactComponents.Subscription<RequestsSubscription, RequestsSubscriptionVariables> subscription={RequestsDocument} {...props} />
     );
-
+    
 
 /**
  * __useRequestsSubscription__
