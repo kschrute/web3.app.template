@@ -23,6 +23,7 @@ export default function GraphqlRequestsCount() {
       description={(
         <>
           Your requests count:
+          {' '}
           {loading ? <Spinner size="sm" mr={2} /> : count}
         </>
 )}
