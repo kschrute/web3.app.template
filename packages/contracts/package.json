@@ -18,6 +18,7 @@
     "deploy": "source .env && forge create contracts/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY --etherscan-api-key $ETHERSCAN_API_KEY --verify",
     "init.local": "CHAIN_ID=31337 tsx src/scripts/init.ts",
     "prepare": "run-s 'prepare.*'",
+    "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
     "prepare.abi.counter": "forge build --silent && jq '.abi' ./artifacts/Counter.sol/Counter.json > src/abi/Counter.json",
     "prepare.abi.faucet": "forge build --silent && jq '.abi' ./artifacts/Faucet.sol/Faucet.json > src/abi/Faucet.json",
     "prepare.abi.subscription": "forge build --silent && jq '.abi' ./artifacts/Subscription.sol/Subscription.json > src/abi/Subscription.json",
