@@ -30,6 +30,7 @@ export default function GraphqlSubscription() {
       description={(
         <>
           Random number subscription:
+          {' '}
           {loading ? <Spinner size="sm" mr={2} /> : value}
         </>
 )}
