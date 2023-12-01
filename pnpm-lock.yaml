@@ -99,7 +99,7 @@ importers:
         specifier: ~5.0.4
         version: 5.0.4
       viem:
-        specifier: ^1.15.1
+        specifier: ^1.18.3
         version: 1.18.3(typescript@5.0.4)(zod@3.22.4)
 
   packages/cron:
