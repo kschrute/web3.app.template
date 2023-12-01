@@ -32,6 +32,8 @@
     "wagmi": "wagmi generate",
     "test": "hardhat test",
     "test.forge": "forge test",
+    "test.file": "./test-file.sh",
+    "test.contract": "./test-contract.sh",
     "pre-commit": "lint-staged"
   },
   "dependencies": {

@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run slither" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/packages/contracts/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="test.contract" />
+    </scripts>
+    <arguments value="$ProjectFileDir$/$FileDirRelativeToProjectRoot$/$FileName$" />
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
