@@ -14,7 +14,6 @@
     "build.schema": "tsx src/schema/index.ts",
     "prepare": "run-s 'prepare.*'",
     "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
-    "prepare.prisma.migrate": "prisma migrate dev",
     "prepare.prisma.generate": "prisma generate",
     "prepare.codegen": "graphql-codegen --config codegen.ts",
     "prepare.typescript": "rm -rf ./dist && tsc --project tsconfig.json",

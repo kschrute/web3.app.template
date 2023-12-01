@@ -5,3 +5,17 @@
 artifacts
 out
 cache
+cache_forge
+
+# Hardhat files
+/cache
+/cache_hardhat
+/artifacts
+
+# TypeChain files
+/typechain
+/typechain-types
+
+# solidity-coverage files
+/coverage
+/coverage.json

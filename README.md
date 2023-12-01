@@ -2,6 +2,7 @@
 
 - [ ] Add docker build (see https://pnpm.io/docker)
 - [ ] Add Slither
+- [x] Add signatures contract and examples
 - [x] Use Forge to deploy contracts
 - [x] Set up view for contracts
 - [x] Export contracts.ts from the `contracts` package
