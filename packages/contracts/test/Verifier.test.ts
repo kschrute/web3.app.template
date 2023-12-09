@@ -3,7 +3,7 @@ import { hexToSignature, keccak256, toHex } from 'viem'
 import { expect } from 'chai'
 
 describe('Verifier', () => {
-  async function deployFixture() {
+  const deployFixture = async () => {
     const [owner, admin] = await hre.viem.getWalletClients()
 
     const contract = await hre.viem.deployContract(

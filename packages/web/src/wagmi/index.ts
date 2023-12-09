@@ -14,7 +14,7 @@ import {
 
 export * from './generated'
 
-const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string
+const projectId = <string>process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...(process.env.NODE_ENV === 'development' ? [goerli, localhost, foundry, hardhat] : [])],

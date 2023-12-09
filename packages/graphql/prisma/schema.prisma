@@ -19,6 +19,7 @@ model User {
   nonce           String
   challenge       String    @db.Text
   signature       String?
+  ip              String?
   requestCount    Int       @default(0)
   isAuthenticated Boolean   @default(false)
   isSubscribed    Boolean   @default(false)
@@ -42,7 +43,7 @@ model Project {
 }
 
 model Event {
-  id              String   @id @default(uuid())
+  id              String   @id @default(cuid())
   prevEvent       Event?   @relation("EventToEvent", fields: [prevEventId], references: [id])
   prevEventId     String?
   blockNumber     BigInt   @db.BigInt

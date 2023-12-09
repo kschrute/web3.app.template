@@ -13,7 +13,7 @@ describe('SimpleMultiSig',  () => {
   let owners: `0x${string}`[] = []
   const threshold = BigInt(2)
 
-  async function deployFixture() {
+  const deployFixture = async () => {
     const [owner, secondAccount, thirdAccount] = await hre.viem.getWalletClients()
 
     owners = [owner.account.address, secondAccount.account.address, thirdAccount.account.address].sort()
@@ -109,7 +109,7 @@ describe('SimpleMultiSig',  () => {
     return { sigV: sigV, sigR: sigR, sigS: sigS }
   }
 
-  describe('Deployment', function () {
+  describe('Deployment', () => {
     it('Should set the right owners', async () => {
       const { contract, owner } = await loadFixture(deployFixture)
 
@@ -120,7 +120,7 @@ describe('SimpleMultiSig',  () => {
     })
   })
 
-  describe('Functionality', function () {
+  describe('Functionality', () => {
     it('Should send value', async () => {
       const { contract, testRegistry, owner, secondAccount, thirdAccount, publicClient } = await loadFixture(deployFixture)
 

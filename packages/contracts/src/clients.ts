@@ -15,7 +15,7 @@ const getChain = (id: number) => {
 
 const chain = getChain(chainId)
 const transport = http()
-const mnemonic = process.env.MNEMONIC as string
+const mnemonic = <string>process.env.MNEMONIC
 const account = mnemonicToAccount(mnemonic)
 
 export const publicClient = createPublicClient({

@@ -40,9 +40,11 @@
     "@app/shared": "workspace:^",
     "@wagmi/cli": "^1.5.2",
     "dotenv": "^16.3.1",
+    "viem": "^1.18.3",
     "wagmi": "^1.4.5"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.2",
     "@nomicfoundation/hardhat-foundry": "^1.1.1",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
@@ -62,7 +64,6 @@
     "lint-staged": "^15.0.2",
     "solidity-coverage": "^0.8.0",
     "tsx": "^3.14.0",
-    "typescript": "~5.0.4",
-    "viem": "^1.18.3"
+    "typescript": "~5.0.4"
   }
 }

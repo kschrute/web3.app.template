@@ -22,8 +22,8 @@ export default {
       chain: mainnet,
       accounts: { mnemonic: process.env.MNEMONIC || '' },
       startBlock: BigInt(16722396),
-      rpcUrl: process.env.RPC_ENDPOINT as string,
-      wsUrl: process.env.WS_ENDPOINT as string,
+      rpcUrl: <string>process.env.RPC_ENDPOINT,
+      wsUrl: <string>process.env.WS_ENDPOINT,
     },
   },
 

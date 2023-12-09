@@ -1112,6 +1112,7 @@ export namespace Prisma {
     nonce: string | null
     challenge: string | null
     signature: string | null
+    ip: string | null
     requestCount: number | null
     isAuthenticated: boolean | null
     isSubscribed: boolean | null
@@ -1125,6 +1126,7 @@ export namespace Prisma {
     nonce: string | null
     challenge: string | null
     signature: string | null
+    ip: string | null
     requestCount: number | null
     isAuthenticated: boolean | null
     isSubscribed: boolean | null
@@ -1138,6 +1140,7 @@ export namespace Prisma {
     nonce: number
     challenge: number
     signature: number
+    ip: number
     requestCount: number
     isAuthenticated: number
     isSubscribed: number
@@ -1161,6 +1164,7 @@ export namespace Prisma {
     nonce?: true
     challenge?: true
     signature?: true
+    ip?: true
     requestCount?: true
     isAuthenticated?: true
     isSubscribed?: true
@@ -1174,6 +1178,7 @@ export namespace Prisma {
     nonce?: true
     challenge?: true
     signature?: true
+    ip?: true
     requestCount?: true
     isAuthenticated?: true
     isSubscribed?: true
@@ -1187,6 +1192,7 @@ export namespace Prisma {
     nonce?: true
     challenge?: true
     signature?: true
+    ip?: true
     requestCount?: true
     isAuthenticated?: true
     isSubscribed?: true
@@ -1287,6 +1293,7 @@ export namespace Prisma {
     nonce: string
     challenge: string
     signature: string | null
+    ip: string | null
     requestCount: number
     isAuthenticated: boolean
     isSubscribed: boolean
@@ -1319,6 +1326,7 @@ export namespace Prisma {
     nonce?: boolean
     challenge?: boolean
     signature?: boolean
+    ip?: boolean
     requestCount?: boolean
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -1334,6 +1342,7 @@ export namespace Prisma {
     nonce?: boolean
     challenge?: boolean
     signature?: boolean
+    ip?: boolean
     requestCount?: boolean
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -1358,6 +1367,7 @@ export namespace Prisma {
       nonce: string
       challenge: string
       signature: string | null
+      ip: string | null
       requestCount: number
       isAuthenticated: boolean
       isSubscribed: boolean
@@ -1763,6 +1773,7 @@ export namespace Prisma {
     readonly nonce: FieldRef<"User", 'String'>
     readonly challenge: FieldRef<"User", 'String'>
     readonly signature: FieldRef<"User", 'String'>
+    readonly ip: FieldRef<"User", 'String'>
     readonly requestCount: FieldRef<"User", 'Int'>
     readonly isAuthenticated: FieldRef<"User", 'Boolean'>
     readonly isSubscribed: FieldRef<"User", 'Boolean'>
@@ -4210,6 +4221,7 @@ export namespace Prisma {
     nonce: 'nonce',
     challenge: 'challenge',
     signature: 'signature',
+    ip: 'ip',
     requestCount: 'requestCount',
     isAuthenticated: 'isAuthenticated',
     isSubscribed: 'isSubscribed',
@@ -4350,6 +4362,7 @@ export namespace Prisma {
     nonce?: StringFilter<"User"> | string
     challenge?: StringFilter<"User"> | string
     signature?: StringNullableFilter<"User"> | string | null
+    ip?: StringNullableFilter<"User"> | string | null
     requestCount?: IntFilter<"User"> | number
     isAuthenticated?: BoolFilter<"User"> | boolean
     isSubscribed?: BoolFilter<"User"> | boolean
@@ -4364,6 +4377,7 @@ export namespace Prisma {
     nonce?: SortOrder
     challenge?: SortOrder
     signature?: SortOrderInput | SortOrder
+    ip?: SortOrderInput | SortOrder
     requestCount?: SortOrder
     isAuthenticated?: SortOrder
     isSubscribed?: SortOrder
@@ -4381,6 +4395,7 @@ export namespace Prisma {
     nonce?: StringFilter<"User"> | string
     challenge?: StringFilter<"User"> | string
     signature?: StringNullableFilter<"User"> | string | null
+    ip?: StringNullableFilter<"User"> | string | null
     requestCount?: IntFilter<"User"> | number
     isAuthenticated?: BoolFilter<"User"> | boolean
     isSubscribed?: BoolFilter<"User"> | boolean
@@ -4395,6 +4410,7 @@ export namespace Prisma {
     nonce?: SortOrder
     challenge?: SortOrder
     signature?: SortOrderInput | SortOrder
+    ip?: SortOrderInput | SortOrder
     requestCount?: SortOrder
     isAuthenticated?: SortOrder
     isSubscribed?: SortOrder
@@ -4416,6 +4432,7 @@ export namespace Prisma {
     nonce?: StringWithAggregatesFilter<"User"> | string
     challenge?: StringWithAggregatesFilter<"User"> | string
     signature?: StringNullableWithAggregatesFilter<"User"> | string | null
+    ip?: StringNullableWithAggregatesFilter<"User"> | string | null
     requestCount?: IntWithAggregatesFilter<"User"> | number
     isAuthenticated?: BoolWithAggregatesFilter<"User"> | boolean
     isSubscribed?: BoolWithAggregatesFilter<"User"> | boolean
@@ -4597,6 +4614,7 @@ export namespace Prisma {
     nonce: string
     challenge: string
     signature?: string | null
+    ip?: string | null
     requestCount?: number
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -4611,6 +4629,7 @@ export namespace Prisma {
     nonce: string
     challenge: string
     signature?: string | null
+    ip?: string | null
     requestCount?: number
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -4625,6 +4644,7 @@ export namespace Prisma {
     nonce?: StringFieldUpdateOperationsInput | string
     challenge?: StringFieldUpdateOperationsInput | string
     signature?: NullableStringFieldUpdateOperationsInput | string | null
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
     requestCount?: IntFieldUpdateOperationsInput | number
     isAuthenticated?: BoolFieldUpdateOperationsInput | boolean
     isSubscribed?: BoolFieldUpdateOperationsInput | boolean
@@ -4639,6 +4659,7 @@ export namespace Prisma {
     nonce?: StringFieldUpdateOperationsInput | string
     challenge?: StringFieldUpdateOperationsInput | string
     signature?: NullableStringFieldUpdateOperationsInput | string | null
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
     requestCount?: IntFieldUpdateOperationsInput | number
     isAuthenticated?: BoolFieldUpdateOperationsInput | boolean
     isSubscribed?: BoolFieldUpdateOperationsInput | boolean
@@ -4653,6 +4674,7 @@ export namespace Prisma {
     nonce: string
     challenge: string
     signature?: string | null
+    ip?: string | null
     requestCount?: number
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -4666,6 +4688,7 @@ export namespace Prisma {
     nonce?: StringFieldUpdateOperationsInput | string
     challenge?: StringFieldUpdateOperationsInput | string
     signature?: NullableStringFieldUpdateOperationsInput | string | null
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
     requestCount?: IntFieldUpdateOperationsInput | number
     isAuthenticated?: BoolFieldUpdateOperationsInput | boolean
     isSubscribed?: BoolFieldUpdateOperationsInput | boolean
@@ -4679,6 +4702,7 @@ export namespace Prisma {
     nonce?: StringFieldUpdateOperationsInput | string
     challenge?: StringFieldUpdateOperationsInput | string
     signature?: NullableStringFieldUpdateOperationsInput | string | null
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
     requestCount?: IntFieldUpdateOperationsInput | number
     isAuthenticated?: BoolFieldUpdateOperationsInput | boolean
     isSubscribed?: BoolFieldUpdateOperationsInput | boolean
@@ -4954,6 +4978,7 @@ export namespace Prisma {
     nonce?: SortOrder
     challenge?: SortOrder
     signature?: SortOrder
+    ip?: SortOrder
     requestCount?: SortOrder
     isAuthenticated?: SortOrder
     isSubscribed?: SortOrder
@@ -4971,6 +4996,7 @@ export namespace Prisma {
     nonce?: SortOrder
     challenge?: SortOrder
     signature?: SortOrder
+    ip?: SortOrder
     requestCount?: SortOrder
     isAuthenticated?: SortOrder
     isSubscribed?: SortOrder
@@ -4984,6 +5010,7 @@ export namespace Prisma {
     nonce?: SortOrder
     challenge?: SortOrder
     signature?: SortOrder
+    ip?: SortOrder
     requestCount?: SortOrder
     isAuthenticated?: SortOrder
     isSubscribed?: SortOrder
@@ -5712,6 +5739,7 @@ export namespace Prisma {
     nonce: string
     challenge: string
     signature?: string | null
+    ip?: string | null
     requestCount?: number
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -5725,6 +5753,7 @@ export namespace Prisma {
     nonce: string
     challenge: string
     signature?: string | null
+    ip?: string | null
     requestCount?: number
     isAuthenticated?: boolean
     isSubscribed?: boolean
@@ -5754,6 +5783,7 @@ export namespace Prisma {
     nonce?: StringFieldUpdateOperationsInput | string
     challenge?: StringFieldUpdateOperationsInput | string
     signature?: NullableStringFieldUpdateOperationsInput | string | null
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
     requestCount?: IntFieldUpdateOperationsInput | number
     isAuthenticated?: BoolFieldUpdateOperationsInput | boolean
     isSubscribed?: BoolFieldUpdateOperationsInput | boolean
@@ -5767,6 +5797,7 @@ export namespace Prisma {
     nonce?: StringFieldUpdateOperationsInput | string
     challenge?: StringFieldUpdateOperationsInput | string
     signature?: NullableStringFieldUpdateOperationsInput | string | null
+    ip?: NullableStringFieldUpdateOperationsInput | string | null
     requestCount?: IntFieldUpdateOperationsInput | number
     isAuthenticated?: BoolFieldUpdateOperationsInput | boolean
     isSubscribed?: BoolFieldUpdateOperationsInput | boolean

@@ -1,5 +1,13 @@
 import { builder } from '../../builder'
 import { devDelay } from '../../utils'
+import { SortOrder } from '../types'
+import { db } from '../../db'
+
+export const OrderBy = builder.inputType('OrderBy', {
+  fields: (t) => ({
+    createdAt: t.field({ type: SortOrder }),
+  }),
+})
 
 builder.queryField('projects', (t) =>
   t.prismaConnection({
@@ -10,6 +18,12 @@ builder.queryField('projects', (t) =>
     cursor: 'id',
     defaultSize: 25,
     maxSize: 1_000,
+    args: {
+      orderBy: t.arg({
+        type: OrderBy,
+        required: false,
+      }),
+    },
     totalCount: (connection, args, context, info) => context.prisma.project.count({
       where: {
         userAddress: context.currentUser!.address
@@ -17,12 +31,14 @@ builder.queryField('projects', (t) =>
     }),
     resolve: async (query, parent, args, context, info) => {
       await devDelay()
-      return context.prisma.project.findMany({
+      return db.project.findMany({
         ...query,
         where: {
           userAddress: context.currentUser!.address
         },
-        orderBy: { id: 'desc' },
+        orderBy: args.orderBy
+          ? Object.entries(args.orderBy).map(([k, v]) => ({ [k]: v }))
+          : [{ id: 'desc' }],
       })
     },
   }),

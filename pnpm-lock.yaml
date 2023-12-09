@@ -34,10 +34,16 @@ importers:
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
+      viem:
+        specifier: ^1.18.3
+        version: 1.18.3(typescript@5.0.4)(zod@3.22.4)
       wagmi:
         specifier: ^1.4.5
         version: 1.4.5(encoding@0.1.13)(pino-pretty@10.2.3)(react@18.2.0)(typescript@5.0.4)(viem@1.18.3)
     devDependencies:
+      '@nomicfoundation/hardhat-chai-matchers':
+        specifier: ^2.0.2
+        version: 2.0.2(@nomicfoundation/hardhat-ethers@3.0.5)(chai@4.3.10)(ethers@6.9.0)(hardhat@2.19.1)
       '@nomicfoundation/hardhat-foundry':
         specifier: ^1.1.1
         version: 1.1.1(hardhat@2.19.1)
@@ -98,9 +104,6 @@ importers:
       typescript:
         specifier: ~5.0.4
         version: 5.0.4
-      viem:
-        specifier: ^1.18.3
-        version: 1.18.3(typescript@5.0.4)(zod@3.22.4)
 
   packages/cron:
     dependencies:
@@ -195,6 +198,9 @@ importers:
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.3.1
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -456,6 +462,10 @@ packages:
   /@aashutoshrathi/word-wrap@1.2.6:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /@adraffy/ens-normalize@1.10.0:
+    resolution: {integrity: sha512-nA9XHtlAkYfJxY7bce8DcN7eKxWWCWkU+1GR9d+U6MbNpfwQp8TI7vqOsBsMcHoT4mBu2kypKoSKnghEzOOq5Q==}
     dev: true
 
   /@adraffy/ens-normalize@1.9.4:
@@ -4455,6 +4465,38 @@ packages:
       - utf-8-validate
     dev: true
 
+  /@nomicfoundation/hardhat-chai-matchers@2.0.2(@nomicfoundation/hardhat-ethers@3.0.5)(chai@4.3.10)(ethers@6.9.0)(hardhat@2.19.1):
+    resolution: {integrity: sha512-9Wu9mRtkj0U9ohgXYFbB/RQDa+PcEdyBm2suyEtsJf3PqzZEEjLUZgWnMjlFhATMk/fp3BjmnYVPrwl+gr8oEw==}
+    peerDependencies:
+      '@nomicfoundation/hardhat-ethers': ^3.0.0
+      chai: ^4.2.0
+      ethers: ^6.1.0
+      hardhat: ^2.9.4
+    dependencies:
+      '@nomicfoundation/hardhat-ethers': 3.0.5(ethers@6.9.0)(hardhat@2.19.1)
+      '@types/chai-as-promised': 7.1.8
+      chai: 4.3.10
+      chai-as-promised: 7.1.1(chai@4.3.10)
+      deep-eql: 4.1.3
+      ethers: 6.9.0
+      hardhat: 2.19.1(ts-node@10.9.1)(typescript@5.0.4)
+      ordinal: 1.0.3
+    dev: true
+
+  /@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.9.0)(hardhat@2.19.1):
+    resolution: {integrity: sha512-RNFe8OtbZK6Ila9kIlHp0+S80/0Bu/3p41HUpaRIoHLm6X3WekTd83vob3rE54Duufu1edCiBDxspBzi2rxHHw==}
+    peerDependencies:
+      ethers: ^6.1.0
+      hardhat: ^2.0.0
+    dependencies:
+      debug: 4.3.4(supports-color@8.1.1)
+      ethers: 6.9.0
+      hardhat: 2.19.1(ts-node@10.9.1)(typescript@5.0.4)
+      lodash.isequal: 4.5.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@nomicfoundation/hardhat-foundry@1.1.1(hardhat@2.19.1):
     resolution: {integrity: sha512-cXGCBHAiXas9Pg9MhMOpBVQCkWRYoRFG7GJJAph+sdQsfd22iRs5U5Vs9XmpGEQd1yEvYISQZMeE68Nxj65iUQ==}
     peerDependencies:
@@ -5405,6 +5447,10 @@ packages:
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: false
+
+  /@types/node@18.15.13:
+    resolution: {integrity: sha512-N+0kuo9KgrUQ1Sn/ifDXsvg0TTleP7rIy4zOBGECxAljqvqfqpTfzx0Q1NUedOixRMBfe2Whhb056a42cWs26Q==}
+    dev: true
 
   /@types/node@20.8.10:
     resolution: {integrity: sha512-TlgT8JntpcbmKUFzjhsyhGfP2fsiz1Mv56im6enJ905xG1DAYesxJaeSbGqQmAw8OWPdhyJGhGSQGKRNJ45u9w==}
@@ -6732,6 +6778,10 @@ packages:
   /aes-js@3.1.2:
     resolution: {integrity: sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==}
     dev: false
+
+  /aes-js@4.0.0-beta.5:
+    resolution: {integrity: sha512-G965FqalsNyrPqgEGON7nIx1e/OVENSgiEIzyC63haUMuvNnwIgIjMs52hlTCKhkBny7A2ORNlfY9Zu+jmGk1Q==}
+    dev: true
 
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -8935,6 +8985,22 @@ packages:
       - utf-8-validate
     dev: true
 
+  /ethers@6.9.0:
+    resolution: {integrity: sha512-pmfNyQzc2mseLe91FnT2vmNaTt8dDzhxZ/xItAV7uGsF4dI4ek2ufMu3rAkgQETL/TIs0GS5A+U05g9QyWnv3Q==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': 1.10.0
+      '@noble/curves': 1.2.0
+      '@noble/hashes': 1.3.2
+      '@types/node': 18.15.13
+      aes-js: 4.0.0-beta.5
+      tslib: 2.4.0
+      ws: 8.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: true
+
   /ethjs-unit@0.1.6:
     resolution: {integrity: sha512-/Sn9Y0oKl0uqQuvgFk/zQgR7aw1g36qX/jzSQ5lSwlO0GigPymk4eGQfeNTD03w1dPOqfz8V77Cy43jH56pagw==}
     engines: {node: '>=6.5.0', npm: '>=3'}
@@ -10875,7 +10941,6 @@ packages:
 
   /lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: false
 
   /lodash.isinteger@4.0.4:
     resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
@@ -11625,6 +11690,10 @@ packages:
       strip-ansi: 7.1.0
       wcwidth: 1.0.1
     dev: false
+
+  /ordinal@1.0.3:
+    resolution: {integrity: sha512-cMddMgb2QElm8G7vdaa02jhUNbTSrhsgAGUz1OokD83uJTwSUn+nKoNoKVVaRa08yF6sgfO7Maou1+bgLd9rdQ==}
+    dev: true
 
   /os-tmpdir@1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
@@ -13407,7 +13476,6 @@ packages:
 
   /tslib@2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: false
 
   /tslib@2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
@@ -14170,6 +14238,19 @@ packages:
     dependencies:
       bufferutil: 4.0.8
       utf-8-validate: 5.0.10
+
+  /ws@8.5.0:
+    resolution: {integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: true
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}

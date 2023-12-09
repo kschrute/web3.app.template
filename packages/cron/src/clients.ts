@@ -4,7 +4,7 @@ import { getNetworkConfig } from './utils/getNetworkConfig'
 
 const networkConfig = getNetworkConfig()
 const transport = http(networkConfig.rpcUrl)
-const mnemonic = 'myth like bonus scare over problem client lizard pioneer submit female collect'
+const mnemonic = <string>process.env.MNEMONIC
 const account = mnemonicToAccount(mnemonic)
 
 export const publicClient = createPublicClient({

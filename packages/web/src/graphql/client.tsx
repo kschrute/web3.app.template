@@ -51,6 +51,10 @@ export type MutationToggleActiveProjectArgs = {
   id: Scalars['Int']['input'];
 };
 
+export type OrderBy = {
+  createdAt?: InputMaybe<SortOrder>;
+};
+
 export type PageInfo = {
   __typename?: 'PageInfo';
   endCursor?: Maybe<Scalars['ID']['output']>;
@@ -104,6 +108,7 @@ export type QueryProjectsArgs = {
   before?: InputMaybe<Scalars['ID']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<OrderBy>;
 };
 
 

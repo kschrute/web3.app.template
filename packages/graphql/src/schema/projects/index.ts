@@ -1,5 +1,6 @@
 import { builder } from '../../builder'
 import { db } from '../../db'
+import { SortOrder } from '../types'
 
 export * from './projects'
 
@@ -9,9 +10,9 @@ export const ProjectCreateInput = builder.inputType('ProjectCreateInput', {
   }),
 })
 
-const SortOrder = builder.enumType('SortOrder', {
-  values: ['asc', 'desc'] as const,
-})
+// const SortOrder = builder.enumType('SortOrder', {
+//   values: ['asc', 'desc'] as const,
+// })
 
 const ProjectOrderByUpdatedAtInput = builder.inputType('ProjectOrderByUpdatedAtInput', {
   fields: (t) => ({

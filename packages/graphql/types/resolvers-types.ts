@@ -47,6 +47,10 @@ export type MutationToggleActiveProjectArgs = {
   id: Scalars['Int']['input'];
 };
 
+export type OrderBy = {
+  createdAt?: InputMaybe<SortOrder>;
+};
+
 export type PageInfo = {
   __typename?: 'PageInfo';
   endCursor?: Maybe<Scalars['ID']['output']>;
@@ -100,6 +104,7 @@ export type QueryProjectsArgs = {
   before?: InputMaybe<Scalars['ID']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<OrderBy>;
 };
 
 
@@ -256,6 +261,7 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<{}>;
+  OrderBy: OrderBy;
   PageInfo: ResolverTypeWrapper<PageInfo>;
   Project: ResolverTypeWrapper<Project>;
   ProjectCreateInput: ProjectCreateInput;
@@ -283,6 +289,7 @@ export type ResolversParentTypes = {
   ID: Scalars['ID']['output'];
   Int: Scalars['Int']['output'];
   Mutation: {};
+  OrderBy: OrderBy;
   PageInfo: PageInfo;
   Project: Project;
   ProjectCreateInput: ProjectCreateInput;

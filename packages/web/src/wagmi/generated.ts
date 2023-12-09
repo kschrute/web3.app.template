@@ -22,8 +22,8 @@ import {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const counterABI = [
@@ -70,19 +70,19 @@ export const counterABI = [
 ] as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const counterAddress = {
-  1: '0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab',
-  5: '0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab',
+  1: '0x0000000000000000000000000000000000000000',
+  5: '0x0000000000000000000000000000000000000000',
   31337: '0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab',
 } as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const counterConfig = {
@@ -380,8 +380,8 @@ export const erc721ABI = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const faucetABI = [
@@ -445,19 +445,19 @@ export const faucetABI = [
 ] as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const faucetAddress = {
-  1: '0x5b1869D9A4C187F2EAa108f3062412ecf0526b24',
-  5: '0x5b1869D9A4C187F2EAa108f3062412ecf0526b24',
+  1: '0x0000000000000000000000000000000000000000',
+  5: '0x0000000000000000000000000000000000000000',
   31337: '0x5b1869D9A4C187F2EAa108f3062412ecf0526b24',
 } as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const faucetConfig = { address: faucetAddress, abi: faucetABI } as const
@@ -489,8 +489,8 @@ export const ownedABI = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const subscriptionABI = [
@@ -538,19 +538,19 @@ export const subscriptionABI = [
 ] as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const subscriptionAddress = {
-  1: '0xCfEB869F69431e42cdB54A4F4f105C19C080A601',
-  5: '0xCfEB869F69431e42cdB54A4F4f105C19C080A601',
+  1: '0x0000000000000000000000000000000000000000',
+  5: '0x0000000000000000000000000000000000000000',
   31337: '0xCfEB869F69431e42cdB54A4F4f105C19C080A601',
 } as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const subscriptionConfig = {
@@ -563,8 +563,8 @@ export const subscriptionConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const wNatABI = [
@@ -876,19 +876,19 @@ export const wNatABI = [
 ] as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const wNatAddress = {
-  1: '0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B',
-  5: '0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B',
+  1: '0x0000000000000000000000000000000000000000',
+  5: '0x0000000000000000000000000000000000000000',
   31337: '0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B',
 } as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export const wNatConfig = { address: wNatAddress, abi: wNatABI } as const
@@ -900,8 +900,8 @@ export const wNatConfig = { address: wNatAddress, abi: wNatABI } as const
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link counterABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterRead<
@@ -926,8 +926,8 @@ export function useCounterRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link counterABI}__ and `functionName` set to `"number"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterNumber<
@@ -953,8 +953,8 @@ export function useCounterNumber<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link counterABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterWrite<
@@ -987,8 +987,8 @@ export function useCounterWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link counterABI}__ and `functionName` set to `"increment"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterIncrement<
@@ -1025,8 +1025,8 @@ export function useCounterIncrement<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link counterABI}__ and `functionName` set to `"setNumber"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterSetNumber<
@@ -1063,8 +1063,8 @@ export function useCounterSetNumber<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link counterABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareCounterWrite<TFunctionName extends string>(
@@ -1086,8 +1086,8 @@ export function usePrepareCounterWrite<TFunctionName extends string>(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link counterABI}__ and `functionName` set to `"increment"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareCounterIncrement(
@@ -1110,8 +1110,8 @@ export function usePrepareCounterIncrement(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link counterABI}__ and `functionName` set to `"setNumber"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareCounterSetNumber(
@@ -1134,8 +1134,8 @@ export function usePrepareCounterSetNumber(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link counterABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterEvent<TEventName extends string>(
@@ -1157,8 +1157,8 @@ export function useCounterEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link counterABI}__ and `eventName` set to `"Updated"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useCounterUpdatedEvent(
@@ -2071,8 +2071,8 @@ export function useErc721TransferEvent(
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link faucetABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetRead<
@@ -2097,8 +2097,8 @@ export function useFaucetRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"AMOUNT"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetAmount<
@@ -2124,8 +2124,8 @@ export function useFaucetAmount<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"accountClaimed"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetAccountClaimed<
@@ -2151,8 +2151,8 @@ export function useFaucetAccountClaimed<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link faucetABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetWrite<
@@ -2185,8 +2185,8 @@ export function useFaucetWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"claim"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetClaim<
@@ -2220,8 +2220,8 @@ export function useFaucetClaim<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"destroy"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetDestroy<
@@ -2258,8 +2258,8 @@ export function useFaucetDestroy<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link faucetABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareFaucetWrite<TFunctionName extends string>(
@@ -2281,8 +2281,8 @@ export function usePrepareFaucetWrite<TFunctionName extends string>(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"claim"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareFaucetClaim(
@@ -2305,8 +2305,8 @@ export function usePrepareFaucetClaim(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link faucetABI}__ and `functionName` set to `"destroy"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareFaucetDestroy(
@@ -2329,8 +2329,8 @@ export function usePrepareFaucetDestroy(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link faucetABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetEvent<TEventName extends string>(
@@ -2352,8 +2352,8 @@ export function useFaucetEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link faucetABI}__ and `eventName` set to `"Deposit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetDepositEvent(
@@ -2376,8 +2376,8 @@ export function useFaucetDepositEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link faucetABI}__ and `eventName` set to `"Withdrawal"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x5b1869D9A4C187F2EAa108f3062412ecf0526b24)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useFaucetWithdrawalEvent(
@@ -2479,8 +2479,8 @@ export function usePrepareMortalDestroy(
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link subscriptionABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionRead<
@@ -2509,8 +2509,8 @@ export function useSubscriptionRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"owner"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionOwner<
@@ -2540,8 +2540,8 @@ export function useSubscriptionOwner<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"userSubscribedAt"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionUserSubscribedAt<
@@ -2571,8 +2571,8 @@ export function useSubscriptionUserSubscribedAt<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link subscriptionABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionWrite<
@@ -2608,8 +2608,8 @@ export function useSubscriptionWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"subscribe"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionSubscribe<
@@ -2646,8 +2646,8 @@ export function useSubscriptionSubscribe<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link subscriptionABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareSubscriptionWrite<TFunctionName extends string>(
@@ -2669,8 +2669,8 @@ export function usePrepareSubscriptionWrite<TFunctionName extends string>(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link subscriptionABI}__ and `functionName` set to `"subscribe"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareSubscriptionSubscribe(
@@ -2693,8 +2693,8 @@ export function usePrepareSubscriptionSubscribe(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link subscriptionABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionEvent<TEventName extends string>(
@@ -2716,8 +2716,8 @@ export function useSubscriptionEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link subscriptionABI}__ and `eventName` set to `"Subscribed"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xCfEB869F69431e42cdB54A4F4f105C19C080A601)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useSubscriptionSubscribedEvent(
@@ -2740,8 +2740,8 @@ export function useSubscriptionSubscribedEvent(
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatRead<
@@ -2766,8 +2766,8 @@ export function useWNatRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"DOMAIN_SEPARATOR"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatDomainSeparator<
@@ -2793,8 +2793,8 @@ export function useWNatDomainSeparator<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"allowance"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatAllowance<
@@ -2820,8 +2820,8 @@ export function useWNatAllowance<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"balanceOf"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatBalanceOf<
@@ -2847,8 +2847,8 @@ export function useWNatBalanceOf<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"decimals"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatDecimals<
@@ -2874,8 +2874,8 @@ export function useWNatDecimals<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"eip712Domain"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatEip712Domain<
@@ -2901,8 +2901,8 @@ export function useWNatEip712Domain<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"name"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatName<
@@ -2928,8 +2928,8 @@ export function useWNatName<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"nonces"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatNonces<
@@ -2955,8 +2955,8 @@ export function useWNatNonces<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"symbol"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatSymbol<
@@ -2982,8 +2982,8 @@ export function useWNatSymbol<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"totalSupply"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatTotalSupply<
@@ -3009,8 +3009,8 @@ export function useWNatTotalSupply<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatWrite<
@@ -3043,8 +3043,8 @@ export function useWNatWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"approve"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatApprove<
@@ -3078,8 +3078,8 @@ export function useWNatApprove<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"burn"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatBurn<
@@ -3113,8 +3113,8 @@ export function useWNatBurn<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"burnFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatBurnFrom<
@@ -3151,8 +3151,8 @@ export function useWNatBurnFrom<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"deposit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatDeposit<
@@ -3186,8 +3186,8 @@ export function useWNatDeposit<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"depositTo"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatDepositTo<
@@ -3224,8 +3224,8 @@ export function useWNatDepositTo<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"permit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatPermit<
@@ -3259,8 +3259,8 @@ export function useWNatPermit<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"transfer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatTransfer<
@@ -3297,8 +3297,8 @@ export function useWNatTransfer<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"transferFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatTransferFrom<
@@ -3339,8 +3339,8 @@ export function useWNatTransferFrom<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"withdraw"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatWithdraw<
@@ -3377,8 +3377,8 @@ export function useWNatWithdraw<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"withdrawFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatWithdrawFrom<
@@ -3419,8 +3419,8 @@ export function useWNatWithdrawFrom<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatWrite<TFunctionName extends string>(
@@ -3442,8 +3442,8 @@ export function usePrepareWNatWrite<TFunctionName extends string>(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"approve"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatApprove(
@@ -3466,8 +3466,8 @@ export function usePrepareWNatApprove(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"burn"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatBurn(
@@ -3490,8 +3490,8 @@ export function usePrepareWNatBurn(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"burnFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatBurnFrom(
@@ -3514,8 +3514,8 @@ export function usePrepareWNatBurnFrom(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"deposit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatDeposit(
@@ -3538,8 +3538,8 @@ export function usePrepareWNatDeposit(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"depositTo"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatDepositTo(
@@ -3562,8 +3562,8 @@ export function usePrepareWNatDepositTo(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"permit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatPermit(
@@ -3586,8 +3586,8 @@ export function usePrepareWNatPermit(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"transfer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatTransfer(
@@ -3610,8 +3610,8 @@ export function usePrepareWNatTransfer(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"transferFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatTransferFrom(
@@ -3634,8 +3634,8 @@ export function usePrepareWNatTransferFrom(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"withdraw"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatWithdraw(
@@ -3658,8 +3658,8 @@ export function usePrepareWNatWithdraw(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link wNatABI}__ and `functionName` set to `"withdrawFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function usePrepareWNatWithdrawFrom(
@@ -3682,8 +3682,8 @@ export function usePrepareWNatWithdrawFrom(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wNatABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatEvent<TEventName extends string>(
@@ -3705,8 +3705,8 @@ export function useWNatEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wNatABI}__ and `eventName` set to `"Approval"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatApprovalEvent(
@@ -3729,8 +3729,8 @@ export function useWNatApprovalEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wNatABI}__ and `eventName` set to `"Deposit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatDepositEvent(
@@ -3753,8 +3753,8 @@ export function useWNatDepositEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wNatABI}__ and `eventName` set to `"EIP712DomainChanged"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatEip712DomainChangedEvent(
@@ -3777,8 +3777,8 @@ export function useWNatEip712DomainChangedEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wNatABI}__ and `eventName` set to `"Transfer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatTransferEvent(
@@ -3801,8 +3801,8 @@ export function useWNatTransferEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link wNatABI}__ and `eventName` set to `"Withdrawal"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
  */
 export function useWNatWithdrawalEvent(

@@ -112,6 +112,7 @@ exports.Prisma.UserScalarFieldEnum = {
   nonce: 'nonce',
   challenge: 'challenge',
   signature: 'signature',
+  ip: 'ip',
   requestCount: 'requestCount',
   isAuthenticated: 'isAuthenticated',
   isSubscribed: 'isSubscribed',

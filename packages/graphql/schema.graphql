@@ -12,6 +12,10 @@ type Mutation {
   toggleActiveProject(id: Int!): Project!
 }
 
+input OrderBy {
+  createdAt: SortOrder
+}
+
 type PageInfo {
   endCursor: ID
   hasNextPage: Boolean!
@@ -41,7 +45,7 @@ type Query {
   auth(data: UserAuthInput!): UserAuth!
   me: User!
   projectById(id: Int!): Project
-  projects(after: ID, before: ID, first: Int, last: Int): QueryProjectsConnection!
+  projects(after: ID, before: ID, first: Int, last: Int, orderBy: OrderBy): QueryProjectsConnection!
   user(address: String!): User
   users: [User!]!
 }
