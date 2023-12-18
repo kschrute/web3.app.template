@@ -34,8 +34,9 @@
     "prisma.reset": "prisma migrate reset -f",
     "prisma.seed": "prisma db seed",
     "prettify": "prettier --write '**/*.{ts,tsx}'",
-    "pre-commit": "lint-staged",
-    "prod.migrate": "prisma migrate deploy"
+    "prod.migrate": "prisma migrate deploy",
+    "reset": "dotenv -e .env -- prisma migrate reset -f",
+    "pre-commit": "lint-staged"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

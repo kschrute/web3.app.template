@@ -1,6 +1,5 @@
+import 'dotenv/config'
 import { cleanAll, pauseAll, resumeAll, scheduleJobs, startAll, stopAll } from './jobs/queues/scripts'
-
-require('dotenv').config()
 
 async function main() {
   await startAll()

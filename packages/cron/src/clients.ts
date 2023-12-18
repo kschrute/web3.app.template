@@ -3,7 +3,8 @@ import { mnemonicToAccount } from 'viem/accounts'
 import { getNetworkConfig } from './utils/getNetworkConfig'
 
 const networkConfig = getNetworkConfig()
-const transport = http(networkConfig.rpcUrl)
+// const transport = http(networkConfig.rpcUrl)
+const transport = http()
 const mnemonic = <string>process.env.MNEMONIC
 const account = mnemonicToAccount(mnemonic)
 

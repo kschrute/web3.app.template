@@ -1,7 +1,6 @@
+import 'dotenv/config'
 import * as jobs from '../jobs'
 import { scheduleJobs, startAll, stopAll } from '../jobs/queues/scripts'
-
-require('dotenv').config()
 
 export const main = async () => {
   await startAll()

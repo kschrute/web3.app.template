@@ -33,7 +33,7 @@ export abstract class Queue {
 
     console.log(`Using ${stringify(redisSettings)} config`)
 
-    this.queue = new Bull(this.name, { redis: redisSettings })
+    this.queue = new Bull(this.name, { prefix: 'bull', redis: redisSettings })
 
     await this.queue?.resume()
   }

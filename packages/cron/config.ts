@@ -1,9 +1,7 @@
+import 'dotenv/config'
 import { foundry, hardhat, localhost, mainnet } from 'viem/chains'
 
-require('dotenv').config()
-
 const localNetwork = {
-  chain: foundry,
   accounts: { mnemonic: process.env.MNEMONIC || '' },
   startBlock: BigInt(0),
   rpcUrl: 'http://127.0.0.1:8545',
@@ -15,9 +13,18 @@ export default {
   chainId: process.env.CHAIN_ID ? Number(process.env.CHAIN_ID) : mainnet.id,
 
   networks: {
-    [localhost.id]: localNetwork,
-    [hardhat.id]: localNetwork,
-    [foundry.id]: localNetwork,
+    [localhost.id]: {
+      ...localNetwork,
+      chain: localhost,
+    },
+    [hardhat.id]: {
+      ...localNetwork,
+      chain: foundry,
+    },
+    [foundry.id]: {
+      ...localNetwork,
+      chain: foundry,
+    },
     [mainnet.id]: {
       chain: mainnet,
       accounts: { mnemonic: process.env.MNEMONIC || '' },

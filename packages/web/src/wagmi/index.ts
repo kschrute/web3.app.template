@@ -21,6 +21,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     publicProvider(),
   ],
+  { batch: { multicall: true } },
 )
 
 // const { connectors } = getDefaultWallets({

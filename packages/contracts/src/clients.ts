@@ -1,8 +1,7 @@
+import 'dotenv/config'
 import { createPublicClient, http, createWalletClient } from 'viem'
 import { mnemonicToAccount } from 'viem/accounts'
 import { hardhat, mainnet } from 'viem/chains'
-
-require('dotenv').config()
 
 const chainId = process.env.CHAIN_ID ? Number(process.env.CHAIN_ID) : hardhat.id
 

@@ -1,5 +1,12 @@
+## Prerequisites
+
+```shell
+pnpm add -g dotenv-cli 
+```
+
 ## TODO
 
+- [ ] Remove `import 'dotenv/config'` from the `cron` package?
 - [ ] Add docker build (see https://pnpm.io/docker)
 - [ ] Add Slither
 - [x] Add signatures contract and examples

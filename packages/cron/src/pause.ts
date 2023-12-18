@@ -1,7 +1,6 @@
+import 'dotenv/config'
 import { cache } from './redis'
 import { pauseAll, startAll, stopAll } from './jobs/queues/scripts'
-
-require('dotenv').config()
 
 async function main() {
   await startAll()
