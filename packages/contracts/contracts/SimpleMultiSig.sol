@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 //pragma solidity ^0.6.11;
 
-import "hardhat/console.sol";
+//import "hardhat/console.sol";
 
 contract SimpleMultiSig {
 

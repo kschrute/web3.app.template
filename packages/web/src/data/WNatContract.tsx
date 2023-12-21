@@ -1,7 +1,19 @@
 'use client'
 
 import React from 'react'
-import { Box, BoxProps, Button, Flex, Input, InputGroup, Text } from '@chakra-ui/react'
+import {
+  Box,
+  BoxProps,
+  Button,
+  Flex,
+  Heading,
+  Input,
+  InputGroup,
+  Stat, StatHelpText,
+  StatLabel,
+  StatNumber,
+  Text
+} from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
 import { formatEther, parseEther } from 'viem'
 import { useWNatBalanceOf, useWNatDeposit, useWNatWithdraw } from '../wagmi'
@@ -11,19 +23,22 @@ import { useWriteTransaction } from '../hooks/useWriteTransaction'
 
 export default function WNatContract() {
   return (
-    <AppAlert status="info">
-      <Box flex="100%">
-        <Balance />
-        <Flex gap={5}>
-          <Deposit flex={1} />
-          <Withdraw flex={1} />
+    <AppAlert status="info" showIcon={false}>
+      <Box flex="100%" p={0}>
+        <Heading size="lg" mb={5}>Wrapped Native Token</Heading>
+        <Flex bg="gray1" gap={5} alignItems="center" justifyContent="flex-start">
+          <Balance flex={0} bg="green1" />
+          <Flex bg="yellow1" flex={1} gap={5} flexDirection="column">
+            <Deposit flex={1} />
+            <Withdraw flex={1} />
+          </Flex>
         </Flex>
       </Box>
     </AppAlert>
   )
 }
 
-function Balance() {
+function Balance({ ...props }: BoxProps) {
   const { address } = useAccount()
   const { data: balance } = useWNatBalanceOf({
     args: [address!],
@@ -31,16 +46,18 @@ function Balance() {
   })
 
   return (
-    <Text mb={5}>
-      Your WNat balance:
-      {' '}
-      {balance !== undefined && formatEther(balance)}
-    </Text>
+    <Box borderWidth={1} borderRadius="lg" p={3} pb={1} {...props}>
+      <Stat>
+        <StatLabel>WNAT</StatLabel>
+        <StatNumber>{balance !== undefined && formatEther(balance)}</StatNumber>
+        <StatHelpText>balance</StatHelpText>
+      </Stat>
+    </Box>
   )
 }
 
 function Deposit({ ...props }: BoxProps) {
-  const [amount, setAmount] = React.useState('1')
+  const [amount, setAmount] = React.useState('0')
   const debouncedAmount = useDebounce(amount, 500)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
@@ -50,7 +67,7 @@ function Deposit({ ...props }: BoxProps) {
 
   return (
     <Box {...props}>
-      <InputGroup>
+      <InputGroup gap={5}>
         <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
         <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={write}>
           Wrap
@@ -61,7 +78,7 @@ function Deposit({ ...props }: BoxProps) {
 }
 
 function Withdraw({ ...props }: BoxProps) {
-  const [amount, setAmount] = React.useState('1')
+  const [amount, setAmount] = React.useState('')
   const debouncedAmount = useDebounce(amount, 500)
   const { address } = useAccount()
   const { data: balance } = useWNatBalanceOf({
@@ -75,13 +92,15 @@ function Withdraw({ ...props }: BoxProps) {
   }), { description: `Unwrap ${amount} WNAT` })
 
   React.useEffect(() => {
-    balance !== undefined && setAmount(formatEther(balance))
+    if (balance === undefined) return
+    if (balance > 0) setAmount(formatEther(balance))
+    else setAmount('')
   }, [balance])
 
   return (
     <Box {...props}>
-      <InputGroup>
-        <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
+      <InputGroup gap={5}>
+        <Input placeholder="Amount, WNAT" value={amount} onChange={handleChange} />
         <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={write}>
           Unwrap
         </Button>

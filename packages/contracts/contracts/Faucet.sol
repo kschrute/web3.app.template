@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.20;
+pragma solidity 0.8.18;
 
 contract Owned {
-    address payable owner;
+    address payable immutable owner;
 
     constructor() {
         owner = payable(msg.sender);
@@ -37,9 +37,10 @@ contract Faucet is Mortal {
         require(address(this).balance >= AMOUNT, "insufficient balance");
 
         accountClaimed[msg.sender] = true;
-        (bool success,) = msg.sender.call{value: AMOUNT}("");
-        require(success, "send failed");
 
         emit Withdrawal(msg.sender, AMOUNT);
+
+        (bool success,) = msg.sender.call{value: AMOUNT}("");
+        require(success, "send failed");
     }
 }

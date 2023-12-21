@@ -8,7 +8,7 @@ pnpm add -g dotenv-cli
 
 - [ ] Remove `import 'dotenv/config'` from the `cron` package?
 - [ ] Add docker build (see https://pnpm.io/docker)
-- [ ] Add Slither
+- [x] Add Slither
 - [x] Add signatures contract and examples
 - [x] Use Forge to deploy contracts
 - [x] Set up view for contracts

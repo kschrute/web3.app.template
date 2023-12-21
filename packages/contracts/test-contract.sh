@@ -2,6 +2,8 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 CURRENT_DIR=$(pwd)
 DOCKER=$(which docker)
 DIRNAME=$(which dirname)
@@ -32,11 +34,14 @@ echo "RELATIVEPATH: $RELATIVEPATH"
 echo "FILENAME: $FILENAME"
 echo "SOLIDITY_VERSION: $SOLIDITY_VERSION"
 
+#$DOCKER pull ghcr.io/trailofbits/eth-security-toolbox:nightly
+
 $DOCKER run -it \
 -v "$CURRENT_DIR/lib":/src/lib \
--v "$CURRENT_DIR/contracts":/src/contracts eth-security-toolbox bash \
+-v "$CURRENT_DIR/contracts":/src/contracts ghcr.io/trailofbits/eth-security-toolbox:nightly bash \
 -c "
-solc-select $SOLIDITY_VERSION
+solc-select install $SOLIDITY_VERSION
+solc-select use $SOLIDITY_VERSION
 slither \
 --exclude naming-convention \
 "/src$RELATIVEPATH"

@@ -6,14 +6,15 @@ type Props = {
   description?: string | JSX.Element
   status?: AlertStatus
   button?: JSX.Element | null
+  showIcon?: boolean
   children?: ReactNode
 } & AlertProps
 
-export default function AppAlert({ title, description, button, status = 'warning', children, ...rest }: Props) {
+export default function AppAlert({ title, description, button, status = 'warning', showIcon = true, children, ...rest }: Props) {
   return (
     <Alert my={5} rounded={5} variant="subtle" status={status} {...rest}>
-      <AlertIcon />
-      <Box flex={1} mr={2}>
+      {showIcon && <AlertIcon />}
+      <Box flex={1}>
         {title && <AlertTitle>{title}</AlertTitle>}
         {description && <AlertDescription>{description}</AlertDescription>}
       </Box>
