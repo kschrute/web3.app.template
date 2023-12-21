@@ -1,4 +1,5 @@
 {
   "solc_args": "--allow-paths /src",
-  "detectors_to_exclude": "naming-convention"
+  "detectors_to_exclude": "naming-convention,solc-version",
+  "filter_paths": "\/src\/lib"
 }
