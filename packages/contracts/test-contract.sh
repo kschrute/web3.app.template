@@ -16,6 +16,9 @@ while true; do
   esac
 done
 
+echo $CURRENT_DIR
+echo $(dirname "$CURRENT_DIR")
+
 SOLIDITY_VERSION=$(grep "pragma solidity " "$FILE" | cut -d" "  -f3- | sed 's/[\^\>\<\=;]//g')
 FILEPATH=$($DIRNAME -- "$FILE")
 FILENAME=$($BASENAME "$FILE")
@@ -37,12 +40,14 @@ echo "SOLIDITY_VERSION: $SOLIDITY_VERSION"
 #$DOCKER pull ghcr.io/trailofbits/eth-security-toolbox:nightly
 
 $DOCKER run -it \
+-v "$CURRENT_DIR/slither.config.json":/home/ethsec/slither.config.json \
 -v "$CURRENT_DIR/lib":/src/lib \
 -v "$CURRENT_DIR/contracts":/src/contracts ghcr.io/trailofbits/eth-security-toolbox:nightly bash \
 -c "
 solc-select install $SOLIDITY_VERSION
 solc-select use $SOLIDITY_VERSION
 slither \
+--config-file slither.config.json \
 --exclude naming-convention \
 "/src$RELATIVEPATH"
 "

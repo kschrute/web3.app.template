@@ -1,0 +1,4 @@
+{
+  "solc_args": "--allow-paths /src",
+  "detectors_to_exclude": "naming-convention"
+}
