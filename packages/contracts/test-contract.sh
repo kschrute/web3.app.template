@@ -48,6 +48,5 @@ solc-select install $SOLIDITY_VERSION
 solc-select use $SOLIDITY_VERSION
 slither \
 --config-file slither.config.json \
---exclude naming-convention \
 "/src$RELATIVEPATH"
 "
