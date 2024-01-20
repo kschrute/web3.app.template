@@ -16,7 +16,6 @@ node_modules/
 # misc
 .DS_Store
 *.pem
-.idea
 
 # debug
 npm-debug.log*
@@ -28,4 +27,5 @@ yarn-error.log*
 \*.tsbuildinfo
 
 # IDE/CodeEditors
+.idea
 .vscode/launch.json

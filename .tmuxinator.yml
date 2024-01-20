@@ -1,0 +1,29 @@
+name: web3_app_template
+root: .
+
+windows:
+  - main:
+      # layout: even-horizontal
+      # layout: even-vertical
+      # layout: main-horizontal
+      # layout: main-vertical
+      layout: tiled
+      panes:
+        - web:
+          - cd packages/web
+          - pnpm dev
+        - graphql:
+            - cd packages/graphql
+            - pnpm dev
+        - cron:
+          - cd packages/cron
+          - pnpm dev
+        - contracts:
+          - cd packages/contracts
+          - pnpm dev
+#        - cmd:
+#          - sleep 3
+#          - tmux send-keys -t web3_app_template:main.0 "./dev.sh" C-z
+#          - tmux send-keys -t web3_app_template:main.1 "./dev.sh" C-z
+#          - tmux send-keys -t web3_app_template:main.2 "./dev.sh" C-z
+#          - tmux send-keys -t web3_app_template:main.3 "./dev.sh" C-z
