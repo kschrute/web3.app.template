@@ -9,10 +9,10 @@ import {
   Heading,
   Input,
   InputGroup,
-  Stat, StatHelpText,
+  Stat,
+  StatHelpText,
   StatLabel,
   StatNumber,
-  Text
 } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
 import { formatEther, parseEther } from 'viem'

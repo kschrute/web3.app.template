@@ -18,8 +18,8 @@ import {
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const counterABI = [
   {
@@ -66,19 +66,19 @@ export const counterABI = [
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const counterAddress = {
   1: '0x0000000000000000000000000000000000000000',
-  5: '0x0000000000000000000000000000000000000000',
   31337: '0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab',
+  11155111: '0x0000000000000000000000000000000000000000',
 } as const
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const counterConfig = {
   address: counterAddress,
@@ -376,8 +376,8 @@ export const erc721ABI = [
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const faucetABI = [
   {
@@ -441,19 +441,19 @@ export const faucetABI = [
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const faucetAddress = {
   1: '0x0000000000000000000000000000000000000000',
-  5: '0x0000000000000000000000000000000000000000',
   31337: '0x5b1869D9A4C187F2EAa108f3062412ecf0526b24',
+  11155111: '0x0000000000000000000000000000000000000000',
 } as const
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const faucetConfig = { address: faucetAddress, abi: faucetABI } as const
 
@@ -485,8 +485,8 @@ export const ownedABI = [
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const subscriptionABI = [
   { stateMutability: 'payable', type: 'constructor', inputs: [] },
@@ -534,19 +534,19 @@ export const subscriptionABI = [
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const subscriptionAddress = {
   1: '0x0000000000000000000000000000000000000000',
-  5: '0x0000000000000000000000000000000000000000',
   31337: '0xCfEB869F69431e42cdB54A4F4f105C19C080A601',
+  11155111: '0x0000000000000000000000000000000000000000',
 } as const
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const subscriptionConfig = {
   address: subscriptionAddress,
@@ -559,8 +559,8 @@ export const subscriptionConfig = {
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const wNatABI = [
   { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
@@ -872,19 +872,19 @@ export const wNatABI = [
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const wNatAddress = {
   1: '0x0000000000000000000000000000000000000000',
-  5: '0x0000000000000000000000000000000000000000',
   31337: '0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B',
+  11155111: '0x0000000000000000000000000000000000000000',
 } as const
 
 /**
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const wNatConfig = { address: wNatAddress, abi: wNatABI } as const
 
@@ -896,8 +896,8 @@ export const wNatConfig = { address: wNatAddress, abi: wNatABI } as const
  * Wraps __{@link getContract}__ with `abi` set to __{@link counterABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function getCounter(
   config: Omit<GetContractArgs, 'abi' | 'address'> & {
@@ -915,8 +915,8 @@ export function getCounter(
  * Wraps __{@link readContract}__ with `abi` set to __{@link counterABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function readCounter<
   TAbi extends readonly unknown[] = typeof counterABI,
@@ -937,8 +937,8 @@ export function readCounter<
  * Wraps __{@link writeContract}__ with `abi` set to __{@link counterABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function writeCounter<
   TFunctionName extends string,
@@ -976,8 +976,8 @@ export function writeCounter<
  * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link counterABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function prepareWriteCounter<
   TAbi extends readonly unknown[] = typeof counterABI,
@@ -1093,8 +1093,8 @@ export function prepareWriteErc721<
  * Wraps __{@link getContract}__ with `abi` set to __{@link faucetABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function getFaucet(
   config: Omit<GetContractArgs, 'abi' | 'address'> & {
@@ -1112,8 +1112,8 @@ export function getFaucet(
  * Wraps __{@link readContract}__ with `abi` set to __{@link faucetABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function readFaucet<
   TAbi extends readonly unknown[] = typeof faucetABI,
@@ -1134,8 +1134,8 @@ export function readFaucet<
  * Wraps __{@link writeContract}__ with `abi` set to __{@link faucetABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function writeFaucet<
   TFunctionName extends string,
@@ -1173,8 +1173,8 @@ export function writeFaucet<
  * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link faucetABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function prepareWriteFaucet<
   TAbi extends readonly unknown[] = typeof faucetABI,
@@ -1237,8 +1237,8 @@ export function getOwned(config: Omit<GetContractArgs, 'abi'>) {
  * Wraps __{@link getContract}__ with `abi` set to __{@link subscriptionABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function getSubscription(
   config: Omit<GetContractArgs, 'abi' | 'address'> & {
@@ -1257,8 +1257,8 @@ export function getSubscription(
  * Wraps __{@link readContract}__ with `abi` set to __{@link subscriptionABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function readSubscription<
   TAbi extends readonly unknown[] = typeof subscriptionABI,
@@ -1280,8 +1280,8 @@ export function readSubscription<
  * Wraps __{@link writeContract}__ with `abi` set to __{@link subscriptionABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function writeSubscription<
   TFunctionName extends string,
@@ -1320,8 +1320,8 @@ export function writeSubscription<
  * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link subscriptionABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function prepareWriteSubscription<
   TAbi extends readonly unknown[] = typeof subscriptionABI,
@@ -1344,8 +1344,8 @@ export function prepareWriteSubscription<
  * Wraps __{@link getContract}__ with `abi` set to __{@link wNatABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function getWNat(
   config: Omit<GetContractArgs, 'abi' | 'address'> & {
@@ -1363,8 +1363,8 @@ export function getWNat(
  * Wraps __{@link readContract}__ with `abi` set to __{@link wNatABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function readWNat<
   TAbi extends readonly unknown[] = typeof wNatABI,
@@ -1385,8 +1385,8 @@ export function readWNat<
  * Wraps __{@link writeContract}__ with `abi` set to __{@link wNatABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function writeWNat<
   TFunctionName extends string,
@@ -1420,8 +1420,8 @@ export function writeWNat<
  * Wraps __{@link prepareWriteContract}__ with `abi` set to __{@link wNatABI}__.
  *
  * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
- * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x0000000000000000000000000000000000000000)
  * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export function prepareWriteWNat<
   TAbi extends readonly unknown[] = typeof wNatABI,

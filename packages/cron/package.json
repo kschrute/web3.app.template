@@ -16,7 +16,6 @@
     "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
     "prepare.build": "pnpm run build",
     "build": "run-s 'build.*'",
-    "build.prisma": "prisma generate",
     "build.typescript": "rm -rf ./dist && tsc --project tsconfig.json",
     "schedule": "node dist/src/scripts/scheduleJob.js",
     "workers.start": "cross-env NODE_ENV=production node dist/src/start.js",
