@@ -7,6 +7,7 @@ const config = {
       dev: {
         db: {
           averageLatencyMsecs: 1_000,
+          slowQueryThreshold: 250,
           failPercent: 0,
         },
       },
