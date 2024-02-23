@@ -6,6 +6,7 @@ pnpm add -g dotenv-cli
 
 ## TODO
 
+- [ ] Upgrade `wagmi` and `viem` 
 - [ ] Remove `import 'dotenv/config'` from the `cron` package?
 - [ ] Add docker build (see https://pnpm.io/docker)
 - [x] Add Slither
