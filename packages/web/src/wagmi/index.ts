@@ -11,10 +11,11 @@ import {
   trustWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets'
+import config from '../../config'
 
 export * from './generated'
 
-const projectId = <string>process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID
+const projectId = config.walletConnectProjectId
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...(process.env.NODE_ENV === 'development' ? [sepolia, localhost, foundry, hardhat] : [])],
@@ -45,7 +46,7 @@ const connectors = connectorsForWallets([
   },
 ])
 
-export const config = createConfig({
+export const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,

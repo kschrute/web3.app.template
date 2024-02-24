@@ -10,7 +10,7 @@ import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowki
 import { WagmiConfig } from 'wagmi'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
 import { useApollo } from '../graphql/apollo'
-import { chains, config } from '../wagmi'
+import { chains, wagmiConfig } from '../wagmi'
 import { theme } from '../theme'
 
 if (process.env.NODE_ENV === 'development') {
@@ -35,7 +35,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <CacheProvider>
       <ChakraProvider theme={theme}>
-        <WagmiConfig config={config}>
+        <WagmiConfig config={wagmiConfig}>
           <RainbowKitProvider
             chains={chains}
             modalSize="compact"
