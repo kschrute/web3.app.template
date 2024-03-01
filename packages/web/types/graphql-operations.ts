@@ -13,7 +13,8 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  DateTime: { input: Date | string; output: Date | string; }
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  DateTime: { input: any; output: any; }
 };
 
 export type Mutation = {
@@ -210,7 +211,7 @@ export type AuthQuery = { __typename?: 'Query', auth: { __typename?: 'UserAuth',
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', address: string, isAuthenticated: boolean, createdAt: Date | string } };
+export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', address: string, isAuthenticated: boolean, createdAt: any } };
 
 export type ProjectsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
@@ -218,7 +219,7 @@ export type ProjectsQueryVariables = Exact<{
 }>;
 
 
-export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'QueryProjectsConnection', pageInfo: { __typename?: 'PageInfo', startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean }, edges: Array<{ __typename?: 'QueryProjectsConnectionEdge', cursor: string, node: { __typename?: 'Project', id: number, title: string, isActive: boolean, createdAt: Date | string } } | null> } };
+export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'QueryProjectsConnection', pageInfo: { __typename?: 'PageInfo', startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean }, edges: Array<{ __typename?: 'QueryProjectsConnectionEdge', cursor: string, node: { __typename?: 'Project', id: number, title: string, isActive: boolean, createdAt: any } } | null> } };
 
 export type UserQueryVariables = Exact<{
   address: Scalars['String']['input'];

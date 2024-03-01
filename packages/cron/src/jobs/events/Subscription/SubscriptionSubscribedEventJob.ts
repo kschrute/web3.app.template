@@ -25,7 +25,8 @@ export class SubscriptionSubscribedEventJob extends Job<JobData> {
 const process = async (event: EventRepo.Entity) => {
   const e = event.event as Log
 
-  const abi = parseAbi([event.signature])
+  // const abi = parseAbi([event.signature])
+  const abi = parseAbi(['event Subscribed(address user, uint when)'])
 
   const decoded = decodeEventLog({
     abi,

@@ -6,7 +6,7 @@ import { queues } from './queues'
 import { getNetworkConfig } from '../utils/getNetworkConfig'
 import { Job } from './Job'
 import { SchedulePullEthereumEvents } from './SchedulePullEthereumEvents'
-import { publicClient } from '../clients'
+import { publicClient } from '../web3/clients'
 
 export interface JobData {
   contractAddress: string

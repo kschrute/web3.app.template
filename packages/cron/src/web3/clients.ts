@@ -1,6 +1,6 @@
 import { createPublicClient, http, createWalletClient } from 'viem'
 import { mnemonicToAccount } from 'viem/accounts'
-import { getNetworkConfig } from './utils/getNetworkConfig'
+import { getNetworkConfig } from '../utils/getNetworkConfig'
 
 const networkConfig = getNetworkConfig()
 // const transport = http(networkConfig.rpcUrl)

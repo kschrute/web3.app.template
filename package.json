@@ -9,7 +9,7 @@
     "build": "pnpm run -r build",
     "prepare": "run-s 'prepare.*'",
     "prepare.husky": "husky install || true",
-    "prepare.packages": " pnpm --filter \"*\" run prepare",
+    "prepare.packages": "pnpm --filter \"*\" run prepare",
     "reset": "pnpm --filter \"*\" run reset",
     "pre-commit": "lint-staged",
     "contracts": "pnpm --filter contracts",

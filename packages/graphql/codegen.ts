@@ -1,8 +1,12 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
+import { printSchema } from 'graphql'
+import { schema } from './src/schema'
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'build-schema.js',
+  // TODO: test this instead of build-schema.js
+  schema: printSchema(schema),
+  // schema: 'build-schema.js',
   // documents: '../web/src/**/*.tsx',
   documents: ['../web/src/**/*.graphql'],
   generates: {
