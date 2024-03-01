@@ -10,14 +10,13 @@
     "build": "rm -rf ./dist && tsc --project tsconfig.dist.json",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
-    "wagmi": "wagmi generate",
     "test": "forge test",
     "pre-commit": "lint-staged"
   },
   "dependencies": {
-    "@wagmi/cli": "^1.5.2",
-    "viem": "^1.18.3",
-    "wagmi": "^1.4.5"
+    "@wagmi/cli": "^2.1.1",
+    "viem": "^2.7.16",
+    "wagmi": "^2.5.7"
   },
   "devDependencies": {
     "@types/node": "^20.8.10",

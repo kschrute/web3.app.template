@@ -1,16 +1,15 @@
 // eslint-disable no-console
 import { getContract, parseEther } from 'viem'
 import { publicClient, walletClient } from '../clients'
-import { counterABI, counterAddress, faucetAddress } from '../wagmi'
+import { counterAbi, counterAddress, faucetAddress } from '../wagmi'
 import mine from '../utils/mine'
 
 const chainId = walletClient.chain.id
 
 const counterContract = getContract({
   address: counterAddress[chainId],
-  abi: counterABI,
-  publicClient,
-  walletClient,
+  abi: counterAbi,
+  client: { public: publicClient, wallet: walletClient }
 })
 
 async function main() {

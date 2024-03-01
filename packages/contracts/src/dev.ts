@@ -1,14 +1,14 @@
+import { contracts } from '@app/shared'
 import { hardhat } from 'viem/chains'
 import { publicClient, walletClient } from './clients'
-import { counterABI } from './wagmi'
-import { contracts } from '@app/shared'
+import { counterAbi } from './wagmi'
 
 async function main() {
   const blockNumber = await publicClient.getBlockNumber()
   console.log('blockNumber', blockNumber)
 
   const read = await publicClient.readContract({
-    abi: counterABI,
+    abi: counterAbi,
     address: contracts.deployments.Counter.addresses[hardhat.id] as unknown as `0x${string}`,
     functionName: 'number',
   })
@@ -17,7 +17,7 @@ async function main() {
   const { request } = await publicClient.simulateContract({
     account: walletClient.account,
     address: contracts.deployments.Counter.addresses[hardhat.id] as unknown as `0x${string}`,
-    abi: counterABI,
+    abi: counterAbi,
     functionName: 'increment',
   })
   console.log('request', request)
