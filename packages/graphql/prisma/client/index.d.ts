@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/library';
+import * as runtime from './runtime/library.js';
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -237,8 +237,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.5.2
-   * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
+   * Prisma Client JS version: 5.13.0
+   * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
    */
   export type PrismaVersion = {
     client: string
@@ -365,6 +365,11 @@ export namespace Prisma {
     include: any
   }
 
+  type SelectAndOmit = {
+    select: any
+    omit: any
+  }
+
   /**
    * Get the type of the value, that the Promise holds.
    */
@@ -413,7 +418,9 @@ export namespace Prisma {
   } &
     (T extends SelectAndInclude
       ? 'Please either choose `select` or `include`.'
-      : {})
+      : T extends SelectAndOmit
+        ? 'Please either choose `select` or `omit`.'
+        : {})
 
   /**
    * Subset + Intersection
@@ -928,6 +935,16 @@ export namespace Prisma {
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
     log?: (LogLevel | LogDefinition)[]
+    /**
+     * The default values for transactionOptions
+     * maxWait ?= 2000
+     * timeout ?= 5000
+     */
+    transactionOptions?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    }
   }
 
   /* Types for Logging */
@@ -1028,7 +1045,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * UserCountOutputType without action
    */
@@ -1039,14 +1055,12 @@ export namespace Prisma {
     select?: UserCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountProjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProjectWhereInput
   }
-
 
 
   /**
@@ -1062,7 +1076,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * EventCountOutputType without action
    */
@@ -1073,14 +1086,12 @@ export namespace Prisma {
     select?: EventCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * EventCountOutputType without action
    */
   export type EventCountOutputTypeCountEventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EventWhereInput
   }
-
 
 
   /**
@@ -1351,6 +1362,7 @@ export namespace Prisma {
     authenticatedAt?: boolean
   }
 
+
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     projects?: boolean | User$projectsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1382,7 +1394,7 @@ export namespace Prisma {
   type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
 
   type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' > & {
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: UserCountAggregateInputType | true
     }
 
@@ -1784,7 +1796,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * User findUnique
    */
@@ -1794,7 +1805,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1802,7 +1813,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User findUniqueOrThrow
@@ -1813,7 +1823,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1821,7 +1831,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User findFirst
@@ -1832,7 +1841,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1870,7 +1879,6 @@ export namespace Prisma {
      */
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
-
 
   /**
    * User findFirstOrThrow
@@ -1881,7 +1889,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1920,7 +1928,6 @@ export namespace Prisma {
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
-
   /**
    * User findMany
    */
@@ -1930,7 +1937,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1964,7 +1971,6 @@ export namespace Prisma {
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
-
   /**
    * User create
    */
@@ -1974,7 +1980,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1982,7 +1988,6 @@ export namespace Prisma {
      */
     data: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
-
 
   /**
    * User createMany
@@ -1995,7 +2000,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * User update
    */
@@ -2005,7 +2009,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2017,7 +2021,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User updateMany
@@ -2033,7 +2036,6 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
-
   /**
    * User upsert
    */
@@ -2043,7 +2045,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2060,7 +2062,6 @@ export namespace Prisma {
     update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
   }
 
-
   /**
    * User delete
    */
@@ -2070,7 +2071,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2078,7 +2079,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User deleteMany
@@ -2090,7 +2090,6 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
-
   /**
    * User.projects
    */
@@ -2100,7 +2099,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     where?: ProjectWhereInput
@@ -2111,7 +2110,6 @@ export namespace Prisma {
     distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
-
   /**
    * User without action
    */
@@ -2121,11 +2119,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -2359,6 +2356,7 @@ export namespace Prisma {
     userAddress?: boolean
   }
 
+
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Project$userArgs<ExtArgs>
   }
@@ -2385,7 +2383,7 @@ export namespace Prisma {
   type ProjectGetPayload<S extends boolean | null | undefined | ProjectDefaultArgs> = $Result.GetResult<Prisma.$ProjectPayload, S>
 
   type ProjectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ProjectFindManyArgs, 'select' | 'include' | 'distinct' > & {
+    Omit<ProjectFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: ProjectCountAggregateInputType | true
     }
 
@@ -2783,7 +2781,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Project findUnique
    */
@@ -2793,7 +2790,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -2801,7 +2798,6 @@ export namespace Prisma {
      */
     where: ProjectWhereUniqueInput
   }
-
 
   /**
    * Project findUniqueOrThrow
@@ -2812,7 +2808,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -2820,7 +2816,6 @@ export namespace Prisma {
      */
     where: ProjectWhereUniqueInput
   }
-
 
   /**
    * Project findFirst
@@ -2831,7 +2826,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -2869,7 +2864,6 @@ export namespace Prisma {
      */
     distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
-
 
   /**
    * Project findFirstOrThrow
@@ -2880,7 +2874,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -2919,7 +2913,6 @@ export namespace Prisma {
     distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
-
   /**
    * Project findMany
    */
@@ -2929,7 +2922,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -2963,7 +2956,6 @@ export namespace Prisma {
     distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
-
   /**
    * Project create
    */
@@ -2973,7 +2965,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -2981,7 +2973,6 @@ export namespace Prisma {
      */
     data: XOR<ProjectCreateInput, ProjectUncheckedCreateInput>
   }
-
 
   /**
    * Project createMany
@@ -2994,7 +2985,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Project update
    */
@@ -3004,7 +2994,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -3016,7 +3006,6 @@ export namespace Prisma {
      */
     where: ProjectWhereUniqueInput
   }
-
 
   /**
    * Project updateMany
@@ -3032,7 +3021,6 @@ export namespace Prisma {
     where?: ProjectWhereInput
   }
 
-
   /**
    * Project upsert
    */
@@ -3042,7 +3030,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -3059,7 +3047,6 @@ export namespace Prisma {
     update: XOR<ProjectUpdateInput, ProjectUncheckedUpdateInput>
   }
 
-
   /**
    * Project delete
    */
@@ -3069,7 +3056,7 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
     /**
@@ -3077,7 +3064,6 @@ export namespace Prisma {
      */
     where: ProjectWhereUniqueInput
   }
-
 
   /**
    * Project deleteMany
@@ -3089,7 +3075,6 @@ export namespace Prisma {
     where?: ProjectWhereInput
   }
 
-
   /**
    * Project.user
    */
@@ -3099,12 +3084,11 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
   }
-
 
   /**
    * Project without action
@@ -3115,11 +3099,10 @@ export namespace Prisma {
      */
     select?: ProjectSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -3401,6 +3384,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
+
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     prevEvent?: boolean | Event$prevEventArgs<ExtArgs>
     events?: boolean | Event$eventsArgs<ExtArgs>
@@ -3436,7 +3420,7 @@ export namespace Prisma {
   type EventGetPayload<S extends boolean | null | undefined | EventDefaultArgs> = $Result.GetResult<Prisma.$EventPayload, S>
 
   type EventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<EventFindManyArgs, 'select' | 'include' | 'distinct' > & {
+    Omit<EventFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: EventCountAggregateInputType | true
     }
 
@@ -3842,7 +3826,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Event findUnique
    */
@@ -3852,7 +3835,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -3860,7 +3843,6 @@ export namespace Prisma {
      */
     where: EventWhereUniqueInput
   }
-
 
   /**
    * Event findUniqueOrThrow
@@ -3871,7 +3853,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -3879,7 +3861,6 @@ export namespace Prisma {
      */
     where: EventWhereUniqueInput
   }
-
 
   /**
    * Event findFirst
@@ -3890,7 +3871,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -3928,7 +3909,6 @@ export namespace Prisma {
      */
     distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
   }
-
 
   /**
    * Event findFirstOrThrow
@@ -3939,7 +3919,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -3978,7 +3958,6 @@ export namespace Prisma {
     distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
   }
 
-
   /**
    * Event findMany
    */
@@ -3988,7 +3967,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -4022,7 +4001,6 @@ export namespace Prisma {
     distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
   }
 
-
   /**
    * Event create
    */
@@ -4032,7 +4010,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -4040,7 +4018,6 @@ export namespace Prisma {
      */
     data: XOR<EventCreateInput, EventUncheckedCreateInput>
   }
-
 
   /**
    * Event createMany
@@ -4053,7 +4030,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Event update
    */
@@ -4063,7 +4039,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -4075,7 +4051,6 @@ export namespace Prisma {
      */
     where: EventWhereUniqueInput
   }
-
 
   /**
    * Event updateMany
@@ -4091,7 +4066,6 @@ export namespace Prisma {
     where?: EventWhereInput
   }
 
-
   /**
    * Event upsert
    */
@@ -4101,7 +4075,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -4118,7 +4092,6 @@ export namespace Prisma {
     update: XOR<EventUpdateInput, EventUncheckedUpdateInput>
   }
 
-
   /**
    * Event delete
    */
@@ -4128,7 +4101,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     /**
@@ -4136,7 +4109,6 @@ export namespace Prisma {
      */
     where: EventWhereUniqueInput
   }
-
 
   /**
    * Event deleteMany
@@ -4148,7 +4120,6 @@ export namespace Prisma {
     where?: EventWhereInput
   }
 
-
   /**
    * Event.prevEvent
    */
@@ -4158,12 +4129,11 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     where?: EventWhereInput
   }
-
 
   /**
    * Event.events
@@ -4174,7 +4144,7 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
     where?: EventWhereInput
@@ -4185,7 +4155,6 @@ export namespace Prisma {
     distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
   }
 
-
   /**
    * Event without action
    */
@@ -4195,11 +4164,10 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: EventInclude<ExtArgs> | null
   }
-
 
 
   /**
