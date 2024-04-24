@@ -1,10 +1,10 @@
 import React from 'react'
 import { useChainId, useWaitForTransactionReceipt } from 'wagmi'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
-import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
 import { createUseWriteContract } from 'wagmi/codegen'
 import { CreateUseWriteContractParameters } from 'wagmi/src/hooks/codegen/createUseWriteContract'
 import type { Abi, Address, ContractFunctionName } from 'viem'
+import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
 
 type stateMutability = 'nonpayable' | 'payable'
 
@@ -83,7 +83,7 @@ export function useWriteSmartContract<
   }, [isReceiptSuccess, showSuccessMessage, receipt?.transactionHash])
 
   const write = React.useCallback(async (...args: Parameters<typeof writeContractAsync>) => {
-    const hash = await writeContractAsync(...args)
+    const hash = await writeContractAsync(args[0])
     addRecentTransaction({
       hash,
       description: description ?? hash,
