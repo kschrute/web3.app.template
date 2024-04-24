@@ -117,8 +117,8 @@ importers:
         specifier: workspace:^
         version: link:../shared
       abitype:
-        specifier: ^0.10.2
-        version: 0.10.2(typescript@5.4.5)
+        specifier: ^1.0.2
+        version: 1.0.2(typescript@5.4.5)
       bull:
         specifier: ^4.12.2
         version: 4.12.2
@@ -226,9 +226,6 @@ importers:
         specifier: ^8.16.0
         version: 8.16.0
     devDependencies:
-      '@boost/module':
-        specifier: ^4.1.0
-        version: 4.1.0(typescript@5.4.5)
       '@graphql-codegen/cli':
         specifier: 5.0.2
         version: 5.0.2(@types/node@20.12.7)(graphql@16.8.1)(typescript@5.4.5)
@@ -1942,18 +1939,6 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
-
-  /@boost/module@4.1.0(typescript@5.4.5):
-    resolution: {integrity: sha512-qCvvX+vpIqyFLOFpDWQSlU1HeZSW1ir9bdHxqaUbVnzBhaHeHBmMHpHLIDCNWCCnpaUq6GsJ9mnn/dXPR+pH0A==}
-    engines: {node: '>=14.15.0', npm: '>=6.14.0'}
-    peerDependencies:
-      typescript: ^4.0.0 || ^5.0.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 5.4.5
-    dev: true
 
   /@chakra-ui/accordion@2.3.1(@chakra-ui/system@2.6.2)(framer-motion@10.16.4)(react@18.2.0):
     resolution: {integrity: sha512-FSXRm8iClFyU+gVaXisOSEw0/4Q+qZbFRiuhIAkVU6Boj0FxAMrlo9a8AV5TuF77rgaHytCdHk0Ng+cyUijrag==}
@@ -4965,7 +4950,7 @@ packages:
       pump: 3.0.0
       qrcode-terminal-nooctal: 0.12.1
       react: 18.2.0
-      react-i18next: 13.5.0(i18next@22.5.1)(react-native@0.73.5)(react@18.2.0)
+      react-i18next: 13.5.0(i18next@22.5.1)(react-dom@18.2.0)(react-native@0.73.5)(react@18.2.0)
       react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
       react-native-webview: 11.26.1(react-native@0.73.5)(react@18.2.0)
       readable-stream: 2.3.8
@@ -5909,7 +5894,7 @@ packages:
       react-native: ^0.0.0-0 || >=0.60 <1.0
     dependencies:
       merge-options: 3.0.4
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
   /@react-native-community/cli-clean@12.3.6(encoding@0.1.13):
@@ -6277,7 +6262,7 @@ packages:
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
   /@redis/bloom@1.2.0(@redis/client@1.5.14):
@@ -7932,20 +7917,6 @@ packages:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
     dev: true
 
-  /abitype@0.10.2(typescript@5.4.5):
-    resolution: {integrity: sha512-1XndI+RKFWK4+TXCNv1683MRyX5NGmlHXCvqzjOqhSS3PQrxT2QYRZq1bMPPRNjn89B3eVaM2w7y3jVj/OIUzA==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      zod: ^3 >=3.22.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-      zod:
-        optional: true
-    dependencies:
-      typescript: 5.4.5
-    dev: false
-
   /abitype@0.9.8(typescript@5.4.5)(zod@3.22.4):
     resolution: {integrity: sha512-puLifILdm+8sjyss4S+fsUN09obiT1g2YW6CtcQF+QDzxR0euzgEB29MZujC6zMk2a6SVmtttq1fc6+YFA7WYQ==}
     peerDependencies:
@@ -7973,6 +7944,20 @@ packages:
     dependencies:
       typescript: 5.4.5
       zod: 3.22.4
+
+  /abitype@1.0.2(typescript@5.4.5):
+    resolution: {integrity: sha512-aFt4k2H+eiAKy/zxtnORa9iIb10BMBeWL18l8v4+QuwYEBXPxxjSB1bFZCzQmKPoj8m7j68K705l3uY+E2gAjg==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+      zod: ^3 >=3.22.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      typescript: 5.4.5
+    dev: false
 
   /abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
@@ -14912,26 +14897,6 @@ packages:
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
-    dev: false
-
-  /react-i18next@13.5.0(i18next@22.5.1)(react-native@0.73.5)(react@18.2.0):
-    resolution: {integrity: sha512-CFJ5NDGJ2MUyBohEHxljOq/39NQ972rh1ajnadG9BjTk+UXbHLq4z5DKEbEQBDoIhUmmbuS/fIMJKo6VOax1HA==}
-    peerDependencies:
-      i18next: '>= 23.2.3'
-      react: '>= 16.8.0'
-      react-dom: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.23.2
-      html-parse-stringify: 3.0.1
-      i18next: 22.5.1
-      react: 18.2.0
       react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
@@ -14963,7 +14928,7 @@ packages:
       escape-string-regexp: 2.0.0
       invariant: 2.2.4
       react: 18.2.0
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
   /react-native@0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0):
