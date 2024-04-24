@@ -1,11 +1,12 @@
 'use client'
 
-import React from 'react'
-import { useWaitForTransaction } from 'wagmi'
+import React, { useEffect } from 'react'
+import { useBlockNumber, useWaitForTransactionReceipt } from 'wagmi'
 import { BaseError } from 'viem'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
-import { useCounterIncrement, useCounterNumber, useCounterSetNumber } from '../../wagmi'
 import { stringify } from '../../utils/stringify'
+import { useReadCounterNumber, useWriteCounterIncrement, useWriteCounterSetNumber } from '../../wagmi'
+import { useQueryClient } from '@tanstack/react-query'
 
 export function Counter() {
   return (
@@ -17,10 +18,13 @@ export function Counter() {
 }
 
 export function CounterNumber() {
-  const { data, refetch } = useCounterNumber({
-    watch: true,
-  })
-  // const { address } = useAccount()
+  const queryClient = useQueryClient()
+  const { data: blockNumber } = useBlockNumber({ watch: true })
+  const { data, refetch, queryKey } = useReadCounterNumber()
+
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey })
+  }, [blockNumber, queryClient, queryKey])
 
   return (
     <div>
@@ -33,19 +37,19 @@ export function CounterNumber() {
 
 export function CounterIncrease() {
   const addRecentTransaction = useAddRecentTransaction()
-  const { writeAsync: writeSetNumber } = useCounterSetNumber()
-  const { writeAsync, data, error, isLoading, isError } = useCounterIncrement()
+  const { writeContractAsync: writeSetNumber } = useWriteCounterSetNumber()
+  const { writeContractAsync: writeIncrement, data: hash, error, isPending, isError } = useWriteCounterIncrement()
   const {
     data: receipt,
-    isLoading: isPending,
+    isLoading: isReceiptLoading,
     isSuccess,
-  } = useWaitForTransaction({ hash: data?.hash })
+  } = useWaitForTransactionReceipt({ hash })
 
   const onIncrease = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const tx = await writeAsync()
-    tx && addRecentTransaction({
-      hash: tx.hash,
+    const hash = await writeIncrement({})
+    hash && addRecentTransaction({
+      hash,
       description: 'Increment counter',
     })
   }
@@ -58,33 +62,33 @@ export function CounterIncrease() {
           e.preventDefault()
           const formData = new FormData(e.target as HTMLFormElement)
           const number = formData.get('number') as string
-          const tx = await writeSetNumber({
+          const hash = await writeSetNumber({
             args: [BigInt(number)],
           })
-          tx && addRecentTransaction({
-            hash: tx.hash,
+          hash && addRecentTransaction({
+            hash,
             description: `Set counter to ${number}`,
           })
         }}
       >
         <input name="number" placeholder="number" />
         {/* eslint-disable-next-line react/button-has-type */}
-        <button disabled={isLoading} type="submit">
+        <button disabled={isPending} type="submit">
           Set
         </button>
         {/* eslint-disable-next-line react/button-has-type */}
-        <button disabled={isLoading} onClick={onIncrease}>
+        <button disabled={isPending} onClick={onIncrease}>
           Increase
         </button>
       </form>
 
-      {isLoading && <div>Check wallet...</div>}
-      {isPending && <div>Transaction pending...</div>}
+      {isPending && <div>Check wallet...</div>}
+      {isReceiptLoading && <div>Transaction pending...</div>}
       {isSuccess && (
         <>
           <div>
             Transaction Hash:
-            {data?.hash}
+            {hash}
           </div>
           <div>
             Transaction Receipt:

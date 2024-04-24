@@ -28,22 +28,24 @@ export default function LoginModal() {
   const [signin] = useSignInMutation()
 
   const { signMessage } = useSignMessage({
-    async onSuccess(signature, variables) {
-      await verifyMessage({
-        address: address!,
-        message: variables.message,
-        signature,
-      })
-      const response = await signin({ variables: { data: { address: address!, signature } } })
+    mutation: {
+      async onSuccess(signature, variables) {
+        await verifyMessage({
+          address: address!,
+          message: variables.message,
+          signature,
+        })
+        const response = await signin({ variables: { data: { address: address!, signature } } })
 
-      const isAuthenticated = response?.data?.signin?.authenticated
-      const token = response?.data?.signin?.token
-      token && localStorage.setItem('token', token)
+        const isAuthenticated = response?.data?.signin?.authenticated
+        const token = response?.data?.signin?.token
+        token && localStorage.setItem('token', token)
 
-      if (isAuthenticated) {
-        refetch && (await refetch())
-      }
-    },
+        if (isAuthenticated) {
+          refetch && (await refetch())
+        }
+      },
+    }
   })
 
   const isAuthenticated = data?.auth?.authenticated

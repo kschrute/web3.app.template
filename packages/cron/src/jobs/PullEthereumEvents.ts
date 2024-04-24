@@ -4,9 +4,9 @@ import { AbiEvent } from 'abitype'
 import { JobOptions } from 'bull'
 import { queues } from './queues'
 import { getNetworkConfig } from '../utils/getNetworkConfig'
-import { Job } from './Job'
 import { SchedulePullEthereumEvents } from './SchedulePullEthereumEvents'
 import { publicClient } from '../web3/clients'
+import { JobUnique } from './JobUnique'
 
 export interface JobData {
   contractAddress: string
@@ -19,17 +19,11 @@ export interface JobData {
 
 const defaultBlocksPerFetch = BigInt(800)
 
-export class PullEthereumEvents extends Job<JobData> {
+export class PullEthereumEvents extends JobUnique<JobData> {
   public queue = queues.events
 
-  public options: JobOptions = {
-    jobId: 'PullEthereumEvents',
-    removeOnComplete: true,
-    removeOnFail: true,
-  }
-
   public async schedule(jobOptions: JobOptions = {}) {
-    super.schedule({ ...jobOptions, jobId: `PullEthereumEvents:${this.data.contractAddress}:${this.data.abi}` })
+    super.schedule({ ...jobOptions, jobId: `${this.constructor.name}:${this.data.contractAddress}:${this.data.abi}` })
   }
 
   public async handle() {

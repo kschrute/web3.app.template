@@ -1,16 +1,17 @@
 import { JobOptions } from 'bull'
 import { Queue } from './queues/Queue'
 
+// TODO: Create a batch job class
 export abstract class Job<JobData> {
-  public queue: Queue | undefined
-
   private cron: string | null = null
 
-  constructor(public data: JobData = {} as JobData) {
-    this.data = data
-  }
+  protected defaultOptions: JobOptions = {}
+
+  public queue: Queue | undefined
 
   public options: JobOptions = {}
+
+  constructor(public data: JobData = {} as JobData) {}
 
   public abstract handle(): Promise<any>
 
@@ -31,6 +32,6 @@ export abstract class Job<JobData> {
       }
     }
 
-    await this.queue?.schedule(this, { ...this.options, ...jobOptions })
+    await this.queue?.schedule(this, { ...this.defaultOptions, ...this.options, ...jobOptions })
   }
 }

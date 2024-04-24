@@ -19,3 +19,9 @@ cache_forge
 # solidity-coverage files
 /coverage
 /coverage.json
+
+# backups
+.evm.snapshot
+.evm.snapshot*
+.evm.state
+.evm.state*

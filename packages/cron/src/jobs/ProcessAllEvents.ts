@@ -3,21 +3,18 @@ import { EventRepo } from '@app/graphql'
 import { getAddress } from 'viem'
 import { queues } from './queues'
 import { getChainId } from '../utils/getChainId'
-import { Job } from './Job'
-import { JobOptions } from 'bull'
+import { JobUnique } from './JobUnique'
+
+interface JobData {
+  transactionId: string
+}
 
 const exceptions = ['DoNotProcessMe']
 
 const chainId = getChainId()
 
-export class ProcessAllEvents extends Job<object> {
+export class ProcessAllEvents extends JobUnique<JobData> {
   public queue = queues.events
-
-  public options: JobOptions = {
-    jobId: 'ProcessAllEvents',
-    removeOnComplete: true,
-    removeOnFail: true,
-  }
 
   public async handle() {
     const events = await EventRepo.findMany({

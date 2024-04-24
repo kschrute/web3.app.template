@@ -2,21 +2,24 @@
 
 import * as React from 'react'
 import { ProviderProps, useMemo } from 'react'
+import { WagmiProvider } from 'wagmi'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ApolloProvider } from '@apollo/client'
 import { IconContext } from 'react-icons'
 import { ChakraProvider } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js'
 import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit'
-import { WagmiConfig } from 'wagmi'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
 import { useApollo } from '../graphql/apollo'
-import { chains, wagmiConfig } from '../wagmi'
+import { wagmiConfig } from '../wagmi'
 import { theme } from '../theme'
 
 if (process.env.NODE_ENV === 'development') {
   loadDevMessages()
   loadErrorMessages()
 }
+
+const queryClient = new QueryClient()
 
 export function Providers({ children }: { children: React.ReactNode }) {
   // const apolloClient = useApollo(pageProps.initialApolloState)
@@ -35,20 +38,21 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <CacheProvider>
       <ChakraProvider theme={theme}>
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitProvider
-            chains={chains}
-            modalSize="compact"
-            theme={{ lightMode: lightTheme(), darkMode: darkTheme() }}
-            showRecentTransactions
-          >
-            <ApolloProvider client={apolloClient}>
-              <IconContext.Provider {...iconContextProps}>
-                {mounted && children}
-              </IconContext.Provider>
-            </ApolloProvider>
-          </RainbowKitProvider>
-        </WagmiConfig>
+        <WagmiProvider config={wagmiConfig} reconnectOnMount>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider
+              modalSize="compact"
+              theme={{ lightMode: lightTheme(), darkMode: darkTheme() }}
+              showRecentTransactions
+            >
+              <ApolloProvider client={apolloClient}>
+                <IconContext.Provider {...iconContextProps}>
+                  {mounted && children}
+                </IconContext.Provider>
+              </ApolloProvider>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </ChakraProvider>
     </CacheProvider>
   )

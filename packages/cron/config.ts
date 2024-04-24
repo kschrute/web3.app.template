@@ -17,10 +17,6 @@ export default {
       ...localNetwork,
       chain: localhost,
     },
-    [hardhat.id]: {
-      ...localNetwork,
-      chain: foundry,
-    },
     [foundry.id]: {
       ...localNetwork,
       chain: foundry,

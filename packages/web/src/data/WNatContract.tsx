@@ -5,21 +5,24 @@ import {
   Box,
   BoxProps,
   Button,
+  ButtonGroup,
   Flex,
   Heading,
   Input,
   InputGroup,
+  InputRightElement,
   Stat,
   StatHelpText,
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react'
-import { useAccount } from 'wagmi'
+import { useAccount, useBalance } from 'wagmi'
 import { formatEther, parseEther } from 'viem'
-import { useWNatBalanceOf, useWNatDeposit, useWNatWithdraw } from '../wagmi'
 import useDebounce from '../hooks/useDebounce'
 import AppAlert from '../components/common/AppAlert'
-import { useWriteTransaction } from '../hooks/useWriteTransaction'
+import { useReadWNatBalanceOf, useRefreshOnNewBlock, useWriteSmartContract, wNatAbi, wNatAddress } from '../wagmi'
+import ApprovalRequired from '../web3/ApprovalRequired'
+import { CheckIcon } from '@chakra-ui/icons'
 
 export default function WNatContract() {
   return (
@@ -33,6 +36,7 @@ export default function WNatContract() {
             <Withdraw flex={1} />
           </Flex>
         </Flex>
+        <Approval />
       </Box>
     </AppAlert>
   )
@@ -40,10 +44,8 @@ export default function WNatContract() {
 
 function Balance({ ...props }: BoxProps) {
   const { address } = useAccount()
-  const { data: balance } = useWNatBalanceOf({
-    args: [address!],
-    watch: true,
-  })
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+  useRefreshOnNewBlock(queryKey)
 
   return (
     <Box borderWidth={1} borderRadius="lg" p={3} pb={1} {...props}>
@@ -57,19 +59,50 @@ function Balance({ ...props }: BoxProps) {
 }
 
 function Deposit({ ...props }: BoxProps) {
-  const [amount, setAmount] = React.useState('0')
+  const { address } = useAccount()
+  const { data: balanceNative, refetch, queryKey } = useBalance({ address })
+  const [amount, setAmount] = React.useState('1')
   const debouncedAmount = useDebounce(amount, 500)
+  useRefreshOnNewBlock(queryKey)
+
+  const {
+    write,
+    isLoading,
+    isPending
+  } = useWriteSmartContract({
+    abi: wNatAbi,
+    address: wNatAddress,
+    functionName: 'deposit',
+    description: `Wrap ${amount} ETH`,
+  })
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  const { write, isLoading, isPending } = useWriteTransaction(useWNatDeposit({
-    value: parseEther(debouncedAmount),
-  }), { description: `Wrap ${amount} ETH` })
+  const onClick = async () => {
+    await write({
+      value: parseEther(debouncedAmount)
+    })
+  }
+
+  const onClickMax = () => {
+    if (balanceNative !== undefined) {
+      const maxAmount = balanceNative.value - parseEther('0.1')
+      if (maxAmount > 0) {
+        setAmount(formatEther(maxAmount))
+      }
+    }
+  }
 
   return (
     <Box {...props}>
       <InputGroup gap={5}>
-        <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
-        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={write}>
+        <InputGroup>
+          <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
+          <InputRightElement mx={2}>
+            <Button variant="link" onClick={onClickMax}>max</Button>
+          </InputRightElement>
+        </InputGroup>
+        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
           Wrap
         </Button>
       </InputGroup>
@@ -81,30 +114,73 @@ function Withdraw({ ...props }: BoxProps) {
   const [amount, setAmount] = React.useState('')
   const debouncedAmount = useDebounce(amount, 500)
   const { address } = useAccount()
-  const { data: balance } = useWNatBalanceOf({
-    args: [address!],
-    watch: true,
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+  useRefreshOnNewBlock(queryKey)
+
+  const {
+    write,
+    isLoading,
+    isPending
+  } = useWriteSmartContract({
+    abi: wNatAbi,
+    address: wNatAddress,
+    functionName: 'withdraw',
+    description: `Unwrap ${amount} WNAT`,
   })
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  const { write, isLoading, isPending } = useWriteTransaction(useWNatWithdraw({
-    args: [parseEther(debouncedAmount)],
-  }), { description: `Unwrap ${amount} WNAT` })
+  // React.useEffect(() => {
+  //   if (balance === undefined) return
+  //   if (balance > 0) setAmount(formatEther(balance))
+  //   else setAmount('')
+  // }, [balance])
 
-  React.useEffect(() => {
-    if (balance === undefined) return
-    if (balance > 0) setAmount(formatEther(balance))
-    else setAmount('')
-  }, [balance])
+  const onClick = async () => {
+    await write({
+      args: [parseEther(debouncedAmount)]
+    })
+  }
+
+  const onClickMax = () => {
+    if (balance !== undefined && balance > 0) setAmount(formatEther(balance))
+    else setAmount('0')
+  }
 
   return (
     <Box {...props}>
       <InputGroup gap={5}>
-        <Input placeholder="Amount, WNAT" value={amount} onChange={handleChange} />
-        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={write}>
+        <InputGroup>
+          <Input placeholder="Amount, WNAT" value={amount} onChange={handleChange} />
+          <InputRightElement mx={2}>
+            <Button variant="link" onClick={onClickMax}>max</Button>
+          </InputRightElement>
+        </InputGroup>
+        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
           Unwrap
         </Button>
       </InputGroup>
     </Box>
   )
+}
+
+function Approval() {
+  const [amount, setAmount] = React.useState('10')
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
+
+  return <Box my={5}>
+
+    <ButtonGroup gap={3} width="100%">
+      <Input placeholder="Amount to approve" value={amount} type="number" onChange={handleChange} />
+      <ApprovalRequired
+        amount={parseEther(amount)}
+        spender="0x000000000000000000000000000000000000dead"
+        tokenName="WNAT"
+      >
+        <Button colorScheme="green" variant="ghost" isDisabled>
+          <CheckIcon /> Approved
+        </Button>
+      </ApprovalRequired>
+    </ButtonGroup>
+  </Box>
 }

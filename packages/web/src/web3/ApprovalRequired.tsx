@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react'
 import { BoxProps, Button, Flex, Skeleton } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
 import { formatEther } from 'viem'
-import { useWNatAllowance, useWNatApprove, useWNatBalanceOf, useWNatDeposit } from '../wagmi'
-import { useWriteTransaction } from '../hooks/useWriteTransaction'
+import { useReadWNatAllowance, useReadWNatBalanceOf, useWriteSmartContract, wNatAbi, wNatAddress, } from '../wagmi'
+import { useRefreshOnNewBlock } from '../wagmi/useRefreshOnNewBlock'
 
 type Props = {
   amount: bigint
@@ -15,15 +15,10 @@ type Props = {
 
 export default function ApprovalRequired({ amount, spender, tokenName, isDisabled = false, children, ...rest }: Props) {
   const { address } = useAccount()
-  const { data: balance } = useWNatBalanceOf({
-    args: [address!],
-    watch: true,
-  })
-
-  const { data: allowance } = useWNatAllowance({
-    args: [address!, spender],
-    watch: true,
-  })
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+  const { data: allowance, queryKey: queryKeyAllowance } = useReadWNatAllowance({ args: [address!, spender] })
+  useRefreshOnNewBlock(queryKey)
+  useRefreshOnNewBlock(queryKeyAllowance)
 
   if (amount === undefined || balance === undefined || allowance === undefined) return <Skeleton h={10} w={50} />
 
@@ -48,21 +43,27 @@ export default function ApprovalRequired({ amount, spender, tokenName, isDisable
 
 function Deposit({ amount, tokenName, isDisabled }: { amount: bigint, tokenName: string, isDisabled: boolean }) {
   const { address } = useAccount()
-  const { data: balance } = useWNatBalanceOf({
-    args: [address!],
-    watch: true,
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+  const needToWrap = balance !== undefined ? amount - balance : undefined
+  useRefreshOnNewBlock(queryKey)
+
+  const { write, isLoading, isPending } = useWriteSmartContract({
+    abi: wNatAbi,
+    address: wNatAddress,
+    functionName: 'deposit',
+    description: `Wrap ${needToWrap !== undefined ? formatEther(needToWrap) : ''} ${tokenName}`,
   })
 
-  const needToWrap = balance !== undefined ? amount - balance : undefined
-
-  const { write, isLoading, isPending } = useWriteTransaction(useWNatDeposit({
-    value: needToWrap,
-  }), { description: `Wrap ${needToWrap !== undefined ? formatEther(needToWrap) : ''} ${tokenName}` })
+  const onClick = async () => {
+    await write({
+      value: needToWrap
+    })
+  }
 
   if (amount === undefined || balance === undefined) return <Skeleton h={10} w={50} />
 
   return (
-    <Button mr={5} isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={write}>
+    <Button isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={onClick}>
       Wrap
       {' '}
       {needToWrap !== undefined && formatEther(needToWrap)}
@@ -73,12 +74,19 @@ function Deposit({ amount, tokenName, isDisabled }: { amount: bigint, tokenName:
 }
 
 function Approve({ amount, spender, tokenName, isDisabled }: { amount: bigint, spender: `0x${string}`, tokenName: string, isDisabled: boolean }) {
-  const { write, isLoading, isPending } = useWriteTransaction(useWNatApprove({
-    args: [spender, amount!],
-  }), { description: `Approve ${formatEther(amount)} ${tokenName}` })
+  const { write, isLoading, isPending } = useWriteSmartContract({
+    abi: wNatAbi,
+    address: wNatAddress,
+    functionName: 'approve',
+    description: `Approve ${formatEther(amount)} ${tokenName}`,
+  })
+
+  const onClick = async () => {
+    await write({ args: [spender, amount!] })
+  }
 
   return (
-    <Button mr={5} isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={write}>
+    <Button isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={onClick}>
       Approve
       {' '}
       {amount !== undefined && formatEther(amount)}

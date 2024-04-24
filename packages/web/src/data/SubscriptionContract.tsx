@@ -5,17 +5,33 @@ import { Button, Skeleton } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
 import { bcTimestampToDate } from '../utils/bcTimestampToDate'
 import AppAlert from '../components/common/AppAlert'
-import { useSubscriptionSubscribe, useSubscriptionUserSubscribedAt } from '../wagmi'
-import { useWriteTransaction } from '../hooks/useWriteTransaction'
+import {
+  subscriptionAbi,
+  subscriptionAddress,
+  useReadSubscriptionUserSubscribedAt,
+  useRefreshOnNewBlock,
+  useWriteSmartContract,
+} from '../wagmi'
 
 export default function SubscriptionContract() {
   const { address } = useAccount()
-  const { data: userSubscribedAt } = useSubscriptionUserSubscribedAt({
+  const { data: userSubscribedAt, queryKey } = useReadSubscriptionUserSubscribedAt({
     args: [address!],
-    watch: true,
+  })
+  useRefreshOnNewBlock(queryKey)
+
+  const {
+    write,
+    isLoading,
+    isPending
+  } = useWriteSmartContract({
+    abi: subscriptionAbi,
+    address: subscriptionAddress,
+    functionName: 'subscribe',
+    description: `Subscribe`,
   })
 
-  const { write, isLoading } = useWriteTransaction(useSubscriptionSubscribe(), { description: 'Subscribe' })
+  const onClick = async () => { await write({}) }
 
   const isSubscribed = userSubscribedAt && userSubscribedAt > 0
 
@@ -30,7 +46,7 @@ export default function SubscriptionContract() {
           : 'You are not subscribed yet. Click Subscribe button to subscribe.'
       }
       button={(
-        <Button colorScheme="blue" isLoading={isLoading} onClick={write}>
+        <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
           Subscribe
         </Button>
       )}

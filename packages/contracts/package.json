@@ -6,10 +6,20 @@
   "license": "ISC",
   "scripts": {
     "dev": "concurrently -n chain,deploy -c auto --kill-others-on-fail \"pnpm run anvil\" \"sleep 5 && ./deploy.sh\"",
+    "dev.backup": "curl -s -H \"Content-Type: application/json\" -X POST --data '{\"id\":31337,\"jsonrpc\":\"2.0\",\"method\":\"anvil_dumpState\",\"params\":[]}' http://localhost:8545 | jq '.result' > .evm.state.\"${name:-0}\"",
+    "dev.backup.1": "name=1 pnpm run dev.backup",
+    "dev.backup.2": "name=2 pnpm run dev.backup",
+    "dev.backup.3": "name=3 pnpm run dev.backup",
+    "dev.restore": "curl -s -H \"Content-Type: application/json\" -X POST --data \"{\\\"id\\\":31337,\\\"jsonrpc\\\":\\\"2.0\\\",\\\"method\\\":\\\"anvil_loadState\\\",\\\"params\\\":[`cat .evm.state.\"${name:-0}\"`]}\" http://localhost:8545 | jq",
+    "dev.restore.1": "name=1 pnpm run dev.restore",
+    "dev.restore.2": "name=2 pnpm run dev.restore",
+    "dev.restore.3": "name=3 pnpm run dev.restore",
     "dev.init": "pnpm run deploy.local && pnpm run init.local",
     "dev.script": "tsx src/dev.ts",
     "anvil": "source .env && anvil --chain-id $CHAIN_ID -m \"$MNEMONIC\" --block-time 10",
     "anvil.fork": "source .env && anvil --fork-url $ANVIL_FORK_URL --chain-id $CHAIN_ID -m \"$MNEMONIC\"",
+    "evm.save": "curl -s -H \"Content-Type: application/json\" -X POST --data '{\"id\":31337,\"jsonrpc\":\"2.0\",\"method\":\"evm_snapshot\",\"params\":[]}' http://localhost:8545 | jq '.result' > .snapshot",
+    "evm.restore": "curl -s -H \"Content-Type: application/json\" -X POST --data \"{\\\"id\\\":31337,\\\"jsonrpc\\\":\\\"2.0\\\",\\\"method\\\":\\\"evm_revert\\\",\\\"params\\\":[`cat .snapshot`]}\" http://localhost:8545 | jq",
     "deploy.local": "run-s 'deploy.local.*'",
     "deploy.local.Counter": "source .env && forge create contracts/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
     "deploy.local.Faucet": "source .env && forge create contracts/Faucet.sol:Faucet --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY",
@@ -36,8 +46,8 @@
     "@app/shared": "workspace:^",
     "@wagmi/cli": "^2.1.1",
     "dotenv": "^16.3.1",
-    "viem": "^2.7.16",
-    "wagmi": "^2.5.7"
+    "viem": "^2.8.12",
+    "wagmi": "^2.5.20"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.2",

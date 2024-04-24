@@ -5,6 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --config nodemon.json",
+    "dev.backup": "mysqldump --defaults-file=./.my.cnf app > .dump.\"${name:-0}\".sql",
+    "dev.backup.1": "name=1 pnpm run dev.backup",
+    "dev.backup.2": "name=2 pnpm run dev.backup",
+    "dev.backup.3": "name=3 pnpm run dev.backup",
+    "dev.restore": "mysql --defaults-file=./.my.cnf app < .dump.\"${name:-0}\".sql",
+    "dev.restore.1": "name=1 pnpm run dev.restore",
+    "dev.restore.2": "name=2 pnpm run dev.restore",
+    "dev.restore.3": "name=3 pnpm run dev.restore",
     "predev": "pnpm run codegen",
     "build": "run-s 'build.*'",
     "build.prisma": "prisma generate",
@@ -13,6 +21,7 @@
     "build.schema": "tsx src/schema/index.ts",
     "prepare": "run-s 'prepare.*'",
     "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
+    "prepare.cnf": "cp -n .my.cnf.example .my.cnf 2> /dev/null || true",
     "prepare.prisma.generate": "prisma generate",
     "prepare.codegen": "graphql-codegen --config codegen.ts",
     "prepare.typescript": "rm -rf ./dist && tsc --project tsconfig.json",
@@ -58,7 +67,7 @@
     "graphql-yoga": "^5.0.0",
     "ioredis": "^5.3.2",
     "jsonwebtoken": "^9.0.2",
-    "viem": "^2.7.16",
+    "viem": "^2.8.12",
     "ws": "^8.14.2"
   },
   "devDependencies": {
@@ -85,6 +94,6 @@
     "prettier": "^3.0.3",
     "prisma": "^5.5.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }

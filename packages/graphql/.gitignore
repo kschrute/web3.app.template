@@ -3,3 +3,7 @@ dist/
 src/generated/
 *.env
 *.db
+.my.cnf
+# backups
+.dump.sql
+.dump*.sql

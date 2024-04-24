@@ -7,6 +7,7 @@ pnpm add -g dotenv-cli
 ## TODO
 
 - [-] Upgrade `wagmi` and `viem` https://wagmi.sh/react/guides/migrate-from-v1-to-v2 
+- [ ] Move `redis` stuff into a separate package out of cron
 - [ ] Remove `import 'dotenv/config'` from the `cron` package?
 - [ ] Add docker build (see https://pnpm.io/docker)
 - [x] Add Slither
