@@ -1,3 +1,5 @@
+'use client'
+
 import { ApolloLink } from '@apollo/client'
 
 export const authMiddleware = new ApolloLink((operation, forward) => {
