@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@wagmi/cli": "^2.1.1",
-    "viem": "^2.8.12",
+    "viem": "^2.9.26",
     "wagmi": "^2.5.20"
   },
   "devDependencies": {
