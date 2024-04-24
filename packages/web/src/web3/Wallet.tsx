@@ -1,22 +1,23 @@
-import React from 'react'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { useApolloClient } from '@apollo/client'
+import React, { useEffect } from 'react'
 import { useAccount } from 'wagmi'
+import { useApolloClient } from '@apollo/client'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 export const Wallet = () => {
   const client = useApolloClient()
 
-  useAccount({
-    onConnect({ address, connector, isReconnected }) {
-      // eslint-disable-next-line no-console
-      console.log('Connected', { address, connector, isReconnected })
-    },
-    onDisconnect() {
-      // eslint-disable-next-line no-console
+  const { address, connector, status } = useAccount()
+
+  useEffect(() => {
+    if (status === 'connected') {
+      console.log('Connected')
+      console.log('Connected', { address, connector })
+    }
+    if (status === 'disconnected') {
       console.log('Disconnected')
       client.resetStore()
-    },
-  })
+    }
+  }, [status])
 
   return (
     <ConnectButton
