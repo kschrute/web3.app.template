@@ -19,21 +19,22 @@
     "build": "pnpm run -r build",
     "prepare": "run-s 'prepare.*'",
     "prepare.husky": "husky install || true",
-    "prepare.packages": "pnpm --filter \"*\" run prepare",
-    "reset": "pnpm --filter \"*\" run reset",
+    "prepare.packages": "pnpm run -r prepare",
+    "reset": "pnpm run -r reset",
     "pre-commit": "lint-staged",
     "contracts": "pnpm --filter contracts",
     "cron": "pnpm --filter cron",
     "graphql": "pnpm --filter graphql",
+    "redis": "pnpm --filter redis",
     "shared": "pnpm --filter shared",
     "web": "pnpm --filter web",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "npm-run-all2": "^6.1.1"
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "npm-run-all2": "^6.1.2"
   },
   "pnpm": {
     "packageExtensions": {

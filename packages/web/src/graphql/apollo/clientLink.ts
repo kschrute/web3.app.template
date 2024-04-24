@@ -1,3 +1,5 @@
+'use client'
+
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { concat, HttpLink, split } from '@apollo/client'

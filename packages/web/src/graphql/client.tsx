@@ -400,7 +400,7 @@ export type AuthComponentProps = Omit<ApolloReactComponents.QueryComponentOption
  *   },
  * });
  */
-export function useAuthQuery(baseOptions: Apollo.QueryHookOptions<AuthQuery, AuthQueryVariables>) {
+export function useAuthQuery(baseOptions: Apollo.QueryHookOptions<AuthQuery, AuthQueryVariables> & ({ variables: AuthQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<AuthQuery, AuthQueryVariables>(AuthDocument, options);
       }
@@ -555,7 +555,7 @@ export type UserComponentProps = Omit<ApolloReactComponents.QueryComponentOption
  *   },
  * });
  */
-export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
+export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables> & ({ variables: UserQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options);
       }
