@@ -43,11 +43,6 @@
           "lokijs": "*"
         }
       },
-      "node-fetch@*": {
-        "peerDependencies": {
-          "encoding": "*"
-        }
-      },
       "pino@*": {
         "peerDependencies": {
           "pino-pretty": "*"

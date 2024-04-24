@@ -12,7 +12,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'airbnb-base',
   ],
-  ignorePatterns: ['src/wagmi.ts'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',

@@ -6,9 +6,10 @@ pnpm add -g dotenv-cli
 
 ## TODO
 
-- [ ] Move `redis` stuff into a separate package out of cron
+- [ ] Update eslint to v9 https://eslint.org/docs/latest/use/migrate-to-9.0.0
 - [ ] Remove `import 'dotenv/config'` from the `cron` package?
 - [ ] Add docker build (see https://pnpm.io/docker)
+- [x] Move `redis` stuff into a separate package out of cron
 - [x] Upgrade `wagmi` and `viem` https://wagmi.sh/react/guides/migrate-from-v1-to-v2
 - [x] Add Slither
 - [x] Add signatures contract and examples
