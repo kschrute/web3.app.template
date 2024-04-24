@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { cache } from './redis'
+import { cache } from '@app/redis'
 import { pauseAll, startAll, stopAll } from './jobs/queues/scripts'
 
 async function main() {

@@ -30,6 +30,7 @@
   "dependencies": {
     "@app/contracts": "workspace:^",
     "@app/graphql": "workspace:^",
+    "@app/redis": "workspace:^",
     "@app/shared": "workspace:^",
     "abitype": "^1.0.2",
     "bull": "^4.12.2",

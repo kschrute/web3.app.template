@@ -1,12 +1,12 @@
 import Redis, { Cluster } from 'ioredis'
-import config from '../../config'
+import config from './config'
 
 let redisSubscriber: Redis | Cluster | null = null
 let redisPublisher: Redis | Cluster | null = null
 
 export const subscriber = (): Redis | Cluster => {
   if (!redisSubscriber) {
-    redisSubscriber = new Redis(config.redis.pubsub.port, config.redis.pubsub.host)
+    redisSubscriber = new Redis(config.pubsub.port, config.pubsub.host)
 
     redisSubscriber.on('error', (error: Error) => console.error(`Error : ${error}`))
   }
@@ -16,7 +16,7 @@ export const subscriber = (): Redis | Cluster => {
 
 export const publisher = (): Redis | Cluster => {
   if (!redisPublisher) {
-    redisPublisher = new Redis(config.redis.pubsub.port, config.redis.pubsub.host)
+    redisPublisher = new Redis(config.pubsub.port, config.pubsub.host)
 
     redisPublisher.on('error', (error: Error) => console.error(`Error : ${error}`))
   }

@@ -1,5 +1,5 @@
 import { createPubSub } from 'graphql-yoga'
-import { pubSub as pubSubRedis } from '@app/cron'
+import { pubSub as pubSubRedis } from '@app/redis'
 import { createRedisEventTarget } from '@graphql-yoga/redis-event-target'
 
 export * from './user'
