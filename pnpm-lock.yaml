@@ -414,6 +414,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.25
         version: 18.2.25
+      '@types/use-sync-external-store':
+        specifier: ^0.0.6
+        version: 0.0.6
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.9.1
         version: 6.9.1(@typescript-eslint/parser@6.9.1)(eslint@8.52.0)(typescript@5.4.5)
@@ -4962,7 +4965,7 @@ packages:
       pump: 3.0.0
       qrcode-terminal-nooctal: 0.12.1
       react: 18.2.0
-      react-i18next: 13.5.0(i18next@22.5.1)(react-dom@18.2.0)(react-native@0.73.5)(react@18.2.0)
+      react-i18next: 13.5.0(i18next@22.5.1)(react-native@0.73.5)(react@18.2.0)
       react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
       react-native-webview: 11.26.1(react-native@0.73.5)(react@18.2.0)
       readable-stream: 2.3.8
@@ -5906,7 +5909,7 @@ packages:
       react-native: ^0.0.0-0 || >=0.60 <1.0
     dependencies:
       merge-options: 3.0.4
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
     dev: false
 
   /@react-native-community/cli-clean@12.3.6(encoding@0.1.13):
@@ -6274,7 +6277,7 @@ packages:
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
     dev: false
 
   /@redis/bloom@1.2.0(@redis/client@1.5.14):
@@ -6892,6 +6895,10 @@ packages:
   /@types/trusted-types@2.0.4:
     resolution: {integrity: sha512-IDaobHimLQhjwsQ/NMwRVfa/yL7L/wriQPMhw1ZJall0KX6E1oxk29XMDeilW5qTIg5aoiqf5Udy8U/51aNoQQ==}
     dev: false
+
+  /@types/use-sync-external-store@0.0.6:
+    resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
+    dev: true
 
   /@types/ws@8.5.10:
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
@@ -14905,6 +14912,26 @@ packages:
       i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
+    dev: false
+
+  /react-i18next@13.5.0(i18next@22.5.1)(react-native@0.73.5)(react@18.2.0):
+    resolution: {integrity: sha512-CFJ5NDGJ2MUyBohEHxljOq/39NQ972rh1ajnadG9BjTk+UXbHLq4z5DKEbEQBDoIhUmmbuS/fIMJKo6VOax1HA==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.2
+      html-parse-stringify: 3.0.1
+      i18next: 22.5.1
+      react: 18.2.0
       react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
@@ -14936,7 +14963,7 @@ packages:
       escape-string-regexp: 2.0.0
       invariant: 2.2.4
       react: 18.2.0
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
     dev: false
 
   /react-native@0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0):
