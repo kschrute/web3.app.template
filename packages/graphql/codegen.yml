@@ -1,7 +1,7 @@
 # @deprecated
 overwrite: true
 errorsOnly: true
-schema: build-schema2.js
+schema: build-schema.js
 # This should be updated to match your client files
 documents: ['queries/**/*.graphql', 'mutations/**/*.graphql', 'subscriptions/**/*.graphql']
 #documents: 'components/**/!(*.generated).tsx'
