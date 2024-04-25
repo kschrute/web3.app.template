@@ -7,4 +7,5 @@ types
 node_modules
 
 # Ignore automatically generated files
+src/graphql/client.tsx
 src/wagmi/generated.ts
