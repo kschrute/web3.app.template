@@ -10,6 +10,7 @@
     "build": "rm -rf ./dist && tsc",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "test": "forge test",
     "pre-commit": "lint-staged"
   },
@@ -24,6 +25,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }

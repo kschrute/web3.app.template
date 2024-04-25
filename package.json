@@ -20,15 +20,16 @@
     "prepare": "run-s 'prepare.*'",
     "prepare.husky": "husky install || true",
     "prepare.packages": "pnpm run -r prepare",
+    "prettify": "pnpm run -r prettify",
     "reset": "pnpm run -r reset",
-    "pre-commit": "lint-staged",
     "contracts": "pnpm --filter contracts",
     "cron": "pnpm --filter cron",
     "graphql": "pnpm --filter graphql",
     "redis": "pnpm --filter redis",
     "shared": "pnpm --filter shared",
     "web": "pnpm --filter web",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-commit": "lint-staged"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

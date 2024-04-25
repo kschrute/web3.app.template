@@ -320,6 +320,9 @@ importers:
       lint-staged:
         specifier: ^15.2.2
         version: 15.2.2
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       tsx:
         specifier: ^4.7.3
         version: 4.7.3
@@ -351,6 +354,9 @@ importers:
       npm-run-all2:
         specifier: ^6.1.2
         version: 6.1.2
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       tsx:
         specifier: ^4.7.3
         version: 4.7.3
@@ -481,6 +487,9 @@ importers:
       npm-run-all2:
         specifier: ^6.1.2
         version: 6.1.2
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       raw-loader:
         specifier: ^4.0.2
         version: 4.0.2(webpack@5.89.0)
@@ -6382,7 +6391,7 @@ packages:
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
     dev: false
 
   /@redis/bloom@1.2.0(@redis/client@1.5.14):
@@ -15042,7 +15051,7 @@ packages:
       escape-string-regexp: 2.0.0
       invariant: 2.2.4
       react: 18.2.0
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
     dev: false
 
   /react-native@0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0):

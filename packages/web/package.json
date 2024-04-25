@@ -9,9 +9,10 @@
     "lint": "next lint",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
-    "wagmi": "wagmi generate",
     "prepare": "run-s 'prepare.*'",
     "prepare.wagmi": "wagmi generate",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
+    "wagmi": "wagmi generate",
     "pre-commit": "lint-staged"
   },
   "dependencies": {
@@ -57,6 +58,7 @@
     "lint-staged": "^15.2.2",
     "lokijs": "^1.5.12",
     "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
     "raw-loader": "^4.0.2",
     "typescript": "^5.4.5"
   }
