@@ -8,5 +8,5 @@ export default {
   pubsub: {
     host: process.env.REDIS_PUBSUB_HOST || 'localhost',
     port: process.env.REDIS_PUBSUB_PORT ? Number(process.env.REDIS_PUBSUB_PORT) : 6379,
-  }
+  },
 }
