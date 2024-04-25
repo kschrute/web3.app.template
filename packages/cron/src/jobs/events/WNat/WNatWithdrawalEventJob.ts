@@ -7,6 +7,8 @@ interface JobData {
   eventId: string
 }
 
+const abi = parseAbi(['event Withdrawal(address indexed src, uint wad)'])
+
 export class WNatWithdrawalEventJob extends Job<JobData> {
   public queue = queues.events
 
@@ -26,7 +28,6 @@ const process = async (event: EventRepo.Entity) => {
   const e = event.event as Log
 
   // const abi = parseAbi([event.signature])
-  const abi = parseAbi(['event Withdrawal(address indexed src, uint wad)'])
 
   const decoded = decodeEventLog({
     abi,
