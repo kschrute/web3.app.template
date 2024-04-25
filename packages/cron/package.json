@@ -12,6 +12,7 @@
     "dev.workers.jobs.failed": "tsx src/jobs/scripts/statsFailed.ts",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "prepare": "run-s 'prepare.*'",
     "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
     "prepare.build": "pnpm run build",
@@ -22,7 +23,6 @@
     "workers.pause": "cross-env NODE_ENV=production node dist/src/pause.js",
     "workers.schedule": "cross-env NODE_ENV=production node dist/src/schedule.js",
     "compile": "tsc && pnpm run lint",
-    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "type-check": "tsc --noEmit",
     "reset": "docker run --rm redis:alpine redis-cli -h host.docker.internal FLUSHALL",
     "pre-commit": "lint-staged"
