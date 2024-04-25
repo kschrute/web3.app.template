@@ -6,10 +6,7 @@ describe('Verifier', () => {
   const deployFixture = async () => {
     const [owner, admin] = await hre.viem.getWalletClients()
 
-    const contract = await hre.viem.deployContract(
-      'Verifier',
-      []
-    )
+    const contract = await hre.viem.deployContract('Verifier', [])
 
     const publicClient = await hre.viem.getPublicClient()
 
@@ -44,7 +41,7 @@ describe('Verifier', () => {
         chainId: BigInt(0),
         // verifyingContract: '0x1C56346CD2A2Bf3202F771f50d3D14a367B48070',
         verifyingContract: contract.address,
-        salt: '0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558'
+        salt: '0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558',
       },
       types: {
         EIP712Domain: [
@@ -77,5 +74,4 @@ describe('Verifier', () => {
 
     expect(await contract.read.verify([Number(sig.v), sig.r, sig.s])).to.be.true
   })
-
 })
