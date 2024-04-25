@@ -28,17 +28,23 @@ if (process.env.NODE_ENV === 'development') {
         emit: 'stdout',
         level: 'warn',
       },
-    ]
+    ],
   })
   prisma.$on('query', (e) => {
     if (config.dev?.db.slowQueryThreshold !== undefined && e.duration >= config.dev?.db.slowQueryThreshold) {
       const params = JSON.parse(e.params)
       // console.log(e)
-      console.log(`-- 🐢 ${e.duration}ms ------------------------------------------------------------------------------------------`)
+      console.log(
+        `-- 🐢 ${e.duration}ms ------------------------------------------------------------------------------------------`,
+      )
       console.log(`PREPARE q FROM '${e.query}';`)
       params.map((param: any, i: any) => console.log(`SET @p${i} = ${JSON.stringify(param)};`))
-      console.log(`EXECUTE q USING ${params.reduce((acc: string, _: any, i: number) => `${acc}@p${i},`, '').slice(0, -1)};`)
-      console.log('------------------------------------------------------------------------------------------------------')
+      console.log(
+        `EXECUTE q USING ${params.reduce((acc: string, _: any, i: number) => `${acc}@p${i},`, '').slice(0, -1)};`,
+      )
+      console.log(
+        '------------------------------------------------------------------------------------------------------',
+      )
     }
   })
 } else {

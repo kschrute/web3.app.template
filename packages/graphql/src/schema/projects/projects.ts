@@ -24,23 +24,21 @@ builder.queryField('projects', (t) =>
         required: false,
       }),
     },
-    totalCount: (connection, args, context, info) => context.prisma.project.count({
-      where: {
-        userAddress: context.currentUser!.address
-      }
-    }),
+    totalCount: (connection, args, context, info) =>
+      context.prisma.project.count({
+        where: {
+          userAddress: context.currentUser!.address,
+        },
+      }),
     resolve: async (query, parent, args, context, info) => {
       await devDelay()
       return db.project.findMany({
         ...query,
         where: {
-          userAddress: context.currentUser!.address
+          userAddress: context.currentUser!.address,
         },
-        orderBy: args.orderBy
-          ? Object.entries(args.orderBy).map(([k, v]) => ({ [k]: v }))
-          : [{ id: 'desc' }],
+        orderBy: args.orderBy ? Object.entries(args.orderBy).map(([k, v]) => ({ [k]: v })) : [{ id: 'desc' }],
       })
     },
   }),
 )
-

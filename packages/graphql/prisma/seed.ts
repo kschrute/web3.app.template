@@ -49,8 +49,8 @@ async function seedProjects(user: User) {
     await db.project.create({
       data: {
         title: faker.word.words(3),
-        user: { connect: { address: user.address } }
-      }
+        user: { connect: { address: user.address } },
+      },
     })
   }
 }
