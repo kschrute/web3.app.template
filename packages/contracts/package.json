@@ -47,7 +47,7 @@
     "@wagmi/cli": "^2.1.4",
     "dotenv": "^16.4.5",
     "viem": "^2.9.26",
-    "wagmi": "^2.5.20"
+    "wagmi": "^2.5.21"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
@@ -67,7 +67,7 @@
     "hardhat": "^2.22.3",
     "lint-staged": "^15.2.2",
     "solidity-coverage": "^0.8.12",
-    "tsx": "^4.7.2",
+    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }
 }
