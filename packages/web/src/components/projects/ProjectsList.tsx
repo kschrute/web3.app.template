@@ -7,11 +7,5 @@ type Props = {
 }
 
 export default function ProjectsList({ projects }: Props) {
-  return (
-    <>
-      {projects.map((edge) => (
-        edge && <ProjectsItem key={edge.node.id} project={edge.node} />
-      ))}
-    </>
-  )
+  return <>{projects.map((edge) => edge && <ProjectsItem key={edge.node.id} project={edge.node} />)}</>
 }

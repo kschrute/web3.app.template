@@ -9,14 +9,7 @@ export default function CounterContract() {
   const { data, queryKey } = useReadCounterNumber()
   useRefreshOnNewBlock(queryKey)
 
-  const {
-    write,
-    isLoading,
-    isPending,
-    isSuccess,
-    isError,
-    error,
-  } = useWriteSmartContract({
+  const { write, isLoading, isPending, isSuccess, isError, error } = useWriteSmartContract({
     abi: counterAbi,
     address: counterAddress,
     functionName: 'increment',

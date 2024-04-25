@@ -27,18 +27,23 @@ const projectId = config.walletConnectProjectId
 //   projectId,
 // })
 
-const connectors = connectorsForWallets([{
-  groupName: 'Recommended',
-  wallets: [
-    injectedWallet,
-    metaMaskWallet,
-    walletConnectWallet,
-    coinbaseWallet,
-    ledgerWallet,
-    trustWallet,
-    rainbowWallet,
-  ]
-}], { appName: 'Web3', projectId })
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [
+        injectedWallet,
+        metaMaskWallet,
+        walletConnectWallet,
+        coinbaseWallet,
+        ledgerWallet,
+        trustWallet,
+        rainbowWallet,
+      ],
+    },
+  ],
+  { appName: 'Web3', projectId },
+)
 
 export const wagmiConfig = createConfig({
   chains: [mainnet, ...(process.env.NODE_ENV === 'development' ? [sepolia, localhost, foundry] : [])],

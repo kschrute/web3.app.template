@@ -7,3 +7,4 @@ types
 node_modules
 
 # Ignore automatically generated files
+src/wagmi/generated.ts

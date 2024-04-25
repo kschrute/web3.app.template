@@ -6,9 +6,7 @@ export const DarkModeSwitch = (props: BoxProps) => {
   const isDark = colorMode === 'dark'
   return (
     <Box {...props}>
-      <Link onClick={toggleColorMode}>
-        {isDark ? <SunIcon /> : <MoonIcon />}
-      </Link>
+      <Link onClick={toggleColorMode}>{isDark ? <SunIcon /> : <MoonIcon />}</Link>
     </Box>
   )
 }

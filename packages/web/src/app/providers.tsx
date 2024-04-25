@@ -26,12 +26,15 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const apolloClient = useApollo({})
   const [mounted, setMounted] = React.useState(false)
 
-  const iconContextProps: ProviderProps<IconContext> = useMemo(() => ({
-    value: {
-      className: 'react-icons',
-      attr: { focusable: 'false' },
-    },
-  }), [])
+  const iconContextProps: ProviderProps<IconContext> = useMemo(
+    () => ({
+      value: {
+        className: 'react-icons',
+        attr: { focusable: 'false' },
+      },
+    }),
+    [],
+  )
 
   React.useEffect(() => setMounted(true), [])
 
@@ -46,9 +49,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               showRecentTransactions
             >
               <ApolloProvider client={apolloClient}>
-                <IconContext.Provider {...iconContextProps}>
-                  {mounted && children}
-                </IconContext.Provider>
+                <IconContext.Provider {...iconContextProps}>{mounted && children}</IconContext.Provider>
               </ApolloProvider>
             </RainbowKitProvider>
           </QueryClientProvider>

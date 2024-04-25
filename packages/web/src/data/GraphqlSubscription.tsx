@@ -16,29 +16,18 @@ export default function GraphqlSubscription() {
   }
 
   if (error) {
-    return (
-      <p>
-        Error :
-        {error.message}
-      </p>
-    )
+    return <p>Error :{error.message}</p>
   }
 
   return (
     <AppAlert
       status="info"
-      description={(
-        <>
-          Random number subscription:
-          {' '}
-          {loading ? <Spinner size="sm" mr={2} /> : value}
-        </>
-)}
-      button={(
+      description={<>Random number subscription: {loading ? <Spinner size="sm" mr={2} /> : value}</>}
+      button={
         <Button colorScheme="blue" onClick={onClick}>
           Broadcast
         </Button>
-      )}
+      }
     />
   )
 }
