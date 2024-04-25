@@ -35,7 +35,9 @@ const process = async (event: EventRepo.Entity) => {
   })
 
   // const { user } = e.args
-  const { args: { user } } = decoded
+  const {
+    args: { user },
+  } = decoded
 
   await db.$transaction([
     UserRepo.update({ address: user }, { isSubscribed: true }),

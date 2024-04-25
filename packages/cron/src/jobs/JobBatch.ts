@@ -14,7 +14,9 @@ export enum PrismaEntity {
 
 type PrismaModel = Event | Project
 
-export abstract class JobBatch<Model extends PrismaModel, JobData extends JobBatchData> extends JobUnique<JobData & JobBatchData> {
+export abstract class JobBatch<Model extends PrismaModel, JobData extends JobBatchData> extends JobUnique<
+  JobData & JobBatchData
+> {
   protected entity: PrismaEntity = PrismaEntity.event
 
   protected orderBy: any = { id: 'asc' }
@@ -33,11 +35,11 @@ export abstract class JobBatch<Model extends PrismaModel, JobData extends JobBat
       take,
       ...(cursor
         ? {
-          skip: 1,
-          cursor: {
-            id: cursor,
-          },
-        }
+            skip: 1,
+            cursor: {
+              id: cursor,
+            },
+          }
         : {}),
       orderBy: this.orderBy,
     })
@@ -49,11 +51,11 @@ export abstract class JobBatch<Model extends PrismaModel, JobData extends JobBat
     if (nextCursor) {
       console.log(`Scheduling next batch of ${this.entity} starting with cursor ${nextCursor}`)
       // @ts-ignore
-      await (new this.constructor({
+      await new this.constructor({
         take,
         cursor: nextCursor,
         counter: counter + results.length,
-      })).schedule()
+      }).schedule()
     }
   }
 }
