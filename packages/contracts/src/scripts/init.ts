@@ -9,7 +9,7 @@ const chainId = walletClient.chain.id
 const counterContract = getContract({
   address: counterAddress[chainId],
   abi: counterAbi,
-  client: { public: publicClient, wallet: walletClient }
+  client: { public: publicClient, wallet: walletClient },
 })
 
 async function main() {

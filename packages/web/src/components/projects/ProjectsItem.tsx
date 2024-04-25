@@ -10,11 +10,7 @@ export default function ProjectsItem({ project }: Props) {
   return (
     <Box p={5}>
       <Text>
-        {project.id}
-        {' '}
-        —
-        {' '}
-        {project.title}
+        {project.id} — {project.title}
       </Text>
     </Box>
   )

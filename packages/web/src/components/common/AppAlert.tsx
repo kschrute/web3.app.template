@@ -10,7 +10,15 @@ type Props = {
   children?: ReactNode
 } & AlertProps
 
-export default function AppAlert({ title, description, button, status = 'warning', showIcon = true, children, ...rest }: Props) {
+export default function AppAlert({
+  title,
+  description,
+  button,
+  status = 'warning',
+  showIcon = true,
+  children,
+  ...rest
+}: Props) {
   return (
     <Alert my={5} rounded={5} variant="subtle" status={status} {...rest}>
       {showIcon && <AlertIcon />}

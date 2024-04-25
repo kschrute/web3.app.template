@@ -10,13 +10,12 @@
     "build": "rm -rf ./dist && tsc --project tsconfig.dist.json",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "test": "forge test",
     "pre-commit": "lint-staged"
   },
   "dependencies": {
-    "@wagmi/cli": "^2.1.4",
-    "viem": "^2.9.26",
-    "wagmi": "^2.5.20"
+    "viem": "^2.9.26"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
@@ -25,7 +24,8 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "lint-staged": "^15.2.2",
     "npm-run-all2": "^6.1.2",
-    "tsx": "^4.7.2",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }
 }

@@ -29,6 +29,7 @@
     "prepare.copy.schema": "cp -R ./schema.graphql ./dist/",
     "eslint": "eslint src/ --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint src/ --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen.watch": "graphql-codegen --watch './src/**/*.ts'",
     "compile": "tsc",
@@ -41,7 +42,6 @@
     "prisma.migrate": "prisma format && prisma migrate dev && prisma generate",
     "prisma.reset": "prisma migrate reset -f",
     "prisma.seed": "prisma db seed",
-    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "prod.migrate": "prisma migrate deploy",
     "reset": "dotenv -e .env -- prisma migrate reset -f",
     "pre-commit": "lint-staged"
@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@app/redis": "workspace:^",
+    "@app/shared": "workspace:^",
     "@faker-js/faker": "^8.4.1",
     "@graphql-yoga/redis-event-target": "^3.0.0",
     "@paralleldrive/cuid2": "^2.2.2",
@@ -92,7 +93,7 @@
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
     "prisma": "^5.13.0",
-    "tsx": "^4.7.2",
+    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }
 }

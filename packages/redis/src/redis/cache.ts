@@ -1,7 +1,7 @@
 import { createClient } from 'redis'
 import config from './config'
 
-type Promisified<T extends (...args: any[]) => any> = (...args: Parameters<T>) => Promise<ReturnType<T>>;
+type Promisified<T extends (...args: any[]) => any> = (...args: Parameters<T>) => Promise<ReturnType<T>>
 
 let redisClient: ReturnType<typeof createClient>
 
@@ -41,7 +41,12 @@ export const set = async (key: string, value: any, encode = true, expSeconds?: n
   })
 }
 
-export const getCachedValue = async <T>(key: string, resolver: Promisified<() => T>, encode = true, expSeconds?: number): Promise<ReturnType<typeof resolver> | undefined> => {
+export const getCachedValue = async <T>(
+  key: string,
+  resolver: Promisified<() => T>,
+  encode = true,
+  expSeconds?: number,
+): Promise<ReturnType<typeof resolver> | undefined> => {
   try {
     let value
     value = await get(key)

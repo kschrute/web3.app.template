@@ -35,6 +35,7 @@
     "build": "rm -rf ./dist && tsc --project tsconfig.dist.json",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "wagmi": "wagmi generate",
     "test": "hardhat test",
     "test.forge": "forge test",
@@ -47,29 +48,28 @@
     "@wagmi/cli": "^2.1.4",
     "dotenv": "^16.4.5",
     "viem": "^2.9.26",
-    "wagmi": "^2.5.20"
+    "wagmi": "^2.5.21"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
     "@nomicfoundation/hardhat-foundry": "^1.1.1",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
-    "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.6",
-    "@nomicfoundation/hardhat-viem": "^1.0.0",
     "@openzeppelin/contracts": "^5.0.2",
     "@types/chai": "^4.3.14",
     "@types/chai-as-promised": "^7.1.8",
-    "@types/mocha": ">=9.1.0",
+    "@types/mocha": ">=10.0.6",
     "@types/node": "^20.12.7",
     "chai": "^4.2.0",
     "eslint": "^8.52.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "hardhat": "^2.22.3",
-    "hardhat-gas-reporter": "^1.0.8",
     "lint-staged": "^15.2.2",
-    "solidity-coverage": "^0.8.0",
-    "tsx": "^4.7.2",
+    "prettier": "^3.2.5",
+    "solidity-coverage": "^0.8.12",
+    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }
 }

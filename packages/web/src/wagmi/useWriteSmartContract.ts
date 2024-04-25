@@ -10,11 +10,8 @@ type stateMutability = 'nonpayable' | 'payable'
 
 export function useWriteSmartContract<
   const abi extends Abi | readonly unknown[],
-  const address extends | Address
-    | Record<number, Address>
-    | undefined = undefined,
-  functionName extends | ContractFunctionName<abi, stateMutability>
-    | undefined = undefined,
+  const address extends Address | Record<number, Address> | undefined = undefined,
+  functionName extends ContractFunctionName<abi, stateMutability> | undefined = undefined,
 >(props: CreateUseWriteContractParameters<abi, address, functionName> & { description?: string }) {
   const chainId = useChainId()
   const showErrorMessage = useShowErrorMessage()
@@ -29,7 +26,7 @@ export function useWriteSmartContract<
     isPending,
     isPaused,
     isSuccess,
-    isIdle
+    isIdle,
   } = createUseWriteContract({
     abi,
     address: address?.[chainId] as `0x${string}` | undefined,
@@ -82,14 +79,17 @@ export function useWriteSmartContract<
     isReceiptSuccess && showSuccessMessage('Transaction successfully confirmed', receipt?.transactionHash)
   }, [isReceiptSuccess, showSuccessMessage, receipt?.transactionHash])
 
-  const write = React.useCallback(async (...args: Parameters<typeof writeContractAsync>) => {
-    const hash = await writeContractAsync(args[0])
-    addRecentTransaction({
-      hash,
-      description: description ?? hash,
-    })
-    return hash
-  }, [writeContractAsync, description, addRecentTransaction])
+  const write = React.useCallback(
+    async (...args: Parameters<typeof writeContractAsync>) => {
+      const hash = await writeContractAsync(args[0])
+      addRecentTransaction({
+        hash,
+        description: description ?? hash,
+      })
+      return hash
+    },
+    [writeContractAsync, description, addRecentTransaction],
+  )
 
   return {
     write,

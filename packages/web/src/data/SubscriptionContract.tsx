@@ -20,18 +20,16 @@ export default function SubscriptionContract() {
   })
   useRefreshOnNewBlock(queryKey)
 
-  const {
-    write,
-    isLoading,
-    isPending
-  } = useWriteSmartContract({
+  const { write, isLoading, isPending } = useWriteSmartContract({
     abi: subscriptionAbi,
     address: subscriptionAddress,
     functionName: 'subscribe',
     description: `Subscribe`,
   })
 
-  const onClick = async () => { await write({}) }
+  const onClick = async () => {
+    await write({})
+  }
 
   const isSubscribed = userSubscribedAt && userSubscribedAt > 0
 
@@ -45,11 +43,11 @@ export default function SubscriptionContract() {
           ? `Looks like you have already subscribed at ${bcTimestampToDate(userSubscribedAt).toLocaleString()}`
           : 'You are not subscribed yet. Click Subscribe button to subscribe.'
       }
-      button={(
+      button={
         <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
           Subscribe
         </Button>
-      )}
+      }
     />
   )
 }
