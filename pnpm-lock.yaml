@@ -89,6 +89,9 @@ importers:
       lint-staged:
         specifier: ^15.2.2
         version: 15.2.2
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       solidity-coverage:
         specifier: ^0.8.12
         version: 0.8.12(hardhat@2.22.3)
@@ -6391,7 +6394,7 @@ packages:
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
   /@redis/bloom@1.2.0(@redis/client@1.5.14):
@@ -15051,7 +15054,7 @@ packages:
       escape-string-regexp: 2.0.0
       invariant: 2.2.4
       react: 18.2.0
-      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0)
+      react-native: 0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(react@18.2.0)
     dev: false
 
   /react-native@0.73.5(@babel/core@7.23.2)(@babel/preset-env@7.24.0)(encoding@0.1.13)(react@18.2.0):
