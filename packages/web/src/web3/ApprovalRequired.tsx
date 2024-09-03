@@ -2,8 +2,15 @@ import React, { ReactNode } from 'react'
 import { BoxProps, Button, Flex, Skeleton } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
 import { formatEther } from 'viem'
-import { useReadWNatAllowance, useReadWNatBalanceOf, useWriteSmartContract, wNatAbi, wNatAddress } from '../wagmi'
-import { useRefreshOnNewBlock } from '../wagmi/useRefreshOnNewBlock'
+import {
+  useReadWNatAllowance,
+  useReadWNatBalanceOf,
+  useRefreshOnNewBlock,
+  useWriteSmartContract,
+  wNatAbi,
+  wNatAddress
+} from '../wagmi'
+import { formatTokenValue } from './utils'
 
 type Props = {
   amount: bigint
@@ -93,7 +100,7 @@ function Approve({
 
   return (
     <Button isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={onClick}>
-      Approve {amount !== undefined && formatEther(amount)} {tokenName}
+      Approve {amount !== undefined && formatTokenValue(formatEther(amount))} {tokenName}
     </Button>
   )
 }

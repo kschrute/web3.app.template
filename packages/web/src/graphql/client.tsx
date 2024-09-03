@@ -18,8 +18,11 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** The `BigInt` scalar type represents non-fractional signed whole numeric values. */
+  BigInt: { input: any; output: any; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any; }
+  Decimal: { input: any; output: any; }
 };
 
 export type Mutation = {
@@ -58,10 +61,10 @@ export type OrderBy = {
 
 export type PageInfo = {
   __typename?: 'PageInfo';
-  endCursor?: Maybe<Scalars['ID']['output']>;
+  endCursor?: Maybe<Scalars['String']['output']>;
   hasNextPage: Scalars['Boolean']['output'];
   hasPreviousPage: Scalars['Boolean']['output'];
-  startCursor?: Maybe<Scalars['ID']['output']>;
+  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 export type Project = {
@@ -72,7 +75,7 @@ export type Project = {
   requestCount: Scalars['Int']['output'];
   title: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
-  user: User;
+  user?: Maybe<User>;
 };
 
 export type ProjectCreateInput = {
@@ -105,8 +108,8 @@ export type QueryProjectByIdArgs = {
 
 
 export type QueryProjectsArgs = {
-  after?: InputMaybe<Scalars['ID']['input']>;
-  before?: InputMaybe<Scalars['ID']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<OrderBy>;
@@ -119,14 +122,14 @@ export type QueryUserArgs = {
 
 export type QueryProjectsConnection = {
   __typename?: 'QueryProjectsConnection';
-  edges: Array<Maybe<QueryProjectsConnectionEdge>>;
+  edges: Array<QueryProjectsConnectionEdge>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int']['output'];
 };
 
 export type QueryProjectsConnectionEdge = {
   __typename?: 'QueryProjectsConnectionEdge';
-  cursor: Scalars['ID']['output'];
+  cursor: Scalars['String']['output'];
   node: Project;
 };
 
@@ -220,11 +223,11 @@ export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', address
 
 export type ProjectsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
-  cursor?: InputMaybe<Scalars['ID']['input']>;
+  cursor?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'QueryProjectsConnection', pageInfo: { __typename?: 'PageInfo', startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean }, edges: Array<{ __typename?: 'QueryProjectsConnectionEdge', cursor: string, node: { __typename?: 'Project', id: number, title: string, isActive: boolean, createdAt: any } } | null> } };
+export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'QueryProjectsConnection', pageInfo: { __typename?: 'PageInfo', startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean }, edges: Array<{ __typename?: 'QueryProjectsConnectionEdge', cursor: string, node: { __typename?: 'Project', id: number, title: string, isActive: boolean, createdAt: any } }> } };
 
 export type UserQueryVariables = Exact<{
   address: Scalars['String']['input'];
@@ -464,7 +467,7 @@ export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeSuspenseQueryHookResult = ReturnType<typeof useMeSuspenseQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const ProjectsDocument = gql`
-    query Projects($take: Int, $cursor: ID) {
+    query Projects($take: Int, $cursor: String) {
   projects(first: $take, after: $cursor) {
     pageInfo {
       startCursor

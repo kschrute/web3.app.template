@@ -14,12 +14,6 @@ import config from '../../config'
 
 export * from './generated'
 
-declare module 'wagmi' {
-  interface Register {
-    config: typeof config
-  }
-}
-
 const projectId = config.walletConnectProjectId
 
 // const { connectors } = getDefaultWallets({
@@ -48,6 +42,7 @@ const connectors = connectorsForWallets(
 export const wagmiConfig = createConfig({
   chains: [mainnet, ...(process.env.NODE_ENV === 'development' ? [sepolia, localhost, foundry] : [])],
   connectors,
+  ssr: true,
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
@@ -56,3 +51,9 @@ export const wagmiConfig = createConfig({
   },
   batch: { multicall: true },
 })
+
+declare module 'wagmi' {
+  interface Register {
+    config: typeof wagmiConfig
+  }
+}

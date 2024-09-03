@@ -81,15 +81,19 @@ export function useWriteSmartContract<
 
   const write = React.useCallback(
     async (...args: Parameters<typeof writeContractAsync>) => {
-      const hash = await writeContractAsync(args[0])
-      addRecentTransaction({
-        hash,
-        description: description ?? hash,
-      })
-      return hash
+      try {
+        const hash = await writeContractAsync(args[0])
+        addRecentTransaction({
+          hash,
+          description: description ?? hash,
+        })
+        return hash
+      } catch (e) {
+        console.error(e)
+      }
     },
     [writeContractAsync, description, addRecentTransaction],
-  )
+  ) as typeof writeContractAsync
 
   return {
     write,

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useMeQuery } from '../graphql/client'
-import { Debug } from '../components/Debug'
+import { Debug } from '../components/dev/Debug'
 import AppAlert from '../components/common/AppAlert'
 
 export default function GraphqlQuery() {

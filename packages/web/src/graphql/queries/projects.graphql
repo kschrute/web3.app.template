@@ -1,4 +1,4 @@
-query Projects($take: Int, $cursor: ID) {
+query Projects($take: Int, $cursor: String) {
     projects(first: $take, after: $cursor) {
         pageInfo {
             startCursor
