@@ -15,9 +15,6 @@ import {
 
 export default function SubscriptionContract() {
   const { address } = useAccount()
-
-  if (!address) return null
-
   const { data: userSubscribedAt, queryKey } = useReadSubscriptionUserSubscribedAt({
     args: [address],
   })

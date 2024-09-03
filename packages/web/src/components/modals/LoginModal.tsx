@@ -23,9 +23,6 @@ export default function LoginModal() {
   const defaultButtonRef = useRef<any>()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
-
-  if (!address) return null
-
   const [executeQuery, { data, error, refetch }] = useAuthLazyQuery()
   const [signin] = useSignInMutation()
 

@@ -14,9 +14,6 @@ import {
 
 export default function FaucetContract() {
   const { address } = useAccount()
-
-  if (!address) return null
-
   const { data: isClaimed, queryKey } = useReadFaucetAccountClaimed({
     args: [address],
   })

@@ -46,9 +46,6 @@ export default function WNatContract() {
 
 function Balance({ ...props }: BoxProps) {
   const { address } = useAccount()
-
-  if (!address) return null
-
   const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   useRefreshOnNewBlock(queryKey)
 
