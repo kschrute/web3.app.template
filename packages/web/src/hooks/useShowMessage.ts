@@ -1,5 +1,5 @@
+import { type AlertStatus, useToast } from '@chakra-ui/react'
 import { useCallback } from 'react'
-import { AlertStatus, useToast } from '@chakra-ui/react'
 
 export const useShowMessage = (status: AlertStatus = 'success') => {
   const toast = useToast()

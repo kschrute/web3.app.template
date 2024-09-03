@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
-    "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "lint": "biome check .",
+    "lint.fix": "biome check --write .",
+    "lint.fix.unsafe": "biome check --write --unsafe .",
     "prepare": "run-s 'prepare.*'",
     "prepare.wagmi": "wagmi generate",
     "prettify": "prettier --write '**/*.{ts,tsx}'",
@@ -41,6 +41,7 @@
     "wagmi": "^2.5.21"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",

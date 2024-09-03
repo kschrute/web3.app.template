@@ -1,6 +1,6 @@
 import React from 'react'
+import type { ProjectsQuery } from '../../graphql/client'
 import ProjectsItem from './ProjectsItem'
-import { ProjectsQuery } from '../../graphql/client'
 
 type Props = {
   projects: ProjectsQuery['projects']['edges']

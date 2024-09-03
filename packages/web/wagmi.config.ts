@@ -1,6 +1,6 @@
+import { contracts } from '@app/shared'
 import { defineConfig } from '@wagmi/cli'
 import { foundry, react } from '@wagmi/cli/plugins'
-import { contracts } from '@app/shared'
 import { erc20Abi } from 'viem'
 
 export default defineConfig({

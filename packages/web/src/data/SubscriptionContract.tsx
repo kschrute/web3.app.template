@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
 import { Button, Skeleton } from '@chakra-ui/react'
+import React from 'react'
 import { useAccount } from 'wagmi'
-import { bcTimestampToDate } from '../utils/bcTimestampToDate'
 import AppAlert from '../components/common/AppAlert'
+import { bcTimestampToDate } from '../utils/bcTimestampToDate'
 import {
   subscriptionAbi,
   subscriptionAddress,
@@ -15,8 +15,11 @@ import {
 
 export default function SubscriptionContract() {
   const { address } = useAccount()
+
+  if (!address) return null
+
   const { data: userSubscribedAt, queryKey } = useReadSubscriptionUserSubscribedAt({
-    args: [address!],
+    args: [address],
   })
   useRefreshOnNewBlock(queryKey)
 
@@ -24,7 +27,7 @@ export default function SubscriptionContract() {
     abi: subscriptionAbi,
     address: subscriptionAddress,
     functionName: 'subscribe',
-    description: `Subscribe`,
+    description: 'Subscribe',
   })
 
   const onClick = async () => {

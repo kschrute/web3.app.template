@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react'
-import { Box, BoxProps, Stack } from '@chakra-ui/react'
+import { Box, type BoxProps, Stack } from '@chakra-ui/react'
+import React, { type ReactNode } from 'react'
 
 type Props = {
   isOpen: boolean

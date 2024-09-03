@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { useMeQuery } from '../graphql/client'
-import { Debug } from '../components/dev/Debug'
 import AppAlert from '../components/common/AppAlert'
+import { Debug } from '../components/dev/Debug'
+import { useMeQuery } from '../graphql/client'
 
 export default function GraphqlQuery() {
   const { loading, error, data } = useMeQuery({

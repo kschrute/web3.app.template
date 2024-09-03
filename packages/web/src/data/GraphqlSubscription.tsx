@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useMemo } from 'react'
 import { Button, Spinner } from '@chakra-ui/react'
-import { useBroadcastMutation, useRandomSubscription } from '../graphql/client'
+import React, { useMemo } from 'react'
 import AppAlert from '../components/common/AppAlert'
+import { useBroadcastMutation, useRandomSubscription } from '../graphql/client'
 
 export default function GraphqlSubscription() {
   const [broadcast] = useBroadcastMutation()

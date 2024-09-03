@@ -1,3 +1,5 @@
+Web3 app template.
+
 ## Prerequisites
 
 ```shell

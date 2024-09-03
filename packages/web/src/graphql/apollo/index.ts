@@ -1,9 +1,9 @@
-import { useMemo } from 'react'
-import { ApolloClient, DefaultOptions, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
+import { ApolloClient, type DefaultOptions, InMemoryCache, type NormalizedCacheObject } from '@apollo/client'
 import { relayStylePagination } from '@apollo/client/utilities'
-import { createIsomorphicLink } from './createIsomorphicLink'
+import { useMemo } from 'react'
 import config from '../../../config'
-import { ResolverContext } from './types/ResolverContext'
+import { createIsomorphicLink } from './createIsomorphicLink'
+import type { ResolverContext } from './types/ResolverContext'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 

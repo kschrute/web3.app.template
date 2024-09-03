@@ -1,11 +1,11 @@
 'use client'
 
-import { createClient } from 'graphql-ws'
-import { getMainDefinition } from '@apollo/client/utilities'
-import { concat, HttpLink, split } from '@apollo/client'
+import { HttpLink, concat, split } from '@apollo/client'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
-import { authMiddleware } from './authMiddleware'
+import { getMainDefinition } from '@apollo/client/utilities'
+import { createClient } from 'graphql-ws'
 import config from '../../../config'
+import { authMiddleware } from './authMiddleware'
 
 export const createClientLink = () => {
   const httpLink = new HttpLink({

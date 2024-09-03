@@ -1,17 +1,17 @@
-import React from 'react'
 import {
   Button,
   Divider,
-  Heading,
   HStack,
+  Heading,
   Stat,
   StatGroup,
   StatHelpText,
   StatLabel,
   StatNumber,
-  VStack
+  VStack,
 } from '@chakra-ui/react'
 import { DateTime } from 'luxon'
+import React from 'react'
 import { useBlock } from 'wagmi'
 import { useRefreshOnNewBlock } from '../../wagmi'
 import useDevHelpers from '../hooks/useDevHelpers'
@@ -41,7 +41,7 @@ export default function DevEVM() {
             {currentBlock &&
               DateTime.fromSeconds(Number(currentBlock.timestamp)).toLocaleString(DateTime.DATETIME_SHORT)}
           </StatNumber>
-          <StatHelpText>{currentBlock && currentBlock.timestamp.toString()}</StatHelpText>
+          <StatHelpText>{currentBlock?.timestamp.toString()}</StatHelpText>
         </Stat>
       </StatGroup>
 
@@ -99,7 +99,6 @@ export default function DevEVM() {
       {/* ----------------------------------------------------------------------------- */}
 
       <DevTimestamps />
-
     </VStack>
   )
 }

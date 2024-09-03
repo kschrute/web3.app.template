@@ -1,5 +1,5 @@
-import { Box, BoxProps, Link, useColorMode } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { Box, type BoxProps, Link, useColorMode } from '@chakra-ui/react'
 
 export const DarkModeSwitch = (props: BoxProps) => {
   const { colorMode, toggleColorMode } = useColorMode()

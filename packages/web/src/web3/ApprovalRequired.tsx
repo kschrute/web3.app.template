@@ -1,14 +1,14 @@
-import React, { ReactNode } from 'react'
-import { BoxProps, Button, Flex, Skeleton } from '@chakra-ui/react'
-import { useAccount } from 'wagmi'
+import { type BoxProps, Button, Flex, Skeleton } from '@chakra-ui/react'
+import React, { type ReactNode } from 'react'
 import { formatEther } from 'viem'
+import { useAccount } from 'wagmi'
 import {
   useReadWNatAllowance,
   useReadWNatBalanceOf,
   useRefreshOnNewBlock,
   useWriteSmartContract,
   wNatAbi,
-  wNatAddress
+  wNatAddress,
 } from '../wagmi'
 import { formatTokenValue } from './utils'
 
@@ -22,8 +22,11 @@ type Props = {
 
 export default function ApprovalRequired({ amount, spender, tokenName, isDisabled = false, children, ...rest }: Props) {
   const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
-  const { data: allowance, queryKey: queryKeyAllowance } = useReadWNatAllowance({ args: [address!, spender] })
+
+  if (!address) return null
+
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
+  const { data: allowance, queryKey: queryKeyAllowance } = useReadWNatAllowance({ args: [address, spender] })
   useRefreshOnNewBlock(queryKey)
   useRefreshOnNewBlock(queryKeyAllowance)
 
@@ -50,7 +53,10 @@ export default function ApprovalRequired({ amount, spender, tokenName, isDisable
 
 function Deposit({ amount, tokenName, isDisabled }: { amount: bigint; tokenName: string; isDisabled: boolean }) {
   const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+
+  if (!address) return null
+
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   const needToWrap = balance !== undefined ? amount - balance : undefined
   useRefreshOnNewBlock(queryKey)
 
@@ -95,7 +101,7 @@ function Approve({
   })
 
   const onClick = async () => {
-    await write({ args: [spender, amount!] })
+    await write({ args: [spender, amount] })
   }
 
   return (

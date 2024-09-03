@@ -1,6 +1,4 @@
 import { connectorsForWallets, getDefaultWallets } from '@rainbow-me/rainbowkit'
-import { createConfig, http } from 'wagmi'
-import { foundry, localhost, mainnet, sepolia } from 'wagmi/chains'
 import {
   coinbaseWallet,
   injectedWallet,
@@ -10,6 +8,8 @@ import {
   trustWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets'
+import { http, createConfig } from 'wagmi'
+import { foundry, localhost, mainnet, sepolia } from 'wagmi/chains'
 import config from '../../config'
 
 export * from './generated'

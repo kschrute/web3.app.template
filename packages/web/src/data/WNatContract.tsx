@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
+import { CheckIcon } from '@chakra-ui/icons'
 import {
   Box,
-  BoxProps,
+  type BoxProps,
   Button,
   ButtonGroup,
   Flex,
@@ -16,13 +16,13 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react'
-import { useAccount, useBalance } from 'wagmi'
+import React from 'react'
 import { formatEther, parseEther } from 'viem'
-import useDebounce from '../hooks/useDebounce'
+import { useAccount, useBalance } from 'wagmi'
 import AppAlert from '../components/common/AppAlert'
+import useDebounce from '../hooks/useDebounce'
 import { useReadWNatBalanceOf, useRefreshOnNewBlock, useWriteSmartContract, wNatAbi, wNatAddress } from '../wagmi'
 import ApprovalRequired from '../web3/ApprovalRequired'
-import { CheckIcon } from '@chakra-ui/icons'
 
 export default function WNatContract() {
   return (
@@ -46,7 +46,10 @@ export default function WNatContract() {
 
 function Balance({ ...props }: BoxProps) {
   const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+
+  if (!address) return null
+
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   useRefreshOnNewBlock(queryKey)
 
   return (
@@ -111,10 +114,13 @@ function Deposit({ ...props }: BoxProps) {
 }
 
 function Withdraw({ ...props }: BoxProps) {
+  const { address } = useAccount()
+
+  if (!address) return null
+
   const [amount, setAmount] = React.useState('')
   const debouncedAmount = useDebounce(amount, 500)
-  const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   useRefreshOnNewBlock(queryKey)
 
   const { write, isLoading, isPending } = useWriteSmartContract({

@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
 import { Button, Skeleton } from '@chakra-ui/react'
+import React from 'react'
 import { useAccount } from 'wagmi'
 import AppAlert from '../components/common/AppAlert'
 import {
@@ -14,8 +14,11 @@ import {
 
 export default function FaucetContract() {
   const { address } = useAccount()
+
+  if (!address) return null
+
   const { data: isClaimed, queryKey } = useReadFaucetAccountClaimed({
-    args: [address!],
+    args: [address],
   })
   useRefreshOnNewBlock(queryKey)
 
@@ -23,7 +26,7 @@ export default function FaucetContract() {
     abi: faucetAbi,
     address: faucetAddress,
     functionName: 'claim',
-    description: `Claim tokens`,
+    description: 'Claim tokens',
   })
 
   const onClick = async () => {

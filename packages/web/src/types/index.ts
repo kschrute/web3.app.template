@@ -1,5 +1,5 @@
 export type NullableKeys<T> = {
-  [P in keyof T]-? : Extract<T[P], null | undefined> extends never ? never: P
+  [P in keyof T]-?: Extract<T[P], null | undefined> extends never ? never : P
 }[keyof T]
 
 // works without strictNullChecks

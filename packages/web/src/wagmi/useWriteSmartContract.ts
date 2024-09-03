@@ -1,23 +1,28 @@
-import React from 'react'
-import { useChainId, useWaitForTransactionReceipt } from 'wagmi'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
-import { createUseWriteContract } from 'wagmi/codegen'
-import { CreateUseWriteContractParameters } from 'wagmi/src/hooks/codegen/createUseWriteContract'
+import React from 'react'
 import type { Abi, Address, ContractFunctionName } from 'viem'
+import { useChainId, useWaitForTransactionReceipt } from 'wagmi'
+import { createUseWriteContract } from 'wagmi/codegen'
+import type { CreateUseWriteContractParameters } from 'wagmi/src/hooks/codegen/createUseWriteContract'
 import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
 
 type stateMutability = 'nonpayable' | 'payable'
+
+type Props = {
+  description?: string
+  handleErrors?: boolean
+}
 
 export function useWriteSmartContract<
   const abi extends Abi | readonly unknown[],
   const address extends Address | Record<number, Address> | undefined = undefined,
   functionName extends ContractFunctionName<abi, stateMutability> | undefined = undefined,
->(props: CreateUseWriteContractParameters<abi, address, functionName> & { description?: string }) {
+>(props: CreateUseWriteContractParameters<abi, address, functionName> & Props) {
   const chainId = useChainId()
   const showErrorMessage = useShowErrorMessage()
   const showSuccessMessage = useShowSuccessMessage()
   const addRecentTransaction = useAddRecentTransaction()
-  const { abi, address, functionName, description } = props
+  const { abi, address, functionName, description, handleErrors = true } = props
   const {
     writeContractAsync,
     data: hash,
@@ -59,8 +64,8 @@ export function useWriteSmartContract<
   // console.log('isReceiptFetching', isReceiptFetching)
 
   React.useEffect(() => {
-    isError && error && showErrorMessage(error.message)
-  }, [isError, error, showErrorMessage])
+    isError && error && handleErrors && showErrorMessage(error.message)
+  }, [isError, error, handleErrors, showErrorMessage])
 
   React.useEffect(() => {
     if (hash) {
@@ -82,6 +87,7 @@ export function useWriteSmartContract<
   const write = React.useCallback(
     async (...args: Parameters<typeof writeContractAsync>) => {
       try {
+        // @ts-ignore
         const hash = await writeContractAsync(args[0])
         addRecentTransaction({
           hash,
@@ -89,10 +95,14 @@ export function useWriteSmartContract<
         })
         return hash
       } catch (e) {
-        console.error(e)
+        if (handleErrors) {
+          console.error(e)
+        } else {
+          throw e
+        }
       }
     },
-    [writeContractAsync, description, addRecentTransaction],
+    [writeContractAsync, description, addRecentTransaction, handleErrors],
   ) as typeof writeContractAsync
 
   return {

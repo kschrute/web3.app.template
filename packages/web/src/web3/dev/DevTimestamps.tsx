@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { CopyIcon, RepeatClockIcon } from '@chakra-ui/icons'
 import {
   Button,
-  Heading,
   HStack,
+  Heading,
   IconButton,
   Input,
   Stat,
@@ -10,11 +10,12 @@ import {
   StatHelpText,
   StatLabel,
   StatNumber,
-  useClipboard,
   VStack,
+  useClipboard,
 } from '@chakra-ui/react'
-import { CopyIcon, RepeatClockIcon } from '@chakra-ui/icons'
-import { DateTime, DurationLike } from 'luxon'
+import { DateTime, type DurationLike } from 'luxon'
+import type React from 'react'
+import { useState } from 'react'
 import { useBlock } from 'wagmi'
 import { useRefreshOnNewBlock } from '../../wagmi'
 
@@ -29,10 +30,8 @@ export default function DevTimestamps() {
   const onClickReset = () => setCurrentTimestamp(Number(currentBlockTimestamp))
 
   const onClickSetNewTimestamp = () => {
-    const parsedDate = Date.parse(input!)
-    const date = isNaN(parsedDate)
-      ? DateTime.fromSeconds(Number(input))
-      : DateTime.fromMillis(parsedDate)
+    const parsedDate = Date.parse(input)
+    const date = Number.isNaN(parsedDate) ? DateTime.fromSeconds(Number(input)) : DateTime.fromMillis(parsedDate)
 
     if (date.isValid) {
       setCurrentTimestamp(date.toSeconds())
@@ -42,8 +41,7 @@ export default function DevTimestamps() {
   }
 
   const onClickAdvance = (duration: DurationLike) => {
-    currentTimestamp &&
-    setCurrentTimestamp(DateTime.fromSeconds(currentTimestamp).plus(duration).toSeconds())
+    currentTimestamp && setCurrentTimestamp(DateTime.fromSeconds(currentTimestamp).plus(duration).toSeconds())
   }
 
   return (
@@ -55,19 +53,11 @@ export default function DevTimestamps() {
           <StatLabel>Current Block</StatLabel>
           <StatNumber>
             {currentBlock &&
-              DateTime.fromSeconds(Number(currentBlock.timestamp)).toLocaleString(
-                DateTime.DATETIME_SHORT,
-              )}
+              DateTime.fromSeconds(Number(currentBlock.timestamp)).toLocaleString(DateTime.DATETIME_SHORT)}
           </StatNumber>
           <StatHelpText>
-            {currentBlock && currentBlock.timestamp.toString()}
-            <IconButton
-              aria-label="Copy"
-              icon={<CopyIcon />}
-              ml={2}
-              variant="ghost"
-              onClick={onCopy}
-            />
+            {currentBlock?.timestamp.toString()}
+            <IconButton aria-label="Copy" icon={<CopyIcon />} ml={2} variant="ghost" onClick={onCopy} />
           </StatHelpText>
         </Stat>
       </StatGroup>

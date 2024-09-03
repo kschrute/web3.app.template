@@ -1,6 +1,6 @@
-import React from 'react'
 import { Box, Text } from '@chakra-ui/react'
-import { ProjectGQL } from '../../types/graphql'
+import React from 'react'
+import type { ProjectGQL } from '../../types/graphql'
 
 type Props = {
   project: ProjectGQL
