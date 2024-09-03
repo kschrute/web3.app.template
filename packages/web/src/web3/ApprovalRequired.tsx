@@ -1,9 +1,16 @@
-import React, { ReactNode } from 'react'
-import { BoxProps, Button, Flex, Skeleton } from '@chakra-ui/react'
-import { useAccount } from 'wagmi'
+import { type BoxProps, Button, Flex, Skeleton } from '@chakra-ui/react'
+import React, { type ReactNode } from 'react'
 import { formatEther } from 'viem'
-import { useReadWNatAllowance, useReadWNatBalanceOf, useWriteSmartContract, wNatAbi, wNatAddress, } from '../wagmi'
-import { useRefreshOnNewBlock } from '../wagmi/useRefreshOnNewBlock'
+import { useAccount } from 'wagmi'
+import {
+  useReadWNatAllowance,
+  useReadWNatBalanceOf,
+  useRefreshOnNewBlock,
+  useWriteSmartContract,
+  wNatAbi,
+  wNatAddress,
+} from '../wagmi'
+import { formatTokenValue } from './utils'
 
 type Props = {
   amount: bigint
@@ -15,8 +22,11 @@ type Props = {
 
 export default function ApprovalRequired({ amount, spender, tokenName, isDisabled = false, children, ...rest }: Props) {
   const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
-  const { data: allowance, queryKey: queryKeyAllowance } = useReadWNatAllowance({ args: [address!, spender] })
+
+  if (!address) return null
+
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
+  const { data: allowance, queryKey: queryKeyAllowance } = useReadWNatAllowance({ args: [address, spender] })
   useRefreshOnNewBlock(queryKey)
   useRefreshOnNewBlock(queryKeyAllowance)
 
@@ -41,9 +51,12 @@ export default function ApprovalRequired({ amount, spender, tokenName, isDisable
   return children
 }
 
-function Deposit({ amount, tokenName, isDisabled }: { amount: bigint, tokenName: string, isDisabled: boolean }) {
+function Deposit({ amount, tokenName, isDisabled }: { amount: bigint; tokenName: string; isDisabled: boolean }) {
   const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+
+  if (!address) return null
+
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   const needToWrap = balance !== undefined ? amount - balance : undefined
   useRefreshOnNewBlock(queryKey)
 
@@ -56,7 +69,7 @@ function Deposit({ amount, tokenName, isDisabled }: { amount: bigint, tokenName:
 
   const onClick = async () => {
     await write({
-      value: needToWrap
+      value: needToWrap,
     })
   }
 
@@ -64,16 +77,22 @@ function Deposit({ amount, tokenName, isDisabled }: { amount: bigint, tokenName:
 
   return (
     <Button isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={onClick}>
-      Wrap
-      {' '}
-      {needToWrap !== undefined && formatEther(needToWrap)}
-      {' '}
-      {tokenName}
+      Wrap {needToWrap !== undefined && formatEther(needToWrap)} {tokenName}
     </Button>
   )
 }
 
-function Approve({ amount, spender, tokenName, isDisabled }: { amount: bigint, spender: `0x${string}`, tokenName: string, isDisabled: boolean }) {
+function Approve({
+  amount,
+  spender,
+  tokenName,
+  isDisabled,
+}: {
+  amount: bigint
+  spender: `0x${string}`
+  tokenName: string
+  isDisabled: boolean
+}) {
   const { write, isLoading, isPending } = useWriteSmartContract({
     abi: wNatAbi,
     address: wNatAddress,
@@ -82,16 +101,12 @@ function Approve({ amount, spender, tokenName, isDisabled }: { amount: bigint, s
   })
 
   const onClick = async () => {
-    await write({ args: [spender, amount!] })
+    await write({ args: [spender, amount] })
   }
 
   return (
     <Button isDisabled={isDisabled} isLoading={isLoading || isPending} onClick={onClick}>
-      Approve
-      {' '}
-      {amount !== undefined && formatEther(amount)}
-      {' '}
-      {tokenName}
+      Approve {amount !== undefined && formatTokenValue(formatEther(amount))} {tokenName}
     </Button>
   )
 }

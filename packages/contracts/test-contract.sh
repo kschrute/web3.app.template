@@ -38,6 +38,7 @@ echo "FILENAME: $FILENAME"
 echo "SOLIDITY_VERSION: $SOLIDITY_VERSION"
 
 #$DOCKER pull ghcr.io/trailofbits/eth-security-toolbox:nightly
+#--solc-remaps @openzeppelin=/src/lib/openzeppelin-contracts \
 
 $DOCKER run -it \
 -v "$CURRENT_DIR/slither.config.json":/home/ethsec/slither.config.json \

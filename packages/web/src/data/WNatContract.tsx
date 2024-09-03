@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
+import { CheckIcon } from '@chakra-ui/icons'
 import {
   Box,
-  BoxProps,
+  type BoxProps,
   Button,
   ButtonGroup,
   Flex,
@@ -16,19 +16,21 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react'
-import { useAccount, useBalance } from 'wagmi'
+import React from 'react'
 import { formatEther, parseEther } from 'viem'
-import useDebounce from '../hooks/useDebounce'
+import { useAccount, useBalance } from 'wagmi'
 import AppAlert from '../components/common/AppAlert'
+import useDebounce from '../hooks/useDebounce'
 import { useReadWNatBalanceOf, useRefreshOnNewBlock, useWriteSmartContract, wNatAbi, wNatAddress } from '../wagmi'
 import ApprovalRequired from '../web3/ApprovalRequired'
-import { CheckIcon } from '@chakra-ui/icons'
 
 export default function WNatContract() {
   return (
     <AppAlert status="info" showIcon={false}>
       <Box flex="100%" p={0}>
-        <Heading size="lg" mb={5}>Wrapped Native Token</Heading>
+        <Heading size="lg" mb={5}>
+          Wrapped Native Token
+        </Heading>
         <Flex bg="gray1" gap={5} alignItems="center" justifyContent="flex-start">
           <Balance flex={0} bg="green1" />
           <Flex bg="yellow1" flex={1} gap={5} flexDirection="column">
@@ -44,7 +46,10 @@ export default function WNatContract() {
 
 function Balance({ ...props }: BoxProps) {
   const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+
+  if (!address) return null
+
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   useRefreshOnNewBlock(queryKey)
 
   return (
@@ -65,11 +70,7 @@ function Deposit({ ...props }: BoxProps) {
   const debouncedAmount = useDebounce(amount, 500)
   useRefreshOnNewBlock(queryKey)
 
-  const {
-    write,
-    isLoading,
-    isPending
-  } = useWriteSmartContract({
+  const { write, isLoading, isPending } = useWriteSmartContract({
     abi: wNatAbi,
     address: wNatAddress,
     functionName: 'deposit',
@@ -80,7 +81,7 @@ function Deposit({ ...props }: BoxProps) {
 
   const onClick = async () => {
     await write({
-      value: parseEther(debouncedAmount)
+      value: parseEther(debouncedAmount),
     })
   }
 
@@ -99,7 +100,9 @@ function Deposit({ ...props }: BoxProps) {
         <InputGroup>
           <Input placeholder="Amount, ETH" value={amount} onChange={handleChange} />
           <InputRightElement mx={2}>
-            <Button variant="link" onClick={onClickMax}>max</Button>
+            <Button variant="link" onClick={onClickMax}>
+              max
+            </Button>
           </InputRightElement>
         </InputGroup>
         <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
@@ -111,17 +114,16 @@ function Deposit({ ...props }: BoxProps) {
 }
 
 function Withdraw({ ...props }: BoxProps) {
+  const { address } = useAccount()
+
+  if (!address) return null
+
   const [amount, setAmount] = React.useState('')
   const debouncedAmount = useDebounce(amount, 500)
-  const { address } = useAccount()
-  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address!] })
+  const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   useRefreshOnNewBlock(queryKey)
 
-  const {
-    write,
-    isLoading,
-    isPending
-  } = useWriteSmartContract({
+  const { write, isLoading, isPending } = useWriteSmartContract({
     abi: wNatAbi,
     address: wNatAddress,
     functionName: 'withdraw',
@@ -138,7 +140,7 @@ function Withdraw({ ...props }: BoxProps) {
 
   const onClick = async () => {
     await write({
-      args: [parseEther(debouncedAmount)]
+      args: [parseEther(debouncedAmount)],
     })
   }
 
@@ -153,7 +155,9 @@ function Withdraw({ ...props }: BoxProps) {
         <InputGroup>
           <Input placeholder="Amount, WNAT" value={amount} onChange={handleChange} />
           <InputRightElement mx={2}>
-            <Button variant="link" onClick={onClickMax}>max</Button>
+            <Button variant="link" onClick={onClickMax}>
+              max
+            </Button>
           </InputRightElement>
         </InputGroup>
         <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
@@ -168,19 +172,20 @@ function Approval() {
   const [amount, setAmount] = React.useState('10')
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)
 
-  return <Box my={5}>
-
-    <ButtonGroup gap={3} width="100%">
-      <Input placeholder="Amount to approve" value={amount} type="number" onChange={handleChange} />
-      <ApprovalRequired
-        amount={parseEther(amount)}
-        spender="0x000000000000000000000000000000000000dead"
-        tokenName="WNAT"
-      >
-        <Button colorScheme="green" variant="ghost" isDisabled>
-          <CheckIcon /> Approved
-        </Button>
-      </ApprovalRequired>
-    </ButtonGroup>
-  </Box>
+  return (
+    <Box my={5}>
+      <ButtonGroup gap={3} width="100%">
+        <Input placeholder="Amount to approve" value={amount} type="number" onChange={handleChange} />
+        <ApprovalRequired
+          amount={parseEther(amount)}
+          spender="0x000000000000000000000000000000000000dead"
+          tokenName="WNAT"
+        >
+          <Button colorScheme="green" variant="ghost" isDisabled>
+            <CheckIcon /> Approved
+          </Button>
+        </ApprovalRequired>
+      </ButtonGroup>
+    </Box>
+  )
 }

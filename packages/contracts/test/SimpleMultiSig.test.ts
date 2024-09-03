@@ -1,6 +1,6 @@
 import hre from 'hardhat'
 import { expect } from 'chai'
-import { loadFixture, } from '@nomicfoundation/hardhat-toolbox-viem/network-helpers'
+import { loadFixture } from '@nomicfoundation/hardhat-toolbox-viem/network-helpers'
 import { encodeFunctionData, getAddress, hexToSignature, keccak256, parseEther, toHex, WalletClient } from 'viem'
 
 const sha3 = (value: string | number | bigint | boolean | Uint8Array) => keccak256(toHex(value))
@@ -9,7 +9,7 @@ const accSort = (a: WalletClient, b: WalletClient) => {
   return a.account?.address! > b.account?.address! ? 1 : -1
 }
 
-describe('SimpleMultiSig',  () => {
+describe('SimpleMultiSig', () => {
   let owners: `0x${string}`[] = []
   const threshold = BigInt(2)
 
@@ -20,20 +20,14 @@ describe('SimpleMultiSig',  () => {
 
     // console.log('owners', owners)
 
-    const contract = await hre.viem.deployContract(
-      'SimpleMultiSig',
-      [threshold, owners, BigInt(1)]
-    )
+    const contract = await hre.viem.deployContract('SimpleMultiSig', [threshold, owners, BigInt(1)])
 
-    const testRegistry = await hre.viem.deployContract(
-      'TestRegistry',
-      []
-    )
+    const testRegistry = await hre.viem.deployContract('TestRegistry', [])
 
     await owner.sendTransaction({
       account: owner.account,
       to: contract.address,
-      value: parseEther('1')
+      value: parseEther('1'),
     })
 
     const publicClient = await hre.viem.getPublicClient()
@@ -48,14 +42,15 @@ describe('SimpleMultiSig',  () => {
     }
   }
 
-  const createSigs = async (signers: WalletClient[],
-                      multisigAddr: `0x${string}`,
-                      nonce: bigint,
-                      destination: `0x${string}`,
-                      value: bigint,
-                      data: `0x${string}`,
-                      executor: `0x${string}`,
-                      gasLimit: bigint
+  const createSigs = async (
+    signers: WalletClient[],
+    multisigAddr: `0x${string}`,
+    nonce: bigint,
+    destination: `0x${string}`,
+    value: bigint,
+    data: `0x${string}`,
+    executor: `0x${string}`,
+    gasLimit: bigint,
   ) => {
     let sigV: number[] = []
     let sigR: `0x${string}`[] = []
@@ -70,7 +65,7 @@ describe('SimpleMultiSig',  () => {
           version: '1',
           chainId: BigInt(1),
           verifyingContract: multisigAddr,
-          salt: '0x251543af6a222378665a76fe38dbceae4871a070b7fdaf5c6c30cf758dc33cc0'
+          salt: '0x251543af6a222378665a76fe38dbceae4871a070b7fdaf5c6c30cf758dc33cc0',
         },
         types: {
           EIP712Domain: [
@@ -78,7 +73,7 @@ describe('SimpleMultiSig',  () => {
             { name: 'version', type: 'string' },
             { name: 'chainId', type: 'uint256' },
             { name: 'verifyingContract', type: 'address' },
-            { name: 'salt', type: 'bytes32' }
+            { name: 'salt', type: 'bytes32' },
           ],
           MultiSigTransaction: [
             { name: 'destination', type: 'address' },
@@ -86,7 +81,7 @@ describe('SimpleMultiSig',  () => {
             { name: 'data', type: 'bytes' },
             { name: 'nonce', type: 'uint256' },
             { name: 'executor', type: 'address' },
-            { name: 'gasLimit', type: 'uint256' }
+            { name: 'gasLimit', type: 'uint256' },
           ],
         },
         primaryType: 'MultiSigTransaction',
@@ -122,37 +117,20 @@ describe('SimpleMultiSig',  () => {
 
   describe('Functionality', () => {
     it('Should send value', async () => {
-      const { contract, testRegistry, owner, secondAccount, thirdAccount, publicClient } = await loadFixture(deployFixture)
+      const { contract, testRegistry, owner, secondAccount, thirdAccount, publicClient } =
+        await loadFixture(deployFixture)
 
       const executor = owner.account.address
-      const destination = sha3(Math.random().toString()).slice(0,42) as `0x${string}`
+      const destination = sha3(Math.random().toString()).slice(0, 42) as `0x${string}`
       const nonce = await contract.read.nonce()
       const signers = [secondAccount, thirdAccount].sort(accSort)
       const value = parseEther('0.01')
       const gasLimit = BigInt(100000)
       const data = toHex('')
 
-      const sigs = await createSigs(
-        signers,
-        contract.address,
-        nonce,
-        destination,
-        value,
-        data,
-        executor,
-        gasLimit
-      )
+      const sigs = await createSigs(signers, contract.address, nonce, destination, value, data, executor, gasLimit)
 
-      await contract.write.execute([
-        sigs.sigV,
-        sigs.sigR,
-        sigs.sigS,
-        destination,
-        value,
-        data,
-        executor,
-        gasLimit
-      ])
+      await contract.write.execute([sigs.sigV, sigs.sigR, sigs.sigS, destination, value, data, executor, gasLimit])
 
       const balance = await publicClient.getBalance({
         address: destination,
@@ -162,7 +140,8 @@ describe('SimpleMultiSig',  () => {
     })
 
     it('Should execute contracts', async () => {
-      const { contract, testRegistry, owner, secondAccount, thirdAccount, publicClient } = await loadFixture(deployFixture)
+      const { contract, testRegistry, owner, secondAccount, thirdAccount, publicClient } =
+        await loadFixture(deployFixture)
 
       const number = BigInt(33)
       const executor = owner.account.address
@@ -177,27 +156,9 @@ describe('SimpleMultiSig',  () => {
         args: [number],
       })
 
-      const sigs = await createSigs(
-        signers,
-        contract.address,
-        nonce,
-        destination,
-        value,
-        data,
-        executor,
-        gasLimit
-      )
+      const sigs = await createSigs(signers, contract.address, nonce, destination, value, data, executor, gasLimit)
 
-      await contract.write.execute([
-        sigs.sigV,
-        sigs.sigR,
-        sigs.sigS,
-        destination,
-        value,
-        data,
-        executor,
-        gasLimit
-      ])
+      await contract.write.execute([sigs.sigV, sigs.sigR, sigs.sigS, destination, value, data, executor, gasLimit])
 
       expect(await testRegistry.read.registry([contract.address])).to.eq(number)
     })

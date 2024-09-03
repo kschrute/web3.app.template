@@ -9,17 +9,12 @@ type Deployments = {
 }
 
 type ContractsConfig = {
-  include: string[],
-  deployments: Deployments,
+  include: string[]
+  deployments: Deployments
 }
 
 export const contracts: ContractsConfig = {
-  include: [
-    'Counter.sol/*.json',
-    'Faucet.sol/*.json',
-    'Subscription.sol/*.json',
-    'WNat.sol/*.json',
-  ],
+  include: ['Counter.sol/*.json', 'Faucet.sol/*.json', 'Subscription.sol/*.json', 'WNat.sol/*.json'],
   deployments: {
     Counter: {
       [mainnet.id]: '0x0000000000000000000000000000000000000000',

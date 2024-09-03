@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma experimental ABIEncoderV2;
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
@@ -30,7 +30,7 @@ contract Verifier {
 //    ));
 
     // hash for EIP712, computed from contract address
-    bytes32 DOMAIN_SEPARATOR;
+    bytes32 immutable DOMAIN_SEPARATOR;
 
     struct Identity {
         uint256 userId;

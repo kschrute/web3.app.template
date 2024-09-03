@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react'
-import { Config, useEstimateGas, useSendTransaction, useWaitForTransactionReceipt } from 'wagmi'
-import { SendTransactionVariables } from 'wagmi/query'
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit'
+import React, { useCallback } from 'react'
+import { type Config, useEstimateGas, useSendTransaction, useWaitForTransactionReceipt } from 'wagmi'
+import type { SendTransactionVariables } from 'wagmi/query'
 import { useShowErrorMessage, useShowSuccessMessage } from '../hooks/useShowMessage'
 
 type TxConfig = {
@@ -57,6 +57,7 @@ export function useWriteTransaction(transaction: SendTransactionVariables<Config
   const write = useCallback(
     async (transaction: SendTransactionVariables<Config, number>) => {
       console.log('[!] write', transaction)
+      // @ts-ignore
       const hash = await sendTransactionAsync?.(transaction)
       // const hash = await sendTransactionAsync?.({
       //   // gas: gasData,

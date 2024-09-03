@@ -19,21 +19,23 @@
     "build": "pnpm run -r build",
     "prepare": "run-s 'prepare.*'",
     "prepare.husky": "husky install || true",
-    "prepare.packages": "pnpm --filter \"*\" run prepare",
-    "reset": "pnpm --filter \"*\" run reset",
-    "pre-commit": "lint-staged",
+    "prepare.packages": "pnpm run -r prepare",
+    "prettify": "pnpm run -r prettify",
+    "reset": "pnpm run -r reset",
     "contracts": "pnpm --filter contracts",
     "cron": "pnpm --filter cron",
     "graphql": "pnpm --filter graphql",
+    "redis": "pnpm --filter redis",
     "shared": "pnpm --filter shared",
     "web": "pnpm --filter web",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-commit": "lint-staged"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "npm-run-all2": "^6.1.1"
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "npm-run-all2": "^6.1.2"
   },
   "pnpm": {
     "packageExtensions": {
@@ -42,16 +44,12 @@
           "lokijs": "*"
         }
       },
-      "node-fetch@*": {
-        "peerDependencies": {
-          "encoding": "*"
-        }
-      },
       "pino@*": {
         "peerDependencies": {
           "pino-pretty": "*"
         }
       }
     }
-  }
+  },
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
 }

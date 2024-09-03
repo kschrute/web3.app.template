@@ -7,6 +7,8 @@ interface JobData {
   eventId: string
 }
 
+const abi = parseAbi(['event Subscribed(address user, uint when)'])
+
 export class SubscriptionSubscribedEventJob extends Job<JobData> {
   public queue = queues.events
 
@@ -26,7 +28,6 @@ const process = async (event: EventRepo.Entity) => {
   const e = event.event as Log
 
   // const abi = parseAbi([event.signature])
-  const abi = parseAbi(['event Subscribed(address user, uint when)'])
 
   const decoded = decodeEventLog({
     abi,
@@ -35,7 +36,9 @@ const process = async (event: EventRepo.Entity) => {
   })
 
   // const { user } = e.args
-  const { args: { user } } = decoded
+  const {
+    args: { user },
+  } = decoded
 
   await db.$transaction([
     UserRepo.update({ address: user }, { isSubscribed: true }),

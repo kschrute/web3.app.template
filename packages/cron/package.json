@@ -12,6 +12,7 @@
     "dev.workers.jobs.failed": "tsx src/jobs/scripts/statsFailed.ts",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "prepare": "run-s 'prepare.*'",
     "prepare.env": "cp -n .env.example .env 2> /dev/null || true",
     "prepare.build": "pnpm run build",
@@ -22,7 +23,6 @@
     "workers.pause": "cross-env NODE_ENV=production node dist/src/pause.js",
     "workers.schedule": "cross-env NODE_ENV=production node dist/src/schedule.js",
     "compile": "tsc && pnpm run lint",
-    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "type-check": "tsc --noEmit",
     "reset": "docker run --rm redis:alpine redis-cli -h host.docker.internal FLUSHALL",
     "pre-commit": "lint-staged"
@@ -30,24 +30,26 @@
   "dependencies": {
     "@app/contracts": "workspace:^",
     "@app/graphql": "workspace:^",
+    "@app/redis": "workspace:^",
     "@app/shared": "workspace:^",
-    "abitype": "^0.10.2",
-    "bull": "^4.11.4",
-    "dotenv": "^16.3.1",
-    "ioredis": "^5.3.2",
-    "redis": "^4.6.10",
+    "abitype": "^1.0.2",
+    "bull": "^4.12.2",
+    "dotenv": "^16.4.5",
+    "ioredis": "^5.4.1",
+    "redis": "^4.6.13",
     "viem": "^2.9.26"
   },
   "devDependencies": {
-    "@types/node": "^20.8.10",
+    "@biomejs/biome": "^1.8.3",
+    "@types/node": "^20.12.7",
     "eslint": "^8.52.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "lint-staged": "^15.0.2",
-    "nodemon": "^3.0.1",
-    "npm-run-all2": "^6.1.1",
-    "prettier": "^3.0.3",
-    "tsx": "^4.7.1",
-    "typescript": "^5.3.3"
+    "lint-staged": "^15.2.2",
+    "nodemon": "^3.1.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5"
   }
 }

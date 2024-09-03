@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
 import { Button, Skeleton } from '@chakra-ui/react'
+import React from 'react'
 import { useAccount } from 'wagmi'
 import AppAlert from '../components/common/AppAlert'
 import {
@@ -9,28 +9,29 @@ import {
   faucetAddress,
   useReadFaucetAccountClaimed,
   useRefreshOnNewBlock,
-  useWriteSmartContract
+  useWriteSmartContract,
 } from '../wagmi'
 
 export default function FaucetContract() {
   const { address } = useAccount()
+
+  if (!address) return null
+
   const { data: isClaimed, queryKey } = useReadFaucetAccountClaimed({
-    args: [address!],
+    args: [address],
   })
   useRefreshOnNewBlock(queryKey)
 
-  const {
-    write,
-    isLoading,
-    isPending
-  } = useWriteSmartContract({
+  const { write, isLoading, isPending } = useWriteSmartContract({
     abi: faucetAbi,
     address: faucetAddress,
     functionName: 'claim',
-    description: `Claim tokens`,
+    description: 'Claim tokens',
   })
 
-  const onClick = async () => { await write({}) }
+  const onClick = async () => {
+    await write({})
+  }
 
   if (isClaimed === undefined) return <Skeleton h={10} />
 
@@ -42,11 +43,11 @@ export default function FaucetContract() {
           ? 'Looks like you have already claimed your faucet tokens.'
           : 'Click claim to claim your faucet tokens.'
       }
-      button={(
+      button={
         <Button colorScheme="blue" isLoading={isLoading || isPending} isDisabled={!!isClaimed} onClick={onClick}>
           Claim
         </Button>
-      )}
+      }
     />
   )
 }

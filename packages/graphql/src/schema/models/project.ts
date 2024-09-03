@@ -8,6 +8,8 @@ export const ProjectObject = builder.prismaObject('Project', {
     isActive: t.exposeBoolean('isActive'),
     createdAt: t.expose('createdAt', { type: 'DateTime' }),
     updatedAt: t.expose('updatedAt', { type: 'DateTime' }),
-    user: t.relation('user'),
+    user: t.relation('user', {
+      nullable: true,
+    }),
   }),
 })

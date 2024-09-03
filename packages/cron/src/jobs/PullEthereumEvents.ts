@@ -27,7 +27,14 @@ export class PullEthereumEvents extends JobUnique<JobData> {
   }
 
   public async handle() {
-    const { contractAddress, abi, initialStartFromBlock, startFromBlockNumber, blocksPerFetch = defaultBlocksPerFetch, markAsProcessed } = this.data
+    const {
+      contractAddress,
+      abi,
+      initialStartFromBlock,
+      startFromBlockNumber,
+      blocksPerFetch = defaultBlocksPerFetch,
+      markAsProcessed,
+    } = this.data
 
     try {
       getAddress(contractAddress)
@@ -48,11 +55,12 @@ export class PullEthereumEvents extends JobUnique<JobData> {
 
     const currentBlock = await publicClient.getBlockNumber()
 
-    const startFromBlock = startFromBlockNumber !== undefined
-      ? BigInt(startFromBlockNumber)
-      : (latestEvent?.blockNumber
-        ? latestEvent.blockNumber
-        : initialStartFromBlock ?? getNetworkConfig().startBlock)
+    const startFromBlock =
+      startFromBlockNumber !== undefined
+        ? BigInt(startFromBlockNumber)
+        : latestEvent?.blockNumber
+          ? latestEvent.blockNumber
+          : initialStartFromBlock ?? getNetworkConfig().startBlock
 
     const toBlock = blocksPerFetch ? startFromBlock + blocksPerFetch - BigInt(1) : currentBlock
 
@@ -114,7 +122,7 @@ export class PullEthereumEvents extends JobUnique<JobData> {
       console.error(e.message)
       // 'query returned more than 10000 results' error
       if (e.message.includes('error={"code":-32005}')) {
-        const newBlocksPerFetch = blocksPerFetch ? blocksPerFetch * BigInt(80) / BigInt(100) : blocksPerFetch
+        const newBlocksPerFetch = blocksPerFetch ? (blocksPerFetch * BigInt(80)) / BigInt(100) : blocksPerFetch
         console.log(e.message)
         console.log(
           `🛑 Rescheduling ${eventName} events for ${contractAddress} starting with block ${startFromBlock} at ${newBlocksPerFetch} per fetch`,

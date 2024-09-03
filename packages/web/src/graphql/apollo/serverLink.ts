@@ -1,6 +1,6 @@
-import { buildSchema } from 'graphql/utilities'
 import { SchemaLink } from '@apollo/client/link/schema'
-import { ResolverContext } from './types/ResolverContext'
+import { buildSchema } from 'graphql/utilities'
+import type { ResolverContext } from './types/ResolverContext'
 
 export const createServerLink = (context: ResolverContext = {}) => {
   // eslint-disable-next-line

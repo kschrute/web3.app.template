@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
 import { Button, Skeleton } from '@chakra-ui/react'
+import React from 'react'
 import { useAccount } from 'wagmi'
-import { bcTimestampToDate } from '../utils/bcTimestampToDate'
 import AppAlert from '../components/common/AppAlert'
+import { bcTimestampToDate } from '../utils/bcTimestampToDate'
 import {
   subscriptionAbi,
   subscriptionAddress,
@@ -15,23 +15,24 @@ import {
 
 export default function SubscriptionContract() {
   const { address } = useAccount()
+
+  if (!address) return null
+
   const { data: userSubscribedAt, queryKey } = useReadSubscriptionUserSubscribedAt({
-    args: [address!],
+    args: [address],
   })
   useRefreshOnNewBlock(queryKey)
 
-  const {
-    write,
-    isLoading,
-    isPending
-  } = useWriteSmartContract({
+  const { write, isLoading, isPending } = useWriteSmartContract({
     abi: subscriptionAbi,
     address: subscriptionAddress,
     functionName: 'subscribe',
-    description: `Subscribe`,
+    description: 'Subscribe',
   })
 
-  const onClick = async () => { await write({}) }
+  const onClick = async () => {
+    await write({})
+  }
 
   const isSubscribed = userSubscribedAt && userSubscribedAt > 0
 
@@ -45,11 +46,11 @@ export default function SubscriptionContract() {
           ? `Looks like you have already subscribed at ${bcTimestampToDate(userSubscribedAt).toLocaleString()}`
           : 'You are not subscribed yet. Click Subscribe button to subscribe.'
       }
-      button={(
+      button={
         <Button colorScheme="blue" isLoading={isLoading || isPending} onClick={onClick}>
           Subscribe
         </Button>
-      )}
+      }
     />
   )
 }

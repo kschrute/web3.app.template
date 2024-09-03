@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useMemo } from 'react'
 import { Button, Spinner } from '@chakra-ui/react'
-import { useRequestMutation, useRequestsSubscription } from '../graphql/client'
+import React, { useMemo } from 'react'
 import AppAlert from '../components/common/AppAlert'
+import { useRequestMutation, useRequestsSubscription } from '../graphql/client'
 
 export default function GraphqlRequestsCount() {
   const [request] = useRequestMutation()
@@ -20,18 +20,12 @@ export default function GraphqlRequestsCount() {
   return (
     <AppAlert
       status="info"
-      description={(
-        <>
-          Your requests count:
-          {' '}
-          {loading ? <Spinner size="sm" mr={2} /> : count}
-        </>
-)}
-      button={(
+      description={<>Your requests count: {loading ? <Spinner size="sm" mr={2} /> : count}</>}
+      button={
         <Button colorScheme="blue" onClick={onClick}>
           Request
         </Button>
-      )}
+      }
     />
   )
 }

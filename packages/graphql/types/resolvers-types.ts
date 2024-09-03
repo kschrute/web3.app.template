@@ -14,8 +14,11 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** The `BigInt` scalar type represents non-fractional signed whole numeric values. */
+  BigInt: { input: any; output: any; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any; }
+  Decimal: { input: any; output: any; }
 };
 
 export type Mutation = {
@@ -54,10 +57,10 @@ export type OrderBy = {
 
 export type PageInfo = {
   __typename?: 'PageInfo';
-  endCursor?: Maybe<Scalars['ID']['output']>;
+  endCursor?: Maybe<Scalars['String']['output']>;
   hasNextPage: Scalars['Boolean']['output'];
   hasPreviousPage: Scalars['Boolean']['output'];
-  startCursor?: Maybe<Scalars['ID']['output']>;
+  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 export type Project = {
@@ -68,7 +71,7 @@ export type Project = {
   requestCount: Scalars['Int']['output'];
   title: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
-  user: User;
+  user?: Maybe<User>;
 };
 
 export type ProjectCreateInput = {
@@ -101,8 +104,8 @@ export type QueryProjectByIdArgs = {
 
 
 export type QueryProjectsArgs = {
-  after?: InputMaybe<Scalars['ID']['input']>;
-  before?: InputMaybe<Scalars['ID']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<OrderBy>;
@@ -115,14 +118,14 @@ export type QueryUserArgs = {
 
 export type QueryProjectsConnection = {
   __typename?: 'QueryProjectsConnection';
-  edges: Array<Maybe<QueryProjectsConnectionEdge>>;
+  edges: Array<QueryProjectsConnectionEdge>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int']['output'];
 };
 
 export type QueryProjectsConnectionEdge = {
   __typename?: 'QueryProjectsConnectionEdge';
-  cursor: Scalars['ID']['output'];
+  cursor: Scalars['String']['output'];
   node: Project;
 };
 
@@ -256,9 +259,10 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  BigInt: ResolverTypeWrapper<Scalars['BigInt']['output']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   DateTime: ResolverTypeWrapper<Scalars['DateTime']['output']>;
-  ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Decimal: ResolverTypeWrapper<Scalars['Decimal']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<{}>;
   OrderBy: OrderBy;
@@ -283,9 +287,10 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  BigInt: Scalars['BigInt']['output'];
   Boolean: Scalars['Boolean']['output'];
   DateTime: Scalars['DateTime']['output'];
-  ID: Scalars['ID']['output'];
+  Decimal: Scalars['Decimal']['output'];
   Int: Scalars['Int']['output'];
   Mutation: {};
   OrderBy: OrderBy;
@@ -307,8 +312,16 @@ export type ResolversParentTypes = {
   Value: Value;
 };
 
+export interface BigIntScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['BigInt'], any> {
+  name: 'BigInt';
+}
+
 export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['DateTime'], any> {
   name: 'DateTime';
+}
+
+export interface DecimalScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Decimal'], any> {
+  name: 'Decimal';
 }
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
@@ -321,10 +334,10 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type PageInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['PageInfo'] = ResolversParentTypes['PageInfo']> = {
-  endCursor?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  endCursor?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   hasNextPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   hasPreviousPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  startCursor?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  startCursor?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -335,7 +348,7 @@ export type ProjectResolvers<ContextType = any, ParentType extends ResolversPare
   requestCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updatedAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
-  user?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
+  user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -349,14 +362,14 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type QueryProjectsConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['QueryProjectsConnection'] = ResolversParentTypes['QueryProjectsConnection']> = {
-  edges?: Resolver<Array<Maybe<ResolversTypes['QueryProjectsConnectionEdge']>>, ParentType, ContextType>;
+  edges?: Resolver<Array<ResolversTypes['QueryProjectsConnectionEdge']>, ParentType, ContextType>;
   pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>;
   totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryProjectsConnectionEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['QueryProjectsConnectionEdge'] = ResolversParentTypes['QueryProjectsConnectionEdge']> = {
-  cursor?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  cursor?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   node?: Resolver<ResolversTypes['Project'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -400,7 +413,9 @@ export type ValueResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type Resolvers<ContextType = any> = {
+  BigInt?: GraphQLScalarType;
   DateTime?: GraphQLScalarType;
+  Decimal?: GraphQLScalarType;
   Mutation?: MutationResolvers<ContextType>;
   PageInfo?: PageInfoResolvers<ContextType>;
   Project?: ProjectResolvers<ContextType>;

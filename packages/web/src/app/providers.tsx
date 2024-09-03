@@ -1,18 +1,18 @@
 'use client'
 
-import * as React from 'react'
-import { ProviderProps, useMemo } from 'react'
-import { WagmiProvider } from 'wagmi'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ApolloProvider } from '@apollo/client'
-import { IconContext } from 'react-icons'
-import { ChakraProvider } from '@chakra-ui/react'
-import { CacheProvider } from '@chakra-ui/next-js'
-import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
+import { CacheProvider } from '@chakra-ui/next-js'
+import { ChakraProvider } from '@chakra-ui/react'
+import { RainbowKitProvider, darkTheme, lightTheme } from '@rainbow-me/rainbowkit'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import * as React from 'react'
+import { type ProviderProps, useMemo } from 'react'
+import { IconContext } from 'react-icons'
+import { WagmiProvider } from 'wagmi'
 import { useApollo } from '../graphql/apollo'
-import { wagmiConfig } from '../wagmi'
 import { theme } from '../theme'
+import { wagmiConfig } from '../wagmi'
 
 if (process.env.NODE_ENV === 'development') {
   loadDevMessages()
@@ -26,12 +26,15 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const apolloClient = useApollo({})
   const [mounted, setMounted] = React.useState(false)
 
-  const iconContextProps: ProviderProps<IconContext> = useMemo(() => ({
-    value: {
-      className: 'react-icons',
-      attr: { focusable: 'false' },
-    },
-  }), [])
+  const iconContextProps: ProviderProps<IconContext> = useMemo(
+    () => ({
+      value: {
+        className: 'react-icons',
+        attr: { focusable: 'false' },
+      },
+    }),
+    [],
+  )
 
   React.useEffect(() => setMounted(true), [])
 
@@ -46,9 +49,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               showRecentTransactions
             >
               <ApolloProvider client={apolloClient}>
-                <IconContext.Provider {...iconContextProps}>
-                  {mounted && children}
-                </IconContext.Provider>
+                <IconContext.Provider {...iconContextProps}>{mounted && children}</IconContext.Provider>
               </ApolloProvider>
             </RainbowKitProvider>
           </QueryClientProvider>

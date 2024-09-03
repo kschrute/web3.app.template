@@ -1,8 +1,8 @@
 import {
   createUseReadContract,
-  createUseWriteContract,
   createUseSimulateContract,
   createUseWatchContractEvent,
+  createUseWriteContract,
 } from 'wagmi/codegen'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,25 +16,6 @@ import {
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const counterAbi = [
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Updated',
-  },
   {
     stateMutability: 'nonpayable',
     type: 'function',
@@ -55,6 +36,25 @@ export const counterAbi = [
     inputs: [{ name: 'newNumber', internalType: 'uint256', type: 'uint256' }],
     name: 'setNumber',
     outputs: [],
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'sender',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Updated',
   },
 ] as const
 
@@ -93,34 +93,7 @@ export const counterConfig = {
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
 export const faucetAbi = [
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'from', internalType: 'address', type: 'address', indexed: true },
-      {
-        name: 'amount',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Deposit',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'to', internalType: 'address', type: 'address', indexed: true },
-      {
-        name: 'amount',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Withdrawal',
-  },
+  { stateMutability: 'payable', type: 'receive' },
   {
     stateMutability: 'view',
     type: 'function',
@@ -149,7 +122,34 @@ export const faucetAbi = [
     name: 'destroy',
     outputs: [],
   },
-  { stateMutability: 'payable', type: 'receive' },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Deposit',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Withdrawal',
+  },
 ] as const
 
 /**
@@ -191,9 +191,7 @@ export const mortalAbi = [
 // Owned
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export const ownedAbi = [
-  { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
-] as const
+export const ownedAbi = [{ stateMutability: 'nonpayable', type: 'constructor', inputs: [] }] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Subscription
@@ -207,25 +205,6 @@ export const ownedAbi = [
  */
 export const subscriptionAbi = [
   { stateMutability: 'payable', type: 'constructor', inputs: [] },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'user',
-        internalType: 'address',
-        type: 'address',
-        indexed: false,
-      },
-      {
-        name: 'when',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Subscribed',
-  },
   {
     stateMutability: 'view',
     type: 'function',
@@ -246,6 +225,25 @@ export const subscriptionAbi = [
     inputs: [{ name: '', internalType: 'address', type: 'address' }],
     name: 'userSubscribedAt',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'user',
+        internalType: 'address',
+        type: 'address',
+        indexed: false,
+      },
+      {
+        name: 'when',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Subscribed',
   },
 ] as const
 
@@ -285,141 +283,7 @@ export const subscriptionConfig = {
  */
 export const wNatAbi = [
   { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
-  { type: 'error', inputs: [], name: 'ECDSAInvalidSignature' },
-  {
-    type: 'error',
-    inputs: [{ name: 'length', internalType: 'uint256', type: 'uint256' }],
-    name: 'ECDSAInvalidSignatureLength',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 's', internalType: 'bytes32', type: 'bytes32' }],
-    name: 'ECDSAInvalidSignatureS',
-  },
-  {
-    type: 'error',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
-      { name: 'needed', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'ERC20InsufficientAllowance',
-  },
-  {
-    type: 'error',
-    inputs: [
-      { name: 'sender', internalType: 'address', type: 'address' },
-      { name: 'balance', internalType: 'uint256', type: 'uint256' },
-      { name: 'needed', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'ERC20InsufficientBalance',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidApprover',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidReceiver',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidSender',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidSpender',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'deadline', internalType: 'uint256', type: 'uint256' }],
-    name: 'ERC2612ExpiredSignature',
-  },
-  {
-    type: 'error',
-    inputs: [
-      { name: 'signer', internalType: 'address', type: 'address' },
-      { name: 'owner', internalType: 'address', type: 'address' },
-    ],
-    name: 'ERC2612InvalidSigner',
-  },
-  {
-    type: 'error',
-    inputs: [
-      { name: 'account', internalType: 'address', type: 'address' },
-      { name: 'currentNonce', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'InvalidAccountNonce',
-  },
-  { type: 'error', inputs: [], name: 'InvalidShortString' },
-  {
-    type: 'error',
-    inputs: [{ name: 'str', internalType: 'string', type: 'string' }],
-    name: 'StringTooLong',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'owner',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'spender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Approval',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'dst', internalType: 'address', type: 'address', indexed: true },
-      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'Deposit',
-  },
-  { type: 'event', anonymous: false, inputs: [], name: 'EIP712DomainChanged' },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'from', internalType: 'address', type: 'address', indexed: true },
-      { name: 'to', internalType: 'address', type: 'address', indexed: true },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Transfer',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'src', internalType: 'address', type: 'address', indexed: true },
-      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'Withdrawal',
-  },
+  { stateMutability: 'payable', type: 'receive' },
   {
     stateMutability: 'view',
     type: 'function',
@@ -588,7 +452,141 @@ export const wNatAbi = [
     name: 'withdrawFrom',
     outputs: [],
   },
-  { stateMutability: 'payable', type: 'receive' },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'spender',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'dst', internalType: 'address', type: 'address', indexed: true },
+      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'Deposit',
+  },
+  { type: 'event', anonymous: false, inputs: [], name: 'EIP712DomainChanged' },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Transfer',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'src', internalType: 'address', type: 'address', indexed: true },
+      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'Withdrawal',
+  },
+  { type: 'error', inputs: [], name: 'ECDSAInvalidSignature' },
+  {
+    type: 'error',
+    inputs: [{ name: 'length', internalType: 'uint256', type: 'uint256' }],
+    name: 'ECDSAInvalidSignatureLength',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 's', internalType: 'bytes32', type: 'bytes32' }],
+    name: 'ECDSAInvalidSignatureS',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientAllowance',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'balance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientBalance',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSpender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'deadline', internalType: 'uint256', type: 'uint256' }],
+    name: 'ERC2612ExpiredSignature',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'signer', internalType: 'address', type: 'address' },
+      { name: 'owner', internalType: 'address', type: 'address' },
+    ],
+    name: 'ERC2612InvalidSigner',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'account', internalType: 'address', type: 'address' },
+      { name: 'currentNonce', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'InvalidAccountNonce',
+  },
+  { type: 'error', inputs: [], name: 'InvalidShortString' },
+  {
+    type: 'error',
+    inputs: [{ name: 'str', internalType: 'string', type: 'string' }],
+    name: 'StringTooLong',
+  },
 ] as const
 
 /**
@@ -806,12 +804,11 @@ export const useSimulateCounter = /*#__PURE__*/ createUseSimulateContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateCounterIncrement =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: counterAbi,
-    address: counterAddress,
-    functionName: 'increment',
-  })
+export const useSimulateCounterIncrement = /*#__PURE__*/ createUseSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'increment',
+})
 
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"setNumber"`
@@ -821,12 +818,11 @@ export const useSimulateCounterIncrement =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateCounterSetNumber =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: counterAbi,
-    address: counterAddress,
-    functionName: 'setNumber',
-  })
+export const useSimulateCounterSetNumber = /*#__PURE__*/ createUseSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'setNumber',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link counterAbi}__
@@ -849,12 +845,11 @@ export const useWatchCounterEvent = /*#__PURE__*/ createUseWatchContractEvent({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchCounterUpdatedEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: counterAbi,
-    address: counterAddress,
-    eventName: 'Updated',
-  })
+export const useWatchCounterUpdatedEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: counterAbi,
+  address: counterAddress,
+  eventName: 'Updated',
+})
 
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link faucetAbi}__
@@ -973,9 +968,11 @@ export const useSimulateFaucetClaim = /*#__PURE__*/ createUseSimulateContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateFaucetDestroy = /*#__PURE__*/ createUseSimulateContract(
-  { abi: faucetAbi, address: faucetAddress, functionName: 'destroy' },
-)
+export const useSimulateFaucetDestroy = /*#__PURE__*/ createUseSimulateContract({
+  abi: faucetAbi,
+  address: faucetAddress,
+  functionName: 'destroy',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link faucetAbi}__
@@ -998,12 +995,11 @@ export const useWatchFaucetEvent = /*#__PURE__*/ createUseWatchContractEvent({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchFaucetDepositEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: faucetAbi,
-    address: faucetAddress,
-    eventName: 'Deposit',
-  })
+export const useWatchFaucetDepositEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: faucetAbi,
+  address: faucetAddress,
+  eventName: 'Deposit',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link faucetAbi}__ and `eventName` set to `"Withdrawal"`
@@ -1013,12 +1009,11 @@ export const useWatchFaucetDepositEvent =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchFaucetWithdrawalEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: faucetAbi,
-    address: faucetAddress,
-    eventName: 'Withdrawal',
-  })
+export const useWatchFaucetWithdrawalEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: faucetAbi,
+  address: faucetAddress,
+  eventName: 'Withdrawal',
+})
 
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link mortalAbi}__
@@ -1045,9 +1040,10 @@ export const useSimulateMortal = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link mortalAbi}__ and `functionName` set to `"destroy"`
  */
-export const useSimulateMortalDestroy = /*#__PURE__*/ createUseSimulateContract(
-  { abi: mortalAbi, functionName: 'destroy' },
-)
+export const useSimulateMortalDestroy = /*#__PURE__*/ createUseSimulateContract({
+  abi: mortalAbi,
+  functionName: 'destroy',
+})
 
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link subscriptionAbi}__
@@ -1084,12 +1080,11 @@ export const useReadSubscriptionOwner = /*#__PURE__*/ createUseReadContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useReadSubscriptionUserSubscribedAt =
-  /*#__PURE__*/ createUseReadContract({
-    abi: subscriptionAbi,
-    address: subscriptionAddress,
-    functionName: 'userSubscribedAt',
-  })
+export const useReadSubscriptionUserSubscribedAt = /*#__PURE__*/ createUseReadContract({
+  abi: subscriptionAbi,
+  address: subscriptionAddress,
+  functionName: 'userSubscribedAt',
+})
 
 /**
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link subscriptionAbi}__
@@ -1112,12 +1107,11 @@ export const useWriteSubscription = /*#__PURE__*/ createUseWriteContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWriteSubscriptionSubscribe =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: subscriptionAbi,
-    address: subscriptionAddress,
-    functionName: 'subscribe',
-  })
+export const useWriteSubscriptionSubscribe = /*#__PURE__*/ createUseWriteContract({
+  abi: subscriptionAbi,
+  address: subscriptionAddress,
+  functionName: 'subscribe',
+})
 
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link subscriptionAbi}__
@@ -1140,12 +1134,11 @@ export const useSimulateSubscription = /*#__PURE__*/ createUseSimulateContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateSubscriptionSubscribe =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: subscriptionAbi,
-    address: subscriptionAddress,
-    functionName: 'subscribe',
-  })
+export const useSimulateSubscriptionSubscribe = /*#__PURE__*/ createUseSimulateContract({
+  abi: subscriptionAbi,
+  address: subscriptionAddress,
+  functionName: 'subscribe',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link subscriptionAbi}__
@@ -1155,11 +1148,10 @@ export const useSimulateSubscriptionSubscribe =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchSubscriptionEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: subscriptionAbi,
-    address: subscriptionAddress,
-  })
+export const useWatchSubscriptionEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: subscriptionAbi,
+  address: subscriptionAddress,
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link subscriptionAbi}__ and `eventName` set to `"Subscribed"`
@@ -1169,12 +1161,11 @@ export const useWatchSubscriptionEvent =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchSubscriptionSubscribedEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: subscriptionAbi,
-    address: subscriptionAddress,
-    eventName: 'Subscribed',
-  })
+export const useWatchSubscriptionSubscribedEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: subscriptionAbi,
+  address: subscriptionAddress,
+  eventName: 'Subscribed',
+})
 
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link wNatAbi}__
@@ -1545,9 +1536,11 @@ export const useSimulateWNatDeposit = /*#__PURE__*/ createUseSimulateContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateWNatDepositTo = /*#__PURE__*/ createUseSimulateContract(
-  { abi: wNatAbi, address: wNatAddress, functionName: 'depositTo' },
-)
+export const useSimulateWNatDepositTo = /*#__PURE__*/ createUseSimulateContract({
+  abi: wNatAbi,
+  address: wNatAddress,
+  functionName: 'depositTo',
+})
 
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link wNatAbi}__ and `functionName` set to `"permit"`
@@ -1585,12 +1578,11 @@ export const useSimulateWNatTransfer = /*#__PURE__*/ createUseSimulateContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateWNatTransferFrom =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: wNatAbi,
-    address: wNatAddress,
-    functionName: 'transferFrom',
-  })
+export const useSimulateWNatTransferFrom = /*#__PURE__*/ createUseSimulateContract({
+  abi: wNatAbi,
+  address: wNatAddress,
+  functionName: 'transferFrom',
+})
 
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link wNatAbi}__ and `functionName` set to `"withdraw"`
@@ -1614,12 +1606,11 @@ export const useSimulateWNatWithdraw = /*#__PURE__*/ createUseSimulateContract({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useSimulateWNatWithdrawFrom =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: wNatAbi,
-    address: wNatAddress,
-    functionName: 'withdrawFrom',
-  })
+export const useSimulateWNatWithdrawFrom = /*#__PURE__*/ createUseSimulateContract({
+  abi: wNatAbi,
+  address: wNatAddress,
+  functionName: 'withdrawFrom',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link wNatAbi}__
@@ -1642,12 +1633,11 @@ export const useWatchWNatEvent = /*#__PURE__*/ createUseWatchContractEvent({
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchWNatApprovalEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: wNatAbi,
-    address: wNatAddress,
-    eventName: 'Approval',
-  })
+export const useWatchWNatApprovalEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: wNatAbi,
+  address: wNatAddress,
+  eventName: 'Approval',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link wNatAbi}__ and `eventName` set to `"Deposit"`
@@ -1657,12 +1647,11 @@ export const useWatchWNatApprovalEvent =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchWNatDepositEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: wNatAbi,
-    address: wNatAddress,
-    eventName: 'Deposit',
-  })
+export const useWatchWNatDepositEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: wNatAbi,
+  address: wNatAddress,
+  eventName: 'Deposit',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link wNatAbi}__ and `eventName` set to `"EIP712DomainChanged"`
@@ -1672,12 +1661,11 @@ export const useWatchWNatDepositEvent =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchWNatEip712DomainChangedEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: wNatAbi,
-    address: wNatAddress,
-    eventName: 'EIP712DomainChanged',
-  })
+export const useWatchWNatEip712DomainChangedEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: wNatAbi,
+  address: wNatAddress,
+  eventName: 'EIP712DomainChanged',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link wNatAbi}__ and `eventName` set to `"Transfer"`
@@ -1687,12 +1675,11 @@ export const useWatchWNatEip712DomainChangedEvent =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchWNatTransferEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: wNatAbi,
-    address: wNatAddress,
-    eventName: 'Transfer',
-  })
+export const useWatchWNatTransferEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: wNatAbi,
+  address: wNatAddress,
+  eventName: 'Transfer',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link wNatAbi}__ and `eventName` set to `"Withdrawal"`
@@ -1702,12 +1689,11 @@ export const useWatchWNatTransferEvent =
  * -
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x0000000000000000000000000000000000000000)
  */
-export const useWatchWNatWithdrawalEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: wNatAbi,
-    address: wNatAddress,
-    eventName: 'Withdrawal',
-  })
+export const useWatchWNatWithdrawalEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: wNatAbi,
+  address: wNatAddress,
+  eventName: 'Withdrawal',
+})
 
 /**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link erc20Abi}__
@@ -1813,18 +1799,18 @@ export const useSimulateErc20Approve = /*#__PURE__*/ createUseSimulateContract({
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link erc20Abi}__ and `functionName` set to `"transfer"`
  */
-export const useSimulateErc20Transfer = /*#__PURE__*/ createUseSimulateContract(
-  { abi: erc20Abi, functionName: 'transfer' },
-)
+export const useSimulateErc20Transfer = /*#__PURE__*/ createUseSimulateContract({
+  abi: erc20Abi,
+  functionName: 'transfer',
+})
 
 /**
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link erc20Abi}__ and `functionName` set to `"transferFrom"`
  */
-export const useSimulateErc20TransferFrom =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: erc20Abi,
-    functionName: 'transferFrom',
-  })
+export const useSimulateErc20TransferFrom = /*#__PURE__*/ createUseSimulateContract({
+  abi: erc20Abi,
+  functionName: 'transferFrom',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link erc20Abi}__
@@ -1836,17 +1822,15 @@ export const useWatchErc20Event = /*#__PURE__*/ createUseWatchContractEvent({
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link erc20Abi}__ and `eventName` set to `"Approval"`
  */
-export const useWatchErc20ApprovalEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: erc20Abi,
-    eventName: 'Approval',
-  })
+export const useWatchErc20ApprovalEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: erc20Abi,
+  eventName: 'Approval',
+})
 
 /**
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link erc20Abi}__ and `eventName` set to `"Transfer"`
  */
-export const useWatchErc20TransferEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: erc20Abi,
-    eventName: 'Transfer',
-  })
+export const useWatchErc20TransferEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: erc20Abi,
+  eventName: 'Transfer',
+})

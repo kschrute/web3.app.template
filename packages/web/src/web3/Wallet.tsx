@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { useAccount } from 'wagmi'
 import { useApolloClient } from '@apollo/client'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import React, { useEffect } from 'react'
+import { useAccount } from 'wagmi'
 
 export const Wallet = () => {
   const client = useApolloClient()
@@ -17,7 +17,7 @@ export const Wallet = () => {
       console.log('Disconnected')
       client.resetStore()
     }
-  }, [status])
+  }, [address, connector, status, client.resetStore])
 
   return (
     <ConnectButton

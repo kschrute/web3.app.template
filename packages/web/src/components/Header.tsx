@@ -1,10 +1,10 @@
 'use client'
 
-import { Box, Flex, FlexProps, Link } from '@chakra-ui/react'
+import { Box, Flex, type FlexProps, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useState } from 'react'
-import { DarkModeSwitch } from './DarkModeSwitch'
 import { Wallet } from '../web3/Wallet'
+import { DarkModeSwitch } from './DarkModeSwitch'
 import { MenuItems } from './MenuItems'
 import { MenuToggle } from './MenuToggle'
 

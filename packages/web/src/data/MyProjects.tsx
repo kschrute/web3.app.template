@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react'
 import { Box, Heading, Text } from '@chakra-ui/react'
-import { useProjectsQuery } from '../graphql/client'
-import ProjectsList from '../components/projects/ProjectsList'
+import React, { useEffect, useMemo, useState } from 'react'
 import { HasMoreItems } from '../components/loading/HasMoreItems'
 import { LoadingMoreItems } from '../components/loading/LoadingMoreItems'
+import ProjectsList from '../components/projects/ProjectsList'
+import { useProjectsQuery } from '../graphql/client'
 import useScrolledToEnd from '../hooks/useScrolledToEnd'
 import useThrottle from '../hooks/useThrottle'
 
@@ -21,18 +21,22 @@ export default function MyProjects() {
   const hasNextPage = useMemo(() => data?.projects.pageInfo?.hasNextPage, [data])
   const endCursor = useMemo(() => data?.projects.pageInfo?.endCursor, [data])
 
-  const onLoadMore = useThrottle(async () => {
-    if (!pageInfo || !hasNextPage || loadingMore) return
+  const onLoadMore = useThrottle(
+    async () => {
+      if (!pageInfo || !hasNextPage || loadingMore) return
 
-    setLoadingMore(true)
-    await fetchMore({
-      variables: {
-        ...variables,
-        cursor: endCursor,
-      },
-    })
-    setLoadingMore(false)
-  }, 500, [setLoadingMore, fetchMore, hasNextPage, loadingMore, endCursor])
+      setLoadingMore(true)
+      await fetchMore({
+        variables: {
+          ...variables,
+          cursor: endCursor,
+        },
+      })
+      setLoadingMore(false)
+    },
+    500,
+    [setLoadingMore, fetchMore, hasNextPage, loadingMore, endCursor],
+  )
 
   useEffect(() => {
     isAtEnd && onLoadMore()

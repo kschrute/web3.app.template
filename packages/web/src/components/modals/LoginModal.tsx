@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
 import {
   AlertDialog,
   AlertDialogBody,
@@ -12,17 +11,20 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
+import React, { useEffect, useRef } from 'react'
 import { verifyMessage } from 'viem'
 import { useAccount, useDisconnect, useSignMessage } from 'wagmi'
+import { useAuthLazyQuery, useSignInMutation } from '../../graphql/client'
 import AppAlert from '../common/AppAlert'
 import AppExternalLink from '../common/AppExternalLink'
-import { useAuthLazyQuery, useSignInMutation } from '../../graphql/client'
 
 export default function LoginModal() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const defaultButtonRef = useRef<any>()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
+
+  if (!address) return null
 
   const [executeQuery, { data, error, refetch }] = useAuthLazyQuery()
   const [signin] = useSignInMutation()
@@ -31,11 +33,11 @@ export default function LoginModal() {
     mutation: {
       async onSuccess(signature, variables) {
         await verifyMessage({
-          address: address!,
+          address,
           message: variables.message,
           signature,
         })
-        const response = await signin({ variables: { data: { address: address!, signature } } })
+        const response = await signin({ variables: { data: { address, signature } } })
 
         const isAuthenticated = response?.data?.signin?.authenticated
         const token = response?.data?.signin?.token
@@ -45,7 +47,7 @@ export default function LoginModal() {
           refetch && (await refetch())
         }
       },
-    }
+    },
   })
 
   const isAuthenticated = data?.auth?.authenticated
@@ -85,8 +87,7 @@ export default function LoginModal() {
 
           <VStack alignItems="flex-start" fontSize="sm" spacing={3}>
             <Text>
-              By continuing to use this website, you acknowledge you have read and agreed to the
-              {' '}
+              By continuing to use this website, you acknowledge you have read and agreed to the{' '}
               <AppExternalLink href="https://strongblock.com/terms-of-service.html">Terms of Service</AppExternalLink>
             </Text>
           </VStack>
@@ -96,13 +97,7 @@ export default function LoginModal() {
           <Button isDisabled={isLoading} onClick={onCancel}>
             Cancel
           </Button>
-          <Button
-            ref={defaultButtonRef}
-            colorScheme="blue"
-            ml={5}
-            isLoading={isLoading}
-            onClick={onLogin}
-          >
+          <Button ref={defaultButtonRef} colorScheme="blue" ml={5} isLoading={isLoading} onClick={onLogin}>
             Accept and sign
           </Button>
         </AlertDialogFooter>

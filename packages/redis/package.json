@@ -1,0 +1,33 @@
+{
+  "name": "@app/redis",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "license": "ISC",
+  "scripts": {
+    "prepare": "run-s 'prepare.*'",
+    "prepare.build": "pnpm build",
+    "build": "rm -rf ./dist && tsc",
+    "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
+    "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
+    "test": "forge test",
+    "pre-commit": "lint-staged"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ioredis": "^5.4.1",
+    "redis": "^4.6.13"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/node": "^20.12.7",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5"
+  }
+}

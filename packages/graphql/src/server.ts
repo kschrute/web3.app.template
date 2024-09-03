@@ -20,8 +20,8 @@ const yoga = createYoga({
   graphiql:
     config.environment === 'development'
       ? {
-        subscriptionsProtocol: 'WS',
-      }
+          subscriptionsProtocol: 'WS',
+        }
       : false,
 })
 

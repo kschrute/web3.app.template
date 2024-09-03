@@ -10,21 +10,23 @@
     "build": "rm -rf ./dist && tsc --project tsconfig.dist.json",
     "eslint": "eslint . --ignore-path .gitignore --ext .ts,.tsx",
     "eslint.fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettify": "prettier --write '**/*.{ts,tsx}'",
     "test": "forge test",
     "pre-commit": "lint-staged"
   },
   "dependencies": {
-    "@wagmi/cli": "^2.1.1",
-    "viem": "^2.9.26",
-    "wagmi": "^2.5.20"
+    "viem": "^2.9.26"
   },
   "devDependencies": {
-    "@types/node": "^20.8.10",
+    "@biomejs/biome": "^1.8.3",
+    "@types/node": "^20.12.7",
     "eslint": "^8.52.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "lint-staged": "^15.0.2",
-    "tsx": "^4.7.1",
-    "typescript": "^5.3.3"
+    "lint-staged": "^15.2.2",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5"
   }
 }

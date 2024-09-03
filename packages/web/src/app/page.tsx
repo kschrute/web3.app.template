@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
 import { Stat, StatHelpText, StatLabel, StatNumber, Text } from '@chakra-ui/react'
+import React from 'react'
 import { useBlockNumber } from 'wagmi'
 import Layout from '../components/Layout'
 import CounterContract from '../data/CounterContract'

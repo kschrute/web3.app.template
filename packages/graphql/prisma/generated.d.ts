@@ -17,6 +17,7 @@ export default interface PrismaTypes {
             projects: {
                 Shape: Project[];
                 Name: "Project";
+                Nullable: false;
             };
         };
     };
@@ -36,6 +37,7 @@ export default interface PrismaTypes {
             user: {
                 Shape: User | null;
                 Name: "User";
+                Nullable: true;
             };
         };
     };
@@ -55,10 +57,12 @@ export default interface PrismaTypes {
             prevEvent: {
                 Shape: Event | null;
                 Name: "Event";
+                Nullable: true;
             };
             events: {
                 Shape: Event[];
                 Name: "Event";
+                Nullable: false;
             };
         };
     };

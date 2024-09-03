@@ -1,5 +1,5 @@
 import { isBrowser } from '../../utils/isBrowser'
-import { ResolverContext } from './types/ResolverContext'
+import type { ResolverContext } from './types/ResolverContext'
 
 export const createIsomorphicLink = (context: ResolverContext = {}) => {
   if (!isBrowser()) {

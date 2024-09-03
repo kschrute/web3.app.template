@@ -1,6 +1,4 @@
 import { connectorsForWallets, getDefaultWallets } from '@rainbow-me/rainbowkit'
-import { createConfig, http } from 'wagmi'
-import { foundry, localhost, mainnet, sepolia } from 'wagmi/chains'
 import {
   coinbaseWallet,
   injectedWallet,
@@ -10,15 +8,11 @@ import {
   trustWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets'
+import { http, createConfig } from 'wagmi'
+import { foundry, localhost, mainnet, sepolia } from 'wagmi/chains'
 import config from '../../config'
 
 export * from './generated'
-
-declare module 'wagmi' {
-  interface Register {
-    config: typeof config
-  }
-}
 
 const projectId = config.walletConnectProjectId
 
@@ -27,22 +21,28 @@ const projectId = config.walletConnectProjectId
 //   projectId,
 // })
 
-const connectors = connectorsForWallets([{
-  groupName: 'Recommended',
-  wallets: [
-    injectedWallet,
-    metaMaskWallet,
-    walletConnectWallet,
-    coinbaseWallet,
-    ledgerWallet,
-    trustWallet,
-    rainbowWallet,
-  ]
-}], { appName: 'Web3', projectId })
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [
+        injectedWallet,
+        metaMaskWallet,
+        walletConnectWallet,
+        coinbaseWallet,
+        ledgerWallet,
+        trustWallet,
+        rainbowWallet,
+      ],
+    },
+  ],
+  { appName: 'Web3', projectId },
+)
 
 export const wagmiConfig = createConfig({
   chains: [mainnet, ...(process.env.NODE_ENV === 'development' ? [sepolia, localhost, foundry] : [])],
   connectors,
+  ssr: true,
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
@@ -51,3 +51,9 @@ export const wagmiConfig = createConfig({
   },
   batch: { multicall: true },
 })
+
+declare module 'wagmi' {
+  interface Register {
+    config: typeof wagmiConfig
+  }
+}

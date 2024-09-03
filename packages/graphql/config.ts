@@ -4,14 +4,14 @@ const config = {
 
   ...(process.env.NODE_ENV && process.env.NODE_ENV === 'development'
     ? {
-      dev: {
-        db: {
-          averageLatencyMsecs: 1_000,
-          slowQueryThreshold: 250,
-          failPercent: 0,
+        dev: {
+          db: {
+            averageLatencyMsecs: 1_000,
+            slowQueryThreshold: 250,
+            failPercent: 0,
+          },
         },
-      },
-    }
+      }
     : {}),
 }
 

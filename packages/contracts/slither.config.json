@@ -1,5 +1,8 @@
 {
-  "solc_args": "--allow-paths /src",
   "detectors_to_exclude": "naming-convention,solc-version",
-  "filter_paths": "\/src\/lib"
+  "filter_paths": "\/src\/lib",
+  "solc_args": "--allow-paths /src",
+  "solc_remaps": [
+    "@openzeppelin=/src/lib/openzeppelin-contracts"
+  ]
 }
