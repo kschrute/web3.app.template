@@ -22,9 +22,6 @@ type Props = {
 
 export default function ApprovalRequired({ amount, spender, tokenName, isDisabled = false, children, ...rest }: Props) {
   const { address } = useAccount()
-
-  if (!address) return null
-
   const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   const { data: allowance, queryKey: queryKeyAllowance } = useReadWNatAllowance({ args: [address, spender] })
   useRefreshOnNewBlock(queryKey)
@@ -53,9 +50,6 @@ export default function ApprovalRequired({ amount, spender, tokenName, isDisable
 
 function Deposit({ amount, tokenName, isDisabled }: { amount: bigint; tokenName: string; isDisabled: boolean }) {
   const { address } = useAccount()
-
-  if (!address) return null
-
   const { data: balance, queryKey } = useReadWNatBalanceOf({ args: [address] })
   const needToWrap = balance !== undefined ? amount - balance : undefined
   useRefreshOnNewBlock(queryKey)
